@@ -1,0 +1,13 @@
+# Direct dependency intent. requirements.txt is the tested, resolved Python 3.12 environment.
+requests>=2.31
+beautifulsoup4>=4.12
+lxml>=5
+pandas>=2
+numpy>=1.26,<2.3
+scipy>=1.13
+scikit-learn>=1.4
+matplotlib>=3.8
+pypdf>=4
+python-dateutil>=2.8
+pytest>=8
+textblob>=0.18

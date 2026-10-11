@@ -1,0 +1,23 @@
+{
+  "created_at": "2026-10-11T07:25:11.984861+00:00",
+  "window_start": "2016-10-10",
+  "window_end": "2026-10-10",
+  "current_window_start": "2025-10-11",
+  "extracted_documents": 2886,
+  "eligible_documents": 2494,
+  "core_articles": 2224,
+  "unique_story_clusters": 2216,
+  "report_records": 257,
+  "current_articles": 169,
+  "active_sources": [
+    "etc",
+    "untourism",
+    "wttc"
+  ],
+  "complete_sources": 0,
+  "unprocessed_candidates": 0,
+  "python": "3.12.2",
+  "numpy": "2.2.6",
+  "pandas": "3.0.6",
+  "validation_status": "automated checks and limited extraction spot checks; independent human coding not completed"
+}

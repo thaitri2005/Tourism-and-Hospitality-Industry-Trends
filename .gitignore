@@ -1,0 +1,13 @@
+__pycache__/
+.pytest_cache/
+data/raw/
+data/http_cache/
+data/*.sqlite*
+tmp/
+.venv/
+logs/
+data/backups/
+data/runner.lock
+data/pipeline.lock
+output/.staging/
+output/diagnostics/

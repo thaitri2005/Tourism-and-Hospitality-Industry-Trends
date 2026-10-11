@@ -1,0 +1,255 @@
+{
+  "status": "available_scope_processed",
+  "exit_code": 0,
+  "results": {
+    "discovery:untourism": {
+      "status": "processed",
+      "errors": [],
+      "remaining_sitemaps": 0
+    },
+    "archive:untourism": {
+      "status": "complete",
+      "pages_processed_this_run": 117,
+      "new_urls": 62
+    },
+    "crawl:untourism": {
+      "source": "untourism",
+      "status": "queue_processed",
+      "attempted": 62,
+      "new_eligible": 61,
+      "errors": 0,
+      "remaining": 0
+    },
+    "discovery:wttc": {
+      "status": "processed",
+      "errors": [],
+      "remaining_sitemaps": 0
+    },
+    "crawl:wttc": {
+      "source": "wttc",
+      "status": "queue_processed",
+      "attempted": 0,
+      "new_eligible": 0,
+      "errors": 0,
+      "remaining": 0
+    },
+    "discovery:ihra": {
+      "status": "held",
+      "reason": "source_verification_required"
+    },
+    "discovery:pata": {
+      "status": "held",
+      "reason": "publisher_authorization_required"
+    },
+    "discovery:ahla": {
+      "status": "held",
+      "reason": "publisher_authorization_required"
+    },
+    "discovery:etc": {
+      "status": "processed",
+      "errors": [],
+      "remaining_sitemaps": 0
+    },
+    "crawl:etc": {
+      "source": "etc",
+      "status": "queue_processed",
+      "attempted": 0,
+      "new_eligible": 0,
+      "errors": 0,
+      "remaining": 0
+    },
+    "discovery:cto": {
+      "status": "deferred",
+      "state": {
+        "source": "cto",
+        "state": "blocked",
+        "reason": "Prior robots audit returned HTTP 403",
+        "until_at": null,
+        "updated_at": "2026-10-11T05:34:12.789146+00:00"
+      }
+    },
+    "crawl:cto": {
+      "source": "cto",
+      "status": "source_unavailable",
+      "error": "Prior robots audit returned HTTP 403",
+      "error_kind": "access_denied",
+      "next_retry_at": null
+    },
+    "discovery:hospitalitynet": {
+      "status": "held",
+      "reason": "publisher_authorization_required"
+    },
+    "discovery:travelweekly": {
+      "status": "held",
+      "reason": "publisher_authorization_required"
+    },
+    "reextract": {
+      "updated": 0,
+      "errors": 0
+    },
+    "analysis": {
+      "status": "complete",
+      "input_fingerprint": "86d816561daf7c907e6d7fe925c6cd299403a897a1224735fc8593774cb7116f",
+      "files": 32
+    }
+  },
+  "errors": [],
+  "progress": {
+    "created_at": "2026-10-11T07:25:13.287426+00:00",
+    "window_start": "2016-10-10",
+    "window_end": "2026-10-10",
+    "sources": {
+      "untourism": {
+        "access": "public_research_review",
+        "url_states": {
+          "excluded_language_route": 1613,
+          "extracted": 1486,
+          "permanent_error": 1
+        },
+        "documents": 1486,
+        "eligible": 1318
+      },
+      "wttc": {
+        "access": "public_research_review",
+        "url_states": {
+          "extracted": 780
+        },
+        "documents": 780,
+        "eligible": 659
+      },
+      "ihra": {
+        "access": "source_verification_required",
+        "url_states": {},
+        "documents": 0,
+        "eligible": 0
+      },
+      "pata": {
+        "access": "publisher_authorization_required",
+        "url_states": {},
+        "documents": 0,
+        "eligible": 0
+      },
+      "ahla": {
+        "access": "publisher_authorization_required",
+        "url_states": {},
+        "documents": 0,
+        "eligible": 0
+      },
+      "etc": {
+        "access": "public_research_review",
+        "url_states": {
+          "extracted": 620,
+          "form_gated_report": 215,
+          "permanent_error": 2
+        },
+        "documents": 620,
+        "eligible": 517
+      },
+      "cto": {
+        "access": "public_research_review",
+        "url_states": {},
+        "documents": 0,
+        "eligible": 0,
+        "runtime_state": {
+          "source": "cto",
+          "state": "blocked",
+          "reason": "Prior robots audit returned HTTP 403",
+          "until_at": null,
+          "updated_at": "2026-10-11T05:34:12.789146+00:00"
+        }
+      },
+      "hospitalitynet": {
+        "access": "publisher_authorization_required",
+        "url_states": {},
+        "documents": 0,
+        "eligible": 0
+      },
+      "travelweekly": {
+        "access": "publisher_authorization_required",
+        "url_states": {},
+        "documents": 0,
+        "eligible": 0,
+        "runtime_state": {
+          "source": "travelweekly",
+          "state": "blocked",
+          "reason": "Prior robots audit returned HTTP 403",
+          "until_at": null,
+          "updated_at": "2026-10-11T05:34:12.789146+00:00"
+        }
+      }
+    },
+    "database_exists": true,
+    "checkpoints": [
+      {
+        "name": "discovery_frontier:untourism",
+        "fingerprint": "e7829acd53ae742ba1f5358fdcdec2ff9cd8b1d9d5cca913c686576d0cd6bb2f",
+        "status": "progress",
+        "updated_at": "2026-10-11T07:20:29.348343+00:00"
+      },
+      {
+        "name": "inventory:untourism",
+        "fingerprint": "e7829acd53ae742ba1f5358fdcdec2ff9cd8b1d9d5cca913c686576d0cd6bb2f",
+        "status": "complete",
+        "updated_at": "2026-10-11T07:20:29.392744+00:00"
+      },
+      {
+        "name": "english_archive:untourism",
+        "fingerprint": "18bb6416ca561d752055849e2edc1c1478f1d7f01601cf637c17224ff37716a9",
+        "status": "complete",
+        "updated_at": "2026-10-11T07:20:36.630558+00:00"
+      },
+      {
+        "name": "discovery_frontier:wttc",
+        "fingerprint": "e7829acd53ae742ba1f5358fdcdec2ff9cd8b1d9d5cca913c686576d0cd6bb2f",
+        "status": "progress",
+        "updated_at": "2026-10-11T07:22:42.372083+00:00"
+      },
+      {
+        "name": "inventory:wttc",
+        "fingerprint": "e7829acd53ae742ba1f5358fdcdec2ff9cd8b1d9d5cca913c686576d0cd6bb2f",
+        "status": "complete",
+        "updated_at": "2026-10-11T07:22:42.494765+00:00"
+      },
+      {
+        "name": "discovery_frontier:etc",
+        "fingerprint": "e7829acd53ae742ba1f5358fdcdec2ff9cd8b1d9d5cca913c686576d0cd6bb2f",
+        "status": "progress",
+        "updated_at": "2026-10-11T07:22:42.661084+00:00"
+      },
+      {
+        "name": "inventory:etc",
+        "fingerprint": "e7829acd53ae742ba1f5358fdcdec2ff9cd8b1d9d5cca913c686576d0cd6bb2f",
+        "status": "complete",
+        "updated_at": "2026-10-11T07:22:42.937854+00:00"
+      },
+      {
+        "name": "analysis",
+        "fingerprint": "86d816561daf7c907e6d7fe925c6cd299403a897a1224735fc8593774cb7116f",
+        "status": "complete",
+        "updated_at": "2026-10-11T07:25:13.248270+00:00"
+      }
+    ],
+    "next_retry_at": null,
+    "total_documents": 2886,
+    "pending_urls": 0
+  },
+  "held_sources": [
+    "ihra",
+    "pata",
+    "ahla",
+    "hospitalitynet",
+    "travelweekly"
+  ],
+  "blocked_sources": [
+    "cto",
+    "travelweekly"
+  ],
+  "cooldown_sources": [],
+  "study_complete": false,
+  "offline": false,
+  "note": "Finished work applies only to discovered, accessible material. Nine-source completeness and human validation are not established.",
+  "analysis_current": true,
+  "run_id": "20261011T072017Z-58997037",
+  "finished_at": "2026-10-11T07:25:13.287426+00:00",
+  "launcher_exit_code": 0
+}

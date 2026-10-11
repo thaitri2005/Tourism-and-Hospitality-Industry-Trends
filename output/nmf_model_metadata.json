@@ -1,0 +1,9 @@
+{
+  "method": "TF-IDF + NMF",
+  "components": 15,
+  "training_documents": 1479,
+  "applied_documents": 2224,
+  "random_state": 42,
+  "iterations": 356,
+  "status": "exploratory_unreviewed"
+}

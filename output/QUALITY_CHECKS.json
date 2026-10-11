@@ -1,0 +1,147 @@
+{
+  "created_at": "2026-10-11T07:37:37.395869+00:00",
+  "status": "passed_structural_checks",
+  "analysis_run_id": "20261011T072017Z-58997037",
+  "input_fingerprint": "86d816561daf7c907e6d7fe925c6cd299403a897a1224735fc8593774cb7116f",
+  "checks": [
+    {
+      "check": "sqlite_integrity",
+      "passed": true,
+      "failures": 0
+    },
+    {
+      "check": "document_queue_references",
+      "passed": true,
+      "failures": 0
+    },
+    {
+      "check": "document_hashes_ids_word_counts",
+      "passed": true,
+      "failures": 0
+    },
+    {
+      "check": "all_raw_files_readable",
+      "passed": true,
+      "failures": 0
+    },
+    {
+      "check": "eligible_record_constraints",
+      "passed": true,
+      "failures": 0
+    },
+    {
+      "check": "published_artifact_hashes",
+      "passed": true,
+      "failures": 0
+    },
+    {
+      "check": "analysis_matches_database_and_code",
+      "passed": true,
+      "failures": 0
+    },
+    {
+      "check": "metadata_export",
+      "passed": true,
+      "failures": 0
+    },
+    {
+      "check": "analysis_record_metadata",
+      "passed": true,
+      "failures": 0
+    },
+    {
+      "check": "within_source_year_deduplication",
+      "passed": true,
+      "failures": 0
+    },
+    {
+      "check": "summary_counts",
+      "passed": true,
+      "failures": 0
+    },
+    {
+      "check": "source_year_coverage",
+      "passed": true,
+      "failures": 0
+    },
+    {
+      "check": "derived_document_references",
+      "passed": true,
+      "failures": 0
+    },
+    {
+      "check": "unique_theme_assignments",
+      "passed": true,
+      "failures": 0
+    },
+    {
+      "check": "annual_and_source_theme_arithmetic",
+      "passed": true,
+      "failures": 0
+    },
+    {
+      "check": "current_ranking_arithmetic",
+      "passed": true,
+      "failures": 0
+    },
+    {
+      "check": "entity_ranking_arithmetic",
+      "passed": true,
+      "failures": 0
+    },
+    {
+      "check": "brand_association_arithmetic",
+      "passed": true,
+      "failures": 0
+    },
+    {
+      "check": "sentiment_alignment",
+      "passed": true,
+      "failures": 0
+    },
+    {
+      "check": "sentiment_range",
+      "passed": true,
+      "failures": 0
+    },
+    {
+      "check": "sentiment_summary",
+      "passed": true,
+      "failures": 0
+    },
+    {
+      "check": "nmf_assignments_and_counts",
+      "passed": true,
+      "failures": 0
+    }
+  ],
+  "errors": [],
+  "warnings": [
+    "1 archive cards point to excluded/non-article URLs; manual resolution needed.",
+    "Only 3 of 9 listed sources have core articles. Structural checks do not validate extraction accuracy, topic coding, sentiment, or historical completeness."
+  ],
+  "counts": {
+    "extracted_documents": 2886,
+    "eligible_documents": 2494,
+    "core_articles": 2224,
+    "report_records": 257,
+    "unique_story_clusters": 2216,
+    "current_articles": 169,
+    "unprocessed_candidates": 0
+  },
+  "archive_reconciliation": {
+    "pages": 117,
+    "cards_in_window": 1392,
+    "missing_article_links": [],
+    "excluded_card_links": [
+      {
+        "url": "https://www.untourism.int/archive/global/",
+        "date": "2016-11-04",
+        "title": "UNWTO Workshop for Inbound Tour Operators",
+        "archive": "https://www.untourism.int/news?page=114"
+      }
+    ],
+    "unavailable_pages": []
+  },
+  "research_validated": false
+}

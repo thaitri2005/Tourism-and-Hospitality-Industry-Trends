@@ -1,0 +1,140 @@
+{
+  "cto": {
+    "name": "Caribbean Tourism Organization",
+    "access": "public_research_review",
+    "terms": "",
+    "note": "Public research collection; no blanket redistribution license established.",
+    "errors": [
+      "403 Client Error: Forbidden for url: https://www.onecaribbean.org/robots.txt"
+    ],
+    "sitemaps": [],
+    "archive_links": 0,
+    "robots_status": "unavailable"
+  },
+  "untourism": {
+    "name": "UN Tourism",
+    "access": "public_research_review",
+    "terms": "https://www.untourism.int/copyright",
+    "note": "Local noncommercial research; redistribution/derivative restrictions require review before sharing text.",
+    "errors": [],
+    "sitemaps": [
+      {
+        "url": "https://www.untourism.int/sitemap.xml",
+        "kind": "urlset",
+        "locations": 3773
+      },
+      {
+        "url": "https://www.untourism.int/es/sitemap.xml",
+        "kind": "urlset",
+        "locations": 1795
+      },
+      {
+        "url": "https://www.untourism.int/fr/sitemap.xml",
+        "kind": "urlset",
+        "locations": 1670
+      },
+      {
+        "url": "https://www.untourism.int/ru/sitemap.xml",
+        "kind": "urlset",
+        "locations": 254
+      },
+      {
+        "url": "https://www.untourism.int/zh-hans/sitemap.xml",
+        "kind": "urlset",
+        "locations": 239
+      },
+      {
+        "url": "https://www.untourism.int/ar/sitemap.xml",
+        "kind": "urlset",
+        "locations": 329
+      }
+    ],
+    "archive_links": 11,
+    "retryable_errors": false,
+    "robots_status": "readable",
+    "robots_text": "#\n# robots.txt — production (www.untourism.int)\n#\n# Hardened for security + SEO. Replaces the previous version which\n# (a) blocked the /node/ system paths that Drupal actually serves with\n#     index,follow and self-canonical -> Google reported 80k+\n#     \"Blocked by robots.txt\"; (b) referenced /sp/sitemap.xml which 404s.\n#\n# Security principle: defence in depth. Even though Drupal/Apache already\n# return 403 for admin & private files, we ALSO tell crawlers to stay out.\n# These Disallow lines never expose anything -- they only ask compliant\n# crawlers not to fetch URLs that we expect to be protected at the app level.\n#\n# NOTE: robots.txt is NOT an access-control mechanism. Sensitive endpoints\n# MUST also be protected by Drupal permissions, HTTP auth, or WAF rules.\n#\n\nUser-agent: *\n\n# --------------------------------------------------------------------------\n# ALLOW -- so Google can render the page (CSS / JS / fonts / public images)\n# --------------------------------------------------------------------------\nAllow: /core/*.css$\nAllow: /core/*.css?\nAllow: /core/*.js$\nAllow: /core/*.js?\nAllow: /core/themes/\nAllow: /core/modules/*/js/\nAllow: /core/modules/*/css/\nAllow: /core/misc/\nAllow: /core/assets/\nAllow: /core/*.gif\nAllow: /core/*.jpg\nAllow: /core/*.jpeg\nAllow: /core/*.png\nAllow: /core/*.svg\nAllow: /core/*.webp\nAllow: /profiles/*.css$\nAllow: /profiles/*.css?\nAllow: /profiles/*.js$\nAllow: /profiles/*.js?\nAllow: /profiles/*.gif\nAllow: /profiles/*.jpg\nAllow: /profiles/*.jpeg\nAllow: /profiles/*.png\nAllow: /profiles/*.svg\n# Public user-uploaded files. More-specific Disallows below override\n# this for /sites/*/files/private/, /styles/*/private/, backup_migrate, tmp.\nAllow: /sites/*/files/\n\n# --------------------------------------------------------------------------\n# DISALLOW -- Drupal internals\n# --------------------------------------------------------------------------\nDisallow: /core/\nDisallow: /profiles/\nDisallow: /vendor/\nDisallow: /modules/\nDisallow: /themes/\n\n# --------------------------------------------------------------------------\n# DISALLOW -- system / installer / config files (never crawl, never index)\n# --------------------------------------------------------------------------\nDisallow: /README.txt\nDisallow: /CHANGELOG.txt\nDisallow: /INSTALL.txt\nDisallow: /INSTALL.mysql.txt\nDisallow: /INSTALL.pgsql.txt\nDisallow: /INSTALL.sqlite.txt\nDisallow: /LICENSE.txt\nDisallow: /MAINTAINERS.txt\nDisallow: /UPGRADE.txt\nDisallow: /install.php\nDisallow: /update.php\nDisallow: /authorize.php\nDisallow: /web.config\nDisallow: /.env\nDisallow: /.htaccess\nDisallow: /.git\nDisallow: /composer.json\nDisallow: /composer.lock\nDisallow: /package.json\nDisallow: /sites/default/settings.php\nDisallow: /sites/*/settings.php\nDisallow: /sites/*/settings.local.php\nDisallow: /sites/*/services.yml\n\n# --------------------------------------------------------------------------\n# DISALLOW -- Drupal admin surface\n# --------------------------------------------------------------------------\nDisallow: /admin/\nDisallow: /admin\nDisallow: /index.php/admin/\nDisallow: /batch\nDisallow: /devel/\n\n# --------------------------------------------------------------------------\n# DISALLOW -- auth & user management\n# --------------------------------------------------------------------------\nDisallow: /user/register\nDisallow: /user/password\nDisallow: /user/login\nDisallow: /user/logout\nDisallow: /user/reset/\nDisallow: /user/*/edit\nDisallow: /user/*/cancel\nDisallow: /user/*/security\nDisallow: /user/*/sessions\nDisallow: /index.php/user/register\nDisallow: /index.php/user/password\nDisallow: /index.php/user/login\nDisallow: /index.php/user/logout\n\n# --------------------------------------------------------------------------\n# DISALLOW -- content management actions\n#   IMPORTANT: we DO allow /node/X canonical pages so Google can follow\n#   them, but we block edit/delete/revision actions explicitly.\n# --------------------------------------------------------------------------\nDisallow: /node/add\nDisallow: /node/*/edit\nDisallow: /node/*/delete\nDisallow: /node/*/revisions\nDisallow: /node/*/translations\nDisallow: /node/*/devel\nDisallow: /node/*/webform-results\nDisallow: /index.php/node/add\nDisallow: /media/*/edit\nDisallow: /media/*/delete\nDisallow: /media/*/revisions\nDisallow: /taxonomy/term/*/edit\nDisallow: /taxonomy/term/*/delete\nDisallow: /comment/*/edit\nDisallow: /comment/*/delete\nDisallow: /comment/reply/\nDisallow: /index.php/comment/reply/\n\n# --------------------------------------------------------------------------\n# DISALLOW -- filters, forms (low-value, infinite spaces)\n# --------------------------------------------------------------------------\n#\n# NOTE: /search is deliberately NOT disallowed here. unwto_core_page_attachments_alter()\n# serves every search listing (any language prefix) with \"noindex, follow\", and\n# Googlebot can only act on that directive if it is allowed to fetch the page.\n# Blocking /search in robots.txt instead left 319 search URLs stuck in the index\n# as \"Indexed, though blocked by robots.txt\" (GSC, 2026-07), and the block never\n# covered the language-prefixed variants (/fr/search?, /es/search?, ...) anyway.\n# Crawl volume on the spammy query space is handled at the edge by the Cloudflare\n# WAF rules (UNT-225), not by robots.txt.\nDisallow: /filter/tips\nDisallow: /index.php/filter/tips\nDisallow: /form/\nDisallow: /webform/*/submissions\nDisallow: /webform/*/results\n\n# --------------------------------------------------------------------------\n# DISALLOW -- private / internal file delivery\n# --------------------------------------------------------------------------\nDisallow: /system/files/\nDisallow: /sites/default/files/private/\nDisallow: /sites/*/files/private/\nDisallow: /sites/default/files/styles/*/private/\nDisallow: /sites/*/files/styles/*/private/\nDisallow: /sites/default/files/backup_migrate/\nDisallow: /sites/*/files/backup_migrate/\nDisallow: /sites/default/files/tmp/\nDisallow: /sites/*/files/tmp/\nDisallow: /sites/default/files/php/\nDisallow: /sites/default/files/translations/\n\n# --------------------------------------------------------------------------\n# DISALLOW -- API endpoints (save crawl budget; not secret but no value)\n# --------------------------------------------------------------------------\nDisallow: /jsonapi/\nDisallow: /jsonapi\nDisallow: /rest/\nDisallow: /oauth/\nDisallow: /oauth2/\nDisallow: /openid/\nDisallow: /saml/\n\n# --------------------------------------------------------------------------\n# DISALLOW -- URL-parameter noise\n# --------------------------------------------------------------------------\nDisallow: /*?destination=\nDisallow: /*&destination=\nDisallow: /*?delete-token=\nDisallow: /*?op=\nDisallow: /*?form_token=\nDisallow: /*?_format=hal_json\nDisallow: /*&_format=hal_json\nDisallow: /*?_format=json\nDisallow: /*&_format=json\nDisallow: /*?_format=xml\nDisallow: /*&_format=xml\nDisallow: /print/\nDisallow: /printpdf/\nDisallow: /cron\nDisallow: /cron/\n\n# --------------------------------------------------------------------------\n# SITEMAPS\n# --------------------------------------------------------------------------\nSitemap: https://www.untourism.int/sitemap.xml\nSitemap: https://www.untourism.int/es/sitemap.xml\nSitemap: https://www.untourism.int/fr/sitemap.xml\nSitemap: https://www.untourism.int/ru/sitemap.xml\nSitemap: https://www.untourism.int/zh-hans/sitemap.xml\nSitemap: https://www.untourism.int/ar/sitemap.xml\n",
+    "remaining_sitemaps": [],
+    "discovered_urls": 3100,
+    "discovery_status": "sitemaps_and_seed_archives_processed",
+    "english_archive_pages_processed": 117,
+    "archive_backfill_new_urls": 62,
+    "english_archive_boundary_reached": true
+  },
+  "wttc": {
+    "name": "WTTC",
+    "access": "public_research_review",
+    "terms": "https://wttc.org/terms-and-conditions",
+    "note": "Academic research provision; document-specific conditions still apply.",
+    "errors": [],
+    "sitemaps": [
+      {
+        "url": "https://wttc.org/sitemap.xml",
+        "kind": "urlset",
+        "locations": 869
+      }
+    ],
+    "archive_links": 24,
+    "retryable_errors": false,
+    "robots_status": "readable",
+    "robots_text": "User-agent: *\nDisallow: /admin/\nDisallow: /*?language=\nDisallow: /*&language=\nSitemap: https://wttc.org/sitemap.xml",
+    "remaining_sitemaps": [],
+    "discovered_urls": 780,
+    "discovery_status": "sitemaps_and_seed_archives_processed"
+  },
+  "ihra": {
+    "name": "IH&RA",
+    "access": "source_verification_required",
+    "terms": "",
+    "note": "Supplied domain contains old institutional material mixed with extensive hotel listings. Source identity/current archive unresolved.",
+    "discovery_status": "held_for_authorization_or_source_verification"
+  },
+  "pata": {
+    "name": "PATA",
+    "access": "publisher_authorization_required",
+    "terms": "https://www.pata.org/terms-conditions",
+    "note": "Terms restrict automated monitoring/copying without express consent.",
+    "discovery_status": "held_for_authorization_or_source_verification"
+  },
+  "ahla": {
+    "name": "AHLA",
+    "access": "publisher_authorization_required",
+    "terms": "https://www.ahla.com/ahlacom-terms-use",
+    "note": "Terms restrict scraping/monitoring/copying without express consent.",
+    "discovery_status": "held_for_authorization_or_source_verification"
+  },
+  "etc": {
+    "name": "European Travel Commission",
+    "access": "public_research_review",
+    "terms": "https://etc-corporate.org/privacy-policy/",
+    "note": "Local research only; report-specific copyright notices govern reproduction. No blanket redistribution license established.",
+    "errors": [],
+    "sitemaps": [
+      {
+        "url": "https://etc-corporate.org/sitemap.xml",
+        "kind": "urlset",
+        "locations": 1131
+      }
+    ],
+    "archive_links": 333,
+    "retryable_errors": false,
+    "robots_status": "readable",
+    "robots_text": "User-agent: *\nDisallow: /wp-admin/\nAllow: /wp-admin/admin-ajax.php\n\nSitemap: https://etc-corporate.org/sitemap.xml\n",
+    "remaining_sitemaps": [],
+    "discovered_urls": 837,
+    "discovery_status": "sitemaps_and_seed_archives_processed"
+  },
+  "hospitalitynet": {
+    "name": "Hospitality Net",
+    "access": "publisher_authorization_required",
+    "terms": "https://www.hospitalitynet.org/terms-conditions",
+    "note": "Terms restrict bulk extraction; official RSS/API inquiry route: https://www.hospitalitynet.org/rss",
+    "discovery_status": "held_for_authorization_or_source_verification"
+  },
+  "travelweekly": {
+    "name": "Travel Weekly",
+    "access": "publisher_authorization_required",
+    "terms": "https://adhost1.ntmllc.com/twxads/T%26C.htm",
+    "note": "Terms restrict automated access and electronic retention without authorization.",
+    "discovery_status": "held_for_authorization_or_source_verification"
+  }
+}
