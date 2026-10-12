@@ -1,6 +1,6 @@
 # Tourism and hospitality discourse: preliminary collection and analysis
 
-Snapshot: 2026-10-12T03:57:47.237370+00:00. Requested window: 2016-10-10 through 2026-10-10. English only.
+Snapshot: 2026-10-12T10:51:21.946960+00:00. Requested window: 2016-10-10 through 2026-10-10. English only.
 
 **This is an incomplete, exploratory corpus, not a completed nine-source industry study.** Counts below describe successfully collected eligible records. Unavailable sources are not zero-discussion sources.
 

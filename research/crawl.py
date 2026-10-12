@@ -118,7 +118,7 @@ def run_source(source, limit=100000):
                         retry_at = exc.next_retry_at
                         # robots.txt exclusions are per-URL terminal decisions,
                         # not repeated source failures that warrant a cooldown.
-                        if kind in ('robots_disallowed','external_redirect'):
+                        if kind in ('robots_disallowed','external_redirect','access_denied_url'):
                             consecutive_errors=0
                     elif isinstance(exc,(OSError,)):
                         # Local disk/permission failures require attention; do not

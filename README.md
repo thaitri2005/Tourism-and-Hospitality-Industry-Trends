@@ -6,12 +6,12 @@ This studies publisher discussion, not consumer or whole-industry opinion. Exist
 
 ## Project status — 12 October 2026
 
-The latest normal run (`20261012T065126Z-5aec3f63`) exited **0** with `available_scope_processed`: it resumed all saved work, found no new accessible article URLs, refreshed the full automated audit, and completed with zero audit errors. Analysis was unchanged and remains snapshot `20261012T025127Z-1439a726`. The run still records HTTP 403 access blocks for CTO and Travel Weekly. `output/runner_summary.json` is the operational run record; `output/analysis_state.json`, `output/run_summary.json`, and `output/audit/summary.json` identify the published analysis and audit snapshots.
+The latest data snapshot predates the October 12 crawler policy update below. Its runner summary records CTO and Travel Weekly sitemap 403s and contains no articles from either source. Run `python run_research.py` to apply the URL-local 403 policy, migrate those old source holds, and resume discovery. The runner summary and logs will then show which permitted URLs were collected or individually denied.
 
 | Part of the objective | Status |
 |---|---|
 | Resumable, slow, logged collection and analysis pipeline | Implemented and run; accessible/discovered queues are exhausted. |
-| Nine requested publisher sources | **6 of 9** currently contribute core articles: UN Tourism 1,305; WTTC 659; PATA 1,731; AHLA 286; ETC 260; Hospitality Net 588. CTO and Travel Weekly remain blocked by HTTP 403; IH&RA yielded no in-window core articles. |
+| Nine requested publisher sources | The saved snapshot has core articles from **6 of 9** sources: UN Tourism 1,305; WTTC 659; PATA 1,731; AHLA 286; ETC 260; Hospitality Net 588. CTO and Travel Weekly have no articles in that snapshot; IH&RA yielded no in-window core articles. The updated collector continues across independent public URLs after a CTO/Travel Weekly 403. |
 | Ten-year English-language collection (10 Oct 2016–10 Oct 2026) | **Partial.** Source/year gaps remain; Hospitality Net's 588 core articles are all dated 23 Jul–9 Oct 2026. Available archive exhaustion does not establish ten-year completeness. |
 | Themes, annual/source focus, brands and sentiment | Generated and audited exploratorily for the collected corpus. Sentiment-model agreement is not sentiment accuracy; theme hits and brand co-occurrence are not validated stance or formal relationships. |
 | Automated content and structural audit | Complete for the saved corpus: 5,659 documents, 20,524 theme assignments, 6,006 entity rows, 3,941 brand associations, 20,524 sentiment rows and 15 NMF clusters reviewed; all audit and structural checks passed. |
@@ -20,6 +20,8 @@ The latest normal run (`20261012T065126Z-5aec3f63`) exited **0** with `available
 Overall, the automated workflow is complete for material it could access, but the research objective is **partially complete**, not a nine-source ten-year census. The corpus snapshot contains **5,659 saved documents, 5,105 eligible records, 4,829 core article occurrences, 257 supplementary reports and 1,124 current-window articles**. See the [detailed progress and source/year gaps](docs/HISTORICAL_EXPANSION.md), [automated audit guide](docs/AUTOMATED_VALIDATION.md), and generated [audit findings](output/audit/FINDINGS.md). Structural checks passed; historical completeness and ground-truth semantic accuracy remain unestablished.
 
 The 40 currently linked Hospitality Net news and opinion archive pages have been traversed. All 588 eligible core articles from Hospitality Net are dated **23 July–9 October 2026**; this expands current coverage but does not fill its 2016–2025 history. Coverage for every source/year, the 403 rechecks, codebook changes and audit limits are recorded in [the historical expansion log](docs/HISTORICAL_EXPANSION.md). This project snapshot is an audited exploratory dataset, not the professor-facing final report.
+
+A later index-first public-web recheck found additional official CTO archive paths and historical Travel Weekly article leads, but did not add corpus rows. The updated crawler records a CTO/Travel Weekly 403 against that URL, then continues to independent configured public routes. See [the crawling-method recheck](docs/CRAWLER_RECHECK_2026-10-12.md) for scope and behavior.
 
 ## Start here: Windows / PowerShell
 
@@ -89,7 +91,8 @@ An active second copy exits instead of collecting concurrently. Lock files may r
 | HTTP 429 or a transient response with `Retry-After` | Persist a source cooldown; never retry earlier than the server's deadline. Other sources can continue. |
 | Rerun before a retry deadline | Keep the item pending and report the UTC deadline. Do not contact it early. Run the same command again after the deadline. |
 | Five consecutive document failures | Pause that source for at least five minutes and continue with other sources. |
-| HTTP 401/403 | Persist an access hold for the source. Earlier saved blocks stay deferred on ordinary reruns. When permission is confirmed and you want one deliberate recheck, use `--retry-blocked SOURCE`; a renewed denial is held again with no bypass. |
+| HTTP 401 from CTO or Travel Weekly | Persist a source hold because the route requests authentication. For these sources only, a 403 is saved against the individual URL and skipped; other configured public URLs continue at the normal slow rate. |
+| CTO or Travel Weekly robots rules or HTTP 403 | The user reports explicit academic permission for these two sources that supersedes their robots directives. The crawler records the robots response but does not apply its allow/disallow rules; it still uses the minimum three-second rate, host checks and per-URL 403 skips, and continues to other public URLs. A 403 `robots.txt` response is also handled as unavailable under [RFC 9309 §2.3.1.3](https://www.rfc-editor.org/rfc/rfc9309.html#section-2.3.1.3). |
 | HTTP 404/410 or another permanent URL failure | Record it for review; do not retry it endlessly. |
 | Extraction exception | Log the URL and full traceback. Retry automatically when the extractor code changes. |
 | Changed extraction rules | Reprocess local raw documents with per-document checkpoints. |
@@ -167,11 +170,11 @@ python run_research.py --setup-only
 python run_research.py --retry-blocked cto travelweekly
 ~~~
 
-`--status` reads local progress without setup or network requests. `--diagnostics` rebuilds the ZIP without network requests. `--verbose` prints detailed events that are always saved in JSONL anyway. `--limit-per-source 25` limits **article attempts**, not discovery pages. `--offline` skips website collection and updates analysis from local data; first-time environment setup can still require package downloads.
+`--status` reads local progress without setup or network requests. `--diagnostics` rebuilds the ZIP without network requests. `--verbose` prints detailed events that are always saved in JSONL anyway. `--limit-per-source 25` limits **article attempts**, not discovery pages. The normal run also walks configured publisher archive pagination for Hospitality Net, WTTC, PATA, AHLA, CTO, Travel Weekly and IH&RA, with a 250-page-per-source invocation bound and saved checkpoints. This supplements sitemap discovery; it does not establish a complete historical inventory. `--offline` skips website collection and updates analysis from local data; first-time environment setup can still require package downloads.
 
 `--setup-only` installs/checks the isolated environment and exits without collecting or changing the corpus. It is useful for checking Python and dependency installation before a long run. You do not need it before the normal command; normal runs perform the same setup automatically.
 
-`--retry-blocked cto travelweekly` explicitly rechecks only the named saved 401/403 holds. It clears those sources' old robots failure/checkpoints, then performs normal discovery at the configured minimum 3-second request interval. A new denial is persisted again. The option does not bypass robots.txt, authentication, or host restrictions; use it only when the source is authorized for the research.
+`--retry-blocked cto travelweekly` rechecks only the named saved holds. For these two user-authorized sources, robots directives are recorded but not applied; collection continues across configured public routes at the normal minimum three-second interval. A 403 on `robots.txt` is treated as unavailable under RFC 9309 §2.3.1.3, and a 403 on an individual sitemap, archive page, or article is recorded and skipped while other URLs continue. A 401 remains a source hold, and 429/rate limits trigger cooldown. The crawler does not disguise its client, use proxies, authenticate, or retry denied URLs. Review publisher terms before redistribution.
 
 ## Troubleshooting
 
@@ -181,8 +184,8 @@ python run_research.py --retry-blocked cto travelweekly
 | Dependency download failure | Check your connection and rerun the same command. Incomplete setup is repaired; a missing project-local pip is bootstrapped again. |
 | Heartbeats but no new article counts | Read the current phase: discovery, PDF extraction, deduplication, and models can take time. Detailed events remain in `events.jsonl`. |
 | `retry_wait` / `cooldown` | Wait until the saved `next_retry_at` / `until_at` UTC time, then rerun. The program does not contact the source early. |
-| HTTP 401/403, a held publisher, or `extraction_error` | Send the ZIP for review. Repeating the command does not override access restrictions or fix parser code. |
-| A source remains deferred after permission is confirmed | Make one deliberate slow recheck with `python run_research.py --retry-blocked cto travelweekly`. A renewed 403/robots denial is honored and saved again. |
+| HTTP 401/403 on a content URL, a held publisher, or `extraction_error` | For CTO/Travel Weekly, each 403 URL is skipped while other public URLs continue; 401 remains a source hold. For other sources, preserve the hold and review the ZIP. |
+| CTO or Travel Weekly has saved old 403 holds | Run `python run_research.py`. The launcher migrates old 403 host holds for these two sources to per-URL skips and resumes the configured public routes slowly. |
 | Immediate stop on every run | Check for `data/STOP` or `data/STOP_<source>`. Remove only an intentional stop marker when you want to resume. |
 | Disk full, permission error, missing/corrupt database | Keep the files and logs. Free space or resolve the reported filesystem issue; send diagnostics if the database fails its integrity check. Do not delete the corpus to hide the error. |
 | The terminal was killed before a ZIP appeared | Run `python run_research.py --diagnostics`, or send the latest folder under `logs/runs/`. |
@@ -235,9 +238,9 @@ The detailed [project structure and maintenance guide](docs/PROJECT_STRUCTURE.md
 ## Access and source coverage
 
 - UN Tourism, WTTC and ETC are configured for local public research, with source conditions recorded in `research/config.py`. This does not establish a license to redistribute publisher text.
-- PATA, AHLA, Hospitality Net, Travel Weekly, CTO, and IH&RA are enabled for the user's requested research. The user reports that the professor obtained permission for academic crawling. The runner still honors robots.txt, HTTP denials, rate limits, and registered-host restrictions; a 401/403 remains a durable hold.
+- PATA, AHLA, Hospitality Net, Travel Weekly, CTO, and IH&RA are enabled for the user's requested research. The user reports authorization for academic collection of publicly accessible material. Any permissions, terms and technical restrictions remain source-specific. The runner honors parseable robots rules generally. For CTO and Travel Weekly only, the user reports the permission supersedes robots directives; those rules are logged but not applied. Rate limits and registered-host checks remain active, 403s are durable per-URL skips, and 401s remain source holds.
 - Keep the professor's approval and scope with the project notes, especially any conditions on retention, derived outputs, and sharing full article text.
-- IH&RA collection uses press-release, industry-news, and newsroom paths; confirm that resulting records are attributable to the intended association. CTO's prior 403 was rechecked once and remains held.
+- IH&RA collection uses press-release, industry-news, and newsroom paths; confirm that resulting records are attributable to the intended association. The CTO and Travel Weekly saved corpus snapshots predate the new URL-local denial behavior; rerun the collector to resume them.
 - Download forms are not submitted. Form-only links are inventoried as `form_gated_report`; their downloads are not fetched through hidden form URLs.
 - Missing sources and years are reported as coverage gaps, not zero discussion.
 

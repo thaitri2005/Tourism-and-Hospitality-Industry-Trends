@@ -47,7 +47,8 @@ def content_url(source,url,from_news_archive=False):
 
 def audit_one(source, max_sitemaps=35):
     db=connect(); c=SOURCES[source]; f=Fetcher(source,db)
-    audit=dict(name=c['name'],access=c['access'],terms=c['terms'],note=c['note'],errors=[],sitemaps=[],archive_links=0)
+    audit=dict(name=c['name'],access=c['access'],terms=c['terms'],note=c['note'],errors=[],
+               denied_urls=[],sitemaps=[],archive_links=0)
     audit['retryable_errors']=False
     print(json.dumps(dict(event='audit_start',source=source)),flush=True)
     try:
@@ -103,10 +104,16 @@ def audit_one(source, max_sitemaps=35):
             visited.add(url)
         except Exception as e:
             if isinstance(e,StopRequested):db.close();raise
-            message=url+': '+str(e);audit['errors'].append(message)
+            message=url+': '+str(e)
+            if isinstance(e,FetchError) and e.category=='access_denied_url':
+                audit['denied_urls'].append(dict(url=url,purpose='sitemap',status=e.status,error=str(e)))
+                visited.add(url)
+            else:
+                audit['errors'].append(message)
             if isinstance(e,FetchError) and e.retryable:
                 failed.append(url);transient_messages.append(message);audit['retryable_errors']=True
-            else:visited.add(url)
+            elif not (isinstance(e,FetchError) and e.category=='access_denied_url'):
+                visited.add(url)
             exception('sitemap_failed',source=source,url=url,error=str(e))
         save_frontier()
         if f.stopped:break
@@ -127,12 +134,17 @@ def audit_one(source, max_sitemaps=35):
                 audit['archive_links']+=len(set(links)); db.commit()
             except Exception as e:
                 if isinstance(e,StopRequested):db.close();raise
-                audit['errors'].append(url+': '+str(e))
+                if isinstance(e,FetchError) and e.category=='access_denied_url':
+                    audit['denied_urls'].append(dict(url=url,purpose='archive',status=e.status,error=str(e)))
+                else:
+                    audit['errors'].append(url+': '+str(e))
                 if isinstance(e,FetchError) and e.retryable:audit['retryable_errors']=True
                 exception('archive_seed_failed',source=source,url=url,error=str(e))
                 if f.stopped:break
     audit['discovered_urls']=db.execute('SELECT COUNT(*) FROM urls WHERE source=?',(source,)).fetchone()[0]
-    audit['discovery_status']='inventory_incomplete' if queue or audit['errors'] else 'sitemaps_and_seed_archives_processed'
+    audit['discovery_status'] = ('inventory_incomplete' if queue or audit['errors'] else
+        ('sitemaps_and_seed_archives_processed_with_url_denials' if audit['denied_urls'] else
+         'sitemaps_and_seed_archives_processed'))
     record_audit(db,source,audit);db.close()
     print(json.dumps(dict(event='audit_done',source=source,urls=audit['discovered_urls'],errors=len(audit['errors']))),flush=True)
     return source,audit

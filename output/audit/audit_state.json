@@ -1,11 +1,11 @@
 {
   "status": "complete",
-  "analysis_run_id": "20261012T025127Z-1439a726",
-  "analysis_fingerprint": "3abbd921236042929a5465337f138874d313b16c77c269fdb40aee31580556af",
+  "analysis_run_id": "20261012T102131Z-d0e08056",
+  "analysis_fingerprint": "ffbf3d0cfd8e3a3a03b4ff9691f10998ac892048a6b9ff00a96b35740ce1755c",
   "audit_version": "606204297f3b3b40b5c7140aad02726d4522636d8544a9f34baa3c7390ad7517",
   "artifacts": {
     "association_checks.csv": "fcea18911a7982991d63c5626242c2ebb21570dbd88e49577e5e657379d74efd",
-    "AUDIT_REPORT.md": "b4fd20713aa058aeb2f48f1c45305c2d10bc423fc21ef979d6008c94b1e100db",
+    "AUDIT_REPORT.md": "6e29ce5ba4a264cdaaa6813c13d79936e7e3f7e948efa35dc6d67fa76031933c",
     "candidate_missing_themes.csv": "e8fded1b700f564ed13914818c5e0dafa98b532b0fc51b448a335e55d3f94f1d",
     "coverage_audit.csv": "a23f37e00b4de5df88991b9fe7c62a21cd8eb83a4a45a0e2321c1e4a29dc9b1b",
     "current_focus_rank_sensitivity.csv": "cb36ff4d965e579d0c799e93b241409da3e1c1d2be728e00bf59574bd60f016d",
@@ -14,10 +14,10 @@
     "nmf_cluster_review.csv": "d4d892cd4b3c75f0486a1b76e892fc6199d55ebbf54cc69fd5e4624fd95dd74e",
     "record_checks.csv": "c70ec246eb9d6864c9175b428f5d31af934176cfbdb8ce5a7352afd7ad19e7f2",
     "sentiment_comparison.csv": "431d428207736c4c9d0a72c7bcb2ed501d7468ac573db40da3b5b791214f621c",
-    "summary.json": "09be0330303e86c16e9b1e196a563e21c9ab5ab179ba96f3b3f5d1efe072a460",
+    "summary.json": "ca37aeb8dca6b0a8376d854d49fcf97a50825f6e4bfb3c26e697de57879fc199",
     "theme_evidence.csv": "54934c34122c343ab0a33d452219c9a9affb20b9e7c0e386810c5f7bbd7f1dca",
     "topic_focus_by_source_year.csv": "0d3faec91ba7ed0768baba97bd379e081d5f4229e8286ba368ea8211596136dd",
-    "FINDINGS.md": "2b02e33dd5848988520313de3e941f4840d2d012ca7de11ae3badcbc0c00e877"
+    "FINDINGS.md": "70868f661c5927e55c6fc2a83157bb010b1efe57f2b854cbd3bd4ea7decaf36c"
   },
   "findings_version": "1301b827d918962b667a1c89020badc3178da1bc0c50dcea2c5724779134e1e7"
 }

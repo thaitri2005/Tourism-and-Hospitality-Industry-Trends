@@ -5,6 +5,7 @@
     "terms": "https://www.untourism.int/copyright",
     "note": "Local noncommercial research; redistribution/derivative restrictions require review before sharing text.",
     "errors": [],
+    "denied_urls": [],
     "sitemaps": [
       {
         "url": "https://www.untourism.int/sitemap.xml",
@@ -54,6 +55,7 @@
     "terms": "https://wttc.org/terms-and-conditions",
     "note": "Academic research provision; document-specific conditions still apply.",
     "errors": [],
+    "denied_urls": [],
     "sitemaps": [
       {
         "url": "https://wttc.org/sitemap.xml",
@@ -75,6 +77,7 @@
     "terms": "",
     "note": "User-directed public-page research attempt; target official press-release, industry-news, and newsroom archives. Site history is sparse/dated; confirm association attribution and study-window coverage.",
     "errors": [],
+    "denied_urls": [],
     "sitemaps": [
       {
         "url": "https://ih-ra.com/sitemap.xml",
@@ -92,7 +95,7 @@
     "robots_status": "readable",
     "robots_text": "User-agent: *\nSitemap: https://ih-ra.com/sitemap.xml\nSitemap: https://ih-ra.com/hotels_sitemap.xml\n",
     "remaining_sitemaps": [],
-    "discovered_urls": 42,
+    "discovered_urls": 46,
     "discovery_status": "sitemaps_and_seed_archives_processed"
   },
   "ahla": {
@@ -104,6 +107,7 @@
       "https://www.ahla.com/sitemap_index.xml: HTTP 404: Not Found",
       "https://www.ahla.com/wp-sitemap.xml: HTTP 404: Not Found"
     ],
+    "denied_urls": [],
     "sitemaps": [
       {
         "url": "https://www.ahla.com/sitemap.xml",
@@ -125,6 +129,7 @@
     "terms": "https://etc-corporate.org/privacy-policy/",
     "note": "Local research only; report-specific copyright notices govern reproduction. No blanket redistribution license established.",
     "errors": [],
+    "denied_urls": [],
     "sitemaps": [
       {
         "url": "https://etc-corporate.org/sitemap.xml",
@@ -140,12 +145,60 @@
     "discovered_urls": 837,
     "discovery_status": "sitemaps_and_seed_archives_processed"
   },
+  "cto": {
+    "name": "Caribbean Tourism Organization",
+    "access": "public_research_review",
+    "terms": "",
+    "note": "User reports authorization for publicly accessible academic research. A robots.txt 403 is treated as unavailable under RFC 9309; each content URL returning 403 is recorded and skipped while other configured public pages are attempted slowly. No blanket redistribution license established.",
+    "errors": [],
+    "denied_urls": [
+      {
+        "url": "https://www.onecaribbean.org/sitemap.xml",
+        "purpose": "sitemap",
+        "status": 403,
+        "error": "HTTP 403: Forbidden"
+      },
+      {
+        "url": "https://www.onecaribbean.org/sitemap_index.xml",
+        "purpose": "sitemap",
+        "status": 403,
+        "error": "HTTP 403: Forbidden"
+      },
+      {
+        "url": "https://www.onecaribbean.org/wp-sitemap.xml",
+        "purpose": "sitemap",
+        "status": 403,
+        "error": "HTTP 403: Forbidden"
+      },
+      {
+        "url": "https://www.onecaribbean.org/media/cto-news/",
+        "purpose": "archive",
+        "status": 403,
+        "error": "HTTP 403: Forbidden"
+      },
+      {
+        "url": "https://www.onecaribbean.org/statistics/annual-reviews-prospects/",
+        "purpose": "archive",
+        "status": 403,
+        "error": "HTTP 403: Forbidden"
+      }
+    ],
+    "sitemaps": [],
+    "archive_links": 0,
+    "retryable_errors": false,
+    "robots_status": "unavailable_403_allowed_by_rfc9309",
+    "robots_text": "",
+    "remaining_sitemaps": [],
+    "discovered_urls": 0,
+    "discovery_status": "sitemaps_and_seed_archives_processed_with_url_denials"
+  },
   "hospitalitynet": {
     "name": "Hospitality Net",
     "access": "public_research_review",
     "terms": "https://www.hospitalitynet.org/terms-conditions",
     "note": "User-directed public-page research attempt. Official RSS feed used as a discovery route; review retention and reuse terms before sharing.",
     "errors": [],
+    "denied_urls": [],
     "sitemaps": [
       {
         "url": "https://www.hospitalitynet.org/sitemap.xml",
@@ -193,8 +246,49 @@
     "robots_status": "readable",
     "robots_text": "# Hospitality Net - Robots.txt\n# https://www.hospitalitynet.org\n\nUser-agent: *\nAllow: /\n\n# Disallow API routes\nDisallow: /api/\nDisallow: /team/\n\n# Disallow authentication routes\nDisallow: /login\nDisallow: /logout\nDisallow: /otp-login\nDisallow: /oauth/\nDisallow: /reset\n\n# Disallow protected user routes\nDisallow: /profile\nDisallow: /following\nDisallow: /dashboard\nDisallow: /payment\nDisallow: /search\nDisallow: /confirmation\n\n# Disallow utility routes\nDisallow: /design-system\nDisallow: /analytics/\n\n# Disallow search results (rendered at origin on every request) and filtered pages with query parameters\nDisallow: /*?*tab=\nDisallow: /*?*collection=\nDisallow: /*?*type=\nDisallow: /*?*category=\nDisallow: /*?*region=\n\n# Allow sitemaps and RSS feeds\nAllow: /sitemap*.xml\nAllow: /google*.xml\nAllow: /rss/\n\n# Allow static assets\nAllow: /assets/\nAllow: /fonts/\nAllow: /*.css\nAllow: /*.js\nAllow: /*.png\nAllow: /*.jpg\nAllow: /*.jpeg\nAllow: /*.svg\nAllow: /*.webp\n\n# ---------------------------------------------------------------------------\n# AI / LLM crawlers — explicitly allowed (matches site-wide policy)\n# We want Hospitality Net content to be cited in ChatGPT, Claude,\n# Perplexity, Google AI Overviews, etc. Same private-route disallow set\n# applies as for general crawlers above.\n# See also: /llms.txt\n# ---------------------------------------------------------------------------\n\nUser-agent: GPTBot\nAllow: /\nDisallow: /api/\nDisallow: /team/\nDisallow: /login\nDisallow: /logout\nDisallow: /otp-login\nDisallow: /oauth/\nDisallow: /reset\nDisallow: /profile\nDisallow: /following\nDisallow: /dashboard\nDisallow: /payment\nDisallow: /search\nDisallow: /confirmation\nDisallow: /design-system\nDisallow: /analytics/\n\nUser-agent: ChatGPT-User\nAllow: /\nDisallow: /api/\nDisallow: /team/\nDisallow: /dashboard\nDisallow: /payment\nDisallow: /search\n\nUser-agent: OAI-SearchBot\nAllow: /\nDisallow: /api/\nDisallow: /team/\nDisallow: /dashboard\nDisallow: /payment\nDisallow: /search\n\nUser-agent: ClaudeBot\nAllow: /\nDisallow: /api/\nDisallow: /team/\nDisallow: /login\nDisallow: /logout\nDisallow: /otp-login\nDisallow: /oauth/\nDisallow: /reset\nDisallow: /profile\nDisallow: /following\nDisallow: /dashboard\nDisallow: /payment\nDisallow: /search\nDisallow: /confirmation\nDisallow: /design-system\nDisallow: /analytics/\n\nUser-agent: Claude-Web\nAllow: /\nDisallow: /api/\nDisallow: /team/\nDisallow: /dashboard\nDisallow: /payment\nDisallow: /search\n\nUser-agent: anthropic-ai\nAllow: /\nDisallow: /api/\nDisallow: /team/\nDisallow: /dashboard\nDisallow: /payment\nDisallow: /search\n\nUser-agent: PerplexityBot\nAllow: /\nDisallow: /api/\nDisallow: /team/\nDisallow: /login\nDisallow: /logout\nDisallow: /otp-login\nDisallow: /oauth/\nDisallow: /reset\nDisallow: /profile\nDisallow: /following\nDisallow: /dashboard\nDisallow: /payment\nDisallow: /search\nDisallow: /confirmation\nDisallow: /design-system\nDisallow: /analytics/\n\nUser-agent: Perplexity-User\nAllow: /\nDisallow: /api/\nDisallow: /team/\nDisallow: /dashboard\nDisallow: /payment\nDisallow: /search\n\nUser-agent: Google-Extended\nAllow: /\nDisallow: /api/\nDisallow: /team/\nDisallow: /login\nDisallow: /logout\nDisallow: /otp-login\nDisallow: /oauth/\nDisallow: /reset\nDisallow: /profile\nDisallow: /following\nDisallow: /dashboard\nDisallow: /payment\nDisallow: /search\nDisallow: /confirmation\nDisallow: /design-system\nDisallow: /analytics/\n\nUser-agent: Applebot-Extended\nAllow: /\nDisallow: /api/\nDisallow: /team/\nDisallow: /dashboard\nDisallow: /payment\nDisallow: /search\n\nUser-agent: CCBot\nAllow: /\nDisallow: /api/\nDisallow: /team/\nDisallow: /dashboard\nDisallow: /payment\nDisallow: /search\n\nUser-agent: Bytespider\nAllow: /\nDisallow: /api/\nDisallow: /team/\nDisallow: /dashboard\nDisallow: /payment\nDisallow: /search\n\nUser-agent: meta-externalagent\nAllow: /\nDisallow: /api/\nDisallow: /team/\nDisallow: /dashboard\nDisallow: /payment\nDisallow: /search\n\nUser-agent: Amazonbot\nAllow: /\nDisallow: /api/\nDisallow: /team/\nDisallow: /dashboard\nDisallow: /payment\nDisallow: /search\n\nUser-agent: cohere-ai\nAllow: /\nDisallow: /api/\nDisallow: /team/\nDisallow: /dashboard\nDisallow: /payment\nDisallow: /search\n\nUser-agent: Diffbot\nAllow: /\nDisallow: /api/\nDisallow: /team/\nDisallow: /dashboard\nDisallow: /payment\nDisallow: /search\n\n# Sitemap locations\nSitemap: https://www.hospitalitynet.org/sitemap.xml\nSitemap: https://www.hospitalitynet.org/googlenews.xml\nSitemap: https://www.hospitalitynet.org/googlestaff.xml\nSitemap: https://www.hospitalitynet.org/googleannouncements.xml\nSitemap: https://www.hospitalitynet.org/googlebrand.xml\nSitemap: https://www.hospitalitynet.org/googleorganization.xml\nSitemap: https://www.hospitalitynet.org/googleviewpoints.xml\n",
     "remaining_sitemaps": [],
-    "discovered_urls": 15,
+    "discovered_urls": 596,
     "discovery_status": "sitemaps_and_seed_archives_processed"
+  },
+  "travelweekly": {
+    "name": "Travel Weekly",
+    "access": "public_research_review",
+    "terms": "https://adhost1.ntmllc.com/twxads/T%26C.htm",
+    "note": "User reports authorization for publicly accessible academic research. A robots.txt 403 is treated as unavailable under RFC 9309; each content URL returning 403 is recorded and skipped while other configured public pages are attempted slowly. Review retention and reuse terms before sharing.",
+    "errors": [],
+    "denied_urls": [
+      {
+        "url": "https://www.travelweekly.com/sitemap.xml",
+        "purpose": "sitemap",
+        "status": 403,
+        "error": "HTTP 403: Forbidden"
+      },
+      {
+        "url": "https://www.travelweekly.com/sitemap_index.xml",
+        "purpose": "sitemap",
+        "status": 403,
+        "error": "HTTP 403: Forbidden"
+      },
+      {
+        "url": "https://www.travelweekly.com/wp-sitemap.xml",
+        "purpose": "sitemap",
+        "status": 403,
+        "error": "HTTP 403: Forbidden"
+      },
+      {
+        "url": "https://www.travelweekly.com/Travel-News",
+        "purpose": "archive",
+        "status": 403,
+        "error": "HTTP 403: Forbidden"
+      }
+    ],
+    "sitemaps": [],
+    "archive_links": 0,
+    "retryable_errors": false,
+    "robots_status": "unavailable_403_allowed_by_rfc9309",
+    "robots_text": "",
+    "remaining_sitemaps": [],
+    "discovered_urls": 0,
+    "discovery_status": "sitemaps_and_seed_archives_processed_with_url_denials"
   },
   "pata": {
     "name": "PATA",
@@ -202,6 +296,7 @@
     "terms": "https://www.pata.org/terms-conditions",
     "note": "User-directed public-page research attempt. PATA terms state automated monitoring/copying requires prior express consent; review retention and reuse before sharing.",
     "errors": [],
+    "denied_urls": [],
     "sitemaps": [
       {
         "url": "https://www.pata.org/sitemap.xml",
@@ -214,33 +309,7 @@
     "robots_status": "readable",
     "robots_text": "# Squarespace Robots Txt\n\nUser-agent: AI2Bot\nUser-agent: Ai2Bot-Dolma\nUser-agent: aiHitBot\nUser-agent: Amazonbot\nUser-agent: anthropic-ai\nUser-agent: Applebot-Extended\nUser-agent: Bytespider\nUser-agent: CCBot\nUser-agent: ClaudeBot\nUser-agent: cohere-ai\nUser-agent: cohere-training-data-crawler\nUser-agent: DuckAssistBot\nUser-agent: FacebookBot\nUser-agent: Google-Extended\nUser-agent: GoogleOther\nUser-agent: GoogleOther-Image\nUser-agent: GoogleOther-Video\nUser-agent: GPTBot\nUser-agent: img2dataset\nUser-agent: Meta-ExternalAgent\nUser-agent: MyCentralAIScraperBot\nUser-agent: omgili\nUser-agent: omgilibot\nUser-agent: Quora-Bot\nUser-agent: TikTokSpider\nUser-agent: YouBot\nUser-agent: AdsBot-Google\nUser-agent: AdsBot-Google-Mobile\nUser-agent: AdsBot-Google-Mobile-Apps\nUser-agent: *\nDisallow: /config\nDisallow: /search\nDisallow: /account$\nDisallow: /account/\nDisallow: /commerce/digital-download/\nDisallow: /api/\nAllow: /api/ui-extensions/\nDisallow: /static/\nDisallow:/*?author=*\nDisallow:/*&author=*\nDisallow:/*?tag=*\nDisallow:/*&tag=*\nDisallow:/*?month=*\nDisallow:/*&month=*\nDisallow:/*?view=*\nDisallow:/*&view=*\nDisallow:/*?format=json\nDisallow:/*&format=json\nDisallow:/*?format=page-context\nDisallow:/*&format=page-context\nDisallow:/*?format=main-content\nDisallow:/*&format=main-content\nDisallow:/*?format=json-pretty\nDisallow:/*&format=json-pretty\nDisallow:/*?format=ical\nDisallow:/*&format=ical\nDisallow:/*?reversePaginate=*\nDisallow:/*&reversePaginate=*\n\nSitemap: https://www.pata.org/sitemap.xml\n",
     "remaining_sitemaps": [],
-    "discovered_urls": 1833,
+    "discovered_urls": 1856,
     "discovery_status": "sitemaps_and_seed_archives_processed"
-  },
-  "cto": {
-    "name": "Caribbean Tourism Organization",
-    "access": "public_research_review",
-    "terms": "",
-    "note": "Public research collection; no blanket redistribution license established.",
-    "errors": [
-      "HTTP 403: Forbidden"
-    ],
-    "sitemaps": [],
-    "archive_links": 0,
-    "retryable_errors": false,
-    "robots_status": "unavailable"
-  },
-  "travelweekly": {
-    "name": "Travel Weekly",
-    "access": "public_research_review",
-    "terms": "https://adhost1.ntmllc.com/twxads/T%26C.htm",
-    "note": "User-directed public-page research attempt; honor robots/access responses and review retention and reuse terms before sharing.",
-    "errors": [
-      "HTTP 403: Forbidden"
-    ],
-    "sitemaps": [],
-    "archive_links": 0,
-    "retryable_errors": false,
-    "robots_status": "unavailable"
   }
 }

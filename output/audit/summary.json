@@ -1,8 +1,8 @@
 {
   "status": "completed_with_limitations",
-  "created_at": "2026-10-12T06:55:22.858679+00:00",
-  "analysis_run_id": "20261012T025127Z-1439a726",
-  "analysis_fingerprint": "3abbd921236042929a5465337f138874d313b16c77c269fdb40aee31580556af",
+  "created_at": "2026-10-12T11:05:22.416724+00:00",
+  "analysis_run_id": "20261012T102131Z-d0e08056",
+  "analysis_fingerprint": "ffbf3d0cfd8e3a3a03b4ff9691f10998ac892048a6b9ff00a96b35740ce1755c",
   "audit_version": "606204297f3b3b40b5c7140aad02726d4522636d8544a9f34baa3c7390ad7517",
   "lexicon_sha256": "0aabac74cd95def2dbedc04ce55e39698d91113ffadb6d86b87dd337c4d2184d",
   "counts": {
@@ -16,7 +16,7 @@
     "possible_missing_theme_probes": 224,
     "focus_supported_assignments": 7073,
     "incidental_or_uncertain_assignments": 13451,
-    "cached_records": 5659
+    "cached_records": 0
   },
   "date_evidence_counts": {
     "visible_date_support": 1484,

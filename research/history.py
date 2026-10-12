@@ -6,7 +6,7 @@ from urllib.parse import urljoin, urlsplit, parse_qs
 from bs4 import BeautifulSoup
 from .config import SOURCES, ROOT, DATA
 from .discover import content_url
-from .http import Fetcher, same_host
+from .http import Fetcher, FetchError, same_host
 from .runtime import fingerprint, event, check_stop
 from .store import connect, add_url, checkpoint
 
@@ -15,7 +15,13 @@ ARCHIVES = {
     'wttc': ['/news', '/blog'],
     'pata': ['/blog', '/press-release', '/member-chapter-news-1'],
     'ahla': ['/news'],
+    # These public archive routes were checked during the October 2026 source
+    # recheck. Their pagination is followed only when normal access succeeds.
+    'cto': ['/media/cto-news/'],
+    'travelweekly': ['/Travel-News'],
+    'ihra': ['/newsroom/'],
 }
+NEW_ARCHIVE_SOURCES = {'cto', 'travelweekly', 'ihra'}
 
 
 def parse_page(source, url, data):
@@ -30,6 +36,14 @@ def parse_page(source, url, data):
     if not links:
         raise ValueError('Archive has no recognizable article links; do not mark exhausted')
     next_link = scope.select_one('a[rel~=next]') or scope.select_one('a[aria-label="Next page"]')
+    if source in NEW_ARCHIVE_SOURCES:
+        next_link = (next_link
+                     or scope.select_one('a[aria-label*="next" i]')
+                     or scope.select_one('.pagination a.next, a.next, .next a'))
+        if not next_link:
+            next_link = next((a for a in scope.select('a[href]')
+                              if re.search(r'\b(next|older|more articles|older entries|load more)\b',
+                                           a.get_text(' ', strip=True), re.I)), None)
     next_url = urljoin(url, next_link['href']) if next_link else None
     if source == 'wttc':
         params = soup.select_one('input[x-ref="searchParams"]')
@@ -45,9 +59,19 @@ def parse_page(source, url, data):
             if not match:
                 raise ValueError('Unrecognized WTTC pagination control')
             next_url = url.split('?')[0] + '?page=' + match[1]
-    if next_url and (not same_host(next_url, url) or
-                     urlsplit(next_url).path.split('/')[1] != urlsplit(url).path.split('/')[1]):
-        raise ValueError('Archive next link leaves its source or collection')
+    if next_url:
+        if not same_host(next_url, url):
+            raise ValueError('Archive next link leaves its source')
+        if source in NEW_ARCHIVE_SOURCES:
+            route_match = any(
+                urlsplit(next_url).path.rstrip('/') == route.rstrip('/')
+                or urlsplit(next_url).path.startswith(route.rstrip('/') + '/')
+                for route in ARCHIVES[source]
+            )
+            if not route_match:
+                raise ValueError('Archive next link leaves its configured collection')
+        elif urlsplit(next_url).path.split('/')[1] != urlsplit(url).path.split('/')[1]:
+            raise ValueError('Archive next link leaves its source collection')
     return links, next_url
 
 
@@ -63,26 +87,44 @@ def run_source(source, max_pages=250):
             'pending': [SOURCES[source]['base'] + p for p in ARCHIVES[source]],
             'visited': [], 'signatures': [], 'pages': 0, 'new_urls': 0,
         }
+        state.setdefault('denied_urls', [])
         if not state['pending']:
             event('history_checkpoint_reused', source=source, pages=state['pages'])
             return dict(status='complete', **state)
         fetcher = Fetcher(source, db)
-        fetcher.robots()
+        try:
+            fetcher.robots()
+        except FetchError as exc:
+            event('history_source_unavailable', level='WARNING', source=source,
+                  reason=str(exc), error_kind=exc.category, status=exc.status,
+                  next_retry_at=exc.next_retry_at)
+            return dict(status='source_unavailable', reason=str(exc),
+                        error_kind=exc.category, next_retry_at=exc.next_retry_at)
         for _ in range(max_pages):
             if not state['pending']:
                 break
             check_stop(DATA, source)
             url = state['pending'][0]
             page=int(parse_qs(urlsplit(url).query).get('page',['1'])[0]) if source=='wttc' else 1
-            if source=='wttc' and page>1:
-                initial,_=fetcher.fetch(url.split('?')[0], 'historical_archive_parameters')
-                node=BeautifulSoup(initial,'lxml').select_one('input[x-ref="searchParams"]')
-                if not node:raise ValueError('Missing public WTTC search parameters')
-                payload=json.loads(node['value']);payload['page']=page
-                data,meta=fetcher.fetch(SOURCES[source]['base']+'/component/search/index',
-                                       'historical_archive',json_payload=payload)
-            else:
-                data, meta = fetcher.fetch(url, 'historical_archive')
+            try:
+                if source=='wttc' and page>1:
+                    initial,_=fetcher.fetch(url.split('?')[0], 'historical_archive_parameters')
+                    node=BeautifulSoup(initial,'lxml').select_one('input[x-ref="searchParams"]')
+                    if not node:raise ValueError('Missing public WTTC search parameters')
+                    payload=json.loads(node['value']);payload['page']=page
+                    data,meta=fetcher.fetch(SOURCES[source]['base']+'/component/search/index',
+                                           'historical_archive',json_payload=payload)
+                else:
+                    data, meta = fetcher.fetch(url, 'historical_archive')
+            except FetchError as exc:
+                if exc.category!='access_denied_url':raise
+                state['pending'].pop(0)
+                state['visited'].append(url)
+                state['denied_urls'].append(dict(url=url,status=exc.status,error=str(exc)))
+                checkpoint(db,key,version,'progress' if state['pending'] else 'complete',state)
+                event('history_archive_denied_page_skipped',level='WARNING',source=source,url=url,
+                      status=exc.status,remaining_collections=len(state['pending']))
+                continue
             links, next_url = parse_page(source, url, data)
             signature = fingerprint(extra='\n'.join(links))
             if signature in state['signatures']:
@@ -105,6 +147,7 @@ def run_source(source, max_pages=250):
             event('history_page_saved', source=source, url=url, articles=len(links),
                   new_urls=after-before, next_url=next_url, pages=state['pages'],
                   remaining_collections=len(state['pending']))
-        return dict(status='page_limit' if state['pending'] else 'complete', **state)
+        status='page_limit' if state['pending'] else ('complete_with_url_denials' if state['denied_urls'] else 'complete')
+        return dict(status=status, **state)
     finally:
         db.close()

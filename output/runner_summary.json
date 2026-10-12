@@ -3,11 +3,14 @@
   "exit_code": 0,
   "results": {
     "discovery:untourism": {
-      "status": "checkpoint_reused"
+      "status": "processed",
+      "errors": [],
+      "remaining_sitemaps": 0
     },
     "archive:untourism": {
       "status": "complete",
-      "cached": true
+      "pages_processed_this_run": 117,
+      "new_urls": 0
     },
     "crawl:untourism": {
       "source": "untourism",
@@ -18,7 +21,9 @@
       "remaining": 0
     },
     "discovery:wttc": {
-      "status": "checkpoint_reused"
+      "status": "processed",
+      "errors": [],
+      "remaining_sitemaps": 0
     },
     "history:wttc": {
       "status": "complete",
@@ -202,7 +207,8 @@
         "a0f929856de60b6b7779d63ba15de87ea9cb4448f0131f039fbfd60c7125b208"
       ],
       "pages": 87,
-      "new_urls": 0
+      "new_urls": 0,
+      "denied_urls": []
     },
     "crawl:wttc": {
       "source": "wttc",
@@ -213,7 +219,22 @@
       "remaining": 0
     },
     "discovery:ihra": {
-      "status": "checkpoint_reused"
+      "status": "processed",
+      "errors": [],
+      "remaining_sitemaps": 0
+    },
+    "history:ihra": {
+      "status": "complete",
+      "pending": [],
+      "visited": [
+        "https://ih-ra.com/newsroom/"
+      ],
+      "signatures": [
+        "35a3e5f685118cd0f0b7b9474530639091e64ce7e4aa238f27a8b26b1dc7b584"
+      ],
+      "pages": 1,
+      "new_urls": 0,
+      "denied_urls": []
     },
     "crawl:ihra": {
       "source": "ihra",
@@ -224,7 +245,12 @@
       "remaining": 0
     },
     "discovery:ahla": {
-      "status": "checkpoint_reused"
+      "status": "processed",
+      "errors": [
+        "https://www.ahla.com/sitemap_index.xml: HTTP 404: Not Found",
+        "https://www.ahla.com/wp-sitemap.xml: HTTP 404: Not Found"
+      ],
+      "remaining_sitemaps": 0
     },
     "history:ahla": {
       "status": "complete",
@@ -320,7 +346,8 @@
         "dd772a0642e84ad7477f50b39b9f7da25515c7e1c818bb2466f7933987c36e40"
       ],
       "pages": 43,
-      "new_urls": 0
+      "new_urls": 0,
+      "denied_urls": []
     },
     "crawl:ahla": {
       "source": "ahla",
@@ -331,7 +358,9 @@
       "remaining": 0
     },
     "discovery:etc": {
-      "status": "checkpoint_reused"
+      "status": "processed",
+      "errors": [],
+      "remaining_sitemaps": 0
     },
     "crawl:etc": {
       "source": "etc",
@@ -342,24 +371,39 @@
       "remaining": 0
     },
     "discovery:cto": {
-      "status": "deferred",
-      "state": {
-        "source": "cto",
-        "state": "blocked",
-        "reason": "HTTP 403: Forbidden",
-        "until_at": null,
-        "updated_at": "2026-10-12T03:47:19.067579+00:00"
-      }
+      "status": "processed",
+      "errors": [],
+      "remaining_sitemaps": 0
+    },
+    "history:cto": {
+      "status": "complete_with_url_denials",
+      "pending": [],
+      "visited": [
+        "https://www.onecaribbean.org/media/cto-news/"
+      ],
+      "signatures": [],
+      "pages": 0,
+      "new_urls": 0,
+      "denied_urls": [
+        {
+          "url": "https://www.onecaribbean.org/media/cto-news/",
+          "status": 403,
+          "error": "HTTP 403: Forbidden"
+        }
+      ]
     },
     "crawl:cto": {
       "source": "cto",
-      "status": "source_unavailable",
-      "error": "HTTP 403: Forbidden",
-      "error_kind": "access_denied",
-      "next_retry_at": null
+      "status": "queue_processed",
+      "attempted": 0,
+      "new_eligible": 0,
+      "errors": 0,
+      "remaining": 0
     },
     "discovery:hospitalitynet": {
-      "status": "checkpoint_reused"
+      "status": "processed",
+      "errors": [],
+      "remaining_sitemaps": 0
     },
     "history:hospitalitynet": {
       "status": "complete",
@@ -449,7 +493,8 @@
         "d988725a4111fd744cd3c9796dd12e651bdc2185e593c86933719c5f30660b32"
       ],
       "pages": 40,
-      "new_urls": 0
+      "new_urls": 0,
+      "denied_urls": []
     },
     "crawl:hospitalitynet": {
       "source": "hospitalitynet",
@@ -460,24 +505,39 @@
       "remaining": 0
     },
     "discovery:travelweekly": {
-      "status": "deferred",
-      "state": {
-        "source": "travelweekly",
-        "state": "blocked",
-        "reason": "HTTP 403: Forbidden",
-        "until_at": null,
-        "updated_at": "2026-10-12T03:47:19.354009+00:00"
-      }
+      "status": "processed",
+      "errors": [],
+      "remaining_sitemaps": 0
+    },
+    "history:travelweekly": {
+      "status": "complete_with_url_denials",
+      "pending": [],
+      "visited": [
+        "https://www.travelweekly.com/Travel-News"
+      ],
+      "signatures": [],
+      "pages": 0,
+      "new_urls": 0,
+      "denied_urls": [
+        {
+          "url": "https://www.travelweekly.com/Travel-News",
+          "status": 403,
+          "error": "HTTP 403: Forbidden"
+        }
+      ]
     },
     "crawl:travelweekly": {
       "source": "travelweekly",
-      "status": "source_unavailable",
-      "error": "HTTP 403: Forbidden",
-      "error_kind": "access_denied",
-      "next_retry_at": null
+      "status": "queue_processed",
+      "attempted": 0,
+      "new_eligible": 0,
+      "errors": 0,
+      "remaining": 0
     },
     "discovery:pata": {
-      "status": "checkpoint_reused"
+      "status": "processed",
+      "errors": [],
+      "remaining_sitemaps": 0
     },
     "history:pata": {
       "status": "complete",
@@ -683,7 +743,8 @@
         "983e6a7bb5f050f321219045e7820956a63720b04402d95b0555ae093b6e45aa"
       ],
       "pages": 98,
-      "new_urls": 1
+      "new_urls": 0,
+      "denied_urls": []
     },
     "crawl:pata": {
       "source": "pata",
@@ -694,17 +755,18 @@
       "remaining": 0
     },
     "reextract": {
-      "updated": 0,
+      "updated": 5659,
       "errors": 0
     },
     "curation": {
       "reviewed": 2727,
-      "updated": 0,
+      "updated": 593,
       "errors": 0
     },
     "analysis": {
-      "status": "checkpoint_reused",
-      "input_fingerprint": "3abbd921236042929a5465337f138874d313b16c77c269fdb40aee31580556af"
+      "status": "complete",
+      "input_fingerprint": "ffbf3d0cfd8e3a3a03b4ff9691f10998ac892048a6b9ff00a96b35740ce1755c",
+      "files": 35
     },
     "audit": {
       "status": "completed_with_limitations",
@@ -719,14 +781,14 @@
         "possible_missing_theme_probes": 224,
         "focus_supported_assignments": 7073,
         "incidental_or_uncertain_assignments": 13451,
-        "cached_records": 5659
+        "cached_records": 0
       },
       "report": "D:\\Tourism-and-Hospitality-Industry-Trends\\output\\audit\\AUDIT_REPORT.md"
     }
   },
   "errors": [],
   "progress": {
-    "created_at": "2026-10-12T06:55:24.598633+00:00",
+    "created_at": "2026-10-12T11:05:24.182879+00:00",
     "window_start": "2016-10-10",
     "window_end": "2026-10-10",
     "sources": {
@@ -802,14 +864,7 @@
         "access": "public_research_review",
         "url_states": {},
         "documents": 0,
-        "eligible": 0,
-        "runtime_state": {
-          "source": "cto",
-          "state": "blocked",
-          "reason": "HTTP 403: Forbidden",
-          "until_at": null,
-          "updated_at": "2026-10-12T03:47:19.067579+00:00"
-        }
+        "eligible": 0
       },
       "hospitalitynet": {
         "access": "public_research_review",
@@ -823,14 +878,7 @@
         "access": "public_research_review",
         "url_states": {},
         "documents": 0,
-        "eligible": 0,
-        "runtime_state": {
-          "source": "travelweekly",
-          "state": "blocked",
-          "reason": "HTTP 403: Forbidden",
-          "until_at": null,
-          "updated_at": "2026-10-12T03:47:19.354009+00:00"
-        }
+        "eligible": 0
       }
     },
     "database_exists": true,
@@ -860,148 +908,178 @@
         "updated_at": "2026-10-11T09:25:33.572082+00:00"
       },
       {
-        "name": "discovery_frontier:untourism",
-        "fingerprint": "e3669e1126a0019c0b7233322ae1d4c339ad456202264861d4e424bb4256f0a6",
-        "status": "progress",
-        "updated_at": "2026-10-11T09:43:54.376092+00:00"
-      },
-      {
-        "name": "inventory:untourism",
-        "fingerprint": "e3669e1126a0019c0b7233322ae1d4c339ad456202264861d4e424bb4256f0a6",
-        "status": "complete",
-        "updated_at": "2026-10-11T09:43:54.437207+00:00"
-      },
-      {
-        "name": "english_archive:untourism",
-        "fingerprint": "9c6d8ac41ce7262ee31d3b606270cf4e696ecf30b880b4e08984d224617ab214",
-        "status": "complete",
-        "updated_at": "2026-10-11T09:44:02.193723+00:00"
-      },
-      {
-        "name": "discovery_frontier:wttc",
-        "fingerprint": "e3669e1126a0019c0b7233322ae1d4c339ad456202264861d4e424bb4256f0a6",
-        "status": "progress",
-        "updated_at": "2026-10-11T09:44:02.361817+00:00"
-      },
-      {
-        "name": "inventory:wttc",
-        "fingerprint": "e3669e1126a0019c0b7233322ae1d4c339ad456202264861d4e424bb4256f0a6",
-        "status": "complete",
-        "updated_at": "2026-10-11T09:44:02.403301+00:00"
-      },
-      {
-        "name": "discovery_frontier:ihra",
-        "fingerprint": "e3669e1126a0019c0b7233322ae1d4c339ad456202264861d4e424bb4256f0a6",
-        "status": "progress",
-        "updated_at": "2026-10-11T09:44:02.823873+00:00"
-      },
-      {
-        "name": "inventory:ihra",
-        "fingerprint": "e3669e1126a0019c0b7233322ae1d4c339ad456202264861d4e424bb4256f0a6",
-        "status": "complete",
-        "updated_at": "2026-10-11T09:44:09.677094+00:00"
-      },
-      {
-        "name": "discovery_frontier:ahla",
-        "fingerprint": "e3669e1126a0019c0b7233322ae1d4c339ad456202264861d4e424bb4256f0a6",
-        "status": "progress",
-        "updated_at": "2026-10-11T09:46:02.281939+00:00"
-      },
-      {
-        "name": "inventory:ahla",
-        "fingerprint": "e3669e1126a0019c0b7233322ae1d4c339ad456202264861d4e424bb4256f0a6",
-        "status": "complete",
-        "updated_at": "2026-10-11T09:46:02.388912+00:00"
-      },
-      {
-        "name": "discovery_frontier:etc",
-        "fingerprint": "e3669e1126a0019c0b7233322ae1d4c339ad456202264861d4e424bb4256f0a6",
-        "status": "progress",
-        "updated_at": "2026-10-11T09:46:02.662144+00:00"
-      },
-      {
-        "name": "inventory:etc",
-        "fingerprint": "e3669e1126a0019c0b7233322ae1d4c339ad456202264861d4e424bb4256f0a6",
-        "status": "complete",
-        "updated_at": "2026-10-11T09:46:03.036776+00:00"
-      },
-      {
-        "name": "discovery_frontier:hospitalitynet",
-        "fingerprint": "e3669e1126a0019c0b7233322ae1d4c339ad456202264861d4e424bb4256f0a6",
-        "status": "progress",
-        "updated_at": "2026-10-11T09:46:04.404127+00:00"
-      },
-      {
-        "name": "inventory:hospitalitynet",
-        "fingerprint": "e3669e1126a0019c0b7233322ae1d4c339ad456202264861d4e424bb4256f0a6",
-        "status": "complete",
-        "updated_at": "2026-10-11T09:46:04.513622+00:00"
-      },
-      {
-        "name": "discovery_frontier:pata",
-        "fingerprint": "e3669e1126a0019c0b7233322ae1d4c339ad456202264861d4e424bb4256f0a6",
-        "status": "progress",
-        "updated_at": "2026-10-11T09:46:05.102962+00:00"
-      },
-      {
-        "name": "inventory:pata",
-        "fingerprint": "e3669e1126a0019c0b7233322ae1d4c339ad456202264861d4e424bb4256f0a6",
-        "status": "complete",
-        "updated_at": "2026-10-11T09:46:05.306510+00:00"
-      },
-      {
-        "name": "history:hospitalitynet",
-        "fingerprint": "3c931df1300013cd909d95ad3beb8efe8890424b77de24f70c4aecd878812358",
-        "status": "complete",
-        "updated_at": "2026-10-12T02:51:51.456821+00:00"
-      },
-      {
-        "name": "history:wttc",
-        "fingerprint": "893a4ce05365ca3bf48b1f784ed872ec959ce0f042b5d22e25afdc9d662dbec4",
-        "status": "complete",
-        "updated_at": "2026-10-12T03:37:14.148935+00:00"
-      },
-      {
-        "name": "history:pata",
-        "fingerprint": "87785d02201a36f07399e7571edddb5dbd17e204c71d413f8dc2f2f1fc40a978",
-        "status": "complete",
-        "updated_at": "2026-10-12T03:44:38.089569+00:00"
-      },
-      {
-        "name": "history:ahla",
-        "fingerprint": "162fc0323b5f29ffc7397aee53f351910ceeac2d8c92386ea1d1a452708bd129",
-        "status": "complete",
-        "updated_at": "2026-10-12T03:47:18.037929+00:00"
-      },
-      {
         "name": "access_recheck:cto",
         "fingerprint": "user_authorized_once_v1",
         "status": "complete",
-        "updated_at": "2026-10-12T03:47:19.075115+00:00"
-      },
-      {
-        "name": "inventory:cto",
-        "fingerprint": "e3669e1126a0019c0b7233322ae1d4c339ad456202264861d4e424bb4256f0a6",
-        "status": "incomplete",
-        "updated_at": "2026-10-12T03:47:19.076344+00:00"
+        "updated_at": "2026-10-12T09:26:09.035034+00:00"
       },
       {
         "name": "access_recheck:travelweekly",
         "fingerprint": "user_authorized_once_v1",
         "status": "complete",
-        "updated_at": "2026-10-12T03:47:19.360386+00:00"
+        "updated_at": "2026-10-12T09:26:12.471141+00:00"
+      },
+      {
+        "name": "discovery_frontier:untourism",
+        "fingerprint": "2176f1dd2b512fab00adbefa47114a189abfc3c1470cb1fbfdad7de44c5ee084",
+        "status": "progress",
+        "updated_at": "2026-10-12T10:21:58.223319+00:00"
+      },
+      {
+        "name": "inventory:untourism",
+        "fingerprint": "2176f1dd2b512fab00adbefa47114a189abfc3c1470cb1fbfdad7de44c5ee084",
+        "status": "complete",
+        "updated_at": "2026-10-12T10:21:58.440499+00:00"
+      },
+      {
+        "name": "english_archive:untourism",
+        "fingerprint": "5e8d5f2ff09913c3b0fbebd5a7738d9e6f1bc99d5a63eb1974c947b5c6b0d79d",
+        "status": "complete",
+        "updated_at": "2026-10-12T10:22:26.059326+00:00"
+      },
+      {
+        "name": "discovery_frontier:wttc",
+        "fingerprint": "2176f1dd2b512fab00adbefa47114a189abfc3c1470cb1fbfdad7de44c5ee084",
+        "status": "progress",
+        "updated_at": "2026-10-12T10:22:26.879523+00:00"
+      },
+      {
+        "name": "inventory:wttc",
+        "fingerprint": "2176f1dd2b512fab00adbefa47114a189abfc3c1470cb1fbfdad7de44c5ee084",
+        "status": "complete",
+        "updated_at": "2026-10-12T10:22:27.292099+00:00"
+      },
+      {
+        "name": "history:wttc",
+        "fingerprint": "3afe48f7477aa96c34ecba5e34444221a9e52766373c7c8d8fed955da1979544",
+        "status": "complete",
+        "updated_at": "2026-10-12T10:22:39.465589+00:00"
+      },
+      {
+        "name": "discovery_frontier:ihra",
+        "fingerprint": "2176f1dd2b512fab00adbefa47114a189abfc3c1470cb1fbfdad7de44c5ee084",
+        "status": "progress",
+        "updated_at": "2026-10-12T10:22:41.726710+00:00"
+      },
+      {
+        "name": "inventory:ihra",
+        "fingerprint": "2176f1dd2b512fab00adbefa47114a189abfc3c1470cb1fbfdad7de44c5ee084",
+        "status": "complete",
+        "updated_at": "2026-10-12T10:22:42.551342+00:00"
+      },
+      {
+        "name": "history:ihra",
+        "fingerprint": "e18c4832f2a186c66c63e8e82726981a12b5cdb94c74dc0661ec8611fcb5b5f1",
+        "status": "complete",
+        "updated_at": "2026-10-12T10:22:42.973170+00:00"
+      },
+      {
+        "name": "discovery_frontier:ahla",
+        "fingerprint": "2176f1dd2b512fab00adbefa47114a189abfc3c1470cb1fbfdad7de44c5ee084",
+        "status": "progress",
+        "updated_at": "2026-10-12T10:22:44.246707+00:00"
+      },
+      {
+        "name": "inventory:ahla",
+        "fingerprint": "2176f1dd2b512fab00adbefa47114a189abfc3c1470cb1fbfdad7de44c5ee084",
+        "status": "complete",
+        "updated_at": "2026-10-12T10:22:44.417208+00:00"
+      },
+      {
+        "name": "history:ahla",
+        "fingerprint": "d4321f9af57095e13d85a525f60fe9e6b1b0cb5eae9e6f4130e5dbe637b8504e",
+        "status": "complete",
+        "updated_at": "2026-10-12T10:22:50.832913+00:00"
+      },
+      {
+        "name": "discovery_frontier:etc",
+        "fingerprint": "2176f1dd2b512fab00adbefa47114a189abfc3c1470cb1fbfdad7de44c5ee084",
+        "status": "progress",
+        "updated_at": "2026-10-12T10:22:51.818639+00:00"
+      },
+      {
+        "name": "inventory:etc",
+        "fingerprint": "2176f1dd2b512fab00adbefa47114a189abfc3c1470cb1fbfdad7de44c5ee084",
+        "status": "complete",
+        "updated_at": "2026-10-12T10:22:53.913553+00:00"
+      },
+      {
+        "name": "discovery_frontier:cto",
+        "fingerprint": "2176f1dd2b512fab00adbefa47114a189abfc3c1470cb1fbfdad7de44c5ee084",
+        "status": "progress",
+        "updated_at": "2026-10-12T10:22:58.675035+00:00"
+      },
+      {
+        "name": "inventory:cto",
+        "fingerprint": "2176f1dd2b512fab00adbefa47114a189abfc3c1470cb1fbfdad7de44c5ee084",
+        "status": "complete",
+        "updated_at": "2026-10-12T10:23:06.333866+00:00"
+      },
+      {
+        "name": "history:cto",
+        "fingerprint": "a3f00cfd281a0f13d865778b9e5acf1421b8d83b1cee8fb40570eb363d4ec06d",
+        "status": "complete",
+        "updated_at": "2026-10-12T10:23:06.588943+00:00"
+      },
+      {
+        "name": "discovery_frontier:hospitalitynet",
+        "fingerprint": "2176f1dd2b512fab00adbefa47114a189abfc3c1470cb1fbfdad7de44c5ee084",
+        "status": "progress",
+        "updated_at": "2026-10-12T10:23:09.920264+00:00"
+      },
+      {
+        "name": "inventory:hospitalitynet",
+        "fingerprint": "2176f1dd2b512fab00adbefa47114a189abfc3c1470cb1fbfdad7de44c5ee084",
+        "status": "complete",
+        "updated_at": "2026-10-12T10:23:10.147057+00:00"
+      },
+      {
+        "name": "history:hospitalitynet",
+        "fingerprint": "b2a061338bbfbfeb62806a36ca8662cbf17bd62622591c3ef81347355582d3ea",
+        "status": "complete",
+        "updated_at": "2026-10-12T10:23:23.586372+00:00"
+      },
+      {
+        "name": "discovery_frontier:travelweekly",
+        "fingerprint": "2176f1dd2b512fab00adbefa47114a189abfc3c1470cb1fbfdad7de44c5ee084",
+        "status": "progress",
+        "updated_at": "2026-10-12T10:23:27.197257+00:00"
       },
       {
         "name": "inventory:travelweekly",
-        "fingerprint": "e3669e1126a0019c0b7233322ae1d4c339ad456202264861d4e424bb4256f0a6",
-        "status": "incomplete",
-        "updated_at": "2026-10-12T03:47:19.360386+00:00"
+        "fingerprint": "2176f1dd2b512fab00adbefa47114a189abfc3c1470cb1fbfdad7de44c5ee084",
+        "status": "complete",
+        "updated_at": "2026-10-12T10:23:30.325785+00:00"
+      },
+      {
+        "name": "history:travelweekly",
+        "fingerprint": "a5a614b7e1d3caa862795eeadc1ab8f5a0f8709514a347cbde38222f1659b74a",
+        "status": "complete",
+        "updated_at": "2026-10-12T10:23:30.462726+00:00"
+      },
+      {
+        "name": "discovery_frontier:pata",
+        "fingerprint": "2176f1dd2b512fab00adbefa47114a189abfc3c1470cb1fbfdad7de44c5ee084",
+        "status": "progress",
+        "updated_at": "2026-10-12T10:23:33.029225+00:00"
+      },
+      {
+        "name": "inventory:pata",
+        "fingerprint": "2176f1dd2b512fab00adbefa47114a189abfc3c1470cb1fbfdad7de44c5ee084",
+        "status": "complete",
+        "updated_at": "2026-10-12T10:23:33.420586+00:00"
+      },
+      {
+        "name": "history:pata",
+        "fingerprint": "abe5b7402467756d50076fea32b4e0d6d1d961bddbec9ace9861b2811cc24df5",
+        "status": "complete",
+        "updated_at": "2026-10-12T10:23:56.493051+00:00"
       },
       {
         "name": "analysis",
-        "fingerprint": "3abbd921236042929a5465337f138874d313b16c77c269fdb40aee31580556af",
+        "fingerprint": "ffbf3d0cfd8e3a3a03b4ff9691f10998ac892048a6b9ff00a96b35740ce1755c",
         "status": "complete",
-        "updated_at": "2026-10-12T03:57:48.491383+00:00"
+        "updated_at": "2026-10-12T10:51:23.554599+00:00"
       }
     ],
     "next_retry_at": null,
@@ -1009,16 +1087,13 @@
     "pending_urls": 0
   },
   "held_sources": [],
-  "blocked_sources": [
-    "cto",
-    "travelweekly"
-  ],
+  "blocked_sources": [],
   "cooldown_sources": [],
   "study_complete": false,
   "offline": false,
   "note": "Finished work applies only to discovered, accessible material. Automated audit completion does not establish historical completeness or ground-truth accuracy.",
   "analysis_current": true,
-  "run_id": "20261012T065126Z-5aec3f63",
-  "finished_at": "2026-10-12T06:55:24.598633+00:00",
+  "run_id": "20261012T102131Z-d0e08056",
+  "finished_at": "2026-10-12T11:05:24.182879+00:00",
   "launcher_exit_code": 0
 }

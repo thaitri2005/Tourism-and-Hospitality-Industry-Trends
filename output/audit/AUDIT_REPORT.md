@@ -1,6 +1,6 @@
 # Automated research audit
 
-Status: **completed_with_limitations**. Analysis run: `20261012T025127Z-1439a726`.
+Status: **completed_with_limitations**. Analysis run: `20261012T102131Z-d0e08056`.
 
 This audit runs to completion without human annotation. It audits every saved record and every published theme, entity, association and sentiment row. It reports evidence support, sensitivity and limitations; it does not invent ground-truth accuracy.
 
@@ -16,7 +16,7 @@ This audit runs to completion without human annotation. It audits every saved re
 - possible_missing_theme_probes: 224
 - focus_supported_assignments: 7,073
 - incidental_or_uncertain_assignments: 13,451
-- cached_records: 5,659
+- cached_records: 0
 
 ## Record/date evidence
 

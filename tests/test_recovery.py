@@ -145,6 +145,154 @@ def test_access_denial_is_persistent_and_not_an_endless_retry(workspace,monkeypa
     assert result['status']=='source_unavailable'
     assert len(network.calls)==count
 
+def test_configured_403_is_url_local_and_other_public_urls_continue(workspace,monkeypatch):
+    _,_,network=workspace
+    base='https://www.onecaribbean.org'
+    robots_url=base+'/robots.txt'
+    page_url=base+'/media/cto-news/example-story/'
+    original_open=network.open
+    calls=[]
+    def return_robots_403(request,timeout):
+        calls.append(request.full_url)
+        if request.full_url==robots_url:
+            raise urllib.error.HTTPError(robots_url,403,'Forbidden',{},None)
+        return original_open(request,timeout)
+    monkeypatch.setattr(network,'open',return_robots_403)
+    network.script[page_url]=[http_error(403)]
+    db=store.connect()
+    fetcher=http.Fetcher('cto',db,delay=0)
+    assert fetcher.robots()==''
+    assert fetcher.robot_status=='unavailable_403_allowed_by_rfc9309'
+    assert fetcher.robot.can_fetch(http.USER_AGENT,page_url)
+    assert db.execute("SELECT 1 FROM source_state WHERE source='cto'").fetchone() is None
+    with pytest.raises(http.FetchError) as caught:
+        fetcher.fetch(page_url)
+    assert caught.value.status==403
+    assert caught.value.category=='access_denied_url'
+    assert db.execute("SELECT 1 FROM source_state WHERE source='cto'").fetchone() is None
+    other_url=base+'/media/cto-news/another-story/'
+    network.script[other_url]=[article()]
+    assert fetcher.fetch(other_url)[0]==article()
+    assert calls==[robots_url,page_url,other_url]
+    db.close()
+
+def test_authorized_sources_ignore_disallow_rules_but_keep_rate_limit(workspace,monkeypatch):
+    _,_,network=workspace
+    base='https://www.onecaribbean.org'
+    robots_url=base+'/robots.txt'
+    page_url=base+'/media/cto-news/example-story/'
+    monkeypatch.setattr(network,'open',lambda request,timeout: Response(
+        request.full_url,b'User-agent: *\nDisallow: /media/\nCrawl-delay: 7\n','text/plain'
+    ) if request.full_url==robots_url else Response(request.full_url,article()))
+    db=store.connect()
+    fetcher=http.Fetcher('cto',db,delay=3)
+    assert 'Disallow: /media/' in fetcher.robots()
+    assert fetcher.robot_status=='readable_authorized_override'
+    assert fetcher.delay==7
+    assert fetcher.fetch(page_url)[0]==article()
+    db.close()
+
+def test_robots_403_fallback_is_not_global(workspace,monkeypatch):
+    _,_,network=workspace
+    base='https://wttc.org'
+    original_open=network.open
+    def return_robots_403(request,timeout):
+        if request.full_url==base+'/robots.txt':
+            raise urllib.error.HTTPError(request.full_url,403,'Forbidden',{},None)
+        return original_open(request,timeout)
+    monkeypatch.setattr(network,'open',return_robots_403)
+    db=store.connect()
+    fetcher=http.Fetcher('wttc',db,delay=0)
+    with pytest.raises(http.FetchError) as caught:
+        fetcher.robots()
+    assert caught.value.status==403
+    assert fetcher.robot_status=='unavailable'
+    assert db.execute("SELECT state FROM source_state WHERE source='wttc'").fetchone()['state']=='blocked'
+    db.close()
+
+def test_cto_discovery_continues_from_robots_403_using_configured_routes(workspace,monkeypatch):
+    _,_,network=workspace
+    base='https://www.onecaribbean.org'
+    robots_url=base+'/robots.txt'
+    original_open=network.open
+    def return_robots_403(request,timeout):
+        if request.full_url==robots_url:
+            raise urllib.error.HTTPError(robots_url,403,'Forbidden',{},None)
+        return original_open(request,timeout)
+    monkeypatch.setattr(network,'open',return_robots_403)
+    story=base+'/media/cto-news/climate-update/'
+    network.script[base+'/sitemap.xml']=[(
+        '<urlset><url><loc>'+story+'</loc></url></urlset>'
+    ).encode()]
+    network.script[base+'/sitemap_index.xml']=[b'<urlset></urlset>']
+    network.script[base+'/wp-sitemap.xml']=[b'<urlset></urlset>']
+    network.script[base+'/media/cto-news/']=[b'<main>Archive</main>']
+    network.script[base+'/statistics/annual-reviews-prospects/']=[b'<main>Archive</main>']
+    _,audit=discover.audit_one('cto')
+    assert audit['robots_status']=='unavailable_403_allowed_by_rfc9309'
+    assert audit['discovery_status']=='sitemaps_and_seed_archives_processed'
+    assert audit['discovered_urls']==1
+    db=store.connect()
+    assert db.execute("SELECT 1 FROM source_state WHERE source='cto'").fetchone() is None
+    db.close()
+
+def test_cto_discovery_skips_denied_sitemap_then_processes_remaining_routes(workspace):
+    _,_,network=workspace
+    base='https://www.onecaribbean.org'
+    story=base+'/media/cto-news/climate-update/'
+    denied=urllib.error.HTTPError(base+'/sitemap.xml',403,'Forbidden',{},None)
+    network.script[base+'/sitemap.xml']=[denied]
+    network.script[base+'/sitemap_index.xml']=[b'<urlset><url><loc>'+story.encode()+b'</loc></url></urlset>']
+    network.script[base+'/wp-sitemap.xml']=[b'<urlset></urlset>']
+    network.script[base+'/media/cto-news/']=[b'<main>Archive</main>']
+    network.script[base+'/statistics/annual-reviews-prospects/']=[b'<main>Archive</main>']
+    _,audit=discover.audit_one('cto')
+    assert audit['discovery_status']=='sitemaps_and_seed_archives_processed_with_url_denials'
+    assert [item['url'] for item in audit['denied_urls']]==[base+'/sitemap.xml']
+    assert base+'/sitemap_index.xml' in network.calls
+    assert base+'/wp-sitemap.xml' in network.calls
+    assert base+'/media/cto-news/' in network.calls
+    assert base+'/statistics/annual-reviews-prospects/' in network.calls
+    assert audit['discovered_urls']==1
+
+def test_cto_crawl_skips_one_403_article_and_continues(workspace):
+    data,_,network=workspace
+    base='https://www.onecaribbean.org'
+    denied=base+'/media/cto-news/denied-story/'
+    allowed=base+'/media/cto-news/available-story/'
+    db=store.connect()
+    store.add_url(db,'cto',denied,'fixture archive')
+    store.add_url(db,'cto',allowed,'fixture archive')
+    db.commit();db.close()
+    network.script[denied]=[urllib.error.HTTPError(denied,403,'Forbidden',{},None)]
+    network.script[allowed]=[article()]
+    result=crawl.run_source('cto')
+    assert result['status']=='queue_processed'
+    assert result['attempted']==2
+    assert row(denied)['status']=='permanent_error'
+    assert row(denied)['error_kind']=='access_denied_url'
+    assert row(allowed)['status']=='extracted'
+    assert denied in network.calls and allowed in network.calls
+
+def test_initialize_migrates_legacy_cto_travelweekly_403_holds(workspace):
+    db=store.connect()
+    for source,base in [('cto','https://www.onecaribbean.org'),('travelweekly','https://www.travelweekly.com')]:
+        store.set_source_state(db,source,'blocked','HTTP 403: Forbidden')
+        db.execute('INSERT OR REPLACE INTO fetch_failures VALUES(?,?,?,?,?,?,?,?)',
+                   (source,base+'/sitemap.xml','access_denied',403,'HTTP 403',0,None,store.now()))
+        db.execute('INSERT OR REPLACE INTO fetch_failures VALUES(?,?,?,?,?,?,?,?)',
+                   (source,base+'/robots.txt','access_denied',403,'HTTP 403',0,None,store.now()))
+    store.set_source_state(db,'wttc','blocked','HTTP 403: Forbidden')
+    db.commit();db.close()
+    run.initialize()
+    db=store.connect()
+    for source,base in [('cto','https://www.onecaribbean.org'),('travelweekly','https://www.travelweekly.com')]:
+        assert db.execute('SELECT 1 FROM source_state WHERE source=?',(source,)).fetchone() is None
+        assert db.execute('SELECT category FROM fetch_failures WHERE source=? AND url=?',(source,base+'/sitemap.xml')).fetchone()['category']=='access_denied_url'
+        assert db.execute('SELECT category FROM fetch_failures WHERE source=? AND url=?',(source,base+'/robots.txt')).fetchone()['category']=='robots_unavailable'
+    assert db.execute("SELECT state FROM source_state WHERE source='wttc'").fetchone()['state']=='blocked'
+    db.close()
+
 def test_explicit_blocked_recheck_clears_only_named_source_hold(workspace):
     db=store.connect()
     store.set_source_state(db,'wttc','blocked','HTTP 403: Forbidden')
@@ -440,6 +588,32 @@ def test_sitemap_frontier_survives_interruption(workspace):
     assert result['discovered_urls']==1
     assert network.calls.count(BASE+'/sitemap.xml')==1
     assert network.calls.count(BASE+'/child.xml')==2
+
+def test_new_public_archive_walk_resumes_from_the_last_saved_page(workspace):
+    _,_,network=workspace
+    base='https://www.onecaribbean.org'
+    first=base+'/media/cto-news/'
+    second=base+'/media/cto-news/page/2/'
+    network.script[first]=[
+        b'<main><a href="/media/cto-news/story-one/">Story one</a>'
+        b'<a rel="next" href="/media/cto-news/page/2/">Next</a></main>'
+    ]
+    network.script[second]=[
+        KeyboardInterrupt(),
+        b'<main><a href="/media/cto-news/story-two/">Story two</a></main>',
+    ]
+    with pytest.raises(KeyboardInterrupt):
+        history.run_source('cto')
+    result=history.run_source('cto')
+    assert result['status']=='complete'
+    assert result['pages']==2
+    assert network.calls.count(first)==1
+    assert network.calls.count(second)==2
+    db=store.connect()
+    urls={r['url'] for r in db.execute('SELECT url FROM urls WHERE source=?',('cto',))}
+    db.close()
+    assert base+'/media/cto-news/story-one/' in urls
+    assert base+'/media/cto-news/story-two/' in urls
 
 def test_failed_analysis_never_overwrites_last_published_report(workspace,monkeypatch):
     _,output,_=workspace

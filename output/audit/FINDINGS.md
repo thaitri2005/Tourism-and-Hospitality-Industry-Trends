@@ -1,6 +1,6 @@
 # Audited exploratory findings
 
-Analysis run: `20261012T025127Z-1439a726`. Automated audit: **completed_with_limitations**.
+Analysis run: `20261012T102131Z-d0e08056`. Automated audit: **completed_with_limitations**.
 
 The automated workflow reviewed all **5,659 saved documents**, including exclusions, and all **20,524 theme assignments**, **6,006 entity rows**, **3,941 brand/theme rows**, **20,524 sentiment rows**, and **15 NMF clusters**. No manual annotation step is pending.
 

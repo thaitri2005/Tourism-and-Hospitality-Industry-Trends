@@ -44,7 +44,9 @@ def discover_source(source):
         if c.get('retry_blocked_once') and not recheck_done and not audit.get('retryable_errors'):
             checkpoint(db,recheck_key,'user_authorized_once_v1','complete',
                        dict(robots_status=audit.get('robots_status'),errors=audit.get('errors',[])))
-        done = audit.get('robots_status') in ('readable','not_found_404') and not audit.get('retryable_errors') and not audit.get('remaining_sitemaps')
+        done = audit.get('robots_status') in (
+            'readable','readable_authorized_override','not_found_404','unavailable_403_allowed_by_rfc9309'
+        ) and not audit.get('retryable_errors') and not audit.get('remaining_sitemaps')
         checkpoint(db,key,version,'complete' if done else 'incomplete',audit)
         # "complete" here means discovery attempts finished; errors and archive
         # coverage limitations remain in the source audit, never a census claim.
@@ -143,12 +145,29 @@ def initialize():
                 db.execute('DELETE FROM source_state WHERE source=?',(row['source'],))
                 event('source_cooldown_recovered',source=row['source'],reason='prior cooldown came only from robots-disallowed URLs',denied_urls=denied)
         db.commit()
+        # Earlier runs escalated every 403 to a host-wide hold. For the two
+        # user-authorized sources, migrate only saved 403 URL failures to the
+        # per-URL policy; keep 401s, cooldowns and all other sources unchanged.
+        for source,cfg in SOURCES.items():
+            if not cfg.get('continue_after_url_403'):
+                continue
+            row=db.execute("SELECT reason FROM source_state WHERE source=? AND state='blocked'",(source,)).fetchone()
+            if row and '403' in (row['reason'] or ''):
+                db.execute('DELETE FROM source_state WHERE source=?',(source,))
+                event('legacy_host_hold_migrated',source=source,reason=row['reason'],
+                      policy='per_url_403_skip_and_continue')
+            db.execute("UPDATE fetch_failures SET category='access_denied_url' WHERE source=? AND status=403 AND category='access_denied' AND url<>?",
+                       (source,cfg['base']+'/robots.txt'))
+            db.execute("UPDATE fetch_failures SET category='robots_unavailable' WHERE source=? AND url=? AND status=403 AND category='access_denied'",
+                       (source,cfg['base']+'/robots.txt'))
+        db.commit()
         # Preserve the earlier audit's explicit denial. Re-running the new
         # launcher is not a request to retry an already denied source.
         for row in db.execute('SELECT * FROM audit').fetchall():
             payload = json.loads(row['payload'])
             cfg=SOURCES.get(row['source'],{})
-            if (payload.get('robots_status')=='unavailable' and any('403' in str(e) for e in payload.get('errors',[]))
+            if (not cfg.get('continue_after_url_403')
+                    and payload.get('robots_status')=='unavailable' and any('403' in str(e) for e in payload.get('errors',[]))
                     and not (cfg.get('retry_blocked_once') and not completed(db,'access_recheck:'+row['source'],'user_authorized_once_v1'))):
                 existing = db.execute('SELECT 1 FROM source_state WHERE source=?',(row['source'],)).fetchone()
                 if not existing:

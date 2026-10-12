@@ -4,6 +4,8 @@ For normal operation and the current project completion assessment, use the [REA
 
 The [automated audit guide](AUTOMATED_VALIDATION.md) describes the required full-corpus validation workflow. The [12 October content QA note](CONTENT_QA_2026-10-12.md) is an earlier limited spot-check, superseded by the full audit. No manual annotation is needed to complete the workflow.
 
+The [crawler recheck](CRAWLER_RECHECK_2026-10-12.md) records index-first source discovery for CTO, Travel Weekly and IH&RA. It is a route/access investigation, not an addition to the corpus.
+
 ## Execution flow
 
 ```text
@@ -37,9 +39,9 @@ Successful document commits survive later failures. Analysis is a separate snaps
 | [`research/config.py`](../research/config.py) | Fixed study dates, registered source IDs/domains, source classes, access notes, terms URLs, archive routes and candidate-path filters. |
 | [`research/run.py`](../research/run.py) | Coordinate phases, collect per-source outcomes, recover the corpus, fingerprint analysis inputs, stage/publish/verify artifacts, summarize completion. |
 | [`research/store.py`](../research/store.py) | SQLite schema, additive migrations, URL insertion, audit storage, checkpoints and source states. |
-| [`research/http.py`](../research/http.py) | Robots rules, same-host redirect checks, per-source spacing, bounded HTTP retries, Retry-After cooldowns, response cache/checksums and attempt history. |
+| [`research/http.py`](../research/http.py) | Robots rules, same-host redirect checks, per-source spacing, bounded HTTP retries, Retry-After cooldowns, response cache/checksums and attempt history. Per user-reported authorization, CTO/Travel Weekly robots directives are logged but not applied; their 403s are retained as URL-level denials so other public routes can continue. |
 | [`research/robots.py`](../research/robots.py) | Publisher wildcard (`*`) and end-anchor (`$`) robots rules, longest-match selection and Allow precedence on equal matches. |
-| [`research/history.py`](../research/history.py) | Checkpointed public archive pagination for Hospitality Net, WTTC, PATA and AHLA; candidate provenance, page-cycle/template detection and per-invocation bounds. |
+| [`research/history.py`](../research/history.py) | Checkpointed public archive pagination for Hospitality Net, WTTC, PATA, AHLA, CTO, Travel Weekly and IH&RA; candidate provenance, same-collection next-link checks, page-cycle/template detection and per-invocation bounds. Access holds, robots rules, host checks and request pacing remain in the shared HTTP client. |
 | [`research/discover.py`](../research/discover.py) | Parse sitemaps and archive seed links. Persist the sitemap frontier after processing each sitemap. |
 | [`research/backfill.py`](../research/backfill.py) | Walk UN Tourism's English news archive until every dated item on a page precedes the start boundary; checkpoint each page. |
 | [`research/crawl.py`](../research/crawl.py) | Claim eligible queue items, recover interruptions, download/extract documents, save raw files, discover linked public PDFs and preserve form gates. |
@@ -94,6 +96,7 @@ Historical pilot request rows can have empty newer fields. Migrations add fields
 
 - `inventory:<source>`: sitemap/seed discovery attempt finished for its code/config version. A finished inventory attempt can still contain gaps in its audit; it is not a historical completeness certificate.
 - `discovery_frontier:<source>`: queued/visited sitemap URLs and accumulated audit information.
+- CTO/Travel Weekly robots directives are logged but not applied under the user's reported permission. Their 403 URL outcomes are persisted per route; denied URLs are not retried, while separate configured public routes continue. The three-second minimum delay, same-host checks, 401 source holds and 429 cooldowns remain active.
 - `english_archive:untourism`: next archive page, previous-page signature and date-boundary evidence.
 - `analysis`: input fingerprint, running/completed publication state and artifact manifest.
 

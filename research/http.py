@@ -69,7 +69,8 @@ class Fetcher:
     def allowed(self, url, obey=True):
         if urlsplit(url).scheme not in ('http','https') or not same_host(url, SOURCES[self.source]['base']):
             raise FetchError('Outside registered source host', 'external_redirect')
-        if obey and self.robot is not None and not self.robot.can_fetch(USER_AGENT, url):
+        if (obey and self.robot is not None and not SOURCES[self.source].get('ignore_robots',False)
+                and not self.robot.can_fetch(USER_AGENT, url)):
             raise FetchError('robots.txt disallows this URL', 'robots_disallowed')
 
     def available(self):
@@ -188,8 +189,26 @@ class Fetcher:
                 wait = retry_after(exc.headers.get('Retry-After')) if exc.headers else None
                 exc.close()
                 category = 'access_denied' if status in (401,403) else ('rate_limited' if status==429 else 'http_error')
+                robots_unavailable = (purpose=='robots' and status==403
+                                      and SOURCES[self.source].get('allow_robots_403_unavailable',False))
+                url_denial_is_local = (status==403 and purpose!='robots'
+                                       and SOURCES[self.source].get('continue_after_url_403',False))
+                if robots_unavailable:
+                    # RFC 9309 §2.3.1.3 classifies 4xx robots.txt responses as
+                    # unavailable and permits access to resources. This is
+                    # separately scoped from the per-URL publisher permission below.
+                    category = 'robots_unavailable'
+                elif url_denial_is_local:
+                    # User-reported permission covers publicly accessible pages,
+                    # not the specific URL that returned 403. Record and skip
+                    # that URL while allowing other independent public routes.
+                    category = 'access_denied_url'
                 error = FetchError(f'HTTP {status}: {exc.reason}',category,status,status in TRANSIENT_CODES)
-                if status in (401,403):
+                if url_denial_is_local:
+                    event('access_denied_url_skipped',level='WARNING',source=self.source,
+                          url=url,purpose=purpose,status=status,
+                          policy='skip_denied_url_continue_other_public_urls')
+                elif status in (401,403) and not robots_unavailable:
                     set_source_state(self.db,self.source,'blocked',str(error))
                     self.stopped = True
                 elif status==429 or (error.retryable and wait is not None):
@@ -230,13 +249,27 @@ class Fetcher:
             delay = self.robot.crawl_delay(USER_AGENT) or self.robot.crawl_delay('*')
             if delay:
                 self.delay = max(self.delay,float(delay))
-            self.robot_status = 'readable'
+            if SOURCES[self.source].get('ignore_robots',False):
+                self.robot_status = 'readable_authorized_override'
+                event('robots_rules_overridden_authorized',level='WARNING',source=self.source,url=url,
+                      scope='user-reported academic permission; host checks and rate limits remain active')
+            else:
+                self.robot_status = 'readable'
             return text
         except FetchError as exc:
             if exc.status==404:
                 self.robot_status = 'not_found_404'
                 self.robot = RobotFileParser(url)
                 self.robot.parse(['User-agent: *','Allow: /'])
+                return ''
+            if (exc.status==403 and SOURCES[self.source].get('allow_robots_403_unavailable',False)
+                    and exc.category=='robots_unavailable'):
+                self.robot_status = 'unavailable_403_allowed_by_rfc9309'
+                self.robot = RobotFileParser(url)
+                self.robot.parse(['User-agent: *','Allow: /'])
+                event('robots_unavailable_fallback',level='WARNING',source=self.source,url=url,
+                      status=403,standard='RFC 9309 section 2.3.1.3',
+                      scope='configured public routes only; content-page denials remain enforced')
                 return ''
             self.robot_status = 'unavailable'
             raise
