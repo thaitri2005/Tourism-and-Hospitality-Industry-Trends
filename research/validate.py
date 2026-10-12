@@ -13,6 +13,7 @@ import sqlite3
 import zlib
 from collections import Counter
 from urllib.parse import urljoin
+from pathlib import Path
 
 from bs4 import BeautifulSoup
 from .config import ROOT, START, END, SOURCES
@@ -35,9 +36,10 @@ def artifact_errors(output, manifest):
     return errors
 
 
-def validate():
-    output=ROOT/'output'
-    db=sqlite3.connect((ROOT/'data/corpus.sqlite').as_uri()+'?mode=ro',uri=True)
+def validate(root=None):
+    root=ROOT if root is None else Path(root)
+    output=root/'output'
+    db=sqlite3.connect((root/'data/corpus.sqlite').as_uri()+'?mode=ro',uri=True)
     db.row_factory=sqlite3.Row
     db.execute('BEGIN')
     checks=[];errors=[];warnings=[]
@@ -68,7 +70,7 @@ def validate():
                 hashlib.sha256(r['url'].encode()).hexdigest()[:20]!=r['doc_id']):
             bad.append(r['doc_id'])
         try:
-            if not gzip.decompress((ROOT/r['raw_path']).read_bytes()):raw_bad.append(r['doc_id']+': empty')
+            if not gzip.decompress((root/r['raw_path']).read_bytes()):raw_bad.append(r['doc_id']+': empty')
         except (OSError,EOFError,zlib.error) as exc:raw_bad.append(r['doc_id']+': '+str(exc))
         if r['eligible'] and not (r['published_at'] and START<=r['published_at']<=END
                 and r['language']=='en' and r['word_count']>=(60 if r['content_type']=='report_summary' else 120)
@@ -145,7 +147,7 @@ def validate():
     pages=json.loads(cp[0]).get('next_page',0) if cp else 0
     for page in range(pages):
         archive='https://www.untourism.int/news?page='+str(page)
-        path=ROOT/'data/http_cache/untourism'/(hashlib.sha256(archive.encode()).hexdigest()+'.gz')
+        path=root/'data/http_cache/untourism'/(hashlib.sha256(archive.encode()).hexdigest()+'.gz')
         try:data=gzip.decompress(path.read_bytes())
         except (OSError,EOFError,zlib.error):unavailable_pages.append(page);continue
         soup=BeautifulSoup(data,'lxml')
@@ -159,9 +161,12 @@ def validate():
             archive_cards+=1;url=urljoin('https://www.untourism.int',a['href'])
             if url not in by_url:
                 item=dict(url=url,date=date,title=a.get_text(' ',strip=True),archive=archive)
-                (missing if content_url('untourism',url,from_news_archive=True) else index_links).append(item)
+                if content_url('untourism',url,from_news_archive=True):missing.append(item)
+                else:
+                    item['disposition']='excluded_non_article_target; original story not established from saved link'
+                    index_links.append(item)
     if missing:warnings.append(f'{len(missing)} saved UN archive article links are missing from inventory. Run python run_research.py to apply the corrected archive discovery.')
-    if index_links:warnings.append(f'{len(index_links)} archive cards point to excluded/non-article URLs; manual resolution needed.')
+    if index_links:warnings.append(f'{len(index_links)} archive cards point to non-article targets; automatically excluded and retained as coverage gaps in archive_reconciliation.')
     if unavailable_pages:warnings.append(f'{len(unavailable_pages)} archive pages were unavailable locally; reconciliation is incomplete.')
     active=sorted({r['source'] for r in core})
     warnings.append(f'Only {len(active)} of {len(SOURCES)} listed sources have core articles. Structural checks do not validate extraction accuracy, topic coding, sentiment, or historical completeness.')

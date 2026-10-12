@@ -1,16 +1,19 @@
 {
-  "created_at": "2026-10-11T07:25:11.984861+00:00",
+  "created_at": "2026-10-12T03:57:47.237370+00:00",
   "window_start": "2016-10-10",
   "window_end": "2026-10-10",
   "current_window_start": "2025-10-11",
-  "extracted_documents": 2886,
-  "eligible_documents": 2494,
-  "core_articles": 2224,
-  "unique_story_clusters": 2216,
+  "extracted_documents": 5659,
+  "eligible_documents": 5105,
+  "core_articles": 4829,
+  "unique_story_clusters": 4807,
   "report_records": 257,
-  "current_articles": 169,
+  "current_articles": 1124,
   "active_sources": [
+    "ahla",
     "etc",
+    "hospitalitynet",
+    "pata",
     "untourism",
     "wttc"
   ],
@@ -19,5 +22,5 @@
   "python": "3.12.2",
   "numpy": "2.2.6",
   "pandas": "3.0.6",
-  "validation_status": "automated checks and limited extraction spot checks; independent human coding not completed"
+  "validation_status": "analysis published; automated validation status is in audit/summary.json"
 }

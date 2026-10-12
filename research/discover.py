@@ -24,6 +24,14 @@ def content_url(source,url,from_news_archive=False):
         return False
     if p.lower().endswith('.pdf'):
         return True
+    # Seed archive pages are not articles. Accept deeper paths below the
+    # configured CTO/IH&RA release archives, plus PDFs linked from them.
+    if source in ('cto','ihra'):
+        for route in c['archives']:
+            prefix=route.rstrip('/')+'/'
+            if p.startswith(prefix) and p.rstrip('/')!=route.rstrip('/'):
+                return True
+        return False
     # A dated headline card in the publisher's English news archive is stronger
     # article evidence than a modern URL prefix. Older UN routes include flat
     # slugs, /global/, /node/<id>, and even /new/. Never broaden sitemap crawling
@@ -35,8 +43,6 @@ def content_url(source,url,from_news_archive=False):
             # /press-release/... are genuine articles already accepted in sitemaps.
             return any(path in p and p.split(path,1)[1].strip('/') for path in c['paths'])
         return True
-    if source=='cto':
-        return p.count('/')<=2 and len(p.strip('/').split('-'))>=4 or p.startswith('/statistics/annual-reviews-prospects')
     return any(path in p for path in c['paths']) and not p.endswith('/feed/')
 
 def audit_one(source, max_sitemaps=35):

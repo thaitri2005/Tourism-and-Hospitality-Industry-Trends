@@ -2,9 +2,24 @@
 
 An executable first attempt at Jenny Le's RA brief: English material from **10 October 2016 through 10 October 2026**, from the nine supplied sources. The brief says ten websites but lists nine; Global Brands Magazine is a brand-reference lead, not a tenth corpus source. Both endpoint calendar years are partial. “Current” means 11 October 2025 through 10 October 2026.
 
-This studies publisher discussion, not consumer or whole-industry opinion. Existing pilot data is retained. Old report files may describe an earlier snapshot: check `output/runner_summary.json` and `output/analysis_state.json` before using them.
+This studies publisher discussion, not consumer or whole-industry opinion. Existing pilot data is retained. Always read the run status and snapshot identifiers below before using the outputs.
 
-The completed run was reviewed on 11 October 2026. See [the run review](docs/RUN_REVIEW_2026-10-11.md) for confirmed defects, fixes, and remaining research gaps. The follow-up run **recovered all 62 previously missed UN Tourism article links**, adding 61 eligible articles. The verified snapshot now contains **2,886 saved documents and 2,224 core articles**, with no pending candidates. No further crawl is needed for that recovery; the next work is manual validation and resolution of missing-source access and historical coverage. The normal command below remains the supported way to resume future work.
+## Project status — 12 October 2026
+
+The latest normal run (`20261012T065126Z-5aec3f63`) exited **0** with `available_scope_processed`: it resumed all saved work, found no new accessible article URLs, refreshed the full automated audit, and completed with zero audit errors. Analysis was unchanged and remains snapshot `20261012T025127Z-1439a726`. The run still records HTTP 403 access blocks for CTO and Travel Weekly. `output/runner_summary.json` is the operational run record; `output/analysis_state.json`, `output/run_summary.json`, and `output/audit/summary.json` identify the published analysis and audit snapshots.
+
+| Part of the objective | Status |
+|---|---|
+| Resumable, slow, logged collection and analysis pipeline | Implemented and run; accessible/discovered queues are exhausted. |
+| Nine requested publisher sources | **6 of 9** currently contribute core articles: UN Tourism 1,305; WTTC 659; PATA 1,731; AHLA 286; ETC 260; Hospitality Net 588. CTO and Travel Weekly remain blocked by HTTP 403; IH&RA yielded no in-window core articles. |
+| Ten-year English-language collection (10 Oct 2016–10 Oct 2026) | **Partial.** Source/year gaps remain; Hospitality Net's 588 core articles are all dated 23 Jul–9 Oct 2026. Available archive exhaustion does not establish ten-year completeness. |
+| Themes, annual/source focus, brands and sentiment | Generated and audited exploratorily for the collected corpus. Sentiment-model agreement is not sentiment accuracy; theme hits and brand co-occurrence are not validated stance or formal relationships. |
+| Automated content and structural audit | Complete for the saved corpus: 5,659 documents, 20,524 theme assignments, 6,006 entity rows, 3,941 brand associations, 20,524 sentiment rows and 15 NMF clusters reviewed; all audit and structural checks passed. |
+| Professor-facing final report | **Not prepared**; it was excluded from the requested work. |
+
+Overall, the automated workflow is complete for material it could access, but the research objective is **partially complete**, not a nine-source ten-year census. The corpus snapshot contains **5,659 saved documents, 5,105 eligible records, 4,829 core article occurrences, 257 supplementary reports and 1,124 current-window articles**. See the [detailed progress and source/year gaps](docs/HISTORICAL_EXPANSION.md), [automated audit guide](docs/AUTOMATED_VALIDATION.md), and generated [audit findings](output/audit/FINDINGS.md). Structural checks passed; historical completeness and ground-truth semantic accuracy remain unestablished.
+
+The 40 currently linked Hospitality Net news and opinion archive pages have been traversed. All 588 eligible core articles from Hospitality Net are dated **23 July–9 October 2026**; this expands current coverage but does not fill its 2016–2025 history. Coverage for every source/year, the 403 rechecks, codebook changes and audit limits are recorded in [the historical expansion log](docs/HISTORICAL_EXPANSION.md). This project snapshot is an audited exploratory dataset, not the professor-facing final report.
 
 ## Start here: Windows / PowerShell
 
@@ -22,8 +37,8 @@ If the terminal already shows that project folder, the only command needed is `p
 1. Let the terminal stay open. The first run prepares Python packages automatically; later runs reuse them.
 2. Watch for phase/progress messages. A heartbeat every 30 seconds means the process is still working even when a model or PDF takes time.
 3. At the end, the terminal prints the exit code, summary path, and **“Send back this file”** with the diagnostics ZIP path.
-4. Send `output/diagnostics/latest.zip` back to the assistant for review. If the run stops with errors, send the ZIP anyway.
-5. Open `output/PRELIMINARY_REPORT.md` for the research summary and `output/tables/` for CSVs, but check the completion indicators below first.
+4. Validation runs automatically; no annotation or manual approval is needed. If the run stops with errors, the ZIP contains the information needed to investigate.
+5. Open `output/audit/FINDINGS.md` for the audited interpretation, `output/PRELIMINARY_REPORT.md` for the original exploratory tables, and `output/audit/AUDIT_REPORT.md` for audit details. Check the completion indicators below before using results.
 
 **Run exactly the same command after an interruption or temporary failure.** Do not delete the database, cache, checkpoints, lock files, or `.venv` to restart. This reuses work already saved; it does not start the corpus over.
 
@@ -35,17 +50,32 @@ The launcher:
 
 1. Creates `.venv` and installs/checks dependencies inside it. Setup output is logged; an interrupted installation is retried on the next invocation.
 2. Acquires an operating-system lock, checks SQLite, and recovers interrupted items.
-3. Resumes sitemap discovery and the English UN Tourism archive walk. Successful discovery responses are cached; the archive page and sitemap frontier are checkpointed.
+3. Resumes sitemap discovery, the English UN Tourism archive walk, and the linked news/blog archives for Hospitality Net, WTTC, PATA and AHLA. Successful discovery responses are cached; each archive page and sitemap frontier is checkpointed.
 4. Collects permitted candidate articles and directly linked public PDFs. Each document commits separately. Successful URLs are skipped; incomplete downloads or cache mismatches are recovered.
-5. Re-extracts saved documents only when the extractor changes, using local raw files.
+5. Re-extracts saved documents only when the extractor changes, using local raw files, then applies logged, idempotent curation rules for confirmed content defects.
 6. Builds the preliminary analysis, tables and charts. It stages the entire analysis before publishing files; unchanged, verified output is reused.
-7. Writes a status summary and a shareable diagnostics ZIP, including when ordinary errors or Ctrl+C occur.
+7. Audits every saved record and every theme, entity, association, sentiment and NMF result; tests source-weighting sensitivity; runs structural checks. Per-record audit checkpoints support recovery.
+8. Writes a status summary and a shareable diagnostics ZIP, including when ordinary errors or Ctrl+C occur.
 
-Sources run sequentially with at least 1.1 seconds between requests, or a longer robots crawl delay. Request reads time out after 35 seconds. Body size is capped at 30 MB. Runtime depends on archive sizes, publisher responses and analysis time. Keep the terminal open; a heartbeat appears every 30 seconds during long phases.
+Sources run sequentially with at least 3 seconds between requests, or a longer robots crawl delay. Request reads time out after 35 seconds. Body size is capped at 30 MB. Runtime depends on archive sizes, publisher responses and analysis time. Keep the terminal open; a heartbeat appears every 30 seconds during long phases.
+
+## Collect specific sources
+
+For the remaining archive expansion, use this command and repeat **the same command** after an interruption:
+
+~~~powershell
+python run_research.py --sources hospitalitynet wttc pata ahla
+~~~
+
+The names after `--sources` set the collection order. Existing documents from every source remain in the analysis and automated audit. Omit `--sources` to process all nine configured sources. Do not run two collection commands at the same time.
+
+Archive traversal follows publisher pagination, stops on repeated pages or changed templates, and saves a cursor after each successful page. The 250-page limit is per source per invocation; rerunning continues beyond that limit. A completed archive checkpoint means the currently linked archive was exhausted, **not** that ten years of publication history were recovered. Hospitality Net currently exposes only 20 news pages and 20 opinion pages, ending in 2026. See [historical expansion and source investigation](docs/HISTORICAL_EXPANSION.md).
+
+Use `python run_research.py --status` while collection runs. Detailed `history_page_saved` events record the URL, candidate count, newly added URLs, next page and cumulative page count in `logs/runs/<run_id>/events.jsonl`.
 
 ## Stop and resume
 
-Press **Ctrl+C once** and allow the process to finish writing its summary. Then run `python run_research.py` again. Closing the terminal or a hard crash can prevent final diagnostics, but committed documents and checkpoints survive; the next invocation recovers unfinished work. Logs are flushed on every event. A second lock protects against an orphaned child process if only its launcher was killed.
+Press **Ctrl+C once** and allow the process to finish writing its summary. Then run the same command again (including any `--sources` option). Closing the terminal or a hard crash can prevent final diagnostics, but committed documents and checkpoints survive; the next invocation recovers unfinished work. Logs are flushed on every event. A second lock protects against an orphaned child process if only its launcher was killed.
 
 Alternatively, create `data/STOP`, or `data/STOP_untourism` for one source. Remove that marker yourself when ready to resume. The program does not silently remove intentional stop files.
 
@@ -59,12 +89,13 @@ An active second copy exits instead of collecting concurrently. Lock files may r
 | HTTP 429 or a transient response with `Retry-After` | Persist a source cooldown; never retry earlier than the server's deadline. Other sources can continue. |
 | Rerun before a retry deadline | Keep the item pending and report the UTC deadline. Do not contact it early. Run the same command again after the deadline. |
 | Five consecutive document failures | Pause that source for at least five minutes and continue with other sources. |
-| HTTP 401/403 | Persist an access hold for the source. No automatic bypass or repeated access probing. |
+| HTTP 401/403 | Persist an access hold for the source. Earlier saved blocks stay deferred on ordinary reruns. When permission is confirmed and you want one deliberate recheck, use `--retry-blocked SOURCE`; a renewed denial is held again with no bypass. |
 | HTTP 404/410 or another permanent URL failure | Record it for review; do not retry it endlessly. |
 | Extraction exception | Log the URL and full traceback. Retry automatically when the extractor code changes. |
 | Changed extraction rules | Reprocess local raw documents with per-document checkpoints. |
 | Corrupt/incomplete HTTP cache | Log the defect and fetch a fresh response when access permits. |
 | Interrupted analysis/publication | Preserve the previous completed report where possible; verify the publication manifest and rebuild on the next invocation. |
+| Interrupted content audit | Reuse completed record reviews whose data and audit-code fingerprints still match; rebuild aggregate audit outputs. |
 
 Retry limits apply per fetch/invocation. A later identical command can try transient failures again after their saved deadlines. The program does **not** sleep for hours waiting for a cooldown. Persistent access holds and parser bugs need review; send the diagnostics bundle so they can be investigated.
 
@@ -86,21 +117,21 @@ In `output/runner_summary.json`, check:
 - `analysis_current`: whether this normal/offline invocation successfully published or verified analysis for its input snapshot.
 - `progress.pending_urls`: the discovered article queue still waiting; this is not an estimate of undiscovered website content.
 - `held_sources`, `blocked_sources`, `cooldown_sources`, and `errors`: the remaining constraints or issues.
-- `study_complete`: deliberately `false`; full source coverage and independent human validation are not established by this software.
+- `study_complete`: deliberately `false`; complete historical coverage and ground-truth accuracy are not established by this software. This is separate from successful completion of the automated workflow.
 
 Only treat the output file set as a successful publication when `output/analysis_state.json` has `status: "complete"`. Its artifact hashes are verified on the next run. If an update fails, older report files can still exist; their snapshot date is in `output/run_summary.json`. A setup-only run deliberately reports `analysis_current: false` and leaves prior research outputs untouched.
 
 ### Check the finished results locally
 
-After the runner exits, use this optional audit command from the project folder:
+The complete automated audit runs after every normal or offline analysis. To rerun it on the published snapshot without crawling:
 
 ~~~powershell
-.\.venv\Scripts\python.exe -m research.validate
+python run_research.py --audit-only
 ~~~
 
-It reads the database and saved files without contacting websites. It checks raw-file readability, record hashes, eligibility constraints, report hashes/freshness, exported counts, theme percentages, brand association arithmetic, sentiment/NMF alignment, and saved UN archive links against the URL inventory. It writes `output/QUALITY_CHECKS.json`. Exit `0` means these structural checks passed; exit `1` means at least one failed. Coverage warnings remain separate from structural failures. Neither result certifies research accuracy or complete historical coverage. Run it again after each new collection; the audit identifies the analysis run it checked.
+It checks raw evidence, dates, extraction, all published semantic assignments, theme focus, brand context, sentiment disagreement, NMF source concentration and source-weighting sensitivity. It also runs the structural checks and writes `output/QUALITY_CHECKS.json`. `output/audit/audit_state.json` must say `complete`; `output/audit/summary.json` must say `process_complete: true` with no errors. `completed_with_limitations` is a completed automated review, with coverage and model limitations recorded explicitly. See [the audit guide](docs/AUTOMATED_VALIDATION.md) for every output and decision rule.
 
-To include the latest audit in the shareable diagnostic ZIP, run `python run_research.py --diagnostics` afterward. For substantive validation, copy `output/tables/human_review_template.csv` somewhere outside `output/` before filling it in: analysis regenerates that template. Review the linked original articles for date, text extraction, topic coding, and entity matches. Blank reviewer fields are not completed validation.
+For structural checks alone, use `.\.venv\Scripts\python.exe -m research.validate`. If the audit finds stale analysis, run `python run_research.py --offline` to apply extraction changes and rebuild analysis and audit from saved downloads. The legacy `human_review_template.csv` is optional and is not a pending step in this workflow. Audit-only runs automatically update the diagnostics ZIP; evidence CSVs containing article excerpts remain local.
 
 All log timestamps and retry deadlines use **UTC**. Vietnam time is UTC+7. **Exit 0 does not establish a complete nine-source study.**
 
@@ -131,12 +162,16 @@ python run_research.py --diagnostics
 python run_research.py --verbose
 python run_research.py --limit-per-source 25
 python run_research.py --offline
+python run_research.py --audit-only
 python run_research.py --setup-only
+python run_research.py --retry-blocked cto travelweekly
 ~~~
 
 `--status` reads local progress without setup or network requests. `--diagnostics` rebuilds the ZIP without network requests. `--verbose` prints detailed events that are always saved in JSONL anyway. `--limit-per-source 25` limits **article attempts**, not discovery pages. `--offline` skips website collection and updates analysis from local data; first-time environment setup can still require package downloads.
 
 `--setup-only` installs/checks the isolated environment and exits without collecting or changing the corpus. It is useful for checking Python and dependency installation before a long run. You do not need it before the normal command; normal runs perform the same setup automatically.
+
+`--retry-blocked cto travelweekly` explicitly rechecks only the named saved 401/403 holds. It clears those sources' old robots failure/checkpoints, then performs normal discovery at the configured minimum 3-second request interval. A new denial is persisted again. The option does not bypass robots.txt, authentication, or host restrictions; use it only when the source is authorized for the research.
 
 ## Troubleshooting
 
@@ -147,6 +182,7 @@ python run_research.py --setup-only
 | Heartbeats but no new article counts | Read the current phase: discovery, PDF extraction, deduplication, and models can take time. Detailed events remain in `events.jsonl`. |
 | `retry_wait` / `cooldown` | Wait until the saved `next_retry_at` / `until_at` UTC time, then rerun. The program does not contact the source early. |
 | HTTP 401/403, a held publisher, or `extraction_error` | Send the ZIP for review. Repeating the command does not override access restrictions or fix parser code. |
+| A source remains deferred after permission is confirmed | Make one deliberate slow recheck with `python run_research.py --retry-blocked cto travelweekly`. A renewed 403/robots denial is honored and saved again. |
 | Immediate stop on every run | Check for `data/STOP` or `data/STOP_<source>`. Remove only an intentional stop marker when you want to resume. |
 | Disk full, permission error, missing/corrupt database | Keep the files and logs. Free space or resolve the reported filesystem issue; send diagnostics if the database fails its integrity check. Do not delete the corpus to hide the error. |
 | The terminal was killed before a ZIP appeared | Run `python run_research.py --diagnostics`, or send the latest folder under `logs/runs/`. |
@@ -166,12 +202,15 @@ Tourism-and-Hospitality-Industry-Trends/
   docs/
     PROJECT_STRUCTURE.md      # Module map, execution flow, database states, extension guide
     VALIDATION.md             # Verification commands, results and remaining limitations
+    AUTOMATED_VALIDATION.md   # Automated audit commands, decision rules and evidence files
     RUN_REVIEW_2026-10-11.md   # Actual-run audit, corrected defects and follow-up work
+    CONTENT_QA_2026-10-12.md    # Historical spot-check and codebook corrections
   research/                   # Discovery, HTTP, extraction, analysis, storage and runtime code
   tests/                      # Offline fixtures, recovery tests, numerical model checks
   .venv/                      # Generated isolated Python environment
   data/
     corpus.sqlite             # Private corpus, durable queue, request history and checkpoints
+    content_audit_cache.sqlite # Resumable per-record audit decisions and evidence
     raw/                      # Compressed source documents used for extraction QA
     http_cache/               # Cached responses and retrieval metadata
   logs/
@@ -179,12 +218,13 @@ Tourism-and-Hospitality-Industry-Trends/
     runs/<run-id>/            # Console, JSONL events, environment and final summary
   output/
     PRELIMINARY_REPORT.md      # Last successfully published research report
-    QUALITY_CHECKS.json        # Optional local integrity/arithmetic/archive audit
+    QUALITY_CHECKS.json        # Automatically run integrity/arithmetic/archive checks
     runner_summary.json       # Latest operational status
     analysis_state.json       # Publication manifest and artifact hashes
     run_summary.json          # Counts/date for the published analysis snapshot
     tables/                   # CSV research outputs, without full article bodies
     figures/                  # PNG charts
+    audit/                    # Completed content audit, evidence, sensitivity and manifest
     diagnostics/latest.zip    # File to send back for debugging/review
     .staging/                 # Analysis work before publication
   tmp/                        # Generated local package/font caches
@@ -195,15 +235,15 @@ The detailed [project structure and maintenance guide](docs/PROJECT_STRUCTURE.md
 ## Access and source coverage
 
 - UN Tourism, WTTC and ETC are configured for local public research, with source conditions recorded in `research/config.py`. This does not establish a license to redistribute publisher text.
-- PATA, AHLA, Hospitality Net and Travel Weekly remain disabled because the inspected terms restrict automated collection. They require documented publisher authorization or an appropriately licensed export. Robots permission does not override terms.
-- CTO returned HTTP 403 on its robots request in the pilot audit; this denial is retained as an access hold.
-- The supplied IH&RA site needs verification because old association content is mixed with extensive hotel listings.
+- PATA, AHLA, Hospitality Net, Travel Weekly, CTO, and IH&RA are enabled for the user's requested research. The user reports that the professor obtained permission for academic crawling. The runner still honors robots.txt, HTTP denials, rate limits, and registered-host restrictions; a 401/403 remains a durable hold.
+- Keep the professor's approval and scope with the project notes, especially any conditions on retention, derived outputs, and sharing full article text.
+- IH&RA collection uses press-release, industry-news, and newsroom paths; confirm that resulting records are attributable to the intended association. CTO's prior 403 was rechecked once and remains held.
 - Download forms are not submitted. Form-only links are inventoried as `form_gated_report`; their downloads are not fetched through hidden form URLs.
 - Missing sources and years are reported as coverage gaps, not zero discussion.
 
 Full historical coverage is not certified by processing a sitemap. Removed pages, missing historical archives, uncrawlable pages and restricted full reports can remain absent. The UN archive is paginated to the date boundary; other source inventories currently use their sitemaps, seed archives and linked public PDFs.
 
-To add approved access, record the permission/retention evidence and implement or verify the source's extraction adapter. Do not just flip a configuration flag. Existing selectors are not validated for disabled sources. No messages have been sent to publishers or the supervisor.
+The six-source activation and one-time recheck are documented in `research/config.py` and run logs. The user reports that the professor obtained permission for academic crawling. No messages have been sent to publishers or the supervisor.
 
 ## Data and analysis outputs
 
@@ -215,18 +255,20 @@ To add approved access, record the permission/retention evidence and implement o
 - `output/tables/source_coverage.csv` and `coverage_by_source_year.csv`: source/year denominators.
 - `output/tables/current_theme_ranking.csv`: current candidate concepts, both article-weighted and equal-source shares.
 - `output/tables/themes_by_source_year.csv` and `themes_by_source.csv`: theme shares with denominators.
-- `output/tables/discovered_topics_nmf.csv`: independent TF-IDF/NMF clusters for human interpretation.
+- `output/tables/discovered_topics_nmf.csv`: TF-IDF/NMF clusters; automated descriptions and source concentration are in `output/audit/nmf_cluster_review.csv`.
 - `output/tables/entity_mentions.csv` and `brand_theme_associations.csv`: dictionary mentions and local-context associations.
 - `output/tables/sentiment_unvalidated.csv`: optional, unvalidated TextBlob baseline.
-- `output/tables/human_review_template.csv`: a sample awaiting human coding.
+- `output/tables/human_review_template.csv`: optional legacy annotation template; not required by the automated workflow.
+- `output/audit/FINDINGS.md`: automatically generated interpretation with current themes, website focus, fixed-source historical comparison, brands and limitations.
+- `output/audit/`: full-corpus evidence checks, theme focus, source-weighting scenarios, brand contexts and sentiment comparisons.
 - `output/figures/`: standalone charts; grey cells indicate no collected observations.
 - `output/nmf_model_metadata.json` and `deduplication_metadata.json`: model settings, execution/skip status, and duplicate-search limits.
 
 Primary analysis includes news, blogs and identified press-release PDFs, counting a story at most once per source/year. Report summaries and other report PDFs are separate. Cross-source occurrences remain available for website comparisons. Duplicate pair evidence is exported for review.
 
-The 14-concept rules provide transparent, exploratory mention counts. Their top ten are **candidate themes**, not a validated taxonomy. NMF supplies an independent discovery check, not automatic ground truth. Brand aliases are a non-exhaustive starter dictionary; co-occurrence does not establish ownership, a formal partnership, reputation or causality. Sentiment reflects publication wording and has no domain accuracy estimate.
+The 14-concept rules provide transparent, exploratory mention counts. Their top ten are **candidate themes**, not a calibrated taxonomy. NMF supplies a separate descriptive diagnostic. Brand aliases are a non-exhaustive starter dictionary; co-occurrence does not establish ownership, a formal partnership, reputation or causality. Sentiment reflects publication wording and has no domain accuracy estimate.
 
-Review extraction/date quality, label a held-out human sample, refine themes and verify brand associations before reporting final research findings. See [the original feasibility assessment](RA_FEASIBILITY_PLAN.md) for scope and source evidence.
+The automated audit completes extraction/date checks and contextual evidence review, identifies incidental theme mentions, and reports ranking sensitivity and model disagreement. Use these alongside the exploratory findings; do not present missing historical observations as zero discussion or model agreement as accuracy. See [the audit guide](docs/AUTOMATED_VALIDATION.md) and [original feasibility assessment](RA_FEASIBILITY_PLAN.md).
 
 ## Development checks
 
@@ -236,6 +278,6 @@ Review extraction/date quality, label a held-out human sample, refine themes and
 
 The tests use simulated HTTP responses and temporary databases. They cover retry deadlines, interrupted writes, cache repair, schema migration, access holds, source locks, diagnostics contents, a small complete pipeline and rerunning it without re-fetching/re-analyzing unchanged data. They do not certify that every publisher's templates remain unchanged or that all historical pages were found.
 
-The runner uses the separate project environment, whose resolved package versions are pinned in `requirements.txt`. It avoids the NumPy/SciPy mismatch in the original global development interpreter. The [validation record](docs/VALIDATION.md) records the environment and checks used for this handoff. Reproducible installation and passing fixtures do not establish source completeness or replace human research validation.
+The runner uses the separate project environment, whose resolved package versions are pinned in `requirements.txt`. It avoids the NumPy/SciPy mismatch in the original global development interpreter. The [validation record](docs/VALIDATION.md) records the environment and checks. Reproducible installation and passing fixtures establish tested behaviour; they do not establish historical completeness or semantic accuracy.
 
 Use the public launcher for real runs. Older individual module entry points exist for development and do not provide all launcher protections.

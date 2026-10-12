@@ -92,6 +92,8 @@ def make_bundle(run_dir=None, summary=None):
             for name,value in [('status.json',snapshot()),('failures.json',failures()),('environment.json',actual_environment),('summary.json',summary or {})]:
                 archive.writestr(name,json.dumps(value,indent=2,ensure_ascii=False,default=str))
             source_files = list((ROOT/'research').glob('*.py')) + list((ROOT/'docs').glob('*.md')) + [ROOT/'run_research.py',ROOT/'requirements.txt',ROOT/'requirements.in',ROOT/'README.md']
+            source_files += list((ROOT/'research/resources').glob('*'))
+            source_files += [ROOT/'docs/CODING_REVIEW_2026-10-12.csv']  # Metadata/dispositions only; no article excerpts.
             for path in source_files:
                 if path.is_file():
                     archive.write(path,'code/'+path.relative_to(ROOT).as_posix())
@@ -110,7 +112,8 @@ def make_bundle(run_dir=None, summary=None):
                         manifest['truncated_files'].append(str(path.relative_to(ROOT)))
                     else:
                         archive.write(path,'logs/'+logdir.name+'/'+name)
-            for name in ['runner_summary.json','analysis_state.json','run_summary.json','source_audit.json','QUALITY_CHECKS.json']:
+            for name in ['runner_summary.json','analysis_state.json','run_summary.json','source_audit.json','QUALITY_CHECKS.json',
+                         'audit/summary.json','audit/audit_state.json','audit/AUDIT_REPORT.md','audit/FINDINGS.md']:
                 path = OUTPUT/name
                 if path.is_file():
                     archive.write(path,'output/'+name)

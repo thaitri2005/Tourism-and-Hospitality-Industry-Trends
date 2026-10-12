@@ -4,6 +4,8 @@ The submitted run succeeded operationally. It is a useful exploratory corpus of 
 
 ## Follow-up recovery verified
 
+Historical snapshot: later collection expanded the corpus and the [automated audit](AUTOMATED_VALIDATION.md) now checks every saved record and published assignment. Use `output/audit/summary.json` and the current analysis snapshot for current counts; manual-review tasks below describe the earlier handoff.
+
 The user's subsequent run `20261011T072017Z-58997037` completed at **07:25 UTC / 14:25 Vietnam time** on 11 October. It replayed 117 cached archive pages, discovered all **62 missing article URLs**, and downloaded/extracted all 62 without errors. **61 were eligible**. The remaining item, “PUTTING PEOPLE FIRST: All UNWTO events planned until 30 April are suspended” (14 March 2020), is an 81-word English announcement excluded by the existing minimum-length rule. All 62 publication dates agreed with their saved archive hints.
 
 The verified totals are **2,886 saved documents, 2,494 eligible records, 2,224 core article occurrences, 257 supplementary report records, and 169 current-window articles**. No candidates remain pending. The 22 structural checks passed; the database/code fingerprint, all 32 published artifact hashes, and the diagnostics ZIP's embedded audit matched this run. The saved archive reconciliation has **zero missing article links** and one unresolved index-page link. Repeating the recovery crawl is no longer necessary.
@@ -77,3 +79,47 @@ Date review found one conflicting nonempty archive/date pair in the eligible sub
 4. For the one-week deadline, agree whether the deliverable can be a clearly labeled **three-source exploratory pilot** with a coverage appendix. Completing the broader brief also needs source access/export arrangements, the missing tenth-source decision, historical gap resolution, and human validation. Repeatedly running the crawler cannot resolve those decisions.
 
 Use `output/PRELIMINARY_REPORT.md` for the exploratory findings and `output/figures/coverage.png` to explain the missing source/year cells. Do not submit the corpus as a comprehensive industry census.
+
+## User-directed six-source follow-up
+
+The later instruction explicitly asked to attempt PATA, AHLA, Hospitality Net, Travel Weekly, CTO, and IH&RA. Those six registry entries are now enabled for public-page research; the crawler retains its robots, same-host, rate-limit, and HTTP-denial checks. CTO and any other previously blocked source get one fresh access recheck, then a renewed denial is saved as a durable hold. This does not clear publisher reuse terms: PATA and AHLA currently state that automated collection needs prior express consent. The attempt follows the user's project instruction; review retention and sharing conditions before distributing collected text. IH&RA discovery targets the official press-release, industry-news, and newsroom archives pending source/date review.
+
+The live follow-up `20261011T094342Z-e847eba6` refreshed discovery and collection, updated all extraction outputs, and published the analysis. Its structural audit passed all **22 checks**. The snapshot contains **3,730 documents, 3,263 eligible records, 2,992 core article occurrences, 257 report records, and 328 current-window articles**. Those are integrity-checked counts, not a complete industry census.
+
+| Source | Result in this snapshot |
+|---|---|
+| UN Tourism | 1,486 extracted; 1,318 eligible (existing corpus retained) |
+| WTTC | 780 extracted; 659 eligible (existing corpus retained) |
+| ETC | 620 extracted; 517 eligible (existing corpus retained) |
+| PATA | 482 extracted; 470 eligible; **1,351 candidates remain** in its 1,833-URL discovered inventory |
+| AHLA | 301 extracted; 290 eligible; 47 linked files were skipped because robots.txt disallows the file paths |
+| Hospitality Net | 15 extracted; 9 eligible from its sitemap/seed discovery |
+| IH&RA | 46 extracted; 0 eligible for the English 2016-10-10 to 2026-10-10 corpus after date/language/text filters; further archive review is needed |
+| CTO | No documents; its one fresh robots request returned HTTP 403, saved as a durable hold |
+| Travel Weekly | No documents; its one fresh robots request returned HTTP 403, saved as a durable hold |
+
+PATA's crawler was paused after a bounded collection segment to publish the updated interim analysis; the saved queue resumes with `python run_research.py`. The next run processes other sources first and PATA last because PATA has the large remaining queue. There are no pending AHLA candidates: its remaining 47 were robots-denied and marked terminal. Structural checks passed, but the report still flags only **six of nine registered sites with core articles**, 1,351 pending candidate URLs, incomplete historical coverage, and unvalidated coding/sentiment. The refreshed diagnostics archive is `output/diagnostics/latest.zip`.
+
+## Slow crawl completion after professor permission
+
+The user confirmed that the professor obtained permission for the requested academic crawl and asked that collection proceed slowly. The fetcher now enforces a minimum **3-second interval** between HTTP requests (or the longer applicable `robots.txt` delay). The source-specific robots, host allow-list, and HTTP-denial handling remain active. PATA PDF links that redirect to `static1.squarespace.com` remain rejected as off-host URLs; the redirect destinations are now explicitly logged. These per-URL external redirects and robots exclusions no longer count as repeated source failures, so one such link does not unnecessarily pause unrelated PATA article collection.
+
+Run `20261011T125721Z-9795158c` completed on 11 October 2026 with status `available_scope_processed` and exit code 0. It attempted the 350 queued PATA URLs: 317 became eligible records, 17 URL-level errors were recorded, and no discovered URLs remain pending. The refreshed analysis covers **5,077 saved documents, 4,559 eligible records, 4,284 core article occurrences, 257 supplementary report records, and 551 current-window articles**. Six of nine listed websites currently supply core articles. CTO and Travel Weekly remain held after HTTP 403; this run did not bypass those responses. IH&RA has 46 saved records, but none pass the current English, date and text eligibility filters. The run summary, source/year tables and URL inventory contain the detailed coverage.
+
+The local validator passed all **22 structural checks** with zero errors against analysis run `20261011T125721Z-9795158c`; its coverage warnings remain. The automated checks establish file/database consistency and arithmetic only. They do not independently certify extraction fidelity, historical completeness, topic coding, sentiment, or brand attribution. `output/diagnostics/latest.zip` was rebuilt after validation. Resume/check with `python run_research.py`; the configured slow request interval is used by that same command.
+
+## Explicit retry of previously blocked sites
+
+To address the user's report that an ordinary resume immediately reused old 403 holds, the launcher now supports `python run_research.py --retry-blocked cto travelweekly`. It resets only the named blocked sources' saved robots failure and discovery checkpoints, then performs a new normal access/discovery attempt. Regular reruns remain non-probing. A unit test verifies that only the selected hold and checkpoints are cleared; the full suite passes **51 tests**.
+
+Run `20261011T144358Z-9caf6adb` exercised the option. Both fresh requests to `/robots.txt` still returned HTTP 403 (CTO in about 1.1 seconds; Travel Weekly in about 8.5 seconds). The crawler honored both denials and restored their persistent holds without attempting article pages. Its exit code 2 / `partial_needs_followup` correctly indicates the two source coverage gaps; the rest of the available corpus and analysis checkpoint remained intact. The subsequent structural audit passed all 22 checks with zero errors, and the diagnostics ZIP was refreshed. A later recheck can be explicitly requested with the same flag if access conditions change, but the current 403 response cannot be fixed from the crawler side.
+
+## Content spot-check and final codebook refresh — 12 October 2026
+
+A 16-record purposive spot-check compared saved articles across available source/time groups with official pages where accessible. Eleven original-page URLs were opened: nine rendered and two UN Tourism pages returned 403 in the independent review browser; their local saved bodies remain available but were not independently live-verified in that check. The PATA 2017 page did not display its year in the live rendering. A nine-source-period review note with record IDs, links and case-level observations is in `docs/CONTENT_QA_2026-10-12.md`. This is an assistant QA pass, not a random sample, second-coder validation, or a corpus-wide accuracy estimate.
+
+Two concrete coding issues were corrected. A source/page titled only with “Secretary-General” or “chairman/chairperson” could trigger the partnership/governance category despite no story about governance or partnership. These two title-only patterns accounted for 671 historical tags, including 48 of the 551 current-window articles. They were removed; explicit words such as partnership, governance, general assembly and board of directors still count. The live WTTC biometrics article was strongly about technology but failed to trigger the AI/digital category, so `biometric(s)` was added. The updated codebook is version 0.4. These remain dictionary mentions, so incidental mentions and broad multi-tagging still require second-coder review.
+
+The rebuilt offline analysis run `20261011T170801Z-ab905095` published 5,077 documents, 4,559 eligible records, 4,284 core article occurrences, 257 supplementary report records, and 551 current-window articles. The current-window candidate governance/partnership count fell from 219 (39.8%) to 171 (31.0%); this is a codebook sensitivity result, not a validated prevalence estimate. The report now describes NMF as a diagnostic because several large clusters are publisher/entity or format-driven. Sentiment remains an unvalidated TextBlob baseline. The 52-test suite passed, and all 22 structural checks passed with zero errors; coverage warnings remain for only 6/9 sources supplying core articles and one unresolved archive card. `output/QUALITY_CHECKS.json` identifies the final analysis run.
+
+A genuinely complete validation still needs independent annotation: select a documented held-out sample, have a reviewer verify dates/text and assign primary topics/entity relevance without seeing the model's output, calculate agreement and resolve discrepancies, then revise the dictionary/model and sentiment approach as indicated. The current 146-row generated review template is intentionally blank; the documented assistant spot-check does not fill or replace it. Missing/blocked sources and unsupported historical archive years also remain coverage gaps.

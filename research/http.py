@@ -12,7 +12,7 @@ import urllib.error
 from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 from urllib.parse import urlparse, urlsplit, urlunsplit, quote
-from urllib.robotparser import RobotFileParser
+from .robots import PublisherRobots as RobotFileParser
 from .config import DATA, SOURCES, USER_AGENT
 from .store import now, set_source_state
 from .runtime import atomic_bytes, atomic_json, check_stop, event, exception, pause, StopRequested
@@ -20,6 +20,7 @@ from .runtime import atomic_bytes, atomic_json, check_stop, event, exception, pa
 MAX_ATTEMPTS = 3
 MAX_BYTES = 30_000_000
 TRANSIENT_CODES = {408, 425, 429, 500, 502, 503, 504}
+MIN_REQUEST_DELAY_SECONDS = 3.0
 
 def later(seconds):
     return (datetime.now(timezone.utc) + timedelta(seconds=seconds)).isoformat()
@@ -49,12 +50,17 @@ class CheckedRedirect(urllib.request.HTTPRedirectHandler):
     def __init__(self, fetcher):
         self.fetcher = fetcher
     def redirect_request(self, req, fp, code, msg, headers, newurl):
-        self.fetcher.allowed(newurl, obey=self.fetcher.obey)
+        try:
+            self.fetcher.allowed(newurl, obey=self.fetcher.obey)
+        except FetchError as exc:
+            event('http_redirect_rejected',level='WARNING',source=self.fetcher.source,
+                  url=req.full_url,target=newurl,status=code,reason=str(exc))
+            raise
         event('http_redirect', level='DEBUG', source=self.fetcher.source, url=req.full_url, target=newurl, status=code)
         return super().redirect_request(req, fp, code, msg, headers, newurl)
 
 class Fetcher:
-    def __init__(self, source, db, delay=1.1):
+    def __init__(self, source, db, delay=MIN_REQUEST_DELAY_SECONDS):
         self.source, self.db, self.delay = source, db, delay
         self.last, self.robot, self.robot_status, self.stopped = 0, None, None, False
         self.obey = True
@@ -103,11 +109,19 @@ class Fetcher:
             persisted=max(0,self.delay-elapsed)
         return max(0,self.delay-(time.monotonic()-self.last),persisted)
 
-    def fetch(self, url, purpose='article', obey=True):
+    def fetch(self, url, purpose='article', obey=True, json_payload=None):
         check_stop(DATA, self.source)
         self.available()
         self.allowed(url, obey)
         self.obey = obey
+        body = None
+        if json_payload is not None:
+            if self.source!='wttc' or urlsplit(url).path!='/component/search/index':
+                raise ValueError('JSON POST is restricted to the observed public WTTC search component')
+            body=json.dumps(json_payload,sort_keys=True,separators=(',',':')).encode('utf-8')
+            # Separate read-only search requests by body, both in cache and failure ledger.
+            # The fragment is local provenance and is never sent to the server.
+            url=url.split('#')[0]+'#post='+hashlib.sha256(body).hexdigest()
         previous = self.db.execute('SELECT * FROM fetch_failures WHERE source=? AND url=?',(self.source,url)).fetchone()
         if previous and (not previous['retryable'] or (previous['next_retry_at'] or '')>now()):
             event('fetch_deferred', level='DEBUG', source=self.source,url=url,reason=previous['category'],next_retry_at=previous['next_retry_at'])
@@ -134,7 +148,9 @@ class Fetcher:
         parts = urlsplit(url)
         request_url = urlunsplit((parts.scheme,parts.netloc,
             quote(parts.path,safe='/:%@-_.~!$&()*+,;='),quote(parts.query,safe='=&%/:?@-_.~!$()*+,;'),''))
-        req = urllib.request.Request(request_url,headers={'User-Agent':USER_AGENT})
+        headers={'User-Agent':USER_AGENT}
+        if body is not None:headers['Content-Type']='application/json'
+        req = urllib.request.Request(request_url,data=body,headers=headers)
         for attempt in range(1, MAX_ATTEMPTS+1):
             wait=self.request_delay()
             if wait>0:
@@ -161,6 +177,7 @@ class Fetcher:
                     meta = dict(url=url,final_url=response.geturl(),status=status,
                         content_type=response.headers.get('Content-Type',''),retrieved_at=now(),
                         sha256=hashlib.sha256(data).hexdigest(),bytes=size)
+                    if body is not None:meta['request_json']=json_payload
                 atomic_bytes(data_path,gzip.compress(data))
                 atomic_json(meta_path,meta)
                 self.db.execute('DELETE FROM fetch_failures WHERE source=? AND url=?',(self.source,url))

@@ -1,6 +1,8 @@
 # Project structure and maintenance guide
 
-For normal operation, use the [README](../README.md). The supported entry point is `python run_research.py`. Individual research modules are implementation/development entry points; they do not all include the launcher's locking, setup and diagnostic protections.
+For normal operation and the current project completion assessment, use the [README](../README.md). The supported entry point is `python run_research.py`. Individual research modules are implementation/development entry points; they do not all include the launcher's locking, setup and diagnostic protections. A successful run means discovered and accessible work was processed; it does not certify nine-source or ten-year coverage.
+
+The [automated audit guide](AUTOMATED_VALIDATION.md) describes the required full-corpus validation workflow. The [12 October content QA note](CONTENT_QA_2026-10-12.md) is an earlier limited spot-check, superseded by the full audit. No manual annotation is needed to complete the workflow.
 
 ## Execution flow
 
@@ -15,8 +17,12 @@ run_research.py
         robots/cooldown check -> resume article/PDF queue
           HTTP cache/network -> raw file -> extraction -> SQLite commit
       changed extractor? -> reprocess existing raw files, one commit per document
+      apply narrow idempotent curation rules -> log and commit actual corrections
       changed inputs/code/dependencies? -> analyze into output/.staging/<run-id>/
       validate artifacts -> publish files -> write complete publication manifest
+      audit every saved record and published assignment -> cache each completed review
+      source-weighting / focus / sentiment / cluster checks -> structural validation
+      publish audit evidence, summary and hashed audit manifest
     child writes operational summary and exits
   launcher packages diagnostic ZIP -> prints paths and exit code -> releases lock
 ```
@@ -32,18 +38,25 @@ Successful document commits survive later failures. Analysis is a separate snaps
 | [`research/run.py`](../research/run.py) | Coordinate phases, collect per-source outcomes, recover the corpus, fingerprint analysis inputs, stage/publish/verify artifacts, summarize completion. |
 | [`research/store.py`](../research/store.py) | SQLite schema, additive migrations, URL insertion, audit storage, checkpoints and source states. |
 | [`research/http.py`](../research/http.py) | Robots rules, same-host redirect checks, per-source spacing, bounded HTTP retries, Retry-After cooldowns, response cache/checksums and attempt history. |
+| [`research/robots.py`](../research/robots.py) | Publisher wildcard (`*`) and end-anchor (`$`) robots rules, longest-match selection and Allow precedence on equal matches. |
+| [`research/history.py`](../research/history.py) | Checkpointed public archive pagination for Hospitality Net, WTTC, PATA and AHLA; candidate provenance, page-cycle/template detection and per-invocation bounds. |
 | [`research/discover.py`](../research/discover.py) | Parse sitemaps and archive seed links. Persist the sitemap frontier after processing each sitemap. |
 | [`research/backfill.py`](../research/backfill.py) | Walk UN Tourism's English news archive until every dated item on a page precedes the start boundary; checkpoint each page. |
 | [`research/crawl.py`](../research/crawl.py) | Claim eligible queue items, recover interruptions, download/extract documents, save raw files, discover linked public PDFs and preserve form gates. |
 | [`research/extract.py`](../research/extract.py) | Source selectors, text cleanup, dates/evidence, language heuristics, HTML/PDF handling and eligibility flags. |
 | [`research/reextract.py`](../research/reextract.py) | Apply a changed extractor to saved raw documents without contacting publishers; commit progress per record. |
+| [`research/curate.py`](../research/curate.py) | Apply narrow, idempotent post-extraction QA corrections before analysis; preserve raw files and log each corrected record. |
 | [`research/codebook.py`](../research/codebook.py) | Exploratory concept patterns, brand aliases and organization names. |
 | [`research/analyze.py`](../research/analyze.py) | Corpus snapshot, duplicate handling, concept shares, brand associations, lexicon sentiment, NMF, review sample, CSVs, report and charts. |
 | [`research/runtime.py`](../research/runtime.py) | Atomic file writes, fingerprints, UTC logging, console capture, operating-system locks, heartbeats, stop checks and interruptible waits. |
 | [`research/diagnostics.py`](../research/diagnostics.py) | Read-only status snapshots, environment versions, failure listings and an allowlisted diagnostic ZIP. |
 | [`research/validate.py`](../research/validate.py) | Read-only audit of a finished corpus: raw/record/artifact integrity, analysis arithmetic, and reconciliation of saved UN archive cards. Writes `output/QUALITY_CHECKS.json`; does not crawl or certify research accuracy. |
+| [`research/content_audit.py`](../research/content_audit.py) | Automated raw/date/extraction and all-assignment evidence review, theme focus, source-weight sensitivity, VADER comparison, entity contexts and NMF descriptions; resumable per-record cache and audit publication. |
+| [`research/audit_findings.py`](../research/audit_findings.py) | Generate `output/audit/FINDINGS.md` from verified audit tables: current themes, website focus, fixed-source historical panel, brand contexts and interpretation limits; add its hash to the audit manifest. |
+| [`research/resources/`](../research/resources) | Hash-pinned VADER lexicon, MIT license and provenance; no runtime model download. |
 | [`research/inspect_samples.py`](../research/inspect_samples.py) | Developer aid for inspecting collected extraction examples. This can display local article text; it is not part of the shareable diagnostic bundle. |
 | [`tests/`](../tests) | Offline HTML fixtures, numerical model checks, retry/recovery/migration/cache/lock/log tests and a complete small fixture pipeline. |
+| [`docs/HISTORICAL_EXPANSION.md`](HISTORICAL_EXPANSION.md) | Archive route evidence, remaining source limitations, coding changes and execution results; operational notes, not the final research report. |
 
 ## Persistent data
 
@@ -90,10 +103,12 @@ HTML/PDF extraction also has a per-document fingerprint covering extractor/confi
 
 - `data/http_cache/<source>/`: URL-hashed compressed responses and JSON metadata. Successful article/discovery responses are reused for this fixed study; cached successful robots responses expire after 24 hours.
 - `data/raw/<source>/`: compressed documents keyed by document ID. Used for re-extraction and local quality review.
+- `data/content_audit_cache.sqlite`: each document's audit input fingerprint and completed evidence payload. Reused only when document, raw bytes, core membership, date hint and audit code/resource versions match.
 - `logs/runs/<run-id>/`: `console.log`, `events.jsonl`, environment details and final summary. Run IDs use UTC time plus a random suffix.
 - `output/.staging/<run-id>/`: candidate analysis artifacts before publication. Failures here leave the previously published report available.
 - `output/analysis_state.json`: written as `publishing` before replacement, then `complete` only after all candidate files are copied. An interrupted publication is rebuilt on the next run. Only files listed in the complete manifest belong to that snapshot; older unlisted files may remain in output folders.
 - `output/runner_summary.json`: latest operation, including setup-only/partial/interrupted states. Do not confuse this with `output/run_summary.json`, which belongs to the last published research analysis.
+- `output/audit/`: evidence CSVs, coverage and ranking sensitivity, audit report and summary. `audit_state.json` identifies the audited analysis and hashes every published audit artifact. `.staging/` holds candidate audit outputs. Text-bearing evidence CSVs stay out of the diagnostics ZIP.
 - `output/diagnostics/`: recent run bundles and `latest.zip`. Logs from the last three runs are included, with a 20 MB tail cap per large log. Local article bodies, SQLite and raw/cache directories are excluded.
 
 There is no automatic deletion of old data/logs/staging snapshots. Keep enough disk space, and archive old run folders manually after stopping the runner if needed. Preserve the current database and raw corpus when handing the project between machines.
@@ -106,14 +121,14 @@ There is no automatic deletion of old data/logs/staging snapshots. Keep enough d
 - Candidate concepts are multi-label rule matches. Annual/current shares retain their denominators; a document can discuss multiple concepts.
 - NMF runs only with enough documents and usable vocabulary. A skipped model is recorded explicitly in `nmf_model_metadata.json`; missing model output is not replaced with invented topics.
 - Sentiment is an unvalidated lexicon baseline. Brand-context co-occurrence is not a verified commercial relationship.
-- Human validation, codebook refinement, source coverage reconciliation and final research interpretation remain required.
+- Every normal/offline run completes automated validation after analysis. `--audit-only` rechecks an existing publication. Process completion, historical completeness and ground-truth accuracy are separate statuses; unavailable evidence and model uncertainty are explicitly retained.
 
 ## Making changes safely
 
 1. Change the relevant module and run `.\.venv\Scripts\python.exe -m pytest -q` from the project root in PowerShell. Tests use temporary databases and fake HTTP; no publisher requests are made.
 2. Re-run the normal public command. Changed extractor versions cause local re-extraction. Changed model/codebook inputs invalidate analysis checkpoints. Existing downloaded responses are reused.
-3. For source access changes, record the authorization and retention evidence and verify the parser first. Do not disable robots checks or just switch an unvalidated source to enabled.
-4. For an HTTP access hold, inspect the failure and current source conditions before changing `source_state`. The normal command deliberately cannot override it.
+3. Source scope follows the user's direction, but does not waive publisher terms. Preserve the recorded source notes, verify extraction on each newly enabled source, and retain robots/access checks.
+4. A renewed HTTP access hold stays in `source_state`. The six sources marked `retry_blocked_once` have one code-recorded recheck; do not clear later holds without a new explicit instruction and source review.
 5. `requirements.in` records direct dependency intent; `requirements.txt` pins the tested complete environment. For dependency changes, resolve the updated direct requirements in a separate temporary environment, test them, and replace the pins with the verified `pip freeze` output. Then run `python run_research.py --setup-only` and the tests in the project `.venv`. Record the resolved versions in the validation record. Do not modify global Python packages or regenerate pins from an unrelated environment.
 6. For a new time window, use a separate checkout/data directory. The current crawl queue, publication cache and date filters are designed around the fixed requested window; editing dates alone does not certify a fresh complete inventory.
 

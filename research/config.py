@@ -7,9 +7,9 @@ START = '2016-10-10'
 END = '2026-10-10'
 USER_AGENT = 'TourismResearchPilot/0.1 (academic research; public content only)'
 
-# A registry is deliberately separate from crawler code. Restricted sources are
-# audited, but their articles are not automatically downloaded without a recorded
-# publisher authorization. robots.txt is not a substitute for content-use terms.
+# Source scope is user-directed. Runtime access checks still honor robots.txt,
+# HTTP denials, rate limits, and host restrictions. User authorization to attempt
+# collection is separate from publisher reuse/redistribution rights.
 SOURCES = {
     'untourism': dict(name='UN Tourism', base='https://www.untourism.int',
         group='institution', access='public_research_review',
@@ -21,16 +21,18 @@ SOURCES = {
         note='Academic research provision; document-specific conditions still apply.',
         archives=['/news', '/blog', '/reports-insights'], paths=['/news/', '/blog/', '/reports/', '/reports-insights/']),
     'ihra': dict(name='IH&RA', base='https://ih-ra.com', group='association',
-        access='source_verification_required', terms='',
-        note='Supplied domain contains old institutional material mixed with extensive hotel listings. Source identity/current archive unresolved.',
-        archives=['/ihra-press-release/'], paths=[]),
+        access='public_research_review', terms='', retry_blocked_once=True,
+        note='User-directed public-page research attempt; target official press-release, industry-news, and newsroom archives. Site history is sparse/dated; confirm association attribution and study-window coverage.',
+        archives=['/ihra-press-release/', '/industry-news/members-press-release/',
+                  '/news/members-press-release', '/newsroom/'],
+        paths=['/ihra-press-release/', '/industry-news/', '/news/', '/newsroom/']),
     'pata': dict(name='PATA', base='https://www.pata.org', group='association',
-        access='publisher_authorization_required', terms='https://www.pata.org/terms-conditions',
-        note='Terms restrict automated monitoring/copying without express consent.',
+        access='public_research_review', terms='https://www.pata.org/terms-conditions', retry_blocked_once=True,
+        note='User-directed public-page research attempt. PATA terms state automated monitoring/copying requires prior express consent; review retention and reuse before sharing.',
         archives=['/press-releases', '/blog'], paths=['/press-release/', '/blog/', '/member-chapter-news-1/']),
     'ahla': dict(name='AHLA', base='https://www.ahla.com', group='association',
-        access='publisher_authorization_required', terms='https://www.ahla.com/ahlacom-terms-use',
-        note='Terms restrict scraping/monitoring/copying without express consent.',
+        access='public_research_review', terms='https://www.ahla.com/ahlacom-terms-use', retry_blocked_once=True,
+        note='User-directed public-page research attempt. AHLA terms state automated scraping/monitoring/copying requires prior express consent; review retention and reuse before sharing.',
         archives=['/news'], paths=['/news/']),
     'etc': dict(name='European Travel Commission', base='https://etc-corporate.org', group='association',
         access='public_research_review', terms='https://etc-corporate.org/privacy-policy/',
@@ -39,13 +41,14 @@ SOURCES = {
     'cto': dict(name='Caribbean Tourism Organization', base='https://www.onecaribbean.org', group='association',
         access='public_research_review', terms='',
         note='Public research collection; no blanket redistribution license established.',
-        archives=['/media/cto-news/', '/statistics/annual-reviews-prospects/'], paths=[]),
+        retry_blocked_once=True, archives=['/media/cto-news/', '/statistics/annual-reviews-prospects/'],
+        paths=['/media/cto-news/', '/statistics/annual-reviews-prospects/']),
     'hospitalitynet': dict(name='Hospitality Net', base='https://www.hospitalitynet.org', group='trade_media',
-        access='publisher_authorization_required', terms='https://www.hospitalitynet.org/terms-conditions',
-        note='Terms restrict bulk extraction; official RSS/API inquiry route: https://www.hospitalitynet.org/rss',
+        access='public_research_review', terms='https://www.hospitalitynet.org/terms-conditions', retry_blocked_once=True,
+        note='User-directed public-page research attempt. Official RSS feed used as a discovery route; review retention and reuse terms before sharing.',
         archives=['/rss'], paths=['/news/', '/opinion/']),
     'travelweekly': dict(name='Travel Weekly', base='https://www.travelweekly.com', group='trade_media',
-        access='publisher_authorization_required', terms='https://adhost1.ntmllc.com/twxads/T%26C.htm',
-        note='Terms restrict automated access and electronic retention without authorization.',
+        access='public_research_review', terms='https://adhost1.ntmllc.com/twxads/T%26C.htm', retry_blocked_once=True,
+        note='User-directed public-page research attempt; honor robots/access responses and review retention and reuse terms before sharing.',
         archives=['/Travel-News'], paths=['/Travel-News/', '/Articles/']),
 }

@@ -1,6 +1,6 @@
 {
-  "version": "0.2",
-  "status": "exploratory_unvalidated",
+  "version": "0.6",
+  "status": "automated_evidence_audit_separate_from_accuracy",
   "rules": {
     "Sustainability, climate and nature": [
       "sustainab\\w+",
@@ -11,7 +11,11 @@
       "nature.positive",
       "circular\\s+economy",
       "green\\s+transition",
-      "emissions?"
+      "emissions?",
+      "ecotourism",
+      "renewable\\s+energy",
+      "waste\\s+reduction",
+      "wildlife\\s+conservation"
     ],
     "AI and digital technology": [
       "artificial\\s+intelligence",
@@ -20,11 +24,16 @@
       "machine\\s+learning",
       "digital\\s+transformation",
       "digitali[sz]ation",
+      "biometrics?",
       "blockchain",
       "big\\s+data",
       "robotics?",
       "chatbots?",
-      "automation"
+      "automation",
+      "software",
+      "digital\\s+(?:tools?|identity)",
+      "(?:hotel|travel|hospitality)\\s+technolog\\w+",
+      "property\\s+management\\s+systems?"
     ],
     "Marketing, social media and branding": [
       "marketing",
@@ -44,7 +53,13 @@
       "employment",
       "jobs?",
       "talent",
-      "apprentice\\w+"
+      "apprentice\\w+",
+      "employees?",
+      "workers?",
+      "recruitment",
+      "staffing",
+      "wages?",
+      "labou?r\\s+(?:department|relations|law|market|regulation)"
     ],
     "Demand, performance and recovery": [
       "arrivals?",
@@ -55,7 +70,12 @@
       "occupancy",
       "\\brevpar\\b",
       "visitor\\s+spend\\w*",
-      "touris[mt]\\s+recovery"
+      "touris[mt]\\s+recovery",
+      "travel\\s+intentions?",
+      "travel\\s+sentiment",
+      "(?:tourism|hotel)\\s+demand",
+      "visitor\\s+growth",
+      "booking\\s+(?:momentum|growth|volumes?|trends?)"
     ],
     "Health, safety and crisis resilience": [
       "COVID",
@@ -68,7 +88,10 @@
       "resilien\\w+",
       "hurricane",
       "terroris\\w*",
-      "geopolitical"
+      "geopolitical",
+      "vaccinations?",
+      "safety\\s+protocols?",
+      "cleaning\\s+standards"
     ],
     "Policy, visas and travel facilitation": [
       "visa",
@@ -142,7 +165,11 @@
       "short.term\\s+rentals?",
       "franchis\\w+",
       "distribution\\s+channel",
-      "loyalty\\s+program\\w*"
+      "loyalty\\s+program\\w*",
+      "vacation\\s+rentals?",
+      "business\\s+models?",
+      "reservation\\s+systems?",
+      "distribution\\s+platforms?"
     ],
     "Partnerships, governance and institutions": [
       "partnership",
@@ -150,15 +177,23 @@
       "governance",
       "general\\s+assembly",
       "executive\\s+council",
-      "board\\s+of\\s+directors",
-      "chair(?:man|person|woman)",
-      "secretary.general"
+      "board\\s+of\\s+directors"
     ]
   },
   "brands": {
     "Marriott": "Marriott",
     "Hilton": "Hilton",
     "Hyatt": "Hyatt",
+    "Dusit": "Dusit",
+    "Hotelbeds": "Hotelbeds",
+    "Cendyn": "Cendyn",
+    "Cloudbeds": "Cloudbeds",
+    "Mews": "Mews",
+    "Agilysys": "Agilysys",
+    "Duetto": "Duetto",
+    "SiteMinder": "SiteMinder",
+    "Oracle Hospitality": "Oracle\\s+Hospitality",
+    "ForwardKeys": "ForwardKeys",
     "IHG": "IHG|InterContinental\\s+Hotels\\s+Group",
     "Accor": "Accor(?:Hotels)?",
     "Wyndham": "Wyndham",

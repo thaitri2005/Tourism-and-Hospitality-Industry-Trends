@@ -116,6 +116,10 @@ def run_source(source, limit=100000):
                         kind = exc.category
                         item_status = 'retry_wait' if exc.retryable else 'permanent_error'
                         retry_at = exc.next_retry_at
+                        # robots.txt exclusions are per-URL terminal decisions,
+                        # not repeated source failures that warrant a cooldown.
+                        if kind in ('robots_disallowed','external_redirect'):
+                            consecutive_errors=0
                     elif isinstance(exc,(OSError,)):
                         # Local disk/permission failures require attention; do not
                         # mislabel these as an article extraction problem.

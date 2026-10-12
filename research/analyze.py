@@ -115,6 +115,7 @@ def topic_model(core):
     if len(core)<20:return skipped('insufficient_documents')
     stop=set(ENGLISH_STOP_WORDS)|{'tourism','travel','industry','sector','wttc','unwto','said','council','world','commission','european','etc','mr','ms','www','http','https','org','com','download','press','release','new','also'}
     stop|={'pdf','related','links','pr','tel','fax','communications','back','previous','read','view'}
+    stop|={'pata','ahla','un','secretary-general','pololikashvili','zurab','written','intern','associate'}
     v=TfidfVectorizer(stop_words=sorted(stop),min_df=3,max_df=.8,max_features=24000,ngram_range=(1,2),sublinear_tf=True,token_pattern=r'(?u)\b[a-zA-Z][a-zA-Z-]+\b')
     try:
         x=v.fit_transform(core.body)
@@ -137,7 +138,7 @@ def topic_model(core):
     for i,row in enumerate(core.itertuples()):
         assignment.append(dict(doc_id=row.doc_id,cluster=int(weights[i].argmax())+1,weight=float(weights[i].max())))
     result=pd.DataFrame(rows);csv(result,'discovered_topics_nmf.csv');csv(pd.DataFrame(assignment),'nmf_assignments.csv')
-    (OUTPUT/'nmf_model_metadata.json').write_text(json.dumps(dict(method='TF-IDF + NMF',components=k,training_documents=len(positions),applied_documents=len(core),random_state=42,iterations=int(model.n_iter_),status='exploratory_unreviewed'),indent=2),'utf-8')
+    (OUTPUT/'nmf_model_metadata.json').write_text(json.dumps(dict(method='TF-IDF + NMF',components=k,training_documents=len(positions),applied_documents=len(core),random_state=42,iterations=int(model.n_iter_),stop_words=sorted(stop),status='exploratory_unreviewed'),indent=2),'utf-8')
     return result
 
 def main():
@@ -238,14 +239,14 @@ def main():
     for source in core.source.unique():
         matrix=annual[annual.source==source].pivot(index='theme',columns='year',values='share_pct').reindex(columns=range(2016,2027))
         heatmap(matrix,FIGURES/f'themes_over_time_{source}.png',SOURCES[source]['name']+' - exploratory theme mentions (%)',vmax=100)
-    # Reproducible sample for actual human validation; empty review fields do not
-    # count as completed validation.
+    # Optional annotation template retained for compatibility. The operational
+    # validation workflow is now the automated all-record content audit.
     validation=pd.concat([g.sample(min(3,len(g)),random_state=42) for _,g in core.groupby(['source','year'])],ignore_index=True)
     validation=validation[[c for c in ['doc_id','source','year','url','title','published_at','date_confidence','word_count'] if c in validation.columns]]
     for col in ['reviewer','date_correct','body_correct','topic_review','entity_review','notes']:validation[col]=''
     csv(validation,'human_review_template.csv')
-    (OUTPUT/'theme_codebook.json').write_text(json.dumps(dict(version='0.2',status='exploratory_unvalidated',rules=THEMES,brands=BRANDS,organizations=ORGANIZATIONS,entity_disambiguation=ENTITY_DISAMBIGUATION),indent=2,ensure_ascii=False),'utf-8')
-    snapshot=dict(created_at=now(),window_start=START,window_end=END,current_window_start='2025-10-11',extracted_documents=len(docs),eligible_documents=len(eligible),core_articles=len(core),unique_story_clusters=int(core.story_id.nunique()),report_records=len(supplements),current_articles=len(current),active_sources=sorted(core.source.unique()),complete_sources=0,unprocessed_candidates=int(urls.status.isin(['discovered','retry_wait','in_progress']).sum()),python=platform.python_version(),numpy=np.__version__,pandas=pd.__version__,validation_status='automated checks and limited extraction spot checks; independent human coding not completed')
+    (OUTPUT/'theme_codebook.json').write_text(json.dumps(dict(version='0.6',status='automated_evidence_audit_separate_from_accuracy',rules=THEMES,brands=BRANDS,organizations=ORGANIZATIONS,entity_disambiguation=ENTITY_DISAMBIGUATION),indent=2,ensure_ascii=False),'utf-8')
+    snapshot=dict(created_at=now(),window_start=START,window_end=END,current_window_start='2025-10-11',extracted_documents=len(docs),eligible_documents=len(eligible),core_articles=len(core),unique_story_clusters=int(core.story_id.nunique()),report_records=len(supplements),current_articles=len(current),active_sources=sorted(core.source.unique()),complete_sources=0,unprocessed_candidates=int(urls.status.isin(['discovered','retry_wait','in_progress']).sum()),python=platform.python_version(),numpy=np.__version__,pandas=pd.__version__,validation_status='analysis published; automated validation status is in audit/summary.json')
     (OUTPUT/'run_summary.json').write_text(json.dumps(snapshot,indent=2),'utf-8')
     coverage=pd.read_csv(TABLES/'source_coverage.csv')
     report=['# Tourism and hospitality discourse: preliminary collection and analysis',
@@ -261,10 +262,10 @@ def main():
       *['\n![Annual themes '+s+'](figures/themes_over_time_'+s+'.png)' for s in core.source.unique()],
       '\n## Brands and organizations\nDictionary-based name-family matches are exploratory and non-exhaustive. Corporate ownership and formal partnerships are not inferred. Brand-topic associations use a local 350-character context and need semantic review.\n',
       table_md(brand_ranking[brand_ranking.entity_type=='brand_name_family'],['entity','documents','sources'],15),
-      '\n## Independent topic discovery\nTF-IDF/NMF provides a separate discovery check. Terms below require human labeling; geographic clusters and communication formats can appear alongside substantive themes. Model status: '+topic_status+'. A skipped model has no inferred topic results.\n',
+      '\n## Exploratory text clusters\nTF-IDF/NMF is a diagnostic, not independent confirmation of the codebook themes. Publisher abbreviations and common byline tokens are removed. Automated descriptive labels, example links and source concentration for every cluster are published in `audit/nmf_cluster_review.csv`. Clusters can still reflect institutions, brands or report formats. Model status: '+topic_status+'. A skipped model has no inferred topic results.\n',
       table_md(topics,['cluster','documents_dominant','top_terms'],15),
       '\n## Sentiment\n`sentiment_unvalidated.csv` and its summary are an optional TextBlob lexicon baseline on theme-related contexts. They have not been validated on this domain and must not be reported as reliable industry attitudes. Mixed positive/negative contexts are retained. Publisher promotional tone and incomplete coverage remain major limitations.',
-      '\n## What remains\nPublisher authorization/export arrangements for PATA, AHLA, Hospitality Net, and Travel Weekly; verification of the IH&RA source; CTO access; full report access where downloads are gated; reconciliation of discovery coverage; broader manual extraction/date review; a held-out human-coded validation set; theme-codebook revision; and semantic review of brand associations.',
+      '\n## Automated validation and limitations\nThe runner automatically audits every saved document and all theme, entity, association and sentiment outputs after analysis. See [the automated audit](audit/AUDIT_REPORT.md) and its run-linked manifest. It checks raw-text/date evidence, topic focus, alternate lead-text probes, TextBlob/VADER disagreement, entity contexts, source weighting and all NMF clusters. This workflow does not depend on a human annotation step. Heuristic agreement is not calibrated accuracy, and two lexical sentiment models cannot establish industry attitudes. The nine-source/year coverage grid records absent observations explicitly. Archived/gated/missing pages can remain unobserved even with an empty queue. Full-text redistribution follows the professor-reported permission and its scope.',
       '\n## Reproducibility and retention\nSource URLs, dates, extraction flags, exclusions, duplicate pairs, codebook, and model settings are exported under `tables/`. Full text remains in the local SQLite database and permitted raw cache, outside the shareable report. No messages were sent and no download forms were submitted. Each publisher retains its content rights.']
     (OUTPUT/'PRELIMINARY_REPORT.md').write_text('\n'.join(report),'utf-8')
     print(json.dumps(snapshot,indent=2),flush=True)

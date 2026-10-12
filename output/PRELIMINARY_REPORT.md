@@ -1,10 +1,10 @@
 # Tourism and hospitality discourse: preliminary collection and analysis
 
-Snapshot: 2026-10-11T07:25:11.984861+00:00. Requested window: 2016-10-10 through 2026-10-10. English only.
+Snapshot: 2026-10-12T03:57:47.237370+00:00. Requested window: 2016-10-10 through 2026-10-10. English only.
 
 **This is an incomplete, exploratory corpus, not a completed nine-source industry study.** Counts below describe successfully collected eligible records. Unavailable sources are not zero-discussion sources.
 
-Collected 2,886 documents; 2,494 pass date/language/length checks. The primary analysis uses 2,224 news/blog article occurrences after within-source/year deduplication; 257 report summaries/PDF records are kept separately. Current-window articles: 169.
+Collected 5,659 documents; 5,105 pass date/language/length checks. The primary analysis uses 4,829 news/blog article occurrences after within-source/year deduplication; 257 report summaries/PDF records are kept separately. Current-window articles: 1,124.
 
 ## Source coverage
 
@@ -12,13 +12,13 @@ Collected 2,886 documents; 2,494 pass date/language/length checks. The primary a
 | --- | --- | --- | --- | --- | --- |
 | untourism | public_research_review | 1486 | 1305 | 0 | 0 |
 | wttc | public_research_review | 780 | 659 | 0 | 0 |
-| ihra | source_verification_required | 0 | 0 | 0 | 0 |
-| pata | publisher_authorization_required | 0 | 0 | 0 | 0 |
-| ahla | publisher_authorization_required | 0 | 0 | 0 | 0 |
+| ihra | public_research_review | 46 | 0 | 0 | 0 |
+| pata | public_research_review | 1830 | 1731 | 0 | 0 |
+| ahla | public_research_review | 301 | 286 | 0 | 0 |
 | etc | public_research_review | 620 | 260 | 257 | 0 |
 | cto | public_research_review | 0 | 0 | 0 | 0 |
-| hospitalitynet | publisher_authorization_required | 0 | 0 | 0 | 0 |
-| travelweekly | publisher_authorization_required | 0 | 0 | 0 | 0 |
+| hospitalitynet | public_research_review | 596 | 588 | 0 | 0 |
+| travelweekly | public_research_review | 0 | 0 | 0 | 0 |
 
 ![Coverage](figures/coverage.png)
 
@@ -27,16 +27,16 @@ These are ranked mentions of a predefined 14-concept codebook, not ten independe
 
 | theme | articles | article_share_pct | equal_source_share_pct | sources_mentioning |
 | --- | --- | --- | --- | --- |
-| Sustainability, climate and nature | 112 | 66.3 | 69.4 | 3 |
-| Health, safety and crisis resilience | 103 | 61.0 | 63.4 | 3 |
-| Transport and connectivity | 88 | 52.1 | 51.0 | 3 |
-| Culture, heritage and experiences | 73 | 43.2 | 50.6 | 3 |
-| Partnerships, governance and institutions | 88 | 52.1 | 49.6 | 3 |
-| Demand, performance and recovery | 87 | 51.5 | 44.3 | 3 |
-| Investment, infrastructure and development | 89 | 52.7 | 43.8 | 3 |
-| Inclusion, accessibility and communities | 65 | 38.5 | 42.1 | 3 |
-| Workforce, skills and education | 88 | 52.1 | 41.6 | 3 |
-| Policy, visas and travel facilitation | 51 | 30.2 | 30.6 | 3 |
+| Workforce, skills and education | 561 | 49.9 | 50.3 | 6 |
+| Sustainability, climate and nature | 376 | 33.4 | 47.7 | 6 |
+| Health, safety and crisis resilience | 299 | 26.6 | 43.5 | 6 |
+| Demand, performance and recovery | 399 | 35.5 | 42.2 | 6 |
+| Culture, heritage and experiences | 436 | 38.8 | 42.1 | 6 |
+| Transport and connectivity | 396 | 35.2 | 40.9 | 6 |
+| Investment, infrastructure and development | 423 | 37.6 | 37.3 | 6 |
+| Inclusion, accessibility and communities | 316 | 28.1 | 34.2 | 6 |
+| Partnerships, governance and institutions | 281 | 25.0 | 31.0 | 6 |
+| Policy, visas and travel facilitation | 166 | 14.8 | 23.0 | 6 |
 
 ## Themes by year and website
 The CSV `themes_by_source_year.csv` includes numerator, denominator, small-sample flags, and partial-year flags. Compare years within sources first. The available sources and archive depth differ. No industry-wide historical trend is claimed.
@@ -48,55 +48,61 @@ The CSV `themes_by_source_year.csv` includes numerator, denominator, small-sampl
 
 ![Annual themes etc](figures/themes_over_time_etc.png)
 
+![Annual themes pata](figures/themes_over_time_pata.png)
+
+![Annual themes ahla](figures/themes_over_time_ahla.png)
+
 ![Annual themes wttc](figures/themes_over_time_wttc.png)
+
+![Annual themes hospitalitynet](figures/themes_over_time_hospitalitynet.png)
 
 ## Brands and organizations
 Dictionary-based name-family matches are exploratory and non-exhaustive. Corporate ownership and formal partnerships are not inferred. Brand-topic associations use a local 350-character context and need semantic review.
 
 | entity | documents | sources |
 | --- | --- | --- |
-| Amadeus | 45 | 2 |
-| Hilton | 43 | 3 |
-| Expedia | 34 | 3 |
-| Trip.com | 34 | 3 |
-| Radisson | 31 | 2 |
-| TUI | 29 | 2 |
-| Intrepid | 26 | 2 |
-| Accor | 26 | 2 |
-| Abercrombie & Kent | 26 | 1 |
-| Iberostar | 26 | 2 |
-| Carnival | 25 | 1 |
-| Marriott | 23 | 2 |
-| IHG | 20 | 3 |
-| Airbnb | 20 | 3 |
-| Tripadvisor | 16 | 2 |
+| Hilton | 146 | 6 |
+| Marriott | 136 | 5 |
+| Sabre | 104 | 4 |
+| Expedia | 95 | 5 |
+| Hyatt | 86 | 5 |
+| IHG | 84 | 6 |
+| Dusit | 83 | 2 |
+| Accor | 83 | 5 |
+| Amadeus | 81 | 5 |
+| Tripadvisor | 79 | 4 |
+| Booking.com | 76 | 6 |
+| ForwardKeys | 76 | 4 |
+| Trip.com | 67 | 5 |
+| Intrepid | 53 | 4 |
+| Airbnb | 53 | 5 |
 
-## Independent topic discovery
-TF-IDF/NMF provides a separate discovery check. Terms below require human labeling; geographic clusters and communication formats can appear alongside substantive themes. Model status: exploratory_unreviewed. A skipped model has no inferred topic results.
+## Exploratory text clusters
+TF-IDF/NMF is a diagnostic, not independent confirmation of the codebook themes. Publisher abbreviations and common byline tokens are removed. Automated descriptive labels, example links and source concentration for every cluster are published in `audit/nmf_cluster_review.csv`. Clusters can still reflect institutions, brands or report formats. Model status: exploratory_unreviewed. A skipped model has no inferred topic results.
 
 | cluster | documents_dominant | top_terms |
 | --- | --- | --- |
-| 1 | 301 | development; sustainable; sustainable development; silk; silk road; road; rifai; international; international year; organization; taleb rifai; taleb |
-| 2 | 75 | visitor spending; spending; visitor; international visitor; domestic; reach; domestic visitor; research; impact research; expected; projected; jobs |
-| 3 | 93 | respondents; sentiment; europeans; travellers; trip; europe; long-haul; trips; planning; months; summer; survey |
-| 4 | 277 | uk; covid-; health; safe; jobs; protocols; measures; testing; travellers; guevara; gloria guevara; gloria |
-| 5 | 143 | arrivals; demand; europe; tourist arrivals; destinations; international tourist; growth; compared; tourist; performance; markets; recorded |
-| 6 | 46 | awards; sustainable cultural; cultural; heritage; ectn; europa nostra; nostra; winners; europa; cultural heritage; prize; cultural routes |
-| 7 | 148 | summit; global summit; global; leaders; ceo; future; president ceo; growth; president; event; influential; leadership |
-| 8 | 59 | contribution gdp; gdp; million jobs; contribution; million; jobs; billion; economy; nearly; reach; levels; employment |
-| 9 | 377 | sustainability; sustainable; action; climate; report; change; businesses; hospitality; global; support; hotels; climate action |
-| 10 | 458 | pololikashvili; secretary-general; education; innovation; investments; zurab; zurab pololikashvili; investment; development; secretary-general zurab; regional; africa |
-| 11 | 56 | scth; course; executive training; training course; training; themis foundation; themis; saudi; dr; executive; saudi arabia; arabia |
-| 12 | 15 | emissions; gas emissions; greenhouse gas; gas; greenhouse; intensity; global center; saudi-based sustainable; saudi-based; emissions intensity; sustainable global; footprint |
-| 13 | 99 | villages; rural; best villages; rural development; best; upgrade programme; upgrade; applications; rural destinations; gastronomy; network; programme |
-| 14 | 58 | eu; manifesto; manifesto alliance; alliance; europe; member states; certificate; restrictions; organisations; member; states; tourismmanifesto eu |
-| 15 | 19 | gdp contribution; forecasting; reach; jobs lost; visitor spend; lost pandemic; jobs year; peak; jobs; lost; set contribute; peak forecasts |
+| 1 | 389 | africa; development; innovation; rural; african; sustainable; investment; forum; women; opportunities; gastronomy; inclusive |
+| 2 | 93 | visitor spending; spending; visitor; international visitor; reach; jobs; domestic visitor; impact research; domestic; gdp; economy; economic impact |
+| 3 | 278 | lodging; hotel; american; hotel lodging; american hotel; lodging association; washington; association; president ceo; hotels; president; statement |
+| 4 | 148 | respondents; sentiment; europe; europeans; travellers; long-haul; trip; trips; survey; summer; planning; months |
+| 5 | 478 | covid-; health; uk; safe; measures; restrictions; eu; jobs; testing; recovery; travellers; protocols |
+| 6 | 1410 | thailand; asia; bangkok; marketing; pacific; events; event; experience; hospitality; destination; experiences; hotels |
+| 7 | 319 | arrivals; europe; tourist arrivals; demand; destinations; growth; international tourist; tourist; markets; compared; levels; recorded |
+| 8 | 47 | cultural; sustainable cultural; heritage; awards; ectn; cultural heritage; europa nostra; nostra; europe; europa; cultural routes; winners |
+| 9 | 221 | summit; global summit; global; leaders; ceo; president ceo; president; gloria; guevara; growth; future; gloria guevara |
+| 10 | 157 | sabre; sabre corporation; technology; airlines; distribution; solutions; corporation; airline; customers; retailing; ndc; marketplace |
+| 11 | 386 | sustainability; climate; sustainable; emissions; environmental; action; green; waste; energy; change; initiative; climate action |
+| 12 | 73 | gdp; contribution gdp; contribution; jobs; million jobs; million; economy; billion; year; reveals; employment; shows |
+| 13 | 516 | organization; sustainable development; development; sustainable; assembly; general assembly; international; rifai; meeting; nations; united nations; member |
+| 14 | 107 | saudi; saudi arabia; arabia; scth; executive training; training course; course; training; themis foundation; themis; middle east; middle |
+| 15 | 207 | shtm; school; researchers; university; hong kong; kong; hong; school hotel; polyu; hotel management; management; academic |
 
 ## Sentiment
 `sentiment_unvalidated.csv` and its summary are an optional TextBlob lexicon baseline on theme-related contexts. They have not been validated on this domain and must not be reported as reliable industry attitudes. Mixed positive/negative contexts are retained. Publisher promotional tone and incomplete coverage remain major limitations.
 
-## What remains
-Publisher authorization/export arrangements for PATA, AHLA, Hospitality Net, and Travel Weekly; verification of the IH&RA source; CTO access; full report access where downloads are gated; reconciliation of discovery coverage; broader manual extraction/date review; a held-out human-coded validation set; theme-codebook revision; and semantic review of brand associations.
+## Automated validation and limitations
+The runner automatically audits every saved document and all theme, entity, association and sentiment outputs after analysis. See [the automated audit](audit/AUDIT_REPORT.md) and its run-linked manifest. It checks raw-text/date evidence, topic focus, alternate lead-text probes, TextBlob/VADER disagreement, entity contexts, source weighting and all NMF clusters. This workflow does not depend on a human annotation step. Heuristic agreement is not calibrated accuracy, and two lexical sentiment models cannot establish industry attitudes. The nine-source/year coverage grid records absent observations explicitly. Archived/gated/missing pages can remain unobserved even with an empty queue. Full-text redistribution follows the professor-reported permission and its scope.
 
 ## Reproducibility and retention
 Source URLs, dates, extraction flags, exclusions, duplicate pairs, codebook, and model settings are exported under `tables/`. Full text remains in the local SQLite database and permitted raw cache, outside the shareable report. No messages were sent and no download forms were submitted. Each publisher retains its content rights.

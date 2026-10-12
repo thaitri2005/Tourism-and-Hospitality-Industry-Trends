@@ -14,7 +14,7 @@ import urllib.request
 import zipfile
 from datetime import datetime, timezone
 import pytest
-from research import store, http, crawl, runtime, discover, backfill, reextract, run, diagnostics
+from research import store, http, crawl, runtime, discover, backfill, reextract, run, diagnostics, curate, history
 
 BASE = 'https://wttc.org'
 URL = BASE+'/news/test-article'
@@ -53,7 +53,7 @@ class FakeNetwork:
 def workspace(tmp_path,monkeypatch):
     data,output = tmp_path/'data',tmp_path/'output'
     data.mkdir();output.mkdir()
-    for module in [store,http,crawl,discover,backfill,reextract,run,diagnostics]:
+    for module in [store,http,crawl,discover,backfill,reextract,run,diagnostics,curate,history]:
         if hasattr(module,'DATA'):
             monkeypatch.setattr(module,'DATA',data)
         if hasattr(module,'OUTPUT'):
@@ -144,6 +144,23 @@ def test_access_denial_is_persistent_and_not_an_endless_retry(workspace,monkeypa
     result = crawl.run_source('wttc')
     assert result['status']=='source_unavailable'
     assert len(network.calls)==count
+
+def test_explicit_blocked_recheck_clears_only_named_source_hold(workspace):
+    db=store.connect()
+    store.set_source_state(db,'wttc','blocked','HTTP 403: Forbidden')
+    store.checkpoint(db,'access_recheck:wttc','user_authorized_once_v1','complete',{})
+    store.checkpoint(db,'inventory:wttc','old-inventory','complete',{})
+    store.set_source_state(db,'etc','blocked','HTTP 403: Forbidden')
+    db.execute('INSERT INTO requests(source,url,status) VALUES (?,?,?)',('wttc',BASE+'/robots.txt',403))
+    db.commit();db.close()
+    run.authorize_blocked_rechecks(['wttc'])
+    db=store.connect()
+    assert db.execute("SELECT 1 FROM source_state WHERE source='wttc'").fetchone() is None
+    assert db.execute("SELECT 1 FROM checkpoints WHERE name='access_recheck:wttc'").fetchone() is None
+    assert db.execute("SELECT 1 FROM checkpoints WHERE name='inventory:wttc'").fetchone() is None
+    assert db.execute("SELECT state FROM source_state WHERE source='etc'").fetchone()['state']=='blocked'
+    assert db.execute("SELECT COUNT(*) FROM requests WHERE source='wttc'").fetchone()[0]==1
+    db.close()
 
 def test_dead_url_is_recorded_without_retrying(workspace):
     _,_,network = workspace
@@ -278,9 +295,14 @@ def test_diagnostics_excludes_corpus_raw_cache_and_body(workspace):
     db.execute('INSERT INTO documents(doc_id,source,url,body,eligible) VALUES(?,?,?,?,?)',('x','wttc',URL,secret,0))
     db.commit();db.close()
     (data/'raw').mkdir();(data/'raw'/'secret.txt').write_text(secret)
+    (output/'audit').mkdir()
+    (output/'audit/theme_evidence.csv').write_text(secret)
+    (output/'audit/entity_contexts.csv').write_text(secret)
+    (output/'audit/FINDINGS.md').write_text('Aggregated findings without article excerpts.')
     bundle = diagnostics.make_bundle()
     with zipfile.ZipFile(bundle) as archive:
         assert 'status.json' in archive.namelist()
+        assert 'output/audit/FINDINGS.md' in archive.namelist()
         assert all('corpus.sqlite' not in name and '/raw/' not in name for name in archive.namelist())
         assert all(secret.encode() not in archive.read(name) for name in archive.namelist())
 
@@ -297,6 +319,9 @@ def test_full_pipeline_second_run_avoids_network_and_analysis(workspace,monkeypa
         network.script[BASE+route] = [http_error(404)]
     for route in ['/news','/blog','/reports-insights']:
         network.script[BASE+route] = [b'<html><main>No further article links.</main></html>']
+    for i,route in enumerate(['/news','/blog'],1):
+        network.script[BASE+route] = [(f'<main><a href="{URL}-{i}">Story</a>'
+             '<input x-ref="searchParams" value=\'{"page":1}\'></main>').encode()]
     for i in range(1,4):
         network.script[URL+f'-{i}'] = [article(i)]
     args = argparse.Namespace(offline=False,limit_per_source=100000)
@@ -304,6 +329,8 @@ def test_full_pipeline_second_run_avoids_network_and_analysis(workspace,monkeypa
     assert first['exit_code']==0
     assert first['progress']['total_documents']==3
     assert first['analysis_current']
+    assert first['results']['audit']['counts']['documents_reviewed']==3
+    assert (output/'audit/FINDINGS.md').is_file()
     assert (output/'PRELIMINARY_REPORT.md').is_file()
     count = len(network.calls)
     from research import analyze
@@ -314,7 +341,29 @@ def test_full_pipeline_second_run_avoids_network_and_analysis(workspace,monkeypa
     second = run.execute(args)
     assert second['exit_code']==0
     assert second['results']['analysis']['status']=='checkpoint_reused'
+    assert second['results']['audit']['counts']['cached_records']==3
     assert len(network.calls)==count
+    # Interrupt a fresh audit after one committed record, then use the same
+    # audit-only operation to resume without any publisher requests.
+    from research import content_audit
+    cache=sqlite3.connect(output.parent/'data/content_audit_cache.sqlite')
+    cache.execute('DELETE FROM reviews');cache.commit();cache.close()
+    calls=[]
+    def stop_after_first(*args):
+        calls.append(1)
+        if len(calls)==2:raise runtime.StopRequested('injected audit interruption')
+    audit_args=argparse.Namespace(audit_only=True)
+    with monkeypatch.context() as patch:
+        patch.setattr(content_audit,'check_stop',stop_after_first)
+        with pytest.raises(runtime.StopRequested):run.execute(audit_args)
+    resumed=run.execute(audit_args)
+    assert resumed['exit_code']==0
+    assert resumed['results']['audit']['counts']['cached_records']==1
+    assert resumed['results']['audit']['process_complete']
+    assert len(network.calls)==count
+    manifest=json.loads((output/'audit/audit_state.json').read_text())
+    assert manifest['status']=='complete'
+    assert manifest['artifacts']['FINDINGS.md']==hashlib.sha256((output/'audit/FINDINGS.md').read_bytes()).hexdigest()
 
 def test_setup_retries_after_partial_install(tmp_path,monkeypatch):
     import run_research as launcher
@@ -486,3 +535,41 @@ def test_old_python_gets_a_clear_error_before_setup(monkeypatch,capsys):
     monkeypatch.setattr(sys,'version_info',(3,11,0))
     assert launcher.main()==1
     assert 'Python 3.12' in capsys.readouterr().err
+
+
+def test_history_page_limit_resumes_cursor_and_completed_walk_uses_no_network(workspace,monkeypatch):
+    _,_,network=workspace
+    monkeypatch.setattr(history,'ARCHIVES',{'wttc':['/news']})
+    network.script[BASE+'/news']=[(f'<main><a href="{URL}-1">First</a>'
+        '<input x-ref="searchParams" value=\'{"page":1}\'>'
+        '<button class="listing-pagination__button--next" x-on:click="changePage(2)">Next</button></main>').encode()]
+    network.script[BASE+'/component/search/index']=[(f'<main><a href="{URL}-2">Second</a>'
+        '<button class="circled-selection--active">2</button></main>').encode()]
+    first=history.run_source('wttc',max_pages=1)
+    assert first['status']=='page_limit'
+    assert first['pending']==[BASE+'/news?page=2']
+    second=history.run_source('wttc',max_pages=1)
+    assert second['status']=='complete' and second['new_urls']==2
+    before=list(network.calls)
+    assert history.run_source('wttc')['status']=='complete'
+    assert network.calls==before
+    db=store.connect()
+    assert db.execute("SELECT count(*) FROM urls").fetchone()[0]==2
+    assert db.execute("SELECT discovered_via FROM urls WHERE url=?",(URL+'-2',)).fetchone()[0]==BASE+'/news?page=2'
+    db.close()
+
+
+def test_readonly_search_post_caches_distinct_pages_separately(workspace):
+    _,_,network=workspace
+    url=BASE+'/component/search/index'
+    network.script[url]=[b'page two',b'page three']
+    db=store.connect();f=http.Fetcher('wttc',db)
+    assert f.fetch(url,json_payload={'page':2})[0]==b'page two'
+    assert f.fetch(url,json_payload={'page':3})[0]==b'page three'
+    assert f.fetch(url,json_payload={'page':2})[0]==b'page two'
+    assert network.calls==[url,url]
+    requests=db.execute('SELECT url,cache_hit FROM requests ORDER BY id').fetchall()
+    assert requests[0]['url']!=requests[1]['url']
+    assert requests[0]['url']==requests[2]['url'] and requests[2]['cache_hit']==1
+    with pytest.raises(ValueError):f.fetch(BASE+'/admin',json_payload={'page':2})
+    db.close()

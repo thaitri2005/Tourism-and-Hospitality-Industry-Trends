@@ -3,7 +3,7 @@ import re
 
 THEMES={
  'Sustainability, climate and nature': [r'sustainab\w+',r'climate\s+(?:change|action|crisis)',r'carbon',r'net.zero',r'biodiversity',r'nature.positive',r'circular\s+economy',r'green\s+transition',r'emissions?'],
- 'AI and digital technology': [r'artificial\s+intelligence',r'generative\s+AI',r'\bAI\b',r'machine\s+learning',r'digital\s+transformation',r'digitali[sz]ation',r'blockchain',r'big\s+data',r'robotics?',r'chatbots?',r'automation'],
+ 'AI and digital technology': [r'artificial\s+intelligence',r'generative\s+AI',r'\bAI\b',r'machine\s+learning',r'digital\s+transformation',r'digitali[sz]ation',r'biometrics?',r'blockchain',r'big\s+data',r'robotics?',r'chatbots?',r'automation'],
  'Marketing, social media and branding': [r'marketing',r'social\s+media',r'influencers?',r'brand(?:ing|\s+awareness)',r'advertising',r'promotional\s+campaign',r'digital\s+campaign'],
  'Workforce, skills and education': [r'workforce',r'skills?',r'education',r'training',r'labou?r\s+shortage',r'employment',r'jobs?',r'talent',r'apprentice\w+'],
  'Demand, performance and recovery': [r'arrivals?',r'visitor\s+numbers?',r'GDP',r'economic\s+(?:impact|contribution|growth)',r'travel\s+demand',r'occupancy',r'\brevpar\b',r'visitor\s+spend\w*',r'touris[mt]\s+recovery'],
@@ -15,14 +15,30 @@ THEMES={
  'Culture, heritage and experiences': [r'cultur\w+',r'heritage',r'gastronom\w+',r'culinary',r'experiential',r'authentic\w+',r'rural\s+tourism',r'adventure\s+tourism',r'wellness\s+tourism'],
  'Transport and connectivity': [r'airlines?',r'aviation',r'airports?',r'connectivity',r'air\s+transport',r'rail(?:way)?',r'cruise',r'flight\w*',r'transportation'],
  'Distribution, booking and business models': [r'online\s+travel\s+agen\w+',r'\bOTAs?\b',r'booking\s+platform',r'direct\s+booking',r'sharing\s+economy',r'short.term\s+rentals?',r'franchis\w+',r'distribution\s+channel',r'loyalty\s+program\w*'],
- 'Partnerships, governance and institutions': [r'partnership',r'memorandum\s+of\s+understanding',r'governance',r'general\s+assembly',r'executive\s+council',r'board\s+of\s+directors',r'chair(?:man|person|woman)',r'secretary.general'],
+ # Office titles alone (e.g. Secretary-General, chairman) describe people,
+ # not necessarily a story about partnerships or governance. Avoid those
+ # high-frequency boilerplate triggers; keep explicit institutional terms.
+ 'Partnerships, governance and institutions': [r'partnership',r'memorandum\s+of\s+understanding',r'governance',r'general\s+assembly',r'executive\s+council',r'board\s+of\s+directors'],
 }
+
+# Additions from omission probes; ambiguous bare booking, security, conservation
+# and technology are not automatically accepted (docs/HISTORICAL_EXPANSION.md).
+THEMES['Sustainability, climate and nature'] += [r'ecotourism', r'renewable\s+energy', r'waste\s+reduction', r'wildlife\s+conservation']
+THEMES['AI and digital technology'] += [r'software', r'digital\s+(?:tools?|identity)', r'(?:hotel|travel|hospitality)\s+technolog\w+', r'property\s+management\s+systems?']
+THEMES['Workforce, skills and education'] += [r'employees?', r'workers?', r'recruitment', r'staffing', r'wages?', r'labou?r\s+(?:department|relations|law|market|regulation)']
+THEMES['Demand, performance and recovery'] += [r'travel\s+intentions?', r'travel\s+sentiment', r'(?:tourism|hotel)\s+demand', r'visitor\s+growth', r'booking\s+(?:momentum|growth|volumes?|trends?)']
+THEMES['Distribution, booking and business models'] += [r'vacation\s+rentals?', r'business\s+models?', r'reservation\s+systems?', r'distribution\s+platforms?']
+THEMES['Health, safety and crisis resilience'] += [r'vaccinations?', r'safety\s+protocols?', r'cleaning\s+standards']
 
 # No present-day corporate ownership mapping is applied retrospectively.
 # Name families remain unresolved where a bare mention cannot distinguish a
 # parent company, consumer brand, or individual property.
 BRANDS={
  'Marriott':r'Marriott', 'Hilton':r'Hilton', 'Hyatt':r'Hyatt',
+ 'Dusit':r'Dusit', 'Hotelbeds':r'Hotelbeds',
+ 'Cendyn':r'Cendyn', 'Cloudbeds':r'Cloudbeds', 'Mews':r'Mews',
+ 'Agilysys':r'Agilysys', 'Duetto':r'Duetto', 'SiteMinder':r'SiteMinder',
+ 'Oracle Hospitality':r'Oracle\s+Hospitality', 'ForwardKeys':r'ForwardKeys',
  'IHG':r'IHG|InterContinental\s+Hotels\s+Group', 'Accor':r'Accor(?:Hotels)?',
  'Wyndham':r'Wyndham', 'Choice Hotels':r'Choice\s+Hotels', 'Best Western':r'Best\s+Western',
  'Radisson':r'Radisson', 'Four Seasons':r'Four\s+Seasons', 'Shangri-La':r'Shangri.La',
@@ -66,7 +82,7 @@ ORGANIZATIONS={
 def compile_rule(pattern):
     # Uppercase abbreviations use case-sensitive matching to prevent false
     # matches such as Spanish "AI" fragments or ordinary "kayak" activities.
-    sensitive=pattern in [r'\bAI\b',r'\bOTAs?\b',r'RIU',r'KAYAK',r'TUI',r'Intrepid',r'Four\s+Seasons']
+    sensitive=pattern in [r'\bAI\b',r'\bOTAs?\b',r'RIU',r'KAYAK',r'TUI',r'Intrepid',r'Four\s+Seasons',r'Mews']
     return re.compile(r'(?<!\w)(?:'+pattern+r')(?!\w)',0 if sensitive else re.I)
 
 COMPILED_THEMES={k:[compile_rule(p) for p in ps] for k,ps in THEMES.items()}

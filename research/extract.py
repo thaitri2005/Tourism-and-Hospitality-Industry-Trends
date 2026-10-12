@@ -54,6 +54,8 @@ def make_record(source,url,title,body,published,modified,evidence,confidence,lan
     if wc<minimum:reasons.append('insufficient_text')
     if not title:reasons.append('missing_title')
     if 'unexpected_html_for_pdf' in flags:reasons.append('unexpected_html_for_pdf')
+    if re.fullmatch(r'(?:mobile texting:\s*)?terms(?:\s+(?:and|&)\s+conditions|\s+of\s+use)|privacy policy|resources|contact(?: us)?',title.strip(),re.I):
+        flags.append('non_article_page');reasons.append('non_article_page')
     norm=re.sub(r'\W+',' ',body.lower()).strip()
     digest=hashlib.sha256(norm.encode()).hexdigest()
     return dict(doc_id=hashlib.sha256(url.encode()).hexdigest()[:20],source=source,url=url,canonical_url=url,
@@ -91,7 +93,12 @@ def extract_html(source,url,data,meta,hints=None):
         'wttc':['.details-block__lead-paragraph','.details-block','article','main'],
         'etc':['.page-res .p18.text-justify','.p18.text-justify','section.regular.page-res','section.regular'],
         'untourism':['.field--name-body','.field-name-body','article','main'],
-        'cto':['.entry-content','article','main']}
+        'cto':['.entry-content','.wp-block-post-content','article','main'],
+        'ihra':['.entry-content','.post-content','article','main'],
+        'pata':['.blog-item-content.e-content','.entry-content','.post-content','article','main'],
+        'ahla':['.field--name-body','.node__content','article','main'],
+        'hospitalitynet':['.hn-article__content','.article-content','.article__content','article','main'],
+        'travelweekly':['.article-body','.article__body','.article-content','article','main']}
     root=None;selector=''
     for sel in selectors.get(source,['article','main']):
         nodes=soup.select(sel)
@@ -115,6 +122,8 @@ def extract_html(source,url,data,meta,hints=None):
     body=re.split(r'\n(?:About WTTC\s*:?|About the World Travel & Tourism Council\s*:?|Media [Cc]ontact(?:s)?\s*:?|Press [Cc]ontact(?:s)?\s*:?|Notes to [Ee]ditors\s*:?)\s*\n',body)[0]
     body=re.split(r'\n(?:For media enquiries|For more information about WTTC|Contacts?\s*:|UNWTO Communications(?:\s|&)|Tel\s*:\s*\(\+34\)|Follow us on\s*\n)',body,flags=re.I)[0]
     if source=='untourism':body=re.split(r'\n(?:Related|Useful) [Ll]inks\s*:?\s*\n',body)[0]
+    if source in ('pata','ahla','hospitalitynet'):
+        body=re.split(r'\n(?:About PATA|About (?:the )?Pacific Asia Travel Association|About AHLA|About (?:the )?American Hotel\s*(?:&|and)\s*Lodging Association)\s*:?\s*\n',body,flags=re.I)[0]
     if not published:
         visible=root.get_text(' ',strip=True)
         date_match=DATE_RE.search(visible[:6000])

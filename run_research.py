@@ -78,8 +78,19 @@ def main():
     parser.add_argument('--verbose',action='store_true',help='Also print per-request details; JSONL always includes them')
     parser.add_argument('--limit-per-source',type=int,default=100000,help='Bound article attempts per source for this invocation')
     parser.add_argument('--offline',action='store_true',help='Re-extract/analyze existing local data only; setup may still install dependencies')
+    parser.add_argument('--retry-blocked',nargs='+',default=[],metavar='SOURCE',
+                        help='Explicitly recheck named blocked sources once; access denials stay enforced')
     parser.add_argument('--setup-only',action='store_true',help='Prepare and validate .venv, then stop without crawling or changing the corpus')
+    parser.add_argument('--audit-only',action='store_true',help='Run the complete automated audit of the current analysis without crawling')
+    from research.config import SOURCES
+    parser.add_argument('--sources',nargs='+',choices=list(SOURCES),help='Collect only these sources; analysis and audit still cover the entire corpus')
     args = parser.parse_args()
+    if args.sources and (args.offline or args.audit_only or args.setup_only or args.status or args.diagnostics):
+        parser.error('--sources requires a collection run')
+    if args.retry_blocked and (args.offline or args.audit_only or args.setup_only or args.status or args.diagnostics):
+        parser.error('--retry-blocked requires a normal collection run')
+    if args.audit_only and (args.offline or args.setup_only or args.status or args.diagnostics):
+        parser.error('--audit-only cannot be combined with another operation')
     if args.status:
         print_status()
         return 0
@@ -121,10 +132,16 @@ def main():
                         operation='setup_only',analysis_current=False,study_complete=False))
                 else:
                     command = [str(python),'-u','-m','research.run','--limit-per-source',str(args.limit_per_source)]
+                    if args.sources:
+                        command.extend(['--sources',*args.sources])
                     if args.verbose:
                         command.append('--verbose')
                     if args.offline:
                         command.append('--offline')
+                    if args.audit_only:
+                        command.append('--audit-only')
+                    if args.retry_blocked:
+                        command.extend(['--retry-blocked',*args.retry_blocked])
                     # Parent captures output from process start, including import
                     # errors before the child has initialized its structured logger.
                     code = logged_command(command,operation='pipeline')

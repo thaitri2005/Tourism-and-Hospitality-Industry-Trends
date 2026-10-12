@@ -1,0 +1,687 @@
+﻿source,year,theme,focus_articles,denominator,focus_share_pct,partial_year
+ahla,2018,"Demand, performance and recovery",0,2,0.0,False
+ahla,2018,"Health, safety and crisis resilience",0,2,0.0,False
+ahla,2018,"Culture, heritage and experiences",0,2,0.0,False
+ahla,2018,"Sustainability, climate and nature",0,2,0.0,False
+ahla,2018,"Workforce, skills and education",1,2,50.0,False
+ahla,2018,Destination management and overtourism,0,2,0.0,False
+ahla,2018,"Inclusion, accessibility and communities",0,2,0.0,False
+ahla,2018,"Distribution, booking and business models",0,2,0.0,False
+ahla,2018,"Partnerships, governance and institutions",0,2,0.0,False
+ahla,2018,"Marketing, social media and branding",0,2,0.0,False
+ahla,2018,"Policy, visas and travel facilitation",0,2,0.0,False
+ahla,2018,Transport and connectivity,0,2,0.0,False
+ahla,2018,"Investment, infrastructure and development",0,2,0.0,False
+ahla,2018,AI and digital technology,0,2,0.0,False
+ahla,2019,"Demand, performance and recovery",0,2,0.0,False
+ahla,2019,"Health, safety and crisis resilience",0,2,0.0,False
+ahla,2019,"Culture, heritage and experiences",0,2,0.0,False
+ahla,2019,"Sustainability, climate and nature",0,2,0.0,False
+ahla,2019,"Workforce, skills and education",1,2,50.0,False
+ahla,2019,Destination management and overtourism,0,2,0.0,False
+ahla,2019,"Inclusion, accessibility and communities",1,2,50.0,False
+ahla,2019,"Distribution, booking and business models",0,2,0.0,False
+ahla,2019,"Partnerships, governance and institutions",0,2,0.0,False
+ahla,2019,"Marketing, social media and branding",0,2,0.0,False
+ahla,2019,"Policy, visas and travel facilitation",0,2,0.0,False
+ahla,2019,Transport and connectivity,0,2,0.0,False
+ahla,2019,"Investment, infrastructure and development",0,2,0.0,False
+ahla,2019,AI and digital technology,0,2,0.0,False
+ahla,2020,"Demand, performance and recovery",0,6,0.0,False
+ahla,2020,"Health, safety and crisis resilience",4,6,66.66666666666667,False
+ahla,2020,"Culture, heritage and experiences",0,6,0.0,False
+ahla,2020,"Sustainability, climate and nature",0,6,0.0,False
+ahla,2020,"Workforce, skills and education",5,6,83.33333333333333,False
+ahla,2020,Destination management and overtourism,0,6,0.0,False
+ahla,2020,"Inclusion, accessibility and communities",0,6,0.0,False
+ahla,2020,"Distribution, booking and business models",0,6,0.0,False
+ahla,2020,"Partnerships, governance and institutions",1,6,16.666666666666668,False
+ahla,2020,"Marketing, social media and branding",0,6,0.0,False
+ahla,2020,"Policy, visas and travel facilitation",0,6,0.0,False
+ahla,2020,Transport and connectivity,0,6,0.0,False
+ahla,2020,"Investment, infrastructure and development",1,6,16.666666666666668,False
+ahla,2020,AI and digital technology,0,6,0.0,False
+ahla,2021,"Demand, performance and recovery",0,7,0.0,False
+ahla,2021,"Health, safety and crisis resilience",2,7,28.571428571428573,False
+ahla,2021,"Culture, heritage and experiences",0,7,0.0,False
+ahla,2021,"Sustainability, climate and nature",0,7,0.0,False
+ahla,2021,"Workforce, skills and education",1,7,14.285714285714286,False
+ahla,2021,Destination management and overtourism,0,7,0.0,False
+ahla,2021,"Inclusion, accessibility and communities",0,7,0.0,False
+ahla,2021,"Distribution, booking and business models",1,7,14.285714285714286,False
+ahla,2021,"Partnerships, governance and institutions",1,7,14.285714285714286,False
+ahla,2021,"Marketing, social media and branding",0,7,0.0,False
+ahla,2021,"Policy, visas and travel facilitation",0,7,0.0,False
+ahla,2021,Transport and connectivity,0,7,0.0,False
+ahla,2021,"Investment, infrastructure and development",0,7,0.0,False
+ahla,2021,AI and digital technology,0,7,0.0,False
+ahla,2022,"Demand, performance and recovery",0,10,0.0,False
+ahla,2022,"Health, safety and crisis resilience",1,10,10.0,False
+ahla,2022,"Culture, heritage and experiences",0,10,0.0,False
+ahla,2022,"Sustainability, climate and nature",2,10,20.0,False
+ahla,2022,"Workforce, skills and education",7,10,70.0,False
+ahla,2022,Destination management and overtourism,0,10,0.0,False
+ahla,2022,"Inclusion, accessibility and communities",1,10,10.0,False
+ahla,2022,"Distribution, booking and business models",0,10,0.0,False
+ahla,2022,"Partnerships, governance and institutions",3,10,30.0,False
+ahla,2022,"Marketing, social media and branding",0,10,0.0,False
+ahla,2022,"Policy, visas and travel facilitation",0,10,0.0,False
+ahla,2022,Transport and connectivity,0,10,0.0,False
+ahla,2022,"Investment, infrastructure and development",0,10,0.0,False
+ahla,2022,AI and digital technology,0,10,0.0,False
+ahla,2023,"Demand, performance and recovery",2,61,3.278688524590164,False
+ahla,2023,"Health, safety and crisis resilience",4,61,6.557377049180328,False
+ahla,2023,"Culture, heritage and experiences",0,61,0.0,False
+ahla,2023,"Sustainability, climate and nature",4,61,6.557377049180328,False
+ahla,2023,"Workforce, skills and education",36,61,59.01639344262295,False
+ahla,2023,Destination management and overtourism,0,61,0.0,False
+ahla,2023,"Inclusion, accessibility and communities",2,61,3.278688524590164,False
+ahla,2023,"Distribution, booking and business models",6,61,9.836065573770492,False
+ahla,2023,"Partnerships, governance and institutions",5,61,8.19672131147541,False
+ahla,2023,"Marketing, social media and branding",1,61,1.639344262295082,False
+ahla,2023,"Policy, visas and travel facilitation",1,61,1.639344262295082,False
+ahla,2023,Transport and connectivity,0,61,0.0,False
+ahla,2023,"Investment, infrastructure and development",0,61,0.0,False
+ahla,2023,AI and digital technology,1,61,1.639344262295082,False
+ahla,2024,"Demand, performance and recovery",0,86,0.0,False
+ahla,2024,"Health, safety and crisis resilience",3,86,3.488372093023256,False
+ahla,2024,"Culture, heritage and experiences",0,86,0.0,False
+ahla,2024,"Sustainability, climate and nature",8,86,9.30232558139535,False
+ahla,2024,"Workforce, skills and education",46,86,53.48837209302326,False
+ahla,2024,Destination management and overtourism,0,86,0.0,False
+ahla,2024,"Inclusion, accessibility and communities",2,86,2.3255813953488373,False
+ahla,2024,"Distribution, booking and business models",11,86,12.790697674418604,False
+ahla,2024,"Partnerships, governance and institutions",3,86,3.488372093023256,False
+ahla,2024,"Marketing, social media and branding",0,86,0.0,False
+ahla,2024,"Policy, visas and travel facilitation",13,86,15.116279069767442,False
+ahla,2024,Transport and connectivity,0,86,0.0,False
+ahla,2024,"Investment, infrastructure and development",1,86,1.1627906976744187,False
+ahla,2024,AI and digital technology,1,86,1.1627906976744187,False
+ahla,2025,"Demand, performance and recovery",3,64,4.6875,False
+ahla,2025,"Health, safety and crisis resilience",4,64,6.25,False
+ahla,2025,"Culture, heritage and experiences",0,64,0.0,False
+ahla,2025,"Sustainability, climate and nature",2,64,3.125,False
+ahla,2025,"Workforce, skills and education",30,64,46.875,False
+ahla,2025,Destination management and overtourism,0,64,0.0,False
+ahla,2025,"Inclusion, accessibility and communities",1,64,1.5625,False
+ahla,2025,"Distribution, booking and business models",3,64,4.6875,False
+ahla,2025,"Partnerships, governance and institutions",1,64,1.5625,False
+ahla,2025,"Marketing, social media and branding",0,64,0.0,False
+ahla,2025,"Policy, visas and travel facilitation",4,64,6.25,False
+ahla,2025,Transport and connectivity,1,64,1.5625,False
+ahla,2025,"Investment, infrastructure and development",1,64,1.5625,False
+ahla,2025,AI and digital technology,2,64,3.125,False
+ahla,2026,"Demand, performance and recovery",8,48,16.666666666666668,True
+ahla,2026,"Health, safety and crisis resilience",2,48,4.166666666666667,True
+ahla,2026,"Culture, heritage and experiences",0,48,0.0,True
+ahla,2026,"Sustainability, climate and nature",1,48,2.0833333333333335,True
+ahla,2026,"Workforce, skills and education",25,48,52.083333333333336,True
+ahla,2026,Destination management and overtourism,0,48,0.0,True
+ahla,2026,"Inclusion, accessibility and communities",2,48,4.166666666666667,True
+ahla,2026,"Distribution, booking and business models",5,48,10.416666666666666,True
+ahla,2026,"Partnerships, governance and institutions",2,48,4.166666666666667,True
+ahla,2026,"Marketing, social media and branding",0,48,0.0,True
+ahla,2026,"Policy, visas and travel facilitation",4,48,8.333333333333334,True
+ahla,2026,Transport and connectivity,5,48,10.416666666666666,True
+ahla,2026,"Investment, infrastructure and development",3,48,6.25,True
+ahla,2026,AI and digital technology,0,48,0.0,True
+etc,2016,"Demand, performance and recovery",1,4,25.0,True
+etc,2016,"Health, safety and crisis resilience",2,4,50.0,True
+etc,2016,"Culture, heritage and experiences",0,4,0.0,True
+etc,2016,"Sustainability, climate and nature",0,4,0.0,True
+etc,2016,"Workforce, skills and education",0,4,0.0,True
+etc,2016,Destination management and overtourism,0,4,0.0,True
+etc,2016,"Inclusion, accessibility and communities",0,4,0.0,True
+etc,2016,"Distribution, booking and business models",0,4,0.0,True
+etc,2016,"Partnerships, governance and institutions",0,4,0.0,True
+etc,2016,"Marketing, social media and branding",0,4,0.0,True
+etc,2016,"Policy, visas and travel facilitation",0,4,0.0,True
+etc,2016,Transport and connectivity,0,4,0.0,True
+etc,2016,"Investment, infrastructure and development",0,4,0.0,True
+etc,2016,AI and digital technology,0,4,0.0,True
+etc,2017,"Demand, performance and recovery",3,16,18.75,False
+etc,2017,"Health, safety and crisis resilience",1,16,6.25,False
+etc,2017,"Culture, heritage and experiences",2,16,12.5,False
+etc,2017,"Sustainability, climate and nature",1,16,6.25,False
+etc,2017,"Workforce, skills and education",0,16,0.0,False
+etc,2017,Destination management and overtourism,0,16,0.0,False
+etc,2017,"Inclusion, accessibility and communities",0,16,0.0,False
+etc,2017,"Distribution, booking and business models",0,16,0.0,False
+etc,2017,"Partnerships, governance and institutions",0,16,0.0,False
+etc,2017,"Marketing, social media and branding",1,16,6.25,False
+etc,2017,"Policy, visas and travel facilitation",0,16,0.0,False
+etc,2017,Transport and connectivity,0,16,0.0,False
+etc,2017,"Investment, infrastructure and development",0,16,0.0,False
+etc,2017,AI and digital technology,0,16,0.0,False
+etc,2018,"Demand, performance and recovery",6,15,40.0,False
+etc,2018,"Health, safety and crisis resilience",0,15,0.0,False
+etc,2018,"Culture, heritage and experiences",2,15,13.333333333333334,False
+etc,2018,"Sustainability, climate and nature",1,15,6.666666666666667,False
+etc,2018,"Workforce, skills and education",0,15,0.0,False
+etc,2018,Destination management and overtourism,0,15,0.0,False
+etc,2018,"Inclusion, accessibility and communities",0,15,0.0,False
+etc,2018,"Distribution, booking and business models",0,15,0.0,False
+etc,2018,"Partnerships, governance and institutions",0,15,0.0,False
+etc,2018,"Marketing, social media and branding",2,15,13.333333333333334,False
+etc,2018,"Policy, visas and travel facilitation",1,15,6.666666666666667,False
+etc,2018,Transport and connectivity,0,15,0.0,False
+etc,2018,"Investment, infrastructure and development",0,15,0.0,False
+etc,2018,AI and digital technology,0,15,0.0,False
+etc,2019,"Demand, performance and recovery",7,28,25.0,False
+etc,2019,"Health, safety and crisis resilience",0,28,0.0,False
+etc,2019,"Culture, heritage and experiences",6,28,21.428571428571427,False
+etc,2019,"Sustainability, climate and nature",8,28,28.571428571428573,False
+etc,2019,"Workforce, skills and education",1,28,3.5714285714285716,False
+etc,2019,Destination management and overtourism,0,28,0.0,False
+etc,2019,"Inclusion, accessibility and communities",0,28,0.0,False
+etc,2019,"Distribution, booking and business models",0,28,0.0,False
+etc,2019,"Partnerships, governance and institutions",2,28,7.142857142857143,False
+etc,2019,"Marketing, social media and branding",2,28,7.142857142857143,False
+etc,2019,"Policy, visas and travel facilitation",3,28,10.714285714285714,False
+etc,2019,Transport and connectivity,4,28,14.285714285714286,False
+etc,2019,"Investment, infrastructure and development",0,28,0.0,False
+etc,2019,AI and digital technology,0,28,0.0,False
+etc,2020,"Demand, performance and recovery",9,37,24.324324324324323,False
+etc,2020,"Health, safety and crisis resilience",27,37,72.97297297297297,False
+etc,2020,"Culture, heritage and experiences",5,37,13.513513513513514,False
+etc,2020,"Sustainability, climate and nature",10,37,27.027027027027028,False
+etc,2020,"Workforce, skills and education",4,37,10.81081081081081,False
+etc,2020,Destination management and overtourism,0,37,0.0,False
+etc,2020,"Inclusion, accessibility and communities",0,37,0.0,False
+etc,2020,"Distribution, booking and business models",0,37,0.0,False
+etc,2020,"Partnerships, governance and institutions",0,37,0.0,False
+etc,2020,"Marketing, social media and branding",1,37,2.7027027027027026,False
+etc,2020,"Policy, visas and travel facilitation",8,37,21.62162162162162,False
+etc,2020,Transport and connectivity,6,37,16.216216216216218,False
+etc,2020,"Investment, infrastructure and development",3,37,8.108108108108109,False
+etc,2020,AI and digital technology,1,37,2.7027027027027026,False
+etc,2021,"Demand, performance and recovery",10,44,22.727272727272727,False
+etc,2021,"Health, safety and crisis resilience",30,44,68.18181818181819,False
+etc,2021,"Culture, heritage and experiences",2,44,4.545454545454546,False
+etc,2021,"Sustainability, climate and nature",9,44,20.454545454545453,False
+etc,2021,"Workforce, skills and education",2,44,4.545454545454546,False
+etc,2021,Destination management and overtourism,0,44,0.0,False
+etc,2021,"Inclusion, accessibility and communities",0,44,0.0,False
+etc,2021,"Distribution, booking and business models",0,44,0.0,False
+etc,2021,"Partnerships, governance and institutions",0,44,0.0,False
+etc,2021,"Marketing, social media and branding",3,44,6.818181818181818,False
+etc,2021,"Policy, visas and travel facilitation",8,44,18.181818181818183,False
+etc,2021,Transport and connectivity,4,44,9.090909090909092,False
+etc,2021,"Investment, infrastructure and development",1,44,2.272727272727273,False
+etc,2021,AI and digital technology,1,44,2.272727272727273,False
+etc,2022,"Demand, performance and recovery",12,29,41.37931034482759,False
+etc,2022,"Health, safety and crisis resilience",20,29,68.96551724137932,False
+etc,2022,"Culture, heritage and experiences",3,29,10.344827586206897,False
+etc,2022,"Sustainability, climate and nature",9,29,31.03448275862069,False
+etc,2022,"Workforce, skills and education",2,29,6.896551724137931,False
+etc,2022,Destination management and overtourism,0,29,0.0,False
+etc,2022,"Inclusion, accessibility and communities",1,29,3.4482758620689653,False
+etc,2022,"Distribution, booking and business models",0,29,0.0,False
+etc,2022,"Partnerships, governance and institutions",0,29,0.0,False
+etc,2022,"Marketing, social media and branding",2,29,6.896551724137931,False
+etc,2022,"Policy, visas and travel facilitation",3,29,10.344827586206897,False
+etc,2022,Transport and connectivity,7,29,24.137931034482758,False
+etc,2022,"Investment, infrastructure and development",0,29,0.0,False
+etc,2022,AI and digital technology,0,29,0.0,False
+etc,2023,"Demand, performance and recovery",7,20,35.0,False
+etc,2023,"Health, safety and crisis resilience",6,20,30.0,False
+etc,2023,"Culture, heritage and experiences",4,20,20.0,False
+etc,2023,"Sustainability, climate and nature",7,20,35.0,False
+etc,2023,"Workforce, skills and education",0,20,0.0,False
+etc,2023,Destination management and overtourism,1,20,5.0,False
+etc,2023,"Inclusion, accessibility and communities",1,20,5.0,False
+etc,2023,"Distribution, booking and business models",0,20,0.0,False
+etc,2023,"Partnerships, governance and institutions",1,20,5.0,False
+etc,2023,"Marketing, social media and branding",1,20,5.0,False
+etc,2023,"Policy, visas and travel facilitation",1,20,5.0,False
+etc,2023,Transport and connectivity,6,20,30.0,False
+etc,2023,"Investment, infrastructure and development",0,20,0.0,False
+etc,2023,AI and digital technology,0,20,0.0,False
+etc,2024,"Demand, performance and recovery",6,16,37.5,False
+etc,2024,"Health, safety and crisis resilience",5,16,31.25,False
+etc,2024,"Culture, heritage and experiences",4,16,25.0,False
+etc,2024,"Sustainability, climate and nature",4,16,25.0,False
+etc,2024,"Workforce, skills and education",1,16,6.25,False
+etc,2024,Destination management and overtourism,0,16,0.0,False
+etc,2024,"Inclusion, accessibility and communities",2,16,12.5,False
+etc,2024,"Distribution, booking and business models",0,16,0.0,False
+etc,2024,"Partnerships, governance and institutions",0,16,0.0,False
+etc,2024,"Marketing, social media and branding",0,16,0.0,False
+etc,2024,"Policy, visas and travel facilitation",0,16,0.0,False
+etc,2024,Transport and connectivity,6,16,37.5,False
+etc,2024,"Investment, infrastructure and development",0,16,0.0,False
+etc,2024,AI and digital technology,0,16,0.0,False
+etc,2025,"Demand, performance and recovery",11,29,37.93103448275862,False
+etc,2025,"Health, safety and crisis resilience",10,29,34.48275862068966,False
+etc,2025,"Culture, heritage and experiences",5,29,17.24137931034483,False
+etc,2025,"Sustainability, climate and nature",9,29,31.03448275862069,False
+etc,2025,"Workforce, skills and education",3,29,10.344827586206897,False
+etc,2025,Destination management and overtourism,0,29,0.0,False
+etc,2025,"Inclusion, accessibility and communities",0,29,0.0,False
+etc,2025,"Distribution, booking and business models",0,29,0.0,False
+etc,2025,"Partnerships, governance and institutions",0,29,0.0,False
+etc,2025,"Marketing, social media and branding",2,29,6.896551724137931,False
+etc,2025,"Policy, visas and travel facilitation",0,29,0.0,False
+etc,2025,Transport and connectivity,3,29,10.344827586206897,False
+etc,2025,"Investment, infrastructure and development",0,29,0.0,False
+etc,2025,AI and digital technology,4,29,13.793103448275861,False
+etc,2026,"Demand, performance and recovery",11,22,50.0,True
+etc,2026,"Health, safety and crisis resilience",9,22,40.90909090909091,True
+etc,2026,"Culture, heritage and experiences",5,22,22.727272727272727,True
+etc,2026,"Sustainability, climate and nature",9,22,40.90909090909091,True
+etc,2026,"Workforce, skills and education",0,22,0.0,True
+etc,2026,Destination management and overtourism,0,22,0.0,True
+etc,2026,"Inclusion, accessibility and communities",1,22,4.545454545454546,True
+etc,2026,"Distribution, booking and business models",0,22,0.0,True
+etc,2026,"Partnerships, governance and institutions",0,22,0.0,True
+etc,2026,"Marketing, social media and branding",0,22,0.0,True
+etc,2026,"Policy, visas and travel facilitation",0,22,0.0,True
+etc,2026,Transport and connectivity,6,22,27.272727272727273,True
+etc,2026,"Investment, infrastructure and development",0,22,0.0,True
+etc,2026,AI and digital technology,0,22,0.0,True
+hospitalitynet,2026,"Demand, performance and recovery",76,588,12.92517006802721,True
+hospitalitynet,2026,"Health, safety and crisis resilience",29,588,4.931972789115647,True
+hospitalitynet,2026,"Culture, heritage and experiences",75,588,12.755102040816327,True
+hospitalitynet,2026,"Sustainability, climate and nature",25,588,4.2517006802721085,True
+hospitalitynet,2026,"Workforce, skills and education",135,588,22.959183673469386,True
+hospitalitynet,2026,Destination management and overtourism,3,588,0.5102040816326531,True
+hospitalitynet,2026,"Inclusion, accessibility and communities",19,588,3.2312925170068025,True
+hospitalitynet,2026,"Distribution, booking and business models",71,588,12.07482993197279,True
+hospitalitynet,2026,"Partnerships, governance and institutions",19,588,3.2312925170068025,True
+hospitalitynet,2026,"Marketing, social media and branding",39,588,6.63265306122449,True
+hospitalitynet,2026,"Policy, visas and travel facilitation",4,588,0.6802721088435374,True
+hospitalitynet,2026,Transport and connectivity,33,588,5.612244897959184,True
+hospitalitynet,2026,"Investment, infrastructure and development",77,588,13.095238095238095,True
+hospitalitynet,2026,AI and digital technology,176,588,29.931972789115648,True
+pata,2017,"Demand, performance and recovery",0,3,0.0,False
+pata,2017,"Health, safety and crisis resilience",2,3,66.66666666666667,False
+pata,2017,"Culture, heritage and experiences",1,3,33.333333333333336,False
+pata,2017,"Sustainability, climate and nature",0,3,0.0,False
+pata,2017,"Workforce, skills and education",1,3,33.333333333333336,False
+pata,2017,Destination management and overtourism,0,3,0.0,False
+pata,2017,"Inclusion, accessibility and communities",0,3,0.0,False
+pata,2017,"Distribution, booking and business models",0,3,0.0,False
+pata,2017,"Partnerships, governance and institutions",0,3,0.0,False
+pata,2017,"Marketing, social media and branding",0,3,0.0,False
+pata,2017,"Policy, visas and travel facilitation",0,3,0.0,False
+pata,2017,Transport and connectivity,1,3,33.333333333333336,False
+pata,2017,"Investment, infrastructure and development",1,3,33.333333333333336,False
+pata,2017,AI and digital technology,0,3,0.0,False
+pata,2019,"Demand, performance and recovery",0,5,0.0,False
+pata,2019,"Health, safety and crisis resilience",1,5,20.0,False
+pata,2019,"Culture, heritage and experiences",1,5,20.0,False
+pata,2019,"Sustainability, climate and nature",2,5,40.0,False
+pata,2019,"Workforce, skills and education",0,5,0.0,False
+pata,2019,Destination management and overtourism,0,5,0.0,False
+pata,2019,"Inclusion, accessibility and communities",0,5,0.0,False
+pata,2019,"Distribution, booking and business models",0,5,0.0,False
+pata,2019,"Partnerships, governance and institutions",0,5,0.0,False
+pata,2019,"Marketing, social media and branding",0,5,0.0,False
+pata,2019,"Policy, visas and travel facilitation",0,5,0.0,False
+pata,2019,Transport and connectivity,2,5,40.0,False
+pata,2019,"Investment, infrastructure and development",0,5,0.0,False
+pata,2019,AI and digital technology,0,5,0.0,False
+pata,2020,"Demand, performance and recovery",20,227,8.810572687224669,False
+pata,2020,"Health, safety and crisis resilience",90,227,39.647577092511014,False
+pata,2020,"Culture, heritage and experiences",10,227,4.405286343612334,False
+pata,2020,"Sustainability, climate and nature",30,227,13.215859030837004,False
+pata,2020,"Workforce, skills and education",30,227,13.215859030837004,False
+pata,2020,Destination management and overtourism,0,227,0.0,False
+pata,2020,"Inclusion, accessibility and communities",9,227,3.9647577092511015,False
+pata,2020,"Distribution, booking and business models",6,227,2.643171806167401,False
+pata,2020,"Partnerships, governance and institutions",8,227,3.5242290748898677,False
+pata,2020,"Marketing, social media and branding",20,227,8.810572687224669,False
+pata,2020,"Policy, visas and travel facilitation",22,227,9.691629955947137,False
+pata,2020,Transport and connectivity,89,227,39.20704845814978,False
+pata,2020,"Investment, infrastructure and development",8,227,3.5242290748898677,False
+pata,2020,AI and digital technology,6,227,2.643171806167401,False
+pata,2021,"Demand, performance and recovery",21,381,5.511811023622047,False
+pata,2021,"Health, safety and crisis resilience",148,381,38.84514435695538,False
+pata,2021,"Culture, heritage and experiences",31,381,8.136482939632545,False
+pata,2021,"Sustainability, climate and nature",72,381,18.89763779527559,False
+pata,2021,"Workforce, skills and education",45,381,11.811023622047244,False
+pata,2021,Destination management and overtourism,0,381,0.0,False
+pata,2021,"Inclusion, accessibility and communities",15,381,3.937007874015748,False
+pata,2021,"Distribution, booking and business models",2,381,0.5249343832020997,False
+pata,2021,"Partnerships, governance and institutions",18,381,4.724409448818897,False
+pata,2021,"Marketing, social media and branding",28,381,7.349081364829396,False
+pata,2021,"Policy, visas and travel facilitation",29,381,7.611548556430447,False
+pata,2021,Transport and connectivity,119,381,31.233595800524935,False
+pata,2021,"Investment, infrastructure and development",5,381,1.3123359580052494,False
+pata,2021,AI and digital technology,18,381,4.724409448818897,False
+pata,2022,"Demand, performance and recovery",11,182,6.043956043956044,False
+pata,2022,"Health, safety and crisis resilience",66,182,36.26373626373626,False
+pata,2022,"Culture, heritage and experiences",28,182,15.384615384615385,False
+pata,2022,"Sustainability, climate and nature",50,182,27.47252747252747,False
+pata,2022,"Workforce, skills and education",26,182,14.285714285714286,False
+pata,2022,Destination management and overtourism,0,182,0.0,False
+pata,2022,"Inclusion, accessibility and communities",12,182,6.593406593406593,False
+pata,2022,"Distribution, booking and business models",2,182,1.098901098901099,False
+pata,2022,"Partnerships, governance and institutions",5,182,2.7472527472527473,False
+pata,2022,"Marketing, social media and branding",18,182,9.89010989010989,False
+pata,2022,"Policy, visas and travel facilitation",5,182,2.7472527472527473,False
+pata,2022,Transport and connectivity,23,182,12.637362637362637,False
+pata,2022,"Investment, infrastructure and development",3,182,1.6483516483516483,False
+pata,2022,AI and digital technology,13,182,7.142857142857143,False
+pata,2023,"Demand, performance and recovery",12,208,5.769230769230769,False
+pata,2023,"Health, safety and crisis resilience",39,208,18.75,False
+pata,2023,"Culture, heritage and experiences",38,208,18.26923076923077,False
+pata,2023,"Sustainability, climate and nature",53,208,25.48076923076923,False
+pata,2023,"Workforce, skills and education",40,208,19.23076923076923,False
+pata,2023,Destination management and overtourism,0,208,0.0,False
+pata,2023,"Inclusion, accessibility and communities",21,208,10.096153846153847,False
+pata,2023,"Distribution, booking and business models",0,208,0.0,False
+pata,2023,"Partnerships, governance and institutions",9,208,4.326923076923077,False
+pata,2023,"Marketing, social media and branding",14,208,6.730769230769231,False
+pata,2023,"Policy, visas and travel facilitation",13,208,6.25,False
+pata,2023,Transport and connectivity,39,208,18.75,False
+pata,2023,"Investment, infrastructure and development",11,208,5.288461538461538,False
+pata,2023,AI and digital technology,19,208,9.134615384615385,False
+pata,2024,"Demand, performance and recovery",13,204,6.372549019607843,False
+pata,2024,"Health, safety and crisis resilience",21,204,10.294117647058824,False
+pata,2024,"Culture, heritage and experiences",49,204,24.019607843137255,False
+pata,2024,"Sustainability, climate and nature",58,204,28.431372549019606,False
+pata,2024,"Workforce, skills and education",32,204,15.686274509803921,False
+pata,2024,Destination management and overtourism,2,204,0.9803921568627451,False
+pata,2024,"Inclusion, accessibility and communities",18,204,8.823529411764707,False
+pata,2024,"Distribution, booking and business models",0,204,0.0,False
+pata,2024,"Partnerships, governance and institutions",11,204,5.392156862745098,False
+pata,2024,"Marketing, social media and branding",21,204,10.294117647058824,False
+pata,2024,"Policy, visas and travel facilitation",9,204,4.411764705882353,False
+pata,2024,Transport and connectivity,27,204,13.235294117647058,False
+pata,2024,"Investment, infrastructure and development",5,204,2.450980392156863,False
+pata,2024,AI and digital technology,22,204,10.784313725490197,False
+pata,2025,"Demand, performance and recovery",11,278,3.9568345323741005,False
+pata,2025,"Health, safety and crisis resilience",22,278,7.913669064748201,False
+pata,2025,"Culture, heritage and experiences",85,278,30.575539568345324,False
+pata,2025,"Sustainability, climate and nature",86,278,30.93525179856115,False
+pata,2025,"Workforce, skills and education",33,278,11.870503597122303,False
+pata,2025,Destination management and overtourism,1,278,0.3597122302158273,False
+pata,2025,"Inclusion, accessibility and communities",34,278,12.23021582733813,False
+pata,2025,"Distribution, booking and business models",3,278,1.079136690647482,False
+pata,2025,"Partnerships, governance and institutions",18,278,6.474820143884892,False
+pata,2025,"Marketing, social media and branding",23,278,8.273381294964029,False
+pata,2025,"Policy, visas and travel facilitation",6,278,2.158273381294964,False
+pata,2025,Transport and connectivity,43,278,15.467625899280575,False
+pata,2025,"Investment, infrastructure and development",7,278,2.5179856115107913,False
+pata,2025,AI and digital technology,27,278,9.712230215827338,False
+pata,2026,"Demand, performance and recovery",9,243,3.7037037037037037,True
+pata,2026,"Health, safety and crisis resilience",13,243,5.349794238683128,True
+pata,2026,"Culture, heritage and experiences",61,243,25.102880658436213,True
+pata,2026,"Sustainability, climate and nature",40,243,16.46090534979424,True
+pata,2026,"Workforce, skills and education",24,243,9.876543209876543,True
+pata,2026,Destination management and overtourism,4,243,1.646090534979424,True
+pata,2026,"Inclusion, accessibility and communities",17,243,6.995884773662551,True
+pata,2026,"Distribution, booking and business models",3,243,1.2345679012345678,True
+pata,2026,"Partnerships, governance and institutions",24,243,9.876543209876543,True
+pata,2026,"Marketing, social media and branding",13,243,5.349794238683128,True
+pata,2026,"Policy, visas and travel facilitation",7,243,2.880658436213992,True
+pata,2026,Transport and connectivity,37,243,15.22633744855967,True
+pata,2026,"Investment, infrastructure and development",9,243,3.7037037037037037,True
+pata,2026,AI and digital technology,25,243,10.2880658436214,True
+untourism,2016,"Demand, performance and recovery",3,63,4.761904761904762,True
+untourism,2016,"Health, safety and crisis resilience",6,63,9.523809523809524,True
+untourism,2016,"Culture, heritage and experiences",13,63,20.634920634920636,True
+untourism,2016,"Sustainability, climate and nature",17,63,26.984126984126984,True
+untourism,2016,"Workforce, skills and education",16,63,25.396825396825395,True
+untourism,2016,Destination management and overtourism,0,63,0.0,True
+untourism,2016,"Inclusion, accessibility and communities",5,63,7.936507936507937,True
+untourism,2016,"Distribution, booking and business models",0,63,0.0,True
+untourism,2016,"Partnerships, governance and institutions",2,63,3.1746031746031744,True
+untourism,2016,"Marketing, social media and branding",2,63,3.1746031746031744,True
+untourism,2016,"Policy, visas and travel facilitation",0,63,0.0,True
+untourism,2016,Transport and connectivity,1,63,1.5873015873015872,True
+untourism,2016,"Investment, infrastructure and development",3,63,4.761904761904762,True
+untourism,2016,AI and digital technology,0,63,0.0,True
+untourism,2017,"Demand, performance and recovery",15,190,7.894736842105263,False
+untourism,2017,"Health, safety and crisis resilience",4,190,2.1052631578947367,False
+untourism,2017,"Culture, heritage and experiences",29,190,15.263157894736842,False
+untourism,2017,"Sustainability, climate and nature",79,190,41.578947368421055,False
+untourism,2017,"Workforce, skills and education",26,190,13.68421052631579,False
+untourism,2017,Destination management and overtourism,4,190,2.1052631578947367,False
+untourism,2017,"Inclusion, accessibility and communities",17,190,8.947368421052632,False
+untourism,2017,"Distribution, booking and business models",0,190,0.0,False
+untourism,2017,"Partnerships, governance and institutions",10,190,5.2631578947368425,False
+untourism,2017,"Marketing, social media and branding",12,190,6.315789473684211,False
+untourism,2017,"Policy, visas and travel facilitation",5,190,2.6315789473684212,False
+untourism,2017,Transport and connectivity,3,190,1.5789473684210527,False
+untourism,2017,"Investment, infrastructure and development",6,190,3.1578947368421053,False
+untourism,2017,AI and digital technology,1,190,0.5263157894736842,False
+untourism,2018,"Demand, performance and recovery",8,158,5.063291139240507,False
+untourism,2018,"Health, safety and crisis resilience",2,158,1.2658227848101267,False
+untourism,2018,"Culture, heritage and experiences",19,158,12.025316455696203,False
+untourism,2018,"Sustainability, climate and nature",52,158,32.91139240506329,False
+untourism,2018,"Workforce, skills and education",29,158,18.354430379746834,False
+untourism,2018,Destination management and overtourism,1,158,0.6329113924050633,False
+untourism,2018,"Inclusion, accessibility and communities",9,158,5.69620253164557,False
+untourism,2018,"Distribution, booking and business models",2,158,1.2658227848101267,False
+untourism,2018,"Partnerships, governance and institutions",10,158,6.329113924050633,False
+untourism,2018,"Marketing, social media and branding",2,158,1.2658227848101267,False
+untourism,2018,"Policy, visas and travel facilitation",4,158,2.5316455696202533,False
+untourism,2018,Transport and connectivity,2,158,1.2658227848101267,False
+untourism,2018,"Investment, infrastructure and development",5,158,3.1645569620253164,False
+untourism,2018,AI and digital technology,9,158,5.69620253164557,False
+untourism,2019,"Demand, performance and recovery",7,132,5.303030303030303,False
+untourism,2019,"Health, safety and crisis resilience",3,132,2.272727272727273,False
+untourism,2019,"Culture, heritage and experiences",13,132,9.848484848484848,False
+untourism,2019,"Sustainability, climate and nature",43,132,32.57575757575758,False
+untourism,2019,"Workforce, skills and education",25,132,18.939393939393938,False
+untourism,2019,Destination management and overtourism,5,132,3.787878787878788,False
+untourism,2019,"Inclusion, accessibility and communities",18,132,13.636363636363637,False
+untourism,2019,"Distribution, booking and business models",2,132,1.5151515151515151,False
+untourism,2019,"Partnerships, governance and institutions",22,132,16.666666666666668,False
+untourism,2019,"Marketing, social media and branding",0,132,0.0,False
+untourism,2019,"Policy, visas and travel facilitation",5,132,3.787878787878788,False
+untourism,2019,Transport and connectivity,5,132,3.787878787878788,False
+untourism,2019,"Investment, infrastructure and development",6,132,4.545454545454546,False
+untourism,2019,AI and digital technology,5,132,3.787878787878788,False
+untourism,2020,"Demand, performance and recovery",15,139,10.79136690647482,False
+untourism,2020,"Health, safety and crisis resilience",100,139,71.94244604316546,False
+untourism,2020,"Culture, heritage and experiences",14,139,10.071942446043165,False
+untourism,2020,"Sustainability, climate and nature",40,139,28.776978417266186,False
+untourism,2020,"Workforce, skills and education",26,139,18.705035971223023,False
+untourism,2020,Destination management and overtourism,2,139,1.4388489208633093,False
+untourism,2020,"Inclusion, accessibility and communities",12,139,8.633093525179856,False
+untourism,2020,"Distribution, booking and business models",0,139,0.0,False
+untourism,2020,"Partnerships, governance and institutions",6,139,4.316546762589928,False
+untourism,2020,"Marketing, social media and branding",2,139,1.4388489208633093,False
+untourism,2020,"Policy, visas and travel facilitation",22,139,15.827338129496402,False
+untourism,2020,Transport and connectivity,6,139,4.316546762589928,False
+untourism,2020,"Investment, infrastructure and development",6,139,4.316546762589928,False
+untourism,2020,AI and digital technology,3,139,2.158273381294964,False
+untourism,2021,"Demand, performance and recovery",11,119,9.243697478991596,False
+untourism,2021,"Health, safety and crisis resilience",56,119,47.05882352941177,False
+untourism,2021,"Culture, heritage and experiences",10,119,8.403361344537815,False
+untourism,2021,"Sustainability, climate and nature",43,119,36.134453781512605,False
+untourism,2021,"Workforce, skills and education",20,119,16.80672268907563,False
+untourism,2021,Destination management and overtourism,0,119,0.0,False
+untourism,2021,"Inclusion, accessibility and communities",23,119,19.327731092436974,False
+untourism,2021,"Distribution, booking and business models",0,119,0.0,False
+untourism,2021,"Partnerships, governance and institutions",20,119,16.80672268907563,False
+untourism,2021,"Marketing, social media and branding",3,119,2.5210084033613445,False
+untourism,2021,"Policy, visas and travel facilitation",10,119,8.403361344537815,False
+untourism,2021,Transport and connectivity,6,119,5.042016806722689,False
+untourism,2021,"Investment, infrastructure and development",7,119,5.882352941176471,False
+untourism,2021,AI and digital technology,3,119,2.5210084033613445,False
+untourism,2022,"Demand, performance and recovery",11,113,9.734513274336283,False
+untourism,2022,"Health, safety and crisis resilience",40,113,35.39823008849557,False
+untourism,2022,"Culture, heritage and experiences",15,113,13.274336283185841,False
+untourism,2022,"Sustainability, climate and nature",45,113,39.823008849557525,False
+untourism,2022,"Workforce, skills and education",28,113,24.778761061946902,False
+untourism,2022,Destination management and overtourism,0,113,0.0,False
+untourism,2022,"Inclusion, accessibility and communities",16,113,14.15929203539823,False
+untourism,2022,"Distribution, booking and business models",0,113,0.0,False
+untourism,2022,"Partnerships, governance and institutions",15,113,13.274336283185841,False
+untourism,2022,"Marketing, social media and branding",1,113,0.8849557522123894,False
+untourism,2022,"Policy, visas and travel facilitation",6,113,5.3097345132743365,False
+untourism,2022,Transport and connectivity,0,113,0.0,False
+untourism,2022,"Investment, infrastructure and development",6,113,5.3097345132743365,False
+untourism,2022,AI and digital technology,2,113,1.7699115044247788,False
+untourism,2023,"Demand, performance and recovery",7,123,5.691056910569106,False
+untourism,2023,"Health, safety and crisis resilience",30,123,24.390243902439025,False
+untourism,2023,"Culture, heritage and experiences",16,123,13.008130081300813,False
+untourism,2023,"Sustainability, climate and nature",57,123,46.34146341463415,False
+untourism,2023,"Workforce, skills and education",30,123,24.390243902439025,False
+untourism,2023,Destination management and overtourism,2,123,1.6260162601626016,False
+untourism,2023,"Inclusion, accessibility and communities",21,123,17.073170731707318,False
+untourism,2023,"Distribution, booking and business models",1,123,0.8130081300813008,False
+untourism,2023,"Partnerships, governance and institutions",21,123,17.073170731707318,False
+untourism,2023,"Marketing, social media and branding",2,123,1.6260162601626016,False
+untourism,2023,"Policy, visas and travel facilitation",3,123,2.4390243902439024,False
+untourism,2023,Transport and connectivity,1,123,0.8130081300813008,False
+untourism,2023,"Investment, infrastructure and development",16,123,13.008130081300813,False
+untourism,2023,AI and digital technology,2,123,1.6260162601626016,False
+untourism,2024,"Demand, performance and recovery",16,163,9.815950920245399,False
+untourism,2024,"Health, safety and crisis resilience",27,163,16.56441717791411,False
+untourism,2024,"Culture, heritage and experiences",42,163,25.766871165644172,False
+untourism,2024,"Sustainability, climate and nature",73,163,44.785276073619634,False
+untourism,2024,"Workforce, skills and education",37,163,22.699386503067483,False
+untourism,2024,Destination management and overtourism,1,163,0.6134969325153374,False
+untourism,2024,"Inclusion, accessibility and communities",35,163,21.47239263803681,False
+untourism,2024,"Distribution, booking and business models",1,163,0.6134969325153374,False
+untourism,2024,"Partnerships, governance and institutions",20,163,12.269938650306749,False
+untourism,2024,"Marketing, social media and branding",2,163,1.2269938650306749,False
+untourism,2024,"Policy, visas and travel facilitation",8,163,4.9079754601226995,False
+untourism,2024,Transport and connectivity,4,163,2.4539877300613497,False
+untourism,2024,"Investment, infrastructure and development",24,163,14.723926380368098,False
+untourism,2024,AI and digital technology,4,163,2.4539877300613497,False
+untourism,2025,"Demand, performance and recovery",9,89,10.112359550561798,False
+untourism,2025,"Health, safety and crisis resilience",12,89,13.48314606741573,False
+untourism,2025,"Culture, heritage and experiences",23,89,25.84269662921348,False
+untourism,2025,"Sustainability, climate and nature",38,89,42.69662921348315,False
+untourism,2025,"Workforce, skills and education",26,89,29.213483146067414,False
+untourism,2025,Destination management and overtourism,1,89,1.1235955056179776,False
+untourism,2025,"Inclusion, accessibility and communities",31,89,34.831460674157306,False
+untourism,2025,"Distribution, booking and business models",0,89,0.0,False
+untourism,2025,"Partnerships, governance and institutions",12,89,13.48314606741573,False
+untourism,2025,"Marketing, social media and branding",3,89,3.3707865168539324,False
+untourism,2025,"Policy, visas and travel facilitation",1,89,1.1235955056179776,False
+untourism,2025,Transport and connectivity,3,89,3.3707865168539324,False
+untourism,2025,"Investment, infrastructure and development",17,89,19.10112359550562,False
+untourism,2025,AI and digital technology,4,89,4.49438202247191,False
+untourism,2026,"Demand, performance and recovery",3,16,18.75,True
+untourism,2026,"Health, safety and crisis resilience",5,16,31.25,True
+untourism,2026,"Culture, heritage and experiences",4,16,25.0,True
+untourism,2026,"Sustainability, climate and nature",6,16,37.5,True
+untourism,2026,"Workforce, skills and education",3,16,18.75,True
+untourism,2026,Destination management and overtourism,0,16,0.0,True
+untourism,2026,"Inclusion, accessibility and communities",2,16,12.5,True
+untourism,2026,"Distribution, booking and business models",0,16,0.0,True
+untourism,2026,"Partnerships, governance and institutions",1,16,6.25,True
+untourism,2026,"Marketing, social media and branding",0,16,0.0,True
+untourism,2026,"Policy, visas and travel facilitation",0,16,0.0,True
+untourism,2026,Transport and connectivity,1,16,6.25,True
+untourism,2026,"Investment, infrastructure and development",3,16,18.75,True
+untourism,2026,AI and digital technology,0,16,0.0,True
+wttc,2019,"Demand, performance and recovery",4,25,16.0,False
+wttc,2019,"Health, safety and crisis resilience",3,25,12.0,False
+wttc,2019,"Culture, heritage and experiences",1,25,4.0,False
+wttc,2019,"Sustainability, climate and nature",3,25,12.0,False
+wttc,2019,"Workforce, skills and education",5,25,20.0,False
+wttc,2019,Destination management and overtourism,0,25,0.0,False
+wttc,2019,"Inclusion, accessibility and communities",0,25,0.0,False
+wttc,2019,"Distribution, booking and business models",0,25,0.0,False
+wttc,2019,"Partnerships, governance and institutions",3,25,12.0,False
+wttc,2019,"Marketing, social media and branding",0,25,0.0,False
+wttc,2019,"Policy, visas and travel facilitation",1,25,4.0,False
+wttc,2019,Transport and connectivity,4,25,16.0,False
+wttc,2019,"Investment, infrastructure and development",2,25,8.0,False
+wttc,2019,AI and digital technology,4,25,16.0,False
+wttc,2020,"Demand, performance and recovery",31,113,27.43362831858407,False
+wttc,2020,"Health, safety and crisis resilience",87,113,76.99115044247787,False
+wttc,2020,"Culture, heritage and experiences",3,113,2.6548672566371683,False
+wttc,2020,"Sustainability, climate and nature",6,113,5.3097345132743365,False
+wttc,2020,"Workforce, skills and education",44,113,38.93805309734513,False
+wttc,2020,Destination management and overtourism,0,113,0.0,False
+wttc,2020,"Inclusion, accessibility and communities",4,113,3.5398230088495577,False
+wttc,2020,"Distribution, booking and business models",1,113,0.8849557522123894,False
+wttc,2020,"Partnerships, governance and institutions",1,113,0.8849557522123894,False
+wttc,2020,"Marketing, social media and branding",1,113,0.8849557522123894,False
+wttc,2020,"Policy, visas and travel facilitation",12,113,10.619469026548673,False
+wttc,2020,Transport and connectivity,22,113,19.469026548672566,False
+wttc,2020,"Investment, infrastructure and development",1,113,0.8849557522123894,False
+wttc,2020,AI and digital technology,2,113,1.7699115044247788,False
+wttc,2021,"Demand, performance and recovery",32,134,23.880597014925375,False
+wttc,2021,"Health, safety and crisis resilience",94,134,70.14925373134328,False
+wttc,2021,"Culture, heritage and experiences",2,134,1.492537313432836,False
+wttc,2021,"Sustainability, climate and nature",10,134,7.462686567164179,False
+wttc,2021,"Workforce, skills and education",43,134,32.08955223880597,False
+wttc,2021,Destination management and overtourism,1,134,0.746268656716418,False
+wttc,2021,"Inclusion, accessibility and communities",10,134,7.462686567164179,False
+wttc,2021,"Distribution, booking and business models",0,134,0.0,False
+wttc,2021,"Partnerships, governance and institutions",2,134,1.492537313432836,False
+wttc,2021,"Marketing, social media and branding",0,134,0.0,False
+wttc,2021,"Policy, visas and travel facilitation",25,134,18.65671641791045,False
+wttc,2021,Transport and connectivity,8,134,5.970149253731344,False
+wttc,2021,"Investment, infrastructure and development",1,134,0.746268656716418,False
+wttc,2021,AI and digital technology,1,134,0.746268656716418,False
+wttc,2022,"Demand, performance and recovery",33,83,39.75903614457831,False
+wttc,2022,"Health, safety and crisis resilience",34,83,40.963855421686745,False
+wttc,2022,"Culture, heritage and experiences",0,83,0.0,False
+wttc,2022,"Sustainability, climate and nature",24,83,28.91566265060241,False
+wttc,2022,"Workforce, skills and education",38,83,45.78313253012048,False
+wttc,2022,Destination management and overtourism,0,83,0.0,False
+wttc,2022,"Inclusion, accessibility and communities",2,83,2.4096385542168677,False
+wttc,2022,"Distribution, booking and business models",1,83,1.2048192771084338,False
+wttc,2022,"Partnerships, governance and institutions",1,83,1.2048192771084338,False
+wttc,2022,"Marketing, social media and branding",0,83,0.0,False
+wttc,2022,"Policy, visas and travel facilitation",9,83,10.843373493975903,False
+wttc,2022,Transport and connectivity,6,83,7.228915662650603,False
+wttc,2022,"Investment, infrastructure and development",4,83,4.819277108433735,False
+wttc,2022,AI and digital technology,0,83,0.0,False
+wttc,2023,"Demand, performance and recovery",30,68,44.11764705882353,False
+wttc,2023,"Health, safety and crisis resilience",23,68,33.8235294117647,False
+wttc,2023,"Culture, heritage and experiences",1,68,1.4705882352941178,False
+wttc,2023,"Sustainability, climate and nature",23,68,33.8235294117647,False
+wttc,2023,"Workforce, skills and education",29,68,42.64705882352941,False
+wttc,2023,Destination management and overtourism,0,68,0.0,False
+wttc,2023,"Inclusion, accessibility and communities",4,68,5.882352941176471,False
+wttc,2023,"Distribution, booking and business models",0,68,0.0,False
+wttc,2023,"Partnerships, governance and institutions",2,68,2.9411764705882355,False
+wttc,2023,"Marketing, social media and branding",0,68,0.0,False
+wttc,2023,"Policy, visas and travel facilitation",7,68,10.294117647058824,False
+wttc,2023,Transport and connectivity,5,68,7.352941176470588,False
+wttc,2023,"Investment, infrastructure and development",2,68,2.9411764705882355,False
+wttc,2023,AI and digital technology,0,68,0.0,False
+wttc,2024,"Demand, performance and recovery",33,67,49.25373134328358,False
+wttc,2024,"Health, safety and crisis resilience",11,67,16.417910447761194,False
+wttc,2024,"Culture, heritage and experiences",7,67,10.447761194029852,False
+wttc,2024,"Sustainability, climate and nature",19,67,28.35820895522388,False
+wttc,2024,"Workforce, skills and education",35,67,52.23880597014925,False
+wttc,2024,Destination management and overtourism,0,67,0.0,False
+wttc,2024,"Inclusion, accessibility and communities",6,67,8.955223880597014,False
+wttc,2024,"Distribution, booking and business models",0,67,0.0,False
+wttc,2024,"Partnerships, governance and institutions",3,67,4.477611940298507,False
+wttc,2024,"Marketing, social media and branding",0,67,0.0,False
+wttc,2024,"Policy, visas and travel facilitation",2,67,2.985074626865672,False
+wttc,2024,Transport and connectivity,2,67,2.985074626865672,False
+wttc,2024,"Investment, infrastructure and development",4,67,5.970149253731344,False
+wttc,2024,AI and digital technology,3,67,4.477611940298507,False
+wttc,2025,"Demand, performance and recovery",32,77,41.55844155844156,False
+wttc,2025,"Health, safety and crisis resilience",9,77,11.688311688311689,False
+wttc,2025,"Culture, heritage and experiences",10,77,12.987012987012987,False
+wttc,2025,"Sustainability, climate and nature",16,77,20.77922077922078,False
+wttc,2025,"Workforce, skills and education",36,77,46.753246753246756,False
+wttc,2025,Destination management and overtourism,1,77,1.2987012987012987,False
+wttc,2025,"Inclusion, accessibility and communities",3,77,3.896103896103896,False
+wttc,2025,"Distribution, booking and business models",0,77,0.0,False
+wttc,2025,"Partnerships, governance and institutions",3,77,3.896103896103896,False
+wttc,2025,"Marketing, social media and branding",1,77,1.2987012987012987,False
+wttc,2025,"Policy, visas and travel facilitation",2,77,2.5974025974025974,False
+wttc,2025,Transport and connectivity,5,77,6.4935064935064934,False
+wttc,2025,"Investment, infrastructure and development",7,77,9.090909090909092,False
+wttc,2025,AI and digital technology,4,77,5.194805194805195,False
+wttc,2026,"Demand, performance and recovery",33,92,35.869565217391305,True
+wttc,2026,"Health, safety and crisis resilience",18,92,19.565217391304348,True
+wttc,2026,"Culture, heritage and experiences",10,92,10.869565217391305,True
+wttc,2026,"Sustainability, climate and nature",20,92,21.73913043478261,True
+wttc,2026,"Workforce, skills and education",22,92,23.91304347826087,True
+wttc,2026,Destination management and overtourism,0,92,0.0,True
+wttc,2026,"Inclusion, accessibility and communities",6,92,6.521739130434782,True
+wttc,2026,"Distribution, booking and business models",1,92,1.0869565217391304,True
+wttc,2026,"Partnerships, governance and institutions",10,92,10.869565217391305,True
+wttc,2026,"Marketing, social media and branding",1,92,1.0869565217391304,True
+wttc,2026,"Policy, visas and travel facilitation",7,92,7.608695652173913,True
+wttc,2026,Transport and connectivity,19,92,20.652173913043477,True
+wttc,2026,"Investment, infrastructure and development",23,92,25.0,True
+wttc,2026,AI and digital technology,6,92,6.521739130434782,True

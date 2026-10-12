@@ -11,3 +11,7 @@ data/runner.lock
 data/pipeline.lock
 output/.staging/
 output/diagnostics/
+output/audit/.staging/
+# Short publisher-text contexts are local QA evidence, not repository exports.
+output/audit/theme_evidence.csv
+output/audit/entity_contexts.csv

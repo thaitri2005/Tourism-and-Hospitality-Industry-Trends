@@ -1,57 +1,57 @@
 ﻿theme,label,documents
-AI and digital technology,mixed,16
-AI and digital technology,negative,15
-AI and digital technology,neutral,128
-AI and digital technology,positive,109
-"Culture, heritage and experiences",mixed,14
-"Culture, heritage and experiences",negative,5
-"Culture, heritage and experiences",neutral,235
-"Culture, heritage and experiences",positive,565
-"Demand, performance and recovery",mixed,84
-"Demand, performance and recovery",negative,21
-"Demand, performance and recovery",neutral,233
-"Demand, performance and recovery",positive,655
-Destination management and overtourism,mixed,2
-Destination management and overtourism,negative,4
-Destination management and overtourism,neutral,95
-Destination management and overtourism,positive,79
-"Distribution, booking and business models",mixed,1
-"Distribution, booking and business models",negative,5
-"Distribution, booking and business models",neutral,22
-"Distribution, booking and business models",positive,17
-"Health, safety and crisis resilience",mixed,144
-"Health, safety and crisis resilience",negative,39
-"Health, safety and crisis resilience",neutral,195
-"Health, safety and crisis resilience",positive,832
-"Inclusion, accessibility and communities",mixed,19
-"Inclusion, accessibility and communities",negative,8
-"Inclusion, accessibility and communities",neutral,246
-"Inclusion, accessibility and communities",positive,596
-"Investment, infrastructure and development",mixed,18
-"Investment, infrastructure and development",negative,12
-"Investment, infrastructure and development",neutral,195
-"Investment, infrastructure and development",positive,375
-"Marketing, social media and branding",mixed,3
-"Marketing, social media and branding",negative,6
-"Marketing, social media and branding",neutral,139
-"Marketing, social media and branding",positive,154
+AI and digital technology,mixed,164
+AI and digital technology,negative,56
+AI and digital technology,neutral,299
+AI and digital technology,positive,463
+"Culture, heritage and experiences",mixed,48
+"Culture, heritage and experiences",negative,13
+"Culture, heritage and experiences",neutral,458
+"Culture, heritage and experiences",positive,1211
+"Demand, performance and recovery",mixed,138
+"Demand, performance and recovery",negative,54
+"Demand, performance and recovery",neutral,437
+"Demand, performance and recovery",positive,1075
+Destination management and overtourism,mixed,5
+Destination management and overtourism,negative,15
+Destination management and overtourism,neutral,173
+Destination management and overtourism,positive,160
+"Distribution, booking and business models",mixed,29
+"Distribution, booking and business models",negative,23
+"Distribution, booking and business models",neutral,166
+"Distribution, booking and business models",positive,283
+"Health, safety and crisis resilience",mixed,278
+"Health, safety and crisis resilience",negative,92
+"Health, safety and crisis resilience",neutral,410
+"Health, safety and crisis resilience",positive,1458
+"Inclusion, accessibility and communities",mixed,40
+"Inclusion, accessibility and communities",negative,35
+"Inclusion, accessibility and communities",neutral,455
+"Inclusion, accessibility and communities",positive,1085
+"Investment, infrastructure and development",mixed,47
+"Investment, infrastructure and development",negative,36
+"Investment, infrastructure and development",neutral,437
+"Investment, infrastructure and development",positive,694
+"Marketing, social media and branding",mixed,62
+"Marketing, social media and branding",negative,57
+"Marketing, social media and branding",neutral,425
+"Marketing, social media and branding",positive,627
 "Partnerships, governance and institutions",mixed,24
-"Partnerships, governance and institutions",negative,26
-"Partnerships, governance and institutions",neutral,417
-"Partnerships, governance and institutions",positive,791
-"Policy, visas and travel facilitation",mixed,40
-"Policy, visas and travel facilitation",negative,24
-"Policy, visas and travel facilitation",neutral,251
-"Policy, visas and travel facilitation",positive,367
-"Sustainability, climate and nature",mixed,77
-"Sustainability, climate and nature",negative,13
-"Sustainability, climate and nature",neutral,287
-"Sustainability, climate and nature",positive,993
-Transport and connectivity,mixed,17
-Transport and connectivity,negative,25
-Transport and connectivity,neutral,262
-Transport and connectivity,positive,352
-"Workforce, skills and education",mixed,88
-"Workforce, skills and education",negative,27
-"Workforce, skills and education",neutral,329
-"Workforce, skills and education",positive,823
+"Partnerships, governance and institutions",negative,22
+"Partnerships, governance and institutions",neutral,524
+"Partnerships, governance and institutions",positive,731
+"Policy, visas and travel facilitation",mixed,70
+"Policy, visas and travel facilitation",negative,49
+"Policy, visas and travel facilitation",neutral,453
+"Policy, visas and travel facilitation",positive,646
+"Sustainability, climate and nature",mixed,186
+"Sustainability, climate and nature",negative,35
+"Sustainability, climate and nature",neutral,490
+"Sustainability, climate and nature",positive,1616
+Transport and connectivity,mixed,115
+Transport and connectivity,negative,57
+Transport and connectivity,neutral,548
+Transport and connectivity,positive,917
+"Workforce, skills and education",mixed,261
+"Workforce, skills and education",negative,64
+"Workforce, skills and education",neutral,643
+"Workforce, skills and education",positive,1565
