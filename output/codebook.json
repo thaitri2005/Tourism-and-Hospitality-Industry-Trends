@@ -1,0 +1,998 @@
+{
+  "version": "1.1",
+  "themes": {
+    "Sustainability & climate": [
+      "sustainab\\w+",
+      "climate\\s+(?:change|action|crisis|emergency|goals?|targets?|neutral\\w*|resilience)",
+      "carbon",
+      "decarboni[sz]\\w+",
+      "net[\\s-]?zero",
+      "emissions?",
+      "biodiversity",
+      "nature[\\s-]positive",
+      "circular\\s+economy",
+      "green\\s+(?:transition|economy|recovery|hotels?|travel|tourism|investment|buildings?)",
+      "renewable\\s+energy",
+      "single[\\s-]use\\s+plastics?",
+      "plastic\\s+(?:waste|pollution)",
+      "food\\s+waste",
+      "waste\\s+(?:reduction|management)",
+      "eco[\\s-]?tourism",
+      "environmental(?:ly)?\\s+(?:impacts?|footprint|friendly|protection|sustainability)",
+      "(?:wildlife|marine|nature)\\s+conservation",
+      "SDGs?",
+      "sustainable\\s+development\\s+goals?",
+      "energy\\s+efficien\\w+"
+    ],
+    "Artificial intelligence": [
+      "artificial\\s+intelligence",
+      "[Gg]enerative\\s+AI",
+      "[Gg]en[\\s-]?AI",
+      "AI",
+      "machine\\s+learning",
+      "ChatGPT",
+      "large\\s+language\\s+models?",
+      "LLMs?",
+      "chatbots?",
+      "agentic",
+      "AI[\\s-](?:powered|driven|enabled|agents?)"
+    ],
+    "Digital technology & data": [
+      "digital\\s+transformation",
+      "digiti[sz]ation",
+      "digitali[sz]ation",
+      "digital\\s+(?:tools?|platforms?|solutions?|innovation|identity|payments?|technolog\\w+|channels?)",
+      "(?:hotel|travel|hospitality|tourism)\\s+tech(?:nolog\\w+)?",
+      "software",
+      "cloud[\\s-](?:based|platform|computing|solutions?)",
+      "big\\s+data",
+      "data\\s+analytics",
+      "analytics",
+      "cyber\\w*",
+      "biometrics?",
+      "blockchain",
+      "mobile\\s+apps?",
+      "property\\s+management\\s+systems?",
+      "PMS",
+      "robot\\w*",
+      "automation",
+      "contactless",
+      "virtual\\s+reality",
+      "augmented\\s+reality",
+      "metaverse",
+      "internet\\s+of\\s+things",
+      "IoT",
+      "smart\\s+(?:tourism|destinations?|hotels?|rooms?|cities)",
+      "tech\\s+start[\\s-]?ups?",
+      "digital\\s+nomads?"
+    ],
+    "Social media & digital marketing": [
+      "social\\s+media",
+      "social\\s+networks?",
+      "influencers?",
+      "Instagram",
+      "TikTok",
+      "Facebook",
+      "YouTube",
+      "Twitter",
+      "WeChat",
+      "Weibo",
+      "Xiaohongshu",
+      "user[\\s-]generated\\s+content",
+      "content\\s+creators?",
+      "online\\s+reviews?",
+      "digital\\s+marketing",
+      "search\\s+engines?",
+      "SEO",
+      "hashtags?",
+      "(?:online|digital|social)\\s+campaigns?",
+      "live[\\s-]?stream\\w*",
+      "(?:travel\\s+)?bloggers?",
+      "vloggers?",
+      "online\\s+reputation"
+    ],
+    "Marketing & destination promotion": [
+      "marketing\\s+(?:campaigns?|strategy|strategies|activities|efforts)",
+      "destination\\s+marketing",
+      "(?:tourism|destination)\\s+promotion",
+      "promotional\\s+(?:campaigns?|activities|events?)",
+      "roadshows?",
+      "brand(?:ing|\\s+awareness|\\s+campaign|\\s+identity|\\s+positioning)",
+      "advertising",
+      "(?:travel|trade|tourism)\\s+(?:fairs?|shows?|marts?)",
+      "ITB",
+      "World\\s+Travel\\s+Market",
+      "WTM",
+      "Arabian\\s+Travel\\s+Market",
+      "fam(?:iliari[sz]ation)?\\s+trips?",
+      "source\\s+markets?"
+    ],
+    "Workforce, skills & education": [
+      "workforce",
+      "employees?",
+      "workers?",
+      "staffing",
+      "staff\\s+(?:shortages?|retention|training|members|housing)",
+      "talent",
+      "recruit\\w*",
+      "labou?r\\s+(?:shortages?|market|force|costs?|unions?)",
+      "(?:trade|hotel|workers.?)\\s+unions?",
+      "unioni[sz]\\w+",
+      "wages?",
+      "minimum\\s+wage",
+      "job\\s+(?:openings|vacancies|training|fairs?|seekers|losses|creation)",
+      "skills?",
+      "training",
+      "education(?:al)?",
+      "apprentice\\w*",
+      "careers?",
+      "human\\s+capital",
+      "upskill\\w*",
+      "reskill\\w*",
+      "scholarships?",
+      "(?:hospitality|hotel|tourism)\\s+(?:schools?|management\\s+schools?)"
+    ],
+    "Travel demand & economic performance": [
+      "arrivals?",
+      "(?:visitor|tourist|passenger)\\s+numbers?",
+      "international\\s+tourists?",
+      "occupancy",
+      "RevPAR",
+      "ADR",
+      "average\\s+daily\\s+rates?",
+      "(?:travel|tourism|hotel|leisure)\\s+demand",
+      "booking\\s+(?:momentum|growth|volumes?|trends?)",
+      "GDP",
+      "economic\\s+(?:impact|contribution|growth|recovery|performance)",
+      "(?:visitor|tourism|tourist|international)\\s+(?:spending|spend|receipts|expenditure)",
+      "record\\s+(?:year|numbers|levels|highs?)",
+      "outbound",
+      "inbound",
+      "forecasts?",
+      "outlook",
+      "pre[\\s-]pandemic\\s+levels",
+      "year[\\s-]on[\\s-]year",
+      "travel\\s+intentions?",
+      "travel\\s+sentiment"
+    ],
+    "COVID-19 pandemic": [
+      "COVID(?:-19)?",
+      "coronavirus",
+      "pandemic",
+      "lockdowns?",
+      "quarantine",
+      "vaccin\\w+",
+      "social\\s+distancing",
+      "reopen\\w*",
+      "restart(?:ing)?\\s+(?:of\\s+)?(?:tourism|travel)",
+      "Safe\\s+Travels",
+      "(?:health|safety|hygiene)\\s+protocols?",
+      "post[\\s-]pandemic",
+      "Omicron",
+      "testing\\s+requirements?"
+    ],
+    "Safety, security & crisis resilience": [
+      "crisis",
+      "crises",
+      "disasters?",
+      "hurricanes?",
+      "earthquakes?",
+      "floods?",
+      "wildfires?",
+      "tsunami",
+      "terroris\\w+",
+      "security",
+      "resilien\\w+",
+      "emergency",
+      "conflicts?",
+      "war",
+      "geopolitical",
+      "risk\\s+management",
+      "travel\\s+advisor(?:y|ies)",
+      "(?:natural|climate)\\s+hazards?",
+      "recovery\\s+fund",
+      "safety\\s+and\\s+security"
+    ],
+    "Policy, regulation & visas": [
+      "visas?",
+      "visa[\\s-]free",
+      "e[\\s-]?visas?",
+      "travel\\s+restrictions?",
+      "borders?",
+      "regulations?",
+      "regulatory",
+      "legislation",
+      "legislat(?:ive|ors?)",
+      "congress(?:ional)?",
+      "senate",
+      "lawmakers",
+      "policy[\\s-]?makers",
+      "(?:public|tourism|government)\\s+polic(?:y|ies)",
+      "taxes",
+      "taxation",
+      "tourist\\s+tax",
+      "levy",
+      "levies",
+      "advocacy",
+      "lobby\\w*",
+      "travel\\s+facilitation",
+      "deregulation"
+    ],
+    "Investment & hotel development": [
+      "investments?",
+      "investors?",
+      "infrastructure",
+      "(?:hotel|resort)\\s+(?:developments?|openings?|pipeline|projects?)",
+      "construction",
+      "financing",
+      "capital\\s+(?:expenditure|markets?|investment)",
+      "real\\s+estate",
+      "acquisitions?",
+      "acquires?",
+      "acquired",
+      "mergers?",
+      "pipeline",
+      "signings?",
+      "management\\s+agreements?",
+      "franchise\\s+agreements?",
+      "development\\s+projects?",
+      "new\\s+hotels?",
+      "hotel\\s+transactions?",
+      "joint\\s+ventures?"
+    ],
+    "Destination management & overtourism": [
+      "destination\\s+management",
+      "DMOs?",
+      "over[\\s-]?tourism",
+      "overcrowding",
+      "crowd\\s+management",
+      "visitor\\s+management",
+      "carrying\\s+capacity",
+      "seasonality",
+      "(?:visitor|tourist)\\s+dispersal",
+      "destination\\s+stewardship",
+      "tourism\\s+(?:planning|master\\s+plans?|strategy|strategies)",
+      "destination\\s+(?:development|strategy|governance|competitiveness|management\\s+organi[sz]ations?)",
+      "local\\s+residents",
+      "residents?\\s+(?:and|vs\\.?|versus)\\s+(?:visitors|tourists)"
+    ],
+    "Inclusion, community & accessibility": [
+      "inclusi\\w+",
+      "accessib\\w+",
+      "gender",
+      "women",
+      "equality",
+      "diversity\\s+(?:and|&)\\s+inclusion",
+      "DEI",
+      "disabilit\\w+",
+      "indigenous",
+      "local\\s+communit\\w+",
+      "community[\\s-]based",
+      "empowerment",
+      "empower(?:ing)?\\s+(?:women|communities|local)",
+      "poverty",
+      "rural\\s+development",
+      "livelihoods?",
+      "social\\s+impact",
+      "human\\s+rights",
+      "human\\s+trafficking",
+      "LGBTQ?\\+?"
+    ],
+    "Culture, heritage & gastronomy": [
+      "cultural\\s+(?:heritage|tourism|experiences?|events?|sites?|diversity|attractions?|identity|programmes?|programs?|offer\\w*|exchanges?|assets?)",
+      "(?:local|national|living|indigenous|rich|vibrant)\\s+cultures?",
+      "culture\\s+(?:and|&)\\s+(?:heritage|history|arts|tourism)",
+      "heritage",
+      "UNESCO",
+      "museums?",
+      "gastronom\\w+",
+      "culinary",
+      "food\\s+tourism",
+      "cuisine",
+      "wine\\s+tourism",
+      "festivals?",
+      "arts\\s+and\\s+culture",
+      "handicrafts?",
+      "historic(?:al)?\\s+sites?",
+      "cultural\\s+routes?",
+      "creative\\s+(?:industries|economy)"
+    ],
+    "Guest experience & wellness": [
+      "guest\\s+experiences?",
+      "customer\\s+experiences?",
+      "personali[sz]\\w+",
+      "guest\\s+satisfaction",
+      "service\\s+quality",
+      "luxury",
+      "wellness",
+      "well[\\s-]?being",
+      "spas?",
+      "medical\\s+tourism",
+      "experiential",
+      "authentic\\s+experiences?",
+      "amenities",
+      "guest\\s+(?:needs|expectations|journey)",
+      "traveller\\s+experience",
+      "traveler\\s+experience"
+    ],
+    "Air, cruise & connectivity": [
+      "airlines?",
+      "aviation",
+      "airports?",
+      "air\\s+(?:connectivity|routes?|capacity|service|travel|transport|lift)",
+      "flights?",
+      "cruise\\w*",
+      "rail(?:ways?)?",
+      "high[\\s-]speed\\s+rail",
+      "train\\s+(?:travel|services?|stations?|routes?)",
+      "(?:air|airline|flight|route)\\s+connectivity",
+      "ferr(?:y|ies)"
+    ],
+    "Distribution, OTAs & loyalty": [
+      "online\\s+travel\\s+agen\\w+",
+      "OTAs?",
+      "travel\\s+(?:agents?|advisors?|agencies)",
+      "tour\\s+operators?",
+      "distribution",
+      "direct\\s+bookings?",
+      "booking\\s+(?:engines?|platforms?|channels?)",
+      "GDS",
+      "global\\s+distribution\\s+systems?",
+      "NDC",
+      "metasearch",
+      "channel\\s+manag\\w+",
+      "commission\\s+(?:fees?|rates?|levels|costs)",
+      "loyalty\\s+(?:programs?|programmes?|members)",
+      "rewards\\s+programs?",
+      "short[\\s-]term\\s+rentals?",
+      "vacation\\s+rentals?",
+      "home[\\s-]sharing",
+      "sharing\\s+economy",
+      "revenue\\s+management",
+      "retailing"
+    ],
+    "Events, MICE & business travel": [
+      "business\\s+travel(?:lers?)?",
+      "corporate\\s+travel",
+      "MICE",
+      "business\\s+events?",
+      "meetings\\s+(?:industry|and\\s+events)",
+      "conventions?\\s+(?:cent(?:re|er)s?|bureaus?)",
+      "exhibitions?",
+      "incentive\\s+travel",
+      "event\\s+(?:industry|planners?|venues?)",
+      "bleisure",
+      "conferences?\\s+and\\s+events"
+    ],
+    "Costs, inflation & affordability": [
+      "inflation",
+      "(?:rising|higher|operating|labou?r|energy|fuel|living)\\s+costs?",
+      "cost\\s+of\\s+living",
+      "affordab\\w+",
+      "interest\\s+rates?",
+      "recession",
+      "economic\\s+(?:uncertainty|slowdown|downturn|headwinds)",
+      "exchange\\s+rates?",
+      "tariffs?",
+      "price\\s+(?:increases?|rises?|hikes?)",
+      "higher\\s+prices"
+    ]
+  },
+  "brands": {
+    "Booking.com": {
+      "group": "Booking Holdings",
+      "pattern": "Booking\\.com"
+    },
+    "Booking Holdings": {
+      "group": "Booking Holdings",
+      "pattern": "Booking\\s+Holdings"
+    },
+    "Priceline": {
+      "group": "Booking Holdings",
+      "pattern": "Priceline"
+    },
+    "Agoda": {
+      "group": "Booking Holdings",
+      "pattern": "Agoda"
+    },
+    "KAYAK": {
+      "group": "Booking Holdings",
+      "pattern": "KAYAK"
+    },
+    "OpenTable": {
+      "group": "Booking Holdings",
+      "pattern": "OpenTable"
+    },
+    "Hilton": {
+      "group": "Hilton",
+      "pattern": "Hilton(?!\\s+Head)"
+    },
+    "Waldorf Astoria": {
+      "group": "Hilton",
+      "pattern": "Waldorf[\\s-]Astoria"
+    },
+    "Conrad": {
+      "group": "Hilton",
+      "pattern": "Conrad\\s+Hotels?"
+    },
+    "DoubleTree": {
+      "group": "Hilton",
+      "pattern": "Double[Tt]ree"
+    },
+    "Hampton": {
+      "group": "Hilton",
+      "pattern": "Hampton\\s+(?:Inn|by\\s+Hilton)"
+    },
+    "Embassy Suites": {
+      "group": "Hilton",
+      "pattern": "Embassy\\s+Suites"
+    },
+    "Curio Collection": {
+      "group": "Hilton",
+      "pattern": "Curio\\s+Collection"
+    },
+    "Canopy by Hilton": {
+      "group": "Hilton",
+      "pattern": "Canopy\\s+by\\s+Hilton"
+    },
+    "LXR": {
+      "group": "Hilton",
+      "pattern": "LXR\\s+Hotels"
+    },
+    "Marriott": {
+      "group": "Marriott International",
+      "pattern": "Marriott"
+    },
+    "Ritz-Carlton": {
+      "group": "Marriott International",
+      "pattern": "Ritz[\\s-]Carlton"
+    },
+    "St. Regis": {
+      "group": "Marriott International",
+      "pattern": "St\\.?\\s+Regis"
+    },
+    "W Hotels": {
+      "group": "Marriott International",
+      "pattern": "W\\s+Hotels?"
+    },
+    "Sheraton": {
+      "group": "Marriott International",
+      "pattern": "Sheraton"
+    },
+    "Westin": {
+      "group": "Marriott International",
+      "pattern": "Westin"
+    },
+    "Renaissance Hotels": {
+      "group": "Marriott International",
+      "pattern": "Renaissance\\s+Hotels?"
+    },
+    "Le Méridien": {
+      "group": "Marriott International",
+      "pattern": "Le\\s+M[ée]ridien"
+    },
+    "Four Points": {
+      "group": "Marriott International",
+      "pattern": "Four\\s+Points"
+    },
+    "Aloft": {
+      "group": "Marriott International",
+      "pattern": "Aloft"
+    },
+    "Moxy": {
+      "group": "Marriott International",
+      "pattern": "Moxy"
+    },
+    "Autograph Collection": {
+      "group": "Marriott International",
+      "pattern": "Autograph\\s+Collection"
+    },
+    "Starwood": {
+      "group": "Marriott International",
+      "pattern": "Starwood"
+    },
+    "Airbnb": {
+      "group": "Airbnb",
+      "pattern": "Airbnb"
+    },
+    "Expedia": {
+      "group": "Expedia Group",
+      "pattern": "Expedia"
+    },
+    "Hotels.com": {
+      "group": "Expedia Group",
+      "pattern": "Hotels\\.com"
+    },
+    "Vrbo": {
+      "group": "Expedia Group",
+      "pattern": "Vrbo|VRBO|HomeAway"
+    },
+    "Egencia": {
+      "group": "Expedia Group",
+      "pattern": "Egencia"
+    },
+    "Orbitz": {
+      "group": "Expedia Group",
+      "pattern": "Orbitz"
+    },
+    "trivago": {
+      "group": "Expedia Group",
+      "pattern": "[Tt]rivago"
+    },
+    "Hyatt": {
+      "group": "Hyatt",
+      "pattern": "Hyatt"
+    },
+    "Andaz": {
+      "group": "Hyatt",
+      "pattern": "Andaz"
+    },
+    "Alila": {
+      "group": "Hyatt",
+      "pattern": "Alila"
+    },
+    "Thompson Hotels": {
+      "group": "Hyatt",
+      "pattern": "Thompson\\s+Hotels?"
+    },
+    "IHG": {
+      "group": "IHG Hotels & Resorts",
+      "pattern": "IHG|InterContinental\\s+Hotels\\s+Group"
+    },
+    "InterContinental": {
+      "group": "IHG Hotels & Resorts",
+      "pattern": "InterContinental(?!\\s+Hotels\\s+Group)"
+    },
+    "Holiday Inn": {
+      "group": "IHG Hotels & Resorts",
+      "pattern": "Holiday\\s+Inn"
+    },
+    "Crowne Plaza": {
+      "group": "IHG Hotels & Resorts",
+      "pattern": "Crowne\\s+Plaza"
+    },
+    "Kimpton": {
+      "group": "IHG Hotels & Resorts",
+      "pattern": "Kimpton"
+    },
+    "Hotel Indigo": {
+      "group": "IHG Hotels & Resorts",
+      "pattern": "Hotel\\s+Indigo"
+    },
+    "Six Senses": {
+      "group": "IHG Hotels & Resorts",
+      "pattern": "Six\\s+Senses"
+    },
+    "Regent Hotels": {
+      "group": "IHG Hotels & Resorts",
+      "pattern": "Regent\\s+Hotels?"
+    },
+    "voco": {
+      "group": "IHG Hotels & Resorts",
+      "pattern": "voco"
+    },
+    "Staybridge Suites": {
+      "group": "IHG Hotels & Resorts",
+      "pattern": "Staybridge"
+    },
+    "Disney": {
+      "group": "Disney",
+      "pattern": "Disney(?:land)?|Walt\\s+Disney"
+    },
+    "Trip.com": {
+      "group": "Trip.com Group",
+      "pattern": "Trip\\.com|Ctrip"
+    },
+    "Skyscanner": {
+      "group": "Trip.com Group",
+      "pattern": "Skyscanner"
+    },
+    "Qunar": {
+      "group": "Trip.com Group",
+      "pattern": "Qunar"
+    },
+    "Accor": {
+      "group": "Accor",
+      "pattern": "Accor(?:Hotels)?|ALL\\s+Accor"
+    },
+    "Raffles": {
+      "group": "Accor",
+      "pattern": "Raffles\\s+(?:Hotels?|[A-Z][a-z]+)"
+    },
+    "Fairmont": {
+      "group": "Accor",
+      "pattern": "Fairmont"
+    },
+    "Sofitel": {
+      "group": "Accor",
+      "pattern": "Sofitel"
+    },
+    "Pullman": {
+      "group": "Accor",
+      "pattern": "Pullman"
+    },
+    "MGallery": {
+      "group": "Accor",
+      "pattern": "MGallery"
+    },
+    "Novotel": {
+      "group": "Accor",
+      "pattern": "Novotel"
+    },
+    "Mercure": {
+      "group": "Accor",
+      "pattern": "Mercure"
+    },
+    "ibis": {
+      "group": "Accor",
+      "pattern": "ibis"
+    },
+    "Swissôtel": {
+      "group": "Accor",
+      "pattern": "Swiss[oô]tel"
+    },
+    "Mövenpick": {
+      "group": "Accor",
+      "pattern": "M[öo]venpick"
+    },
+    "Banyan Tree": {
+      "group": "",
+      "pattern": "Banyan\\s+Tree"
+    },
+    "Wyndham": {
+      "group": "",
+      "pattern": "Wyndham"
+    },
+    "Choice Hotels": {
+      "group": "",
+      "pattern": "Choice\\s+Hotels"
+    },
+    "Best Western": {
+      "group": "",
+      "pattern": "Best\\s+Western"
+    },
+    "Radisson": {
+      "group": "",
+      "pattern": "Radisson"
+    },
+    "Four Seasons": {
+      "group": "",
+      "pattern": "Four\\s+Seasons"
+    },
+    "Shangri-La": {
+      "group": "",
+      "pattern": "Shangri[\\s-]La"
+    },
+    "Minor Hotels": {
+      "group": "",
+      "pattern": "Minor\\s+(?:Hotels|International)"
+    },
+    "Anantara": {
+      "group": "",
+      "pattern": "Anantara"
+    },
+    "Meliá": {
+      "group": "",
+      "pattern": "Meli[aá]\\s+(?:Hotels|Hotels\\s+International)|Meli[aá]"
+    },
+    "Riu": {
+      "group": "",
+      "pattern": "RIU|Riu\\s+Hotels"
+    },
+    "Iberostar": {
+      "group": "",
+      "pattern": "Iberostar"
+    },
+    "Barceló": {
+      "group": "",
+      "pattern": "Barcel[oó]"
+    },
+    "Jin Jiang": {
+      "group": "",
+      "pattern": "Jin\\s*Jiang"
+    },
+    "Mandarin Oriental": {
+      "group": "",
+      "pattern": "Mandarin\\s+Oriental"
+    },
+    "Kempinski": {
+      "group": "",
+      "pattern": "Kempinski"
+    },
+    "Rosewood": {
+      "group": "",
+      "pattern": "Rosewood"
+    },
+    "Belmond": {
+      "group": "",
+      "pattern": "Belmond"
+    },
+    "Soneva": {
+      "group": "",
+      "pattern": "Soneva"
+    },
+    "Dusit": {
+      "group": "",
+      "pattern": "Dusit"
+    },
+    "Centara": {
+      "group": "",
+      "pattern": "Centara"
+    },
+    "Langham": {
+      "group": "",
+      "pattern": "Langham"
+    },
+    "Ascott": {
+      "group": "",
+      "pattern": "Ascott"
+    },
+    "OYO": {
+      "group": "",
+      "pattern": "OYO"
+    },
+    "Sonder": {
+      "group": "",
+      "pattern": "Sonder"
+    },
+    "Selina": {
+      "group": "",
+      "pattern": "Selina"
+    },
+    "citizenM": {
+      "group": "",
+      "pattern": "citizenM"
+    },
+    "Club Med": {
+      "group": "",
+      "pattern": "Club\\s+Med"
+    },
+    "Sandals": {
+      "group": "",
+      "pattern": "Sandals"
+    },
+    "Vinpearl": {
+      "group": "",
+      "pattern": "Vinpearl"
+    },
+    "Tripadvisor": {
+      "group": "",
+      "pattern": "Trip\\s?[Aa]dvisor"
+    },
+    "Google": {
+      "group": "",
+      "pattern": "Google"
+    },
+    "Amadeus": {
+      "group": "",
+      "pattern": "Amadeus"
+    },
+    "Sabre": {
+      "group": "",
+      "pattern": "Sabre"
+    },
+    "Travelport": {
+      "group": "",
+      "pattern": "Travelport"
+    },
+    "Hotelbeds": {
+      "group": "",
+      "pattern": "Hotelbeds"
+    },
+    "SiteMinder": {
+      "group": "",
+      "pattern": "SiteMinder"
+    },
+    "Oracle Hospitality": {
+      "group": "",
+      "pattern": "Oracle\\s+Hospitality"
+    },
+    "Cloudbeds": {
+      "group": "",
+      "pattern": "Cloudbeds"
+    },
+    "Mews": {
+      "group": "",
+      "pattern": "Mews"
+    },
+    "Duetto": {
+      "group": "",
+      "pattern": "Duetto"
+    },
+    "IDeaS": {
+      "group": "",
+      "pattern": "IDeaS"
+    },
+    "STR": {
+      "group": "",
+      "pattern": "STR(?=\\s*(?:data|reports?|reported|figures|said|says|Global|and\\s+Tourism\\s+Economics|\\)|'s|’s))"
+    },
+    "CoStar": {
+      "group": "",
+      "pattern": "CoStar"
+    },
+    "ForwardKeys": {
+      "group": "",
+      "pattern": "ForwardKeys"
+    },
+    "TUI": {
+      "group": "",
+      "pattern": "TUI"
+    },
+    "Thomas Cook": {
+      "group": "",
+      "pattern": "Thomas\\s+Cook"
+    },
+    "Intrepid Travel": {
+      "group": "",
+      "pattern": "Intrepid\\s+Travel|Intrepid\\s+Group"
+    },
+    "G Adventures": {
+      "group": "",
+      "pattern": "G\\s+Adventures"
+    },
+    "Abercrombie & Kent": {
+      "group": "",
+      "pattern": "Abercrombie\\s*(?:&|and)\\s*Kent"
+    },
+    "Carnival": {
+      "group": "",
+      "pattern": "Carnival"
+    },
+    "Royal Caribbean": {
+      "group": "",
+      "pattern": "Royal\\s+Caribbean"
+    },
+    "MSC Cruises": {
+      "group": "",
+      "pattern": "MSC\\s+Cruises"
+    },
+    "Norwegian Cruise Line": {
+      "group": "",
+      "pattern": "Norwegian\\s+Cruise\\s+Line"
+    },
+    "Princess Cruises": {
+      "group": "",
+      "pattern": "Princess\\s+Cruises"
+    },
+    "Viking": {
+      "group": "",
+      "pattern": "Viking\\s+(?:Cruises|River|Ocean)"
+    },
+    "Emirates": {
+      "group": "",
+      "pattern": "Emirates"
+    },
+    "Qatar Airways": {
+      "group": "",
+      "pattern": "Qatar\\s+Airways"
+    },
+    "Singapore Airlines": {
+      "group": "",
+      "pattern": "Singapore\\s+Airlines"
+    },
+    "Delta Air Lines": {
+      "group": "",
+      "pattern": "Delta\\s+Air\\s*Lines|Delta(?=\\s+(?:flights?|passengers|CEO|said))"
+    },
+    "American Airlines": {
+      "group": "",
+      "pattern": "American\\s+Airlines"
+    },
+    "United Airlines": {
+      "group": "",
+      "pattern": "United\\s+Airlines"
+    },
+    "Southwest Airlines": {
+      "group": "",
+      "pattern": "Southwest\\s+Airlines"
+    },
+    "JetBlue": {
+      "group": "",
+      "pattern": "JetBlue"
+    },
+    "Lufthansa": {
+      "group": "",
+      "pattern": "Lufthansa"
+    },
+    "Air France-KLM": {
+      "group": "",
+      "pattern": "Air\\s+France|KLM"
+    },
+    "British Airways": {
+      "group": "",
+      "pattern": "British\\s+Airways"
+    },
+    "Ryanair": {
+      "group": "",
+      "pattern": "Ryanair"
+    },
+    "easyJet": {
+      "group": "",
+      "pattern": "easyJet"
+    },
+    "Turkish Airlines": {
+      "group": "",
+      "pattern": "Turkish\\s+Airlines"
+    },
+    "Etihad": {
+      "group": "",
+      "pattern": "Etihad"
+    },
+    "Cathay Pacific": {
+      "group": "",
+      "pattern": "Cathay\\s+Pacific"
+    },
+    "Qantas": {
+      "group": "",
+      "pattern": "Qantas"
+    },
+    "Air Canada": {
+      "group": "",
+      "pattern": "Air\\s+Canada"
+    },
+    "AirAsia": {
+      "group": "",
+      "pattern": "AirAsia"
+    },
+    "Thai Airways": {
+      "group": "",
+      "pattern": "Thai\\s+Airways"
+    },
+    "Vietnam Airlines": {
+      "group": "",
+      "pattern": "Vietnam\\s+Airlines"
+    },
+    "Vietjet": {
+      "group": "",
+      "pattern": "Viet[Jj]et"
+    },
+    "Boeing": {
+      "group": "",
+      "pattern": "Boeing"
+    },
+    "Airbus": {
+      "group": "",
+      "pattern": "Airbus"
+    },
+    "Hertz": {
+      "group": "",
+      "pattern": "Hertz"
+    },
+    "Avis": {
+      "group": "",
+      "pattern": "Avis(?:\\s+Budget)?"
+    },
+    "Uber": {
+      "group": "",
+      "pattern": "Uber"
+    }
+  },
+  "organizations": {
+    "UN Tourism / UNWTO": "UN\\s+Tourism|UNWTO|World\\s+Tourism\\s+Organi[sz]ation",
+    "WTTC": "WTTC|World\\s+Travel\\s*(?:&|and)\\s*Tourism\\s+Council",
+    "PATA": "PATA|Pacific\\s+Asia\\s+Travel\\s+Association",
+    "AHLA": "AHLA|AH&LA|American\\s+Hotel\\s*(?:&|and)\\s*Lodging\\s+Association",
+    "European Travel Commission": "European\\s+Travel\\s+Commission",
+    "Caribbean Tourism Organization": "Caribbean\\s+Tourism\\s+Organi[sz]ation",
+    "IH&RA": "IH\\s*&\\s*RA|International\\s+Hotel\\s*(?:&|and)\\s*Restaurant\\s+Association",
+    "IATA": "IATA|International\\s+Air\\s+Transport\\s+Association",
+    "ICAO": "ICAO|International\\s+Civil\\s+Aviation\\s+Organi[sz]ation",
+    "CLIA": "CLIA|Cruise\\s+Lines\\s+International\\s+Association",
+    "U.S. Travel Association": "U\\.?S\\.?\\s+Travel\\s+Association",
+    "ASTA": "ASTA|American\\s+Society\\s+of\\s+Travel\\s+Advisors",
+    "HOTREC": "HOTREC",
+    "GSTC": "GSTC|Global\\s+Sustainable\\s+Tourism\\s+Council",
+    "HFTP": "HFTP|Hospitality\\s+Financial\\s+and\\s+Technology\\s+Professionals",
+    "CHTA": "CHTA|Caribbean\\s+Hotel\\s*(?:&|and)\\s*Tourism\\s+Association",
+    "UNESCO": "UNESCO",
+    "World Health Organization": "World\\s+Health\\s+Organi[sz]ation",
+    "European Commission / EU": "European\\s+Commission|European\\s+Union",
+    "ASEAN": "ASEAN",
+    "OECD": "OECD",
+    "World Bank": "World\\s+Bank",
+    "Brand USA": "Brand\\s+USA"
+  },
+  "discussed_rule": "term in headline, OR 2+ mentions in the first 80 words, OR 3+ mentions using 2+ distinct terms",
+  "sentiment": "cardiffnlp/twitter-roberta-base-sentiment-latest (revision 3216a57f2a0d9c45a2e6c20157c20c49fb4bf9c7); class probabilities averaged over up to 5 sentences mentioning the discussed theme or brand; label = most probable class; score = P(positive) - P(negative)"
+}

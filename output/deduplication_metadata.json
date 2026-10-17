@@ -1,7 +1,0 @@
-{
-  "documents": 5105,
-  "exact_hash_search": "completed",
-  "near_duplicate_search": "completed",
-  "similarity_threshold": 0.94,
-  "max_neighbours": 6
-}

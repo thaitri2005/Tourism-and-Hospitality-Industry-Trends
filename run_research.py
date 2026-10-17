@@ -53,7 +53,7 @@ def prepare_environment():
             recorded = json.loads(marker.read_text('utf-8'))
         except (ValueError,OSError):
             pass
-    validate = [str(python),'-c','import bs4,lxml,pandas,numpy,scipy,sklearn,matplotlib,pypdf,dateutil,textblob; print("Dependency imports OK")']
+    validate = [str(python),'-c','import bs4,lxml,pandas,numpy,scipy,sklearn,matplotlib,pypdf,dateutil,nltk,openpyxl,torch,transformers; print("Dependency imports OK")']
     install = recorded.get('fingerprint')!=version
     repair = repair_marker.exists()
     if not install and not repair:
@@ -81,16 +81,19 @@ def main():
     parser.add_argument('--retry-blocked',nargs='+',default=[],metavar='SOURCE',
                         help='Explicitly recheck named blocked sources once; access denials stay enforced')
     parser.add_argument('--setup-only',action='store_true',help='Prepare and validate .venv, then stop without crawling or changing the corpus')
-    parser.add_argument('--audit-only',action='store_true',help='Run the complete automated audit of the current analysis without crawling')
+    parser.add_argument('--report-only',action='store_true',help='Rebuild REPORT.html/PDF from the published analysis without crawling')
+    parser.add_argument('--collect-only',action='store_true',help='Collect and save documents, then stop before re-extraction and analysis')
     from research.config import SOURCES
-    parser.add_argument('--sources',nargs='+',choices=list(SOURCES),help='Collect only these sources; analysis and audit still cover the entire corpus')
+    parser.add_argument('--sources',nargs='+',choices=list(SOURCES),help='Collect only these sources; analysis still covers the entire corpus')
     args = parser.parse_args()
-    if args.sources and (args.offline or args.audit_only or args.setup_only or args.status or args.diagnostics):
+    if args.sources and (args.offline or args.report_only or args.setup_only or args.status or args.diagnostics):
         parser.error('--sources requires a collection run')
-    if args.retry_blocked and (args.offline or args.audit_only or args.setup_only or args.status or args.diagnostics):
+    if args.retry_blocked and (args.offline or args.report_only or args.setup_only or args.status or args.diagnostics):
         parser.error('--retry-blocked requires a normal collection run')
-    if args.audit_only and (args.offline or args.setup_only or args.status or args.diagnostics):
-        parser.error('--audit-only cannot be combined with another operation')
+    if args.collect_only and (args.offline or args.report_only or args.setup_only):
+        parser.error('--collect-only requires a collection run')
+    if args.report_only and (args.offline or args.setup_only or args.status or args.diagnostics):
+        parser.error('--report-only cannot be combined with another operation')
     if args.status:
         print_status()
         return 0
@@ -138,8 +141,10 @@ def main():
                         command.append('--verbose')
                     if args.offline:
                         command.append('--offline')
-                    if args.audit_only:
-                        command.append('--audit-only')
+                    if args.report_only:
+                        command.append('--report-only')
+                    if args.collect_only:
+                        command.append('--collect-only')
                     if args.retry_blocked:
                         command.extend(['--retry-blocked',*args.retry_blocked])
                     # Parent captures output from process start, including import

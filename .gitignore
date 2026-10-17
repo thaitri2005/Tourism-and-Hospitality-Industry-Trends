@@ -1,17 +1,11 @@
 __pycache__/
 .pytest_cache/
-data/raw/
-data/http_cache/
-data/*.sqlite*
-tmp/
 .venv/
+tmp/
 logs/
-data/backups/
-data/runner.lock
-data/pipeline.lock
+# Corpus database, raw downloads and HTTP cache stay local (publisher content).
+data/
+# Operational state that changes on every run.
 output/.staging/
 output/diagnostics/
-output/audit/.staging/
-# Short publisher-text contexts are local QA evidence, not repository exports.
-output/audit/theme_evidence.csv
-output/audit/entity_contexts.csv
+output/runner_summary.json

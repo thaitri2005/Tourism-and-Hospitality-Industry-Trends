@@ -11,4 +11,4 @@ License: VADER_LICENSE.txt (MIT, C.J. Hutto).
 
 Cite Hutto, C.J. & Gilbert, E.E. (2014). VADER: A Parsimonious Rule-based Model for Sentiment Analysis of Social Media Text. ICWSM-14.
 
-The audit uses disagreement with TextBlob as a sensitivity diagnostic. The models are both lexical methods; agreement does not establish domain accuracy or sentiment towards a named theme.
+`research/analyze.py` scores every sentence that mentions a theme or brand; see the report's methodology section for thresholds.

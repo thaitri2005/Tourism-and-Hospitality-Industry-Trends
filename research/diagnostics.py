@@ -9,7 +9,7 @@ from pathlib import Path
 from .config import ROOT, DATA, OUTPUT, SOURCES, START, END
 from .runtime import atomic_bytes, atomic_json, utcnow
 
-PACKAGES = ['beautifulsoup4','lxml','pandas','numpy','scipy','scikit-learn','matplotlib','pypdf','python-dateutil','textblob']
+PACKAGES = ['beautifulsoup4','lxml','pandas','numpy','scipy','scikit-learn','matplotlib','pypdf','python-dateutil','nltk','openpyxl','torch','transformers']
 
 def environment():
     versions = {}
@@ -46,7 +46,7 @@ def snapshot():
         if 'fetch_failures' in tables:
             result['next_retry_at'] = db.execute('SELECT MIN(next_retry_at) FROM fetch_failures WHERE retryable=1').fetchone()[0]
         result['total_documents'] = sum(s['documents'] for s in result['sources'].values())
-        result['pending_urls'] = sum(sum(n for state,n in s['url_states'].items() if state in ('discovered','retry_wait','in_progress')) for s in result['sources'].values())
+        result['pending_urls'] = sum(sum(n for state,n in s['url_states'].items() if state in ('discovered','retry_wait','in_progress','archive_queued','archive_retry')) for s in result['sources'].values())
         return result
     finally:
         db.close()
@@ -63,7 +63,7 @@ def failures():
         if 'urls' in tables:
             available = {r[1] for r in db.execute('PRAGMA table_info(urls)')}
             columns = [c for c in ['source','url','status','error','error_kind','attempts','next_retry_at','last_run','fetched_at'] if c in available]
-            result['url_failures'] = [dict(r) for r in db.execute('SELECT '+','.join(columns)+" FROM urls WHERE status IN ('retry_wait','permanent_error','extraction_error','fetch_or_extract_error','in_progress') ORDER BY source,url")]
+            result['url_failures'] = [dict(r) for r in db.execute('SELECT '+','.join(columns)+" FROM urls WHERE status IN ('retry_wait','permanent_error','extraction_error','fetch_or_extract_error','in_progress','archive_retry','archive_error') ORDER BY source,url")]
         if 'fetch_failures' in tables:
             result['fetch_failures'] = [dict(r) for r in db.execute('SELECT * FROM fetch_failures ORDER BY source,url')]
         if 'requests' in tables:
@@ -93,7 +93,6 @@ def make_bundle(run_dir=None, summary=None):
                 archive.writestr(name,json.dumps(value,indent=2,ensure_ascii=False,default=str))
             source_files = list((ROOT/'research').glob('*.py')) + list((ROOT/'docs').glob('*.md')) + [ROOT/'run_research.py',ROOT/'requirements.txt',ROOT/'requirements.in',ROOT/'README.md']
             source_files += list((ROOT/'research/resources').glob('*'))
-            source_files += [ROOT/'docs/CODING_REVIEW_2026-10-12.csv']  # Metadata/dispositions only; no article excerpts.
             for path in source_files:
                 if path.is_file():
                     archive.write(path,'code/'+path.relative_to(ROOT).as_posix())
@@ -112,8 +111,7 @@ def make_bundle(run_dir=None, summary=None):
                         manifest['truncated_files'].append(str(path.relative_to(ROOT)))
                     else:
                         archive.write(path,'logs/'+logdir.name+'/'+name)
-            for name in ['runner_summary.json','analysis_state.json','run_summary.json','source_audit.json','QUALITY_CHECKS.json',
-                         'audit/summary.json','audit/audit_state.json','audit/AUDIT_REPORT.md','audit/FINDINGS.md']:
+            for name in ['runner_summary.json','analysis_state.json','run_summary.json','QUALITY_CHECKS.json','codebook.json']:
                 path = OUTPUT/name
                 if path.is_file():
                     archive.write(path,'output/'+name)

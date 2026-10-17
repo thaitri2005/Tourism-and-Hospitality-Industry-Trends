@@ -1,0 +1,39 @@
+﻿rule,theme,reader_positive,true_positive,false_positive,false_negative,precision,recall
+discussed,Sustainability & climate,8,7,2,1,0.778,0.875
+discussed,Artificial intelligence,1,1,0,0,1.0,1.0
+discussed,Digital technology & data,6,1,2,5,0.333,0.167
+discussed,Social media & digital marketing,4,2,0,2,1.0,0.5
+discussed,Marketing & destination promotion,9,3,0,6,1.0,0.333
+discussed,"Workforce, skills & education",9,8,4,1,0.667,0.889
+discussed,Travel demand & economic performance,11,10,2,1,0.833,0.909
+discussed,COVID-19 pandemic,18,16,4,2,0.8,0.889
+discussed,"Safety, security & crisis resilience",4,3,1,1,0.75,0.75
+discussed,"Policy, regulation & visas",16,9,4,7,0.692,0.562
+discussed,Investment & hotel development,1,1,2,0,0.333,1.0
+discussed,Destination management & overtourism,3,0,0,3,,0.0
+discussed,"Inclusion, community & accessibility",1,0,1,1,0.0,0.0
+discussed,"Culture, heritage & gastronomy",5,4,1,1,0.8,0.8
+discussed,Guest experience & wellness,7,5,0,2,1.0,0.714
+discussed,"Air, cruise & connectivity",6,6,2,0,0.75,1.0
+discussed,"Distribution, OTAs & loyalty",5,5,2,0,0.714,1.0
+discussed,"Events, MICE & business travel",3,2,0,1,1.0,0.667
+discussed,"Costs, inflation & affordability",2,2,1,0,0.667,1.0
+mentioned,Sustainability & climate,8,8,12,0,0.4,1.0
+mentioned,Artificial intelligence,1,1,2,0,0.333,1.0
+mentioned,Digital technology & data,6,5,10,1,0.333,0.833
+mentioned,Social media & digital marketing,4,4,0,0,1.0,1.0
+mentioned,Marketing & destination promotion,9,9,7,0,0.562,1.0
+mentioned,"Workforce, skills & education",9,9,18,0,0.333,1.0
+mentioned,Travel demand & economic performance,11,11,12,0,0.478,1.0
+mentioned,COVID-19 pandemic,18,18,11,0,0.621,1.0
+mentioned,"Safety, security & crisis resilience",4,4,15,0,0.211,1.0
+mentioned,"Policy, regulation & visas",16,12,14,4,0.462,0.75
+mentioned,Investment & hotel development,1,1,13,0,0.071,1.0
+mentioned,Destination management & overtourism,3,2,5,1,0.286,0.667
+mentioned,"Inclusion, community & accessibility",1,1,17,0,0.056,1.0
+mentioned,"Culture, heritage & gastronomy",5,5,11,0,0.312,1.0
+mentioned,Guest experience & wellness,7,6,8,1,0.429,0.857
+mentioned,"Air, cruise & connectivity",6,6,17,0,0.261,1.0
+mentioned,"Distribution, OTAs & loyalty",5,5,9,0,0.357,1.0
+mentioned,"Events, MICE & business travel",3,3,6,0,0.333,1.0
+mentioned,"Costs, inflation & affordability",2,2,4,0,0.333,1.0

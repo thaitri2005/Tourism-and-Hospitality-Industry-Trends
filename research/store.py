@@ -49,7 +49,8 @@ def connect():
     # Additive migrations preserve the existing pilot corpus.
     additions = {
         'urls': {'attempts':'INTEGER DEFAULT 0', 'next_retry_at':'TEXT',
-                 'error_kind':'TEXT', 'last_run':'TEXT', 'extractor_version':'TEXT'},
+                 'error_kind':'TEXT', 'last_run':'TEXT', 'extractor_version':'TEXT',
+                 'archive_snapshot':'TEXT'},
         'documents': {'extractor_version':'TEXT'},
         'requests': {'run_id':'TEXT', 'attempt':'INTEGER', 'elapsed_ms':'INTEGER',
                      'bytes':'INTEGER', 'cache_hit':'INTEGER', 'category':'TEXT'},

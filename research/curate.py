@@ -35,6 +35,9 @@ def curate_record(record, raw=None):
             marker='curation:v2_hospitalitynet_main_content_only'
             if marker not in flags:flags.append(marker)
             if doc['word_count']<120 and 'insufficient_text' not in reasons:reasons.append('insufficient_text')
+    if doc['source']=='hospitalitynet' and '/external/' in (doc.get('canonical_url') or ''):
+        # "External Article" items are excerpts of other publishers' stories, not Hospitality Net content.
+        if 'external_article_excerpt' not in reasons:reasons.append('external_article_excerpt')
     if doc['source']=='ahla' and path in ('/news/international','/news/hospitality-related-associations'):
         # The saved pages are a membership advertisement and an association
         # directory. Their WebPage dates do not turn them into news articles.

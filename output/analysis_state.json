@@ -1,44 +1,100 @@
 {
   "status": "complete",
-  "created_at": "2026-10-12T10:51:23.545045+00:00",
-  "input_fingerprint": "ffbf3d0cfd8e3a3a03b4ff9691f10998ac892048a6b9ff00a96b35740ce1755c",
-  "run_id": "20261012T102131Z-d0e08056",
+  "created_at": "2026-10-17T16:26:31.780305+00:00",
+  "input_fingerprint": "d3e94e9455a4f0f9bf24a6d86759d3bf4032eafd1db21307ba7081ef5d569a46",
+  "run_id": "20261017T161054Z-7be40897",
   "artifacts": {
-    "deduplication_metadata.json": "0dc43a6e933b8be1029fb94c73eec506102403345fe3ececc21dc00dbe782ea8",
-    "nmf_model_metadata.json": "45078f5505fb4d7836cd1fe13f86559c1e6af935526701937a6ab4b001fe641b",
-    "PRELIMINARY_REPORT.md": "ab1a53510cfde4385d0632393c6c1e305902c9cf3e8a048d12d2a7794d72303e",
-    "run_summary.json": "1ed9d02b016c7efedf35f9e524b63c44e19f8e3be1039fc46c466c80884dbac1",
-    "source_audit.json": "eed70c933f246c513b03e5bc3e9f95e429c4db63423f718acf349842de61b523",
-    "theme_codebook.json": "6bad09da55a65c2b3e90dc48f74f1e3df873c20358172e5bb62129d1d497aed7",
-    "figures/coverage.png": "e5610c84f8e26a57c9ef519ce2e5cb636f0325b1c96b781751999f76d6e36040",
-    "figures/themes_by_source.png": "6473cafbcde7be29da04a94c3d451d0c6c3025d6d29236dd7cd389cc52800c3b",
-    "figures/themes_over_time_ahla.png": "7c29b2d0380042beeb291ba1ef6453d346e8de4c338d7d65be142293b8498204",
-    "figures/themes_over_time_etc.png": "0b0001c30a0867788cdeaeb1fc0418ae5130c15d496e428597be7d8a4272f8aa",
-    "figures/themes_over_time_hospitalitynet.png": "1b55892cdc8edf1f405e97db6481508bac2c0af1e2d2a688f28ba48d95a8c09d",
-    "figures/themes_over_time_pata.png": "e36df73db43cc97c5356c18bf2bbe505eeaf109b15b8ed94449cd18b47f3195a",
-    "figures/themes_over_time_untourism.png": "691f9d4818db48a2d370c9b718f58d01b919b065bd66788f93209041a4859f18",
-    "figures/themes_over_time_wttc.png": "b311fe4dfe33da3958b88e8748bcbda778877d3f99600477246883bb98bd81db",
-    "tables/brand_theme_associations.csv": "9c0ea497a20e56e9ee04340d43b07178b68cc6fba7c2681ad9a96da89ab88739",
-    "tables/brand_theme_evidence.csv": "bcf03341d451b464f93f6cedf8279703d7b60874463a61c8ac8b2cfb6f922a4d",
-    "tables/core_article_metadata.csv": "0b171a87e8aefe9376d6c00f1125cfc939a639e2abda1efa8bc93b677b83eb48",
-    "tables/coverage_by_source_year.csv": "e67a6ac01450b4d70c45155f7ca7a2edb04208cbabd84cc79e8c011626ad18e7",
-    "tables/current_theme_ranking.csv": "f33f12243f1d9dd32d4153450b9a9eca98857cd2a2d104afef8af9e170d86d23",
-    "tables/discovered_topics_nmf.csv": "21c7a172dde7f4c8e6fd04c5945dd485b309098c9ec66ec23b180e1ff2020e4c",
-    "tables/document_metadata.csv": "7a45df0297aba1f5cbb40929859257fbbd40a17598871ca5d4eae7982930cc81",
-    "tables/duplicate_pairs.csv": "1bff733b65032574c89e9eea24e25732189cccba4f764ca8936ac8b24b300c1b",
-    "tables/entity_mentions.csv": "97e84371d52fe2e095156f49533d2f01766713cdd5949e831241d79abed0cda5",
-    "tables/entity_ranking.csv": "24ded2b27dc1e589695ee66e7854ff9e9886be7cc176b5b9cbfa1e5e72e47cce",
-    "tables/exclusions.csv": "d4b6ff4e0cefd34ff102816ee03289dab38e993a6519d0e030ff419930eee6f5",
-    "tables/human_review_template.csv": "b6fe8ee03b1a6dc55fe1245b6f6302d28886f5c1c8e9bcf91a89261e431649c0",
-    "tables/nmf_assignments.csv": "2afca4af1ffabe47c1e4fca577788f16f9e2373ba44e91207f8972893fe8a2d3",
-    "tables/report_metadata.csv": "e34b886e20abdc98427f3c7251c0abd48f5da1032c14fb693bc8b03e5a09eb28",
-    "tables/sentiment_summary_unvalidated.csv": "e759ac5b8c5127095fb6f296697526fb571563117899e80fa1173f8e99db38a2",
-    "tables/sentiment_unvalidated.csv": "9ece5caf94129ea3453b6edad11fa5c365ba7fe0163b1c06521093e8e1e7914f",
-    "tables/source_coverage.csv": "2c32996218b4946277e7b410fa5eb3342ec8883eb271c8a447b256d8a921a4cb",
-    "tables/themes_by_source.csv": "a3f121da9b2cbdff710bcf7b6741a6f35fec7f44c0f84378b6eae4d10ef03b48",
-    "tables/themes_by_source_year.csv": "93677c998dcb585f8a5232da1b136fa7d853cb6080c1513e71cdc1c579b04620",
-    "tables/theme_assignments.csv": "493f69e1d2c7fa73cae1f6de9d620a35daa34916c061e6bb3ba5c8c0278b3ab1",
-    "tables/url_inventory.csv": "0807c2c1b4a96df01edd2b1191cb9ca0a3e7d79a73782bf802e6108d35512358"
+    "codebook.json": "a13a545b2a8fba25b348b3aed13e2dbd45a1faee9410bfdf79cb51c2960208b4",
+    "QUALITY_CHECKS.json": "fda2064d49a97cb470c38026f95cb53c1b5fd34bfb4a30f7e1d301b7cae85527",
+    "RESULTS.xlsx": "d02532b2a44f10f690cdc144ed4d0d1cfda866ed410a66327ef6f573ca9ff221",
+    "run_summary.json": "06d445e05fe07863b7c31b93507c8f79d16c5c93ec7053ea636ac73c81b10ef8",
+    "figures/coverage_by_website_year.png": "19c6248f60a175dff3395a08ce48928503482e082b7119b25f3633a4c1685d6f",
+    "figures/q1_top10_current_themes.png": "24979c5d72ecb8500f1c58b3b8873f6cb56c3834b7223252d07895d76a031168",
+    "figures/q1_top10_sentiment.png": "6c063d29661c785dd8670ef2e391d461c2faadd2347d89224146c69b1dad1381",
+    "figures/q2_selected_theme_trends.png": "8ff148b7aca20d2e081dc370d5200858d9bb59449305b7c4f4c642bf62efd0f0",
+    "figures/q2_themes_by_year_heatmap.png": "3cf75c0d24466235e0989f0efa7f6f22bee5b19872d1ccb5cd73c2907889d35e",
+    "figures/q3_themes_by_website_heatmap.png": "1c1f80d98c158c8c906e83c5a9534c82baf4ccbec8bf244a4553a65d048cfcaa",
+    "figures/q4_brand_sentiment.png": "31b531b863a43793c2077eb4912a9b3a82f82d06f64fa0ce60ca68ac66010c21",
+    "figures/q4_brand_theme_heatmap.png": "f7291d248bb1cab6c60a59dccb4b45eff9c413819fa7de11b36c03eed5bbd9fa",
+    "figures/q4_gbm_brands_by_year.png": "563aa82edec7cf0c9619de4f89f7e6d77c42687b3933cf4871b321bf5de1f85d",
+    "figures/q4_gbm_brand_mentions.png": "a5133d57e488248f9065005a8cd6c0bda86b2818c0efb7b1938116420799c8a9",
+    "tables/articles_analysed.csv": "233f80ec5921438f90700d4d362ca09613ae57e1893beb40b53ff4a979c667dc",
+    "tables/article_brands.csv": "2e39432370626bdebf5c90524d3f43e6328d3734fc0cf3c6afd27b7749959e82",
+    "tables/article_themes.csv": "a793715cf14ab21081166c2ad8b4a67e94ae3d9d3bc3cf584192f91173da7299",
+    "tables/coverage_by_website_year.csv": "4a62dc38ce8cd04619d82b8e5d6107b335312bf26f61c37a2718ebfb91cbe0a9",
+    "tables/document_inventory.csv": "2dd806a8767c2628f63c0e58814d2fbf01c3c08da6d809c07e4fdbd6f1ed02e7",
+    "tables/exclusions.csv": "0a42afe3c948ad81930fe7aa86869a7ee5a3b39ded993a57bdceda61aaec236d",
+    "tables/nmf_topics.csv": "24d3fc2ef1539064f746a016c168540c6d0977fa4710f5f0ad4dfb57faa6dc82",
+    "tables/nmf_topic_share_by_year.csv": "b24e001ae3c08d537e1ab5d736c7a9a1dc29112408784c05b3bfb9fa3d44337c",
+    "tables/q1_current_theme_ranking.csv": "5ba7e3acbb18fb170ba1ee41be15cf540ba429aeb96780428d64e7433af2fea2",
+    "tables/q1_current_theme_share_by_website.csv": "e1ba3665c1f503d2c76d0c9fe68a9a8bd4c811fb30d016362f39bc2f9627bbae",
+    "tables/q1_theme_sentiment_all_years.csv": "b2699d18bf7dbbec23dccfc971839a0f47bf2fafa4ff28504adcc5aed8d18457",
+    "tables/q1_theme_sentiment_by_year.csv": "a28f8302a918191b36ee8756598834c847c3f7146f5c6f10c42c1ecc1ebd59dc",
+    "tables/q2_change_2017_19_vs_2023_25.csv": "b1eaa581dde9beec317d6b181a812c1ba07c03e6fef5532b51a479446f7710ff",
+    "tables/q2_theme_share_by_website_year.csv": "7be199742cbfaf7b71870ff30ad550f62632fb1b79725e26085beb02164dd2c3",
+    "tables/q2_theme_share_by_year.csv": "4594285d302d9001a3fb40a42f3405635469cbde1626c074cf34f152b2f63f37",
+    "tables/q2_theme_share_by_year_fixed_panel.csv": "413dcf064289945f050851ecdad4993a6303b67ba781bb0a7b62900d004867c3",
+    "tables/q2_top_themes_each_year.csv": "f98313e3dab5e14cf522ed052f60e887005c8c2ae93c44d200307204645489a7",
+    "tables/q3_theme_distinctiveness_by_website.csv": "c7c1521bc0a344fefb907b78d81439c2b30dfb026c2d754dfb468708bfc5608d",
+    "tables/q3_theme_share_by_website.csv": "a94779b3093f626e26207f68b790751a93f3855e1c9c4e44863a8a75cb9e0d0c",
+    "tables/q3_website_profiles.csv": "49d2b6efddd4dfd1f50e0f2ee1778b38662d8e847c4fd10525a6dcf372b700d3",
+    "tables/q4_brand_co_mentions.csv": "98e46fa0e0813c40d4c14739649572bf92752695f2db79d1d2542b4854b9507c",
+    "tables/q4_brand_groups.csv": "97e0d9ed46ffbf19900a5b676eb7a3de5409613905b27144ae77708c0755c5fa",
+    "tables/q4_brand_mentions_by_website.csv": "6fb9df51ccb998dbe063acae26aa5f9f124ee4f61145db4dcade6cfabd3913fe",
+    "tables/q4_brand_ranking.csv": "568302ad82236ae570c181a03e899231a4b3b664c0350c4b9e821604644f16bc",
+    "tables/q4_brand_theme_associations.csv": "869325d2de51775151ed98c16e790705b33e8a634fb16a655d2088b4e205e2e7",
+    "tables/q4_gbm_brands_per_1000_articles_by_year.csv": "9865a394c1bfc30067d1a931ae417d486b866684b337142934b165eabb3b7070",
+    "tables/q4_gbm_top10_brands.csv": "3fb4ead4cb5a5b9ee1e314094f7096eed2143ee337304b764b8c3216beeb407b",
+    "tables/q4_organisation_mentions.csv": "2d3a1ebb7e55eb292b8964319e3d42ef53ab8c6b137eb19c7d63cd5b498ce50d",
+    "tables/sources.csv": "3fd3acdc4af6e8e869529e9399d52cf146f38e0ecf1c6fd81b827d00feac38f4",
+    "tables/validation_by_theme.csv": "0107445ee33e77b33c5bf6a83949170f48eb82b966884c53bd678fad1b1dec86",
+    "tables/validation_summary.csv": "a75a21e9482ea2a9a4f38feae030f4ba4395fe1322f6554b5b9dc3a5122820d3"
   },
-  "validation_status": "exploratory; automated audit follows publication; accuracy not independently calibrated"
+  "checks": [
+    {
+      "check": "articles inside study window",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "one occurrence per story per website-year",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "every coded row refers to an analysed article",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "one theme row per article and theme",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "coverage table equals article count",
+      "passed": true,
+      "detail": "9060 vs 9060"
+    },
+    {
+      "check": "cell shares within 0-100",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "sentiment scores within -1..1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "every discussed theme has a sentiment score",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "current ranking covers every theme once",
+      "passed": true,
+      "detail": ""
+    }
+  ]
 }

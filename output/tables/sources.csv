@@ -1,0 +1,10 @@
+﻿website,source_id,type,url,documents_collected,eligible_documents,articles_analysed,current_window_articles,first_article,last_article,years_with_20plus_articles,from_web_archive_pct,collection_routes
+UN Tourism,untourism,Intergovernmental body,https://www.untourism.int,1486,1318,1305,41,2016-10-10,2026-09-18,10,0.0,live site (1305)
+WTTC,wttc,Industry association,https://wttc.org,886,752,733,99,2016-11-14,2026-10-09,8,10.6,live site (655); web archive (Wayback Machine) (78)
+IH&RA,ihra,Industry association,https://ih-ra.com,46,0,0,0,,,0,0.0,
+PATA,pata,Industry association,https://www.pata.org,2656,2352,2344,307,2016-10-10,2026-10-09,11,26.2,live site (1730); web archive (Wayback Machine) (614)
+AHLA,ahla,Industry association,https://www.ahla.com,811,561,535,60,2016-10-11,2026-10-01,10,47.9,live site (279); web archive (Wayback Machine) (256)
+European Travel Commission,etc,Industry association,https://etc-corporate.org,620,517,260,29,2016-10-20,2026-09-28,7,0.0,live site (260)
+Caribbean Tourism Organization,cto,Industry association,https://www.onecaribbean.org,985,642,638,20,2016-10-18,2026-05-31,8,100.0,web archive (Wayback Machine) (638)
+Hospitality Net,hospitalitynet,Trade media,https://www.hospitalitynet.org,2314,2141,2139,720,2016-10-13,2026-10-09,11,0.0,"live site, random ID sample (1551); live site (588)"
+Travel Weekly,travelweekly,Trade media,https://www.travelweekly.com,1724,1106,1106,104,2016-10-11,2026-10-05,10,100.0,web archive (Wayback Machine) (1106)

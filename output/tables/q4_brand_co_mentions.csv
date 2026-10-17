@@ -1,0 +1,1467 @@
+﻿brand_a,brand_b,articles,jaccard
+Hilton,Marriott International,201,0.283
+IHG Hotels & Resorts,Marriott International,136,0.197
+Hyatt,Marriott International,132,0.221
+Hilton,IHG Hotels & Resorts,119,0.197
+Hilton,Hyatt,104,0.2
+Accor,Marriott International,80,0.12
+Hyatt,IHG Hotels & Resorts,70,0.149
+Accor,IHG Hotels & Resorts,70,0.143
+Accor,Hilton,69,0.12
+Expedia Group,Google,64,0.143
+Marriott International,Wyndham,63,0.112
+Booking Holdings,Expedia Group,62,0.178
+Hilton,Wyndham,54,0.116
+Booking Holdings,Google,50,0.116
+Google,Tripadvisor,49,0.115
+Expedia Group,Marriott International,48,0.071
+Google,Marriott International,47,0.063
+Accor,Hyatt,46,0.111
+Hyatt,Wyndham,42,0.142
+IHG Hotels & Resorts,Wyndham,41,0.104
+Expedia Group,Hilton,40,0.068
+American Airlines,JetBlue,39,0.165
+Four Seasons,Marriott International,38,0.07
+Marriott International,Radisson,33,0.059
+Booking Holdings,Marriott International,32,0.048
+Google,Hilton,31,0.047
+Airbus,Boeing,31,0.199
+Hilton,Radisson,31,0.068
+Booking Holdings,Hilton,28,0.049
+Airbnb,Expedia Group,28,0.084
+Expedia Group,IHG Hotels & Resorts,28,0.055
+Booking Holdings,Tripadvisor,28,0.08
+Hilton,Trip.com Group,28,0.059
+IHG Hotels & Resorts,Radisson,27,0.071
+Airbnb,Marriott International,26,0.042
+Four Seasons,Hilton,26,0.057
+Four Seasons,Hyatt,25,0.092
+Accor,Radisson,25,0.083
+Expedia Group,Trip.com Group,25,0.086
+Google,Trip.com Group,25,0.069
+Choice Hotels,Marriott International,24,0.045
+Amadeus,Sabre,24,0.087
+Google,IHG Hotels & Resorts,24,0.041
+Marriott International,Trip.com Group,23,0.04
+Expedia Group,Tripadvisor,23,0.06
+Amadeus,Google,23,0.057
+Marriott International,Tripadvisor,22,0.033
+Choice Hotels,Hilton,21,0.048
+Choice Hotels,IHG Hotels & Resorts,21,0.06
+Accor,Expedia Group,21,0.048
+Four Seasons,IHG Hotels & Resorts,21,0.056
+American Airlines,United Airlines,21,0.095
+Amadeus,Marriott International,20,0.032
+Booking Holdings,Wyndham,19,0.066
+Accor,Wyndham,19,0.056
+Booking Holdings,Trip.com Group,18,0.067
+Emirates,Etihad,18,0.225
+Booking Holdings,IHG Hotels & Resorts,18,0.037
+Accor,Booking Holdings,18,0.044
+Amadeus,IHG Hotels & Resorts,18,0.041
+Amadeus,Expedia Group,18,0.054
+Airbnb,Tripadvisor,18,0.058
+Best Western,Google,18,0.052
+Expedia Group,Wyndham,18,0.056
+Best Western,IHG Hotels & Resorts,17,0.045
+Best Western,Marriott International,17,0.03
+Airbnb,Hilton,17,0.032
+Airbnb,Google,17,0.041
+Accor,Best Western,16,0.054
+Best Western,Tripadvisor,16,0.066
+Choice Hotels,Wyndham,16,0.106
+Amadeus,Tripadvisor,16,0.053
+Best Western,Hilton,15,0.032
+Hyatt,Radisson,15,0.051
+Carnival,Hilton,15,0.034
+Airbnb,Booking Holdings,15,0.047
+American Airlines,Delta Air Lines,15,0.071
+Booking Holdings,Hyatt,15,0.038
+Accor,Iberostar,14,0.053
+Air France-KLM,Lufthansa,14,0.194
+Amadeus,Hilton,14,0.027
+American Airlines,British Airways,14,0.069
+Google,Sabre,14,0.032
+Google,Wyndham,14,0.036
+Air Canada,American Airlines,14,0.071
+Amadeus,Booking Holdings,14,0.045
+Amadeus,Trip.com Group,14,0.065
+Choice Hotels,Hyatt,14,0.054
+Trip.com Group,Tripadvisor,14,0.052
+IHG Hotels & Resorts,Trip.com Group,13,0.032
+Accor,Google,13,0.025
+Disney,Marriott International,13,0.023
+Accor,Trip.com Group,13,0.04
+Carnival,Royal Caribbean,13,0.143
+Accor,Amadeus,13,0.036
+Amadeus,Travelport,13,0.09
+IHG Hotels & Resorts,Tripadvisor,12,0.024
+Intrepid Travel,Marriott International,12,0.021
+Marriott International,Uber,12,0.022
+Expedia Group,Hyatt,12,0.028
+Best Western,Hyatt,12,0.042
+Google,Hyatt,12,0.024
+Accor,Four Seasons,12,0.039
+Hilton,Meliá,12,0.028
+Accor,Meliá,12,0.047
+Carnival,Expedia Group,12,0.045
+Mandarin Oriental,Marriott International,12,0.023
+JetBlue,United Airlines,11,0.067
+Hilton,Tripadvisor,11,0.019
+Delta Air Lines,United Airlines,11,0.095
+Sabre,Travelport,11,0.061
+IHG Hotels & Resorts,Meliá,11,0.033
+Hilton,Intrepid Travel,11,0.024
+British Airways,Lufthansa,11,0.139
+Hilton,TUI,11,0.025
+Expedia Group,Radisson,11,0.037
+Best Western,Wyndham,11,0.061
+Emirates,Hilton,11,0.024
+Marriott International,Sabre,11,0.017
+Emirates,Lufthansa,10,0.101
+IHG Hotels & Resorts,Iberostar,10,0.029
+Marriott International,citizenM,10,0.02
+Disney,Hilton,10,0.021
+Carnival,Marriott International,10,0.018
+Boeing,Singapore Airlines,10,0.064
+American Airlines,Marriott International,10,0.015
+American Airlines,Hilton,10,0.018
+Airbnb,Amadeus,10,0.038
+Emirates,Marriott International,10,0.018
+Accor,Choice Hotels,10,0.036
+Meliá,Radisson,10,0.094
+Abercrombie & Kent,Accor,10,0.037
+Carnival,IHG Hotels & Resorts,10,0.027
+Airbnb,Trip.com Group,10,0.044
+Radisson,Wyndham,10,0.052
+American Airlines,Boeing,10,0.037
+Hilton,Iberostar,10,0.023
+Delta Air Lines,JetBlue,9,0.059
+Accor,Tripadvisor,9,0.022
+Emirates,Qatar Airways,9,0.102
+Expedia Group,TUI,9,0.035
+Intrepid Travel,Trip.com Group,9,0.059
+Airbnb,IHG Hotels & Resorts,9,0.02
+Hyatt,Rosewood,9,0.038
+Hilton,Mandarin Oriental,9,0.021
+Choice Hotels,Radisson,9,0.071
+American Airlines,Southwest Airlines,9,0.047
+Boeing,United Airlines,9,0.052
+Abercrombie & Kent,Hilton,9,0.021
+Marriott International,STR,9,0.015
+Abercrombie & Kent,Trip.com Group,9,0.07
+Expedia Group,Sabre,9,0.024
+American Airlines,Sabre,9,0.027
+Carnival,MSC Cruises,8,0.111
+Iberostar,Intrepid Travel,8,0.087
+Expedia Group,Royal Caribbean,8,0.031
+Air Canada,JetBlue,8,0.058
+Sabre,Wyndham,8,0.029
+Abercrombie & Kent,Amadeus,8,0.048
+Expedia Group,Intrepid Travel,8,0.029
+Iberostar,Marriott International,8,0.015
+Accor,Club Med,8,0.032
+Expedia Group,Uber,8,0.031
+Jin Jiang,Radisson,8,0.09
+Dusit,Thai Airways,8,0.064
+Airbnb,Uber,8,0.045
+Booking Holdings,Sabre,8,0.023
+Accor,Kempinski,8,0.031
+Accor,Ascott,8,0.033
+Hilton,STR,8,0.016
+Four Seasons,Rosewood,8,0.087
+IHG Hotels & Resorts,Royal Caribbean,8,0.022
+Hilton,United Airlines,8,0.017
+Accor,TUI,8,0.029
+Marriott International,Meliá,7,0.013
+Expedia Group,Meliá,7,0.029
+Disney,Expedia Group,7,0.024
+Boeing,Emirates,7,0.041
+Booking Holdings,Disney,7,0.027
+Accor,Dusit,7,0.02
+Iberostar,Trip.com Group,7,0.056
+American Airlines,Lufthansa,7,0.033
+Marriott International,TUI,7,0.013
+Abercrombie & Kent,MSC Cruises,7,0.121
+JetBlue,Sandals,7,0.049
+Best Western,Choice Hotels,7,0.059
+Hilton,Royal Caribbean,7,0.016
+Accor,Intrepid Travel,7,0.024
+Hilton,MSC Cruises,7,0.017
+Dusit,Intrepid Travel,7,0.042
+Etihad,Qatar Airways,7,0.117
+Sabre,Singapore Airlines,7,0.033
+Amadeus,American Airlines,7,0.023
+Google,Intrepid Travel,7,0.02
+IHG Hotels & Resorts,Mandarin Oriental,7,0.02
+Marriott International,Royal Caribbean,7,0.013
+Emirates,Singapore Airlines,7,0.063
+Lufthansa,Singapore Airlines,7,0.076
+Accor,Minor Hotels,7,0.027
+Abercrombie & Kent,IHG Hotels & Resorts,7,0.02
+Abercrombie & Kent,Marriott International,7,0.013
+Norwegian Cruise Line,Royal Caribbean,7,0.125
+Boeing,Sabre,7,0.026
+Marriott International,United Airlines,7,0.012
+Hyatt,Mandarin Oriental,7,0.028
+Amadeus,Wyndham,7,0.029
+Cathay Pacific,Singapore Airlines,6,0.092
+Booking Holdings,Dusit,6,0.02
+Abercrombie & Kent,TUI,6,0.074
+Airbnb,Carnival,6,0.031
+American Airlines,Expedia Group,6,0.016
+Amadeus,TUI,6,0.034
+Four Seasons,Mandarin Oriental,6,0.057
+Booking Holdings,Intrepid Travel,6,0.024
+Abercrombie & Kent,Expedia Group,6,0.024
+Disney,Hyatt,6,0.021
+AirAsia,Booking Holdings,6,0.03
+ForwardKeys,Tripadvisor,6,0.023
+Marriott International,Rosewood,6,0.011
+American Airlines,Sandals,6,0.029
+British Airways,JetBlue,6,0.042
+Airbnb,Emirates,6,0.03
+Airbus,American Airlines,6,0.025
+Airbus,United Airlines,6,0.043
+Airbus,JetBlue,6,0.034
+Carnival,TUI,6,0.062
+Airbus,Qantas,6,0.061
+British Airways,Hilton,6,0.014
+Dusit,Tripadvisor,6,0.021
+Airbnb,Hyatt,6,0.017
+Amadeus,Carnival,6,0.033
+Carnival,Trip.com Group,6,0.041
+Accor,Airbnb,6,0.016
+JetBlue,Wyndham,6,0.028
+Anantara,Minor Hotels,6,0.158
+IHG Hotels & Resorts,Sandals,6,0.017
+Sandals,Wyndham,6,0.039
+Emirates,TUI,6,0.058
+Trip.com Group,Wyndham,6,0.029
+Accor,Banyan Tree,6,0.024
+Emirates,Trip.com Group,6,0.039
+Airbnb,TUI,6,0.033
+Emirates,Expedia Group,6,0.022
+Radisson,Trip.com Group,6,0.034
+TUI,Trip.com Group,6,0.044
+IHG Hotels & Resorts,United Airlines,6,0.016
+Boeing,Lufthansa,6,0.04
+Etihad,Singapore Airlines,6,0.073
+Hyatt,Tripadvisor,6,0.015
+Marriott International,Minor Hotels,6,0.011
+Air France-KLM,Delta Air Lines,6,0.066
+Carnival,Norwegian Cruise Line,6,0.092
+Carnival,Google,6,0.018
+Best Western,Booking Holdings,6,0.023
+Club Med,IHG Hotels & Resorts,6,0.018
+Hyatt,Trip.com Group,6,0.019
+Kempinski,Marriott International,6,0.011
+Abercrombie & Kent,Radisson,6,0.05
+Air France-KLM,Emirates,5,0.05
+Sabre,United Airlines,5,0.021
+Dusit,Marriott International,5,0.008
+IHG Hotels & Resorts,Intrepid Travel,5,0.013
+Airbus,Singapore Airlines,5,0.04
+Iberostar,Radisson,5,0.043
+Meliá,Trip.com Group,5,0.041
+Hilton,Thomas Cook,5,0.012
+Airbnb,Thomas Cook,5,0.033
+JetBlue,Southwest Airlines,5,0.038
+American Airlines,Emirates,5,0.022
+Amadeus,MSC Cruises,5,0.033
+Booking Holdings,Radisson,5,0.018
+Accor,American Airlines,5,0.012
+British Airways,Emirates,5,0.048
+Carnival,Radisson,5,0.036
+Carnival,Intrepid Travel,5,0.043
+Iberostar,Meliá,5,0.082
+Accor,Sabre,5,0.012
+Hyatt,STR,5,0.016
+Disney,Royal Caribbean,5,0.042
+TUI,Thomas Cook,5,0.089
+Amadeus,Royal Caribbean,5,0.028
+Air France-KLM,British Airways,5,0.062
+JetBlue,Lufthansa,5,0.034
+Marriott International,Oracle Hospitality,5,0.01
+Meliá,TUI,5,0.07
+Disney,Sabre,5,0.021
+Abercrombie & Kent,Royal Caribbean,5,0.06
+United Airlines,Wyndham,5,0.027
+Amadeus,Qatar Airways,5,0.031
+Accor,MSC Cruises,5,0.019
+Hilton,Oracle Hospitality,5,0.012
+Amadeus,Intrepid Travel,5,0.026
+Airbus,Lufthansa,5,0.043
+MSC Cruises,Trip.com Group,5,0.043
+Marriott International,Shangri-La,5,0.01
+MSC Cruises,Royal Caribbean,5,0.075
+Accor,Disney,5,0.016
+Accor,Jin Jiang,5,0.02
+Radisson,TUI,5,0.039
+Banyan Tree,IHG Hotels & Resorts,5,0.015
+Booking Holdings,Choice Hotels,5,0.021
+Airbnb,ForwardKeys,5,0.023
+Best Western,Radisson,5,0.032
+Accor,Uber,5,0.018
+Google,SiteMinder,5,0.016
+Hilton,Sabre,5,0.009
+Intrepid Travel,Tripadvisor,5,0.02
+IHG Hotels & Resorts,Sabre,5,0.01
+Marriott International,Sandals,5,0.009
+Hilton,Uber,5,0.011
+ForwardKeys,Trip.com Group,5,0.029
+IHG Hotels & Resorts,TUI,5,0.014
+Belmond,Hilton,5,0.012
+Belmond,Four Seasons,5,0.053
+IHG Hotels & Resorts,STR,5,0.012
+Best Western,Expedia Group,5,0.017
+Hilton,Rosewood,5,0.012
+Emirates,Google,5,0.014
+Google,TUI,5,0.015
+Air France-KLM,JetBlue,5,0.035
+Cathay Pacific,Lufthansa,5,0.088
+TUI,Tripadvisor,5,0.022
+Hyatt,Sandals,5,0.019
+Lufthansa,Marriott International,5,0.009
+Ascott,Marriott International,5,0.01
+CoStar,Marriott International,5,0.009
+CoStar,Hilton,5,0.011
+Cloudbeds,Mews,5,0.094
+IHG Hotels & Resorts,Shangri-La,5,0.015
+Air France-KLM,Boeing,5,0.034
+Airbnb,Royal Caribbean,5,0.027
+Four Seasons,Google,5,0.014
+IHG Hotels & Resorts,MSC Cruises,5,0.015
+MSC Cruises,Radisson,4,0.038
+MSC Cruises,Marriott International,4,0.008
+Hilton,Minor Hotels,4,0.009
+Four Seasons,Trip.com Group,4,0.024
+Expedia Group,Iberostar,4,0.016
+Amadeus,Iberostar,4,0.024
+Abercrombie & Kent,Google,4,0.012
+Air Canada,Airbus,4,0.036
+Google,Royal Caribbean,4,0.012
+Southwest Airlines,United Airlines,4,0.041
+Abercrombie & Kent,Carnival,4,0.043
+IHG Hotels & Resorts,Kempinski,4,0.012
+Hyatt,Shangri-La,4,0.017
+Dusit,Kempinski,4,0.03
+Dusit,IHG Hotels & Resorts,4,0.009
+Boeing,Southwest Airlines,4,0.029
+Royal Caribbean,Sandals,4,0.045
+CoStar,IHG Hotels & Resorts,4,0.011
+Belmond,Marriott International,4,0.008
+Disney,IHG Hotels & Resorts,4,0.01
+Choice Hotels,Disney,4,0.033
+Air France-KLM,Cathay Pacific,4,0.074
+Hilton,Lufthansa,4,0.009
+Airbus,Emirates,4,0.03
+Accor,Rosewood,4,0.015
+Etihad,Google,4,0.012
+Expedia Group,Travelport,4,0.017
+Delta Air Lines,Sabre,4,0.018
+Mandarin Oriental,Rosewood,4,0.073
+Belmond,Hyatt,4,0.017
+Expedia Group,United Airlines,4,0.014
+Air France-KLM,Singapore Airlines,4,0.044
+Abercrombie & Kent,Emirates,4,0.04
+Abercrombie & Kent,British Airways,4,0.049
+Qantas,Sabre,4,0.021
+Dusit,ForwardKeys,4,0.021
+British Airways,Radisson,4,0.031
+British Airways,Expedia Group,4,0.015
+Accor,Emirates,4,0.013
+Abercrombie & Kent,Meliá,4,0.06
+Centara,Hyatt,4,0.016
+Choice Hotels,Google,4,0.012
+Best Western,Disney,4,0.027
+Choice Hotels,Expedia Group,4,0.015
+Hotelbeds,Tripadvisor,4,0.02
+Delta Air Lines,Royal Caribbean,4,0.04
+Oracle Hospitality,Wyndham,4,0.03
+AirAsia,Hilton,4,0.01
+Hyatt,Uber,4,0.015
+Hyatt,Meliá,4,0.016
+Etihad,Marriott International,4,0.007
+Etihad,Hilton,4,0.009
+Expedia Group,MSC Cruises,4,0.017
+Expedia Group,SiteMinder,4,0.017
+Royal Caribbean,Trip.com Group,4,0.028
+Google,Qatar Airways,4,0.013
+Air Canada,United Airlines,4,0.037
+Tripadvisor,Turkish Airlines,4,0.019
+Trip.com Group,Turkish Airlines,4,0.034
+Amadeus,ForwardKeys,4,0.019
+Amadeus,Dusit,4,0.017
+Abercrombie & Kent,Tripadvisor,4,0.018
+Abercrombie & Kent,Airbnb,4,0.022
+Carnival,Disney,4,0.031
+Cathay Pacific,Emirates,4,0.052
+Centara,Dusit,4,0.027
+Carnival,Meliá,4,0.049
+Amadeus,Ascott,4,0.028
+Intrepid Travel,Radisson,4,0.027
+CoStar,STR,4,0.029
+JetBlue,Royal Caribbean,4,0.027
+Hyatt,citizenM,4,0.017
+Mandarin Oriental,Tripadvisor,4,0.019
+Amadeus,Minor Hotels,4,0.025
+IHG Hotels & Resorts,citizenM,4,0.012
+American Airlines,Hyatt,4,0.01
+Thomas Cook,Trip.com Group,4,0.037
+Marriott International,Thomas Cook,4,0.008
+Air France-KLM,American Airlines,4,0.019
+Accor,United Airlines,4,0.013
+Club Med,Iberostar,4,0.082
+Sabre,Vietnam Airlines,4,0.024
+Airbus,Sabre,4,0.017
+Accor,Air France-KLM,4,0.014
+Lufthansa,Sabre,4,0.019
+Boeing,Qantas,4,0.029
+IDeaS,Marriott International,4,0.008
+Air Canada,Sandals,4,0.05
+Hilton,Hotelbeds,4,0.01
+Lufthansa,United Airlines,4,0.036
+AirAsia,Amadeus,4,0.027
+Expedia Group,Thomas Cook,4,0.017
+Dusit,Hilton,4,0.008
+Anantara,Marriott International,4,0.008
+Boeing,JetBlue,4,0.019
+Qatar Airways,Singapore Airlines,4,0.048
+Carnival,Wyndham,4,0.024
+Amadeus,Turkish Airlines,3,0.019
+Boeing,Qatar Airways,3,0.021
+Accor,Centara,3,0.011
+Accor,Anantara,3,0.012
+Hilton,citizenM,3,0.007
+Jin Jiang,Meliá,3,0.079
+Dusit,Google,3,0.008
+Carnival,Sabre,3,0.014
+British Airways,Sabre,3,0.014
+Emirates,Sabre,3,0.013
+Delta Air Lines,Hilton,3,0.007
+Etihad,Intrepid Travel,3,0.032
+Expedia Group,Turkish Airlines,3,0.012
+Google,Radisson,3,0.008
+Google,Turkish Airlines,3,0.01
+Disney,Google,3,0.008
+Expedia Group,easyJet,3,0.013
+Air Canada,Marriott International,3,0.006
+Google,Uber,3,0.009
+Anantara,Hyatt,3,0.013
+Anantara,IHG Hotels & Resorts,3,0.009
+Anantara,Kempinski,3,0.077
+Airbus,Delta Air Lines,3,0.023
+Boeing,Delta Air Lines,3,0.018
+British Airways,easyJet,3,0.052
+IHG Hotels & Resorts,Travelport,3,0.009
+Booking Holdings,Royal Caribbean,3,0.013
+Meliá,Royal Caribbean,3,0.04
+Club Med,Marriott International,3,0.006
+Dusit,Shangri-La,3,0.024
+Emirates,United Airlines,3,0.023
+Air Canada,British Airways,3,0.037
+Disney,Wyndham,3,0.016
+Choice Hotels,Jin Jiang,3,0.052
+Hilton,Sandals,3,0.007
+Choice Hotels,Four Seasons,3,0.024
+Four Seasons,Wyndham,3,0.016
+Langham,Marriott International,3,0.006
+Marriott International,Turkish Airlines,3,0.006
+Booking Holdings,Centara,3,0.013
+Ascott,IHG Hotels & Resorts,3,0.009
+Accor,Singapore Airlines,3,0.01
+Disney,Trip.com Group,3,0.018
+Hyatt,Royal Caribbean,3,0.011
+Emirates,Thomas Cook,3,0.039
+Amadeus,Hyatt,3,0.009
+Abercrombie & Kent,Jin Jiang,3,0.061
+Intrepid Travel,Minor Hotels,3,0.034
+Booking Holdings,Hotelbeds,3,0.014
+American Airlines,IHG Hotels & Resorts,3,0.006
+Expedia Group,Hotelbeds,3,0.013
+AirAsia,Marriott International,3,0.006
+Hyatt,Oracle Hospitality,3,0.013
+IHG Hotels & Resorts,Oracle Hospitality,3,0.009
+Airbnb,Dusit,3,0.012
+AirAsia,Trip.com Group,3,0.027
+Google,Mandarin Oriental,3,0.009
+Airbus,Vietnam Airlines,3,0.038
+Best Western,Dusit,3,0.016
+Carnival,Uber,3,0.032
+Tripadvisor,Wyndham,3,0.01
+IHG Hotels & Resorts,Uber,3,0.008
+Mandarin Oriental,TUI,3,0.038
+Amadeus,Disney,3,0.014
+Hotelbeds,Intrepid Travel,3,0.038
+Hotelbeds,Royal Caribbean,3,0.047
+American Airlines,Google,3,0.007
+Rosewood,Sandals,3,0.046
+Radisson,Uber,3,0.024
+TUI,Uber,3,0.035
+Abercrombie & Kent,Iberostar,3,0.041
+Emirates,Radisson,3,0.02
+Emirates,Uber,3,0.029
+Etihad,Expedia Group,3,0.012
+Etihad,Radisson,3,0.026
+Etihad,TUI,3,0.039
+Qantas,Singapore Airlines,3,0.038
+G Adventures,Intrepid Travel,3,0.038
+MSC Cruises,Meliá,3,0.059
+Thomas Cook,Tripadvisor,3,0.015
+AirAsia,Tripadvisor,3,0.015
+Airbnb,STR,3,0.013
+American Airlines,Etihad,3,0.015
+American Airlines,Qatar Airways,3,0.015
+Hyatt,TUI,3,0.011
+Emirates,Hyatt,3,0.011
+Centara,IHG Hotels & Resorts,3,0.008
+Centara,Marriott International,3,0.006
+Mandarin Oriental,Wyndham,3,0.02
+Dusit,Trip.com Group,3,0.015
+Emirates,IHG Hotels & Resorts,3,0.008
+Emirates,Mandarin Oriental,3,0.031
+Thai Airways,Vietjet,3,0.136
+Accor,Carnival,3,0.01
+Carnival,Emirates,3,0.026
+Carnival,Hyatt,3,0.011
+Carnival,Tripadvisor,3,0.013
+Disney,Tripadvisor,3,0.012
+American Airlines,Wyndham,3,0.011
+Amadeus,Radisson,3,0.014
+Accor,Mews,3,0.011
+Best Western,Uber,3,0.026
+British Airways,IHG Hotels & Resorts,3,0.008
+British Airways,Marriott International,3,0.005
+Disney,Uber,3,0.026
+Radisson,Royal Caribbean,3,0.023
+Four Seasons,Minor Hotels,3,0.03
+IHG Hotels & Resorts,Minor Hotels,3,0.009
+Iberostar,Minor Hotels,3,0.05
+Abercrombie & Kent,Booking Holdings,3,0.013
+British Airways,TUI,3,0.034
+Cloudbeds,Hilton,3,0.007
+Iberostar,MSC Cruises,3,0.053
+Abercrombie & Kent,Hyatt,3,0.012
+Air France-KLM,Qantas,3,0.045
+STR,Wyndham,3,0.014
+Accor,British Airways,3,0.011
+Accor,Air Canada,3,0.011
+Delta Air Lines,Lufthansa,3,0.031
+Delta Air Lines,Southwest Airlines,3,0.036
+IHG Hotels & Resorts,Langham,3,0.009
+Air France-KLM,United Airlines,3,0.028
+Etihad,Sabre,3,0.015
+Amadeus,Four Seasons,3,0.014
+Amadeus,Meliá,3,0.019
+Four Seasons,Iberostar,3,0.028
+Four Seasons,Intrepid Travel,3,0.022
+Google,Iberostar,3,0.009
+Royal Caribbean,Sabre,3,0.014
+Kempinski,Wyndham,3,0.022
+Avis,Hertz,3,0.158
+Booking Holdings,Travelport,3,0.014
+Abercrombie & Kent,Thomas Cook,3,0.057
+Air Canada,Expedia Group,3,0.012
+Hotelbeds,Meliá,3,0.065
+Banyan Tree,Trip.com Group,3,0.027
+Accor,Mandarin Oriental,3,0.011
+Belmond,IHG Hotels & Resorts,3,0.009
+Belmond,Mandarin Oriental,3,0.054
+Cloudbeds,Tripadvisor,3,0.015
+ForwardKeys,IHG Hotels & Resorts,3,0.008
+AirAsia,Expedia Group,3,0.013
+IHG Hotels & Resorts,Rosewood,3,0.009
+ForwardKeys,Hilton,3,0.006
+ForwardKeys,Marriott International,3,0.005
+AirAsia,Intrepid Travel,3,0.038
+Amadeus,Hotelbeds,3,0.02
+Hotelbeds,Trip.com Group,3,0.027
+Air Canada,Boeing,3,0.02
+Disney,Norwegian Cruise Line,3,0.034
+Air France-KLM,Airbus,3,0.027
+Hilton,Turkish Airlines,3,0.007
+Ascott,Sabre,3,0.017
+Amadeus,Southwest Airlines,3,0.019
+Sabre,Southwest Airlines,3,0.015
+Disney,Four Seasons,3,0.02
+Centara,Thai Airways,3,0.05
+Booking Holdings,Emirates,3,0.012
+Emirates,Tripadvisor,3,0.012
+American Airlines,Booking Holdings,3,0.008
+Air Canada,Cathay Pacific,3,0.056
+Delta Air Lines,Marriott International,3,0.005
+Cloudbeds,SiteMinder,3,0.081
+Banyan Tree,Dusit,3,0.024
+Anantara,Four Seasons,3,0.033
+American Airlines,Ascott,3,0.016
+Ryanair,easyJet,3,0.15
+Club Med,Hilton,3,0.007
+Iberostar,TUI,3,0.038
+Sandals,United Airlines,3,0.027
+Hyatt,United Airlines,2,0.007
+Sabre,Uber,2,0.01
+Sabre,TUI,2,0.009
+Royal Caribbean,TUI,2,0.022
+Cathay Pacific,Qatar Airways,2,0.042
+Airbnb,CoStar,2,0.011
+Duetto,IDeaS,2,0.091
+Booking Holdings,TUI,2,0.009
+TUI,Wyndham,2,0.012
+Club Med,Wyndham,2,0.015
+Club Med,TUI,2,0.033
+Club Med,Radisson,2,0.02
+IHG Hotels & Resorts,JetBlue,2,0.005
+Qatar Airways,Trip.com Group,2,0.016
+Ascott,Intrepid Travel,2,0.026
+American Airlines,Intrepid Travel,2,0.009
+JetBlue,Sabre,2,0.007
+Boeing,Etihad,2,0.014
+Sandals,Thomas Cook,2,0.035
+Accor,Thomas Cook,2,0.008
+Accor,Sandals,2,0.007
+JetBlue,Norwegian Cruise Line,2,0.017
+Amadeus,Oracle Hospitality,2,0.013
+Google,Thai Airways,2,0.006
+Four Seasons,Sandals,2,0.017
+Expedia Group,Lufthansa,2,0.008
+Amadeus,Lufthansa,2,0.011
+JetBlue,Marriott International,2,0.003
+Air Canada,Singapore Airlines,2,0.022
+Mandarin Oriental,Shangri-La,2,0.04
+Tripadvisor,Uber,2,0.009
+Expedia Group,JetBlue,2,0.006
+Emirates,Ryanair,2,0.029
+American Airlines,Disney,2,0.008
+American Airlines,Carnival,2,0.009
+Qantas,Travelport,2,0.04
+Southwest Airlines,Travelport,2,0.039
+Lufthansa,Trip.com Group,2,0.014
+Lufthansa,TUI,2,0.022
+Google,Thomas Cook,2,0.007
+IHG Hotels & Resorts,Turkish Airlines,2,0.006
+American Airlines,Singapore Airlines,2,0.009
+Expedia Group,Sandals,2,0.008
+Airbus,Qatar Airways,2,0.019
+Lufthansa,MSC Cruises,2,0.03
+Amadeus,Barceló,2,0.014
+Accor,Barceló,2,0.008
+Riu,TUI,2,0.04
+Accor,Delta Air Lines,2,0.007
+AirAsia,Google,2,0.007
+Marriott International,Norwegian Cruise Line,2,0.004
+IHG Hotels & Resorts,Norwegian Cruise Line,2,0.006
+Cathay Pacific,Disney,2,0.022
+IDeaS,STR,2,0.019
+Cloudbeds,Google,2,0.006
+Choice Hotels,Tripadvisor,2,0.009
+American Airlines,Tripadvisor,2,0.006
+Air Canada,Tripadvisor,2,0.009
+Air Canada,IHG Hotels & Resorts,2,0.006
+Accor,Belmond,2,0.008
+Lufthansa,Qatar Airways,2,0.026
+Boeing,Tripadvisor,2,0.007
+Boeing,ForwardKeys,2,0.011
+Etihad,Lufthansa,2,0.026
+Air France-KLM,Qatar Airways,2,0.028
+Banyan Tree,Hyatt,2,0.008
+Accor,Vietnam Airlines,2,0.008
+Lufthansa,easyJet,2,0.034
+Hotelbeds,Radisson,2,0.019
+Hotelbeds,IHG Hotels & Resorts,2,0.006
+British Airways,United Airlines,2,0.018
+Centara,Minor Hotels,2,0.03
+Amadeus,Qantas,2,0.012
+Iberostar,Wyndham,2,0.013
+Iberostar,Kempinski,2,0.034
+Hyatt,Kempinski,2,0.008
+Hyatt,Iberostar,2,0.008
+Hilton,Kempinski,2,0.005
+Norwegian Cruise Line,Sabre,2,0.011
+Barceló,Meliá,2,0.057
+Hilton,JetBlue,2,0.004
+British Airways,Delta Air Lines,2,0.02
+Emirates,Intrepid Travel,2,0.016
+Royal Caribbean,Wyndham,2,0.012
+Google,Meliá,2,0.006
+Banyan Tree,Tripadvisor,2,0.01
+SiteMinder,Tripadvisor,2,0.01
+Accor,STR,2,0.006
+Abercrombie & Kent,Uber,2,0.025
+Abercrombie & Kent,Travelport,2,0.032
+Booking Holdings,SiteMinder,2,0.01
+Abercrombie & Kent,Mandarin Oriental,2,0.027
+Abercrombie & Kent,Best Western,2,0.018
+Booking Holdings,easyJet,2,0.01
+Club Med,Hyatt,2,0.008
+Anantara,Booking Holdings,2,0.01
+Marriott International,Mews,2,0.004
+Hilton,Mews,2,0.005
+Cloudbeds,Marriott International,2,0.004
+Cloudbeds,Hyatt,2,0.008
+Boeing,Google,2,0.005
+Booking Holdings,Turkish Airlines,2,0.009
+Airbnb,Turkish Airlines,2,0.012
+Royal Caribbean,Tripadvisor,2,0.009
+Expedia Group,citizenM,2,0.009
+Minor Hotels,Trip.com Group,2,0.016
+Google,Minor Hotels,2,0.006
+Royal Caribbean,Uber,2,0.023
+Four Seasons,Radisson,2,0.012
+Intrepid Travel,Meliá,2,0.022
+British Airways,Meliá,2,0.027
+British Airways,Hyatt,2,0.008
+Best Western,TUI,2,0.017
+Best Western,Emirates,2,0.015
+Accor,Travelport,2,0.008
+Booking Holdings,Four Seasons,2,0.008
+Booking Holdings,Cloudbeds,2,0.01
+Accor,Cloudbeds,2,0.008
+Cathay Pacific,Marriott International,2,0.004
+Cathay Pacific,IHG Hotels & Resorts,2,0.006
+Booking Holdings,Carnival,2,0.008
+Accor,Lufthansa,2,0.007
+Accor,Royal Caribbean,2,0.007
+Four Seasons,Tripadvisor,2,0.008
+Cathay Pacific,Google,2,0.007
+American Airlines,Cathay Pacific,2,0.011
+Air Canada,Google,2,0.006
+Carnival,Sandals,2,0.02
+Hilton,Vietjet,2,0.005
+Hilton,Thai Airways,2,0.005
+TUI,easyJet,2,0.033
+British Airways,Jin Jiang,2,0.037
+Amadeus,Centara,2,0.012
+Emirates,Meliá,2,0.022
+Booking Holdings,ForwardKeys,2,0.007
+Booking Holdings,Uber,2,0.009
+Mandarin Oriental,Radisson,2,0.017
+Centara,Wyndham,2,0.013
+Booking Holdings,Singapore Airlines,2,0.008
+Airbnb,American Airlines,2,0.006
+Booking Holdings,Club Med,2,0.01
+Belmond,Wyndham,2,0.014
+Boeing,Expedia Group,2,0.006
+MSC Cruises,TUI,2,0.029
+British Airways,Qantas,2,0.028
+Air Canada,Sabre,2,0.01
+Hilton,Travelport,2,0.005
+Expedia Group,Mandarin Oriental,2,0.008
+Etihad,Travelport,2,0.036
+Etihad,Mandarin Oriental,2,0.03
+Emirates,Travelport,2,0.024
+AirAsia,Hyatt,2,0.008
+AirAsia,Disney,2,0.022
+Marriott International,Travelport,2,0.004
+Hotelbeds,TUI,2,0.032
+Expedia Group,Four Seasons,2,0.007
+Dusit,Radisson,2,0.01
+Banyan Tree,Four Seasons,2,0.022
+Hertz,Tripadvisor,2,0.01
+Amadeus,Delta Air Lines,2,0.011
+Amadeus,Emirates,2,0.01
+Emirates,Turkish Airlines,2,0.023
+Carnival,Hertz,2,0.03
+Carnival,Hotelbeds,2,0.027
+Sabre,Thomas Cook,2,0.011
+Marriott International,SiteMinder,2,0.004
+Google,Hotelbeds,2,0.007
+Airbnb,Hotelbeds,2,0.013
+Delta Air Lines,Tripadvisor,2,0.008
+Boeing,Vietnam Airlines,2,0.017
+Air France-KLM,Meliá,2,0.029
+Princess Cruises,Royal Caribbean,2,0.04
+MSC Cruises,Norwegian Cruise Line,2,0.054
+Carnival,Princess Cruises,2,0.034
+AirAsia,Royal Caribbean,2,0.032
+Singapore Airlines,Thai Airways,2,0.027
+Etihad,Thai Airways,2,0.037
+Emirates,Thai Airways,2,0.024
+Abercrombie & Kent,Choice Hotels,2,0.022
+Banyan Tree,Kempinski,2,0.049
+Trip.com Group,United Airlines,2,0.012
+Hyatt,Sabre,2,0.005
+Choice Hotels,Sabre,2,0.009
+Best Western,Sabre,2,0.008
+Amadeus,Choice Hotels,2,0.011
+Amadeus,Best Western,2,0.01
+Expedia Group,Mews,2,0.008
+Booking Holdings,Mews,2,0.009
+Airbnb,MSC Cruises,2,0.012
+Minor Hotels,Radisson,2,0.018
+Meliá,Minor Hotels,2,0.036
+Jin Jiang,Minor Hotels,2,0.056
+Mandarin Oriental,Trip.com Group,2,0.015
+Amadeus,Thomas Cook,2,0.014
+Disney,Radisson,2,0.012
+Trip.com Group,Viking,2,0.02
+Shangri-La,Trip.com Group,2,0.018
+Royal Caribbean,Viking,2,0.041
+Marriott International,Viking,2,0.004
+Hilton,Shangri-La,2,0.005
+Dusit,Minor Hotels,2,0.015
+Ascott,Dusit,2,0.016
+Ascott,Hilton,2,0.005
+Airbnb,Intrepid Travel,2,0.01
+Radisson,Turkish Airlines,2,0.018
+Intrepid Travel,Turkish Airlines,2,0.023
+Langham,Mandarin Oriental,2,0.048
+Hilton,Langham,2,0.005
+British Airways,Carnival,2,0.02
+G Adventures,Marriott International,2,0.004
+Amadeus,G Adventures,2,0.013
+Accor,Oracle Hospitality,2,0.008
+Google,MSC Cruises,2,0.006
+Qatar Airways,United Airlines,2,0.02
+Kempinski,Shangri-La,2,0.05
+Dusit,Hyatt,2,0.006
+Air France-KLM,Hilton,2,0.005
+Airbnb,Meliá,2,0.012
+Air Canada,Hilton,2,0.005
+Air France-KLM,Sabre,2,0.01
+Air France-KLM,Amadeus,2,0.012
+Uber,United Airlines,2,0.018
+JetBlue,Uber,2,0.014
+British Airways,Ryanair,2,0.04
+Anantara,Dusit,2,0.016
+Anantara,Centara,2,0.036
+Hilton,easyJet,2,0.005
+Shangri-La,Soneva,2,0.095
+Hotelbeds,MSC Cruises,2,0.049
+Air France-KLM,TUI,2,0.024
+Air France-KLM,Marriott International,2,0.004
+Duetto,Sabre,2,0.011
+Etihad,Turkish Airlines,2,0.035
+Etihad,Trip.com Group,2,0.016
+Carnival,Turkish Airlines,2,0.025
+Carnival,Etihad,2,0.023
+Carnival,United Airlines,2,0.016
+Booking Holdings,Thai Airways,2,0.009
+Delta Air Lines,IHG Hotels & Resorts,2,0.005
+Amadeus,SiteMinder,2,0.013
+CoStar,Expedia Group,2,0.007
+Amadeus,Cloudbeds,2,0.013
+Choice Hotels,Mews,2,0.023
+Air France-KLM,Google,2,0.006
+Google,Rosewood,2,0.006
+Four Seasons,Jin Jiang,1,0.012
+Sabre,Turkish Airlines,1,0.005
+Travelport,Turkish Airlines,1,0.021
+Accor,SiteMinder,1,0.004
+Booking Holdings,Oracle Hospitality,1,0.005
+Choice Hotels,Oracle Hospitality,1,0.015
+Oracle Hospitality,Sabre,1,0.005
+Airbnb,Sabre,1,0.003
+Sabre,Trip.com Group,1,0.004
+Thomas Cook,Uber,1,0.018
+Trip.com Group,Uber,1,0.007
+American Airlines,Thomas Cook,1,0.005
+Disney,Rosewood,1,0.01
+Airbus,Rosewood,1,0.01
+Accor,Airbus,1,0.003
+American Airlines,MSC Cruises,1,0.005
+Kempinski,Turkish Airlines,1,0.02
+Boeing,Turkish Airlines,1,0.007
+Boeing,Kempinski,1,0.007
+Airbus,Turkish Airlines,1,0.01
+Airbus,Kempinski,1,0.01
+Lufthansa,Rosewood,1,0.015
+Lufthansa,Mandarin Oriental,1,0.013
+Kempinski,Rosewood,1,0.021
+Kempinski,Mandarin Oriental,1,0.017
+Kempinski,Lufthansa,1,0.014
+Four Seasons,Lufthansa,1,0.008
+Four Seasons,Kempinski,1,0.01
+Emirates,Rosewood,1,0.011
+Anantara,Rosewood,1,0.025
+Airbus,British Airways,1,0.008
+Airbus,Expedia Group,1,0.003
+Airbus,Southwest Airlines,1,0.01
+Lufthansa,Royal Caribbean,1,0.011
+Lufthansa,Norwegian Cruise Line,1,0.017
+Emirates,STR,1,0.006
+MSC Cruises,United Airlines,1,0.011
+Booking Holdings,Meliá,1,0.005
+Booking Holdings,Jin Jiang,1,0.005
+Sonder,citizenM,1,0.067
+Marriott International,Sonder,1,0.002
+Hyatt,Sonder,1,0.005
+Hilton,Sonder,1,0.002
+CoStar,citizenM,1,0.016
+CoStar,Sonder,1,0.02
+Disney,MSC Cruises,1,0.01
+Carnival,easyJet,1,0.014
+Delta Air Lines,Google,1,0.003
+Booking Holdings,Delta Air Lines,1,0.004
+Langham,Tripadvisor,1,0.005
+Disney,Langham,1,0.012
+Belmond,Expedia Group,1,0.004
+Cloudbeds,TUI,1,0.015
+Meliá,United Airlines,1,0.01
+Abercrombie & Kent,JetBlue,1,0.007
+Airbus,Trip.com Group,1,0.006
+MSC Cruises,Qatar Airways,1,0.018
+Hilton,Qatar Airways,1,0.002
+Air Canada,Meliá,1,0.014
+Air Canada,Carnival,1,0.011
+OYO,STR,1,0.01
+American Airlines,Dusit,1,0.004
+Ascott,Banyan Tree,1,0.032
+Centara,Intrepid Travel,1,0.01
+Boeing,Duetto,1,0.008
+Langham,Wyndham,1,0.008
+Hyatt,Langham,1,0.004
+Four Seasons,Langham,1,0.012
+Choice Hotels,Mandarin Oriental,1,0.012
+Choice Hotels,Langham,1,0.017
+American Airlines,Trip.com Group,1,0.004
+American Airlines,ForwardKeys,1,0.004
+Sabre,easyJet,1,0.005
+MSC Cruises,easyJet,1,0.026
+MSC Cruises,Sabre,1,0.005
+Google,easyJet,1,0.003
+Disney,easyJet,1,0.011
+Google,Oracle Hospitality,1,0.003
+Airbus,IHG Hotels & Resorts,1,0.003
+Cathay Pacific,Royal Caribbean,1,0.016
+Hertz,Marriott International,1,0.002
+Best Western,Trip.com Group,1,0.006
+Best Western,Hotelbeds,1,0.011
+Minor Hotels,Sabre,1,0.005
+Intrepid Travel,Sabre,1,0.004
+Shangri-La,Viking,1,0.053
+Royal Caribbean,Shangri-La,1,0.016
+Hyatt,Viking,1,0.004
+Hilton,Viking,1,0.002
+Disney,Viking,1,0.013
+Dusit,Sabre,1,0.004
+Ascott,Minor Hotels,1,0.025
+American Airlines,Minor Hotels,1,0.005
+Mandarin Oriental,Uber,1,0.013
+Mandarin Oriental,Travelport,1,0.018
+Mandarin Oriental,Meliá,1,0.016
+Delta Air Lines,Wyndham,1,0.006
+Intrepid Travel,Uber,1,0.01
+ForwardKeys,Meliá,1,0.009
+Air France-KLM,ForwardKeys,1,0.008
+Accor,ForwardKeys,1,0.003
+Disney,Shangri-La,1,0.011
+AirAsia,Viking,1,0.053
+AirAsia,Shangri-La,1,0.03
+Norwegian Cruise Line,Princess Cruises,1,0.056
+MSC Cruises,Princess Cruises,1,0.037
+Carnival,Delta Air Lines,1,0.009
+Oracle Hospitality,Radisson,1,0.01
+Avis,Uber,1,0.02
+Centara,Tripadvisor,1,0.004
+British Airways,Choice Hotels,1,0.011
+Centara,Radisson,1,0.008
+Centara,Mandarin Oriental,1,0.013
+British Airways,Uber,1,0.012
+British Airways,Travelport,1,0.015
+Hyatt,Travelport,1,0.004
+Etihad,Uber,1,0.013
+Etihad,Meliá,1,0.016
+Etihad,IHG Hotels & Resorts,1,0.003
+Etihad,Hyatt,1,0.004
+Travelport,Uber,1,0.016
+TUI,Travelport,1,0.015
+Radisson,Travelport,1,0.009
+Meliá,Uber,1,0.014
+Meliá,Travelport,1,0.019
+Air France-KLM,Uber,1,0.012
+Ascott,Best Western,1,0.011
+Carnival,Iberostar,1,0.011
+Hyatt,Mews,1,0.004
+Cloudbeds,Wyndham,1,0.007
+Cloudbeds,Four Seasons,1,0.011
+British Airways,Mandarin Oriental,1,0.013
+British Airways,Etihad,1,0.013
+Best Western,Travelport,1,0.01
+Best Western,Meliá,1,0.01
+Best Western,Mandarin Oriental,1,0.009
+Best Western,Etihad,1,0.009
+Best Western,British Airways,1,0.008
+Cathay Pacific,Hilton,1,0.002
+G Adventures,Hilton,1,0.002
+Qatar Airways,Tripadvisor,1,0.005
+Avis,Hilton,1,0.002
+Duetto,Oracle Hospitality,1,0.032
+Banyan Tree,Booking Holdings,1,0.005
+Amadeus,Banyan Tree,1,0.007
+AirAsia,Dusit,1,0.008
+AirAsia,Banyan Tree,1,0.029
+Uber,easyJet,1,0.018
+Qatar Airways,easyJet,1,0.021
+Accor,Etihad,1,0.004
+Centara,Hilton,1,0.002
+IHG Hotels & Resorts,Princess Cruises,1,0.003
+JetBlue,Qantas,1,0.008
+Abercrombie & Kent,Etihad,1,0.014
+Intrepid Travel,TUI,1,0.009
+Qatar Airways,Uber,1,0.014
+Air France-KLM,easyJet,1,0.018
+Delta Air Lines,Singapore Airlines,1,0.009
+Delta Air Lines,Etihad,1,0.011
+Marriott International,Soneva,1,0.002
+Mandarin Oriental,Soneva,1,0.025
+Intrepid Travel,Travelport,1,0.012
+Accor,Langham,1,0.004
+Lufthansa,Southwest Airlines,1,0.014
+British Airways,Southwest Airlines,1,0.014
+Air France-KLM,Southwest Airlines,1,0.014
+Boeing,Ryanair,1,0.008
+CoStar,United Airlines,1,0.008
+Air Canada,CoStar,1,0.011
+Accor,CoStar,1,0.003
+ForwardKeys,Google,1,0.003
+Club Med,Trip.com Group,1,0.009
+Airbus,Google,1,0.003
+Banyan Tree,Expedia Group,1,0.004
+Etihad,Tripadvisor,1,0.005
+Etihad,ForwardKeys,1,0.009
+British Airways,Google,1,0.003
+Booking Holdings,British Airways,1,0.004
+Air France-KLM,Etihad,1,0.014
+Hyatt,Vietnam Airlines,1,0.004
+Banyan Tree,Vietnam Airlines,1,0.042
+Hotelbeds,Iberostar,1,0.019
+Airbnb,Disney,1,0.005
+Hyatt,Minor Hotels,1,0.004
+Rosewood,Soneva,1,0.034
+Four Seasons,Sabre,1,0.004
+Travelport,Tripadvisor,1,0.005
+Travelport,Trip.com Group,1,0.008
+Google,Travelport,1,0.003
+Minor Hotels,Wyndham,1,0.007
+Minor Hotels,STR,1,0.008
+Kempinski,STR,1,0.008
+Kempinski,Minor Hotels,1,0.02
+IDeaS,Wyndham,1,0.008
+IDeaS,Minor Hotels,1,0.027
+IDeaS,Kempinski,1,0.029
+Cloudbeds,IHG Hotels & Resorts,1,0.003
+Cloudbeds,Expedia Group,1,0.004
+Choice Hotels,Cloudbeds,1,0.014
+Sandals,Tripadvisor,1,0.004
+Hyatt,Soneva,1,0.004
+Hilton,Soneva,1,0.002
+Four Seasons,Soneva,1,0.012
+Belmond,Soneva,1,0.034
+Belmond,Rosewood,1,0.021
+Dusit,Expedia Group,1,0.003
+Air Canada,Travelport,1,0.016
+Air Canada,Amadeus,1,0.006
+Expedia Group,Rosewood,1,0.004
+Lufthansa,Tripadvisor,1,0.004
+Best Western,Centara,1,0.009
+Ascott,Trip.com Group,1,0.009
+Ascott,Expedia Group,1,0.004
+Ascott,Disney,1,0.011
+Ascott,Booking Holdings,1,0.005
+AirAsia,Ascott,1,0.033
+Carnival,JetBlue,1,0.006
+Disney,Lufthansa,1,0.008
+Air France-KLM,Disney,1,0.009
+Langham,Turkish Airlines,1,0.03
+Google,Langham,1,0.003
+Air Canada,Ryanair,1,0.022
+Booking Holdings,JetBlue,1,0.003
+Lufthansa,Ryanair,1,0.02
+Emirates,easyJet,1,0.013
+Centara,Google,1,0.003
+Best Western,Thai Airways,1,0.01
+American Airlines,Norwegian Cruise Line,1,0.005
+Belmond,Disney,1,0.01
+Ascott,Wyndham,1,0.008
+Lufthansa,Thomas Cook,1,0.017
+Sabre,Thai Airways,1,0.005
+Airbnb,Etihad,1,0.006
+Airbnb,Boeing,1,0.004
+Lufthansa,Oracle Hospitality,1,0.016
+Emirates,Oracle Hospitality,1,0.012
+British Airways,Singapore Airlines,1,0.01
+Disney,Singapore Airlines,1,0.008
+Choice Hotels,Turkish Airlines,1,0.014
+Choice Hotels,Singapore Airlines,1,0.01
+Cathay Pacific,Turkish Airlines,1,0.024
+Cathay Pacific,Tripadvisor,1,0.005
+Cathay Pacific,Expedia Group,1,0.004
+Cathay Pacific,Choice Hotels,1,0.015
+Booking Holdings,Cathay Pacific,1,0.005
+Air Canada,Turkish Airlines,1,0.016
+Air Canada,Disney,1,0.009
+Air Canada,Choice Hotels,1,0.011
+Air Canada,Booking Holdings,1,0.004
+Accor,Turkish Airlines,1,0.004
+Accor,Cathay Pacific,1,0.004
+Langham,Shangri-La,1,0.04
+STR,Tripadvisor,1,0.004
+AirAsia,Centara,1,0.018
+Hilton,Southwest Airlines,1,0.002
+Amadeus,United Airlines,1,0.005
+Accor,Southwest Airlines,1,0.004
+AirAsia,Airbnb,1,0.006
+Singapore Airlines,Turkish Airlines,1,0.013
+Singapore Airlines,Tripadvisor,1,0.004
+IHG Hotels & Resorts,Singapore Airlines,1,0.003
+Expedia Group,Singapore Airlines,1,0.004
+Disney,Turkish Airlines,1,0.01
+Google,Lufthansa,1,0.003
+Airbnb,Lufthansa,1,0.005
+Mews,SiteMinder,1,0.018
+Air Canada,Air France-KLM,1,0.012
+Delta Air Lines,Hyatt,1,0.004
+Lufthansa,Travelport,1,0.015
+AirAsia,Meliá,1,0.022
+AirAsia,Iberostar,1,0.019
+AirAsia,IHG Hotels & Resorts,1,0.003
+AirAsia,Four Seasons,1,0.011
+AirAsia,Barceló,1,0.043
+Accor,AirAsia,1,0.004
+Abercrombie & Kent,Intrepid Travel,1,0.01
+Abercrombie & Kent,Four Seasons,1,0.009
+Abercrombie & Kent,Barceló,1,0.021
+Abercrombie & Kent,AirAsia,1,0.018
+Kempinski,TUI,1,0.014
+Carnival,Kempinski,1,0.012
+Meliá,Selina,1,0.03
+IHG Hotels & Resorts,Selina,1,0.003
+Accor,Selina,1,0.004
+AirAsia,Wyndham,1,0.008
+Barceló,Iberostar,1,0.024
+Barceló,IHG Hotels & Resorts,1,0.003
+Barceló,Hilton,1,0.002
+Barceló,Google,1,0.003
+Barceló,Four Seasons,1,0.012
+Barceló,Expedia Group,1,0.004
+Hilton,Norwegian Cruise Line,1,0.002
+IHG Hotels & Resorts,Qatar Airways,1,0.003
+Qantas,Qatar Airways,1,0.016
+Banyan Tree,Marriott International,1,0.002
+Banyan Tree,Hilton,1,0.002
+Airbnb,G Adventures,1,0.006
+Hertz,Wyndham,1,0.008
+Hertz,United Airlines,1,0.012
+Best Western,United Airlines,1,0.007
+Best Western,Hertz,1,0.012
+Wyndham,citizenM,1,0.008
+Tripadvisor,citizenM,1,0.005
+Booking Holdings,citizenM,1,0.005
+Four Seasons,Uber,1,0.009
+Four Seasons,Royal Caribbean,1,0.008
+Avis,Wyndham,1,0.008
+Iberostar,Riu,1,0.024
+Marriott International,Qatar Airways,1,0.002
+Airbnb,Qatar Airways,1,0.006
+Avis,United Airlines,1,0.012
+Avis,Best Western,1,0.012
+Expedia Group,G Adventures,1,0.004
+Four Seasons,Meliá,1,0.01
+Barceló,Trip.com Group,1,0.01
+Barceló,Marriott International,1,0.002
+Barceló,Intrepid Travel,1,0.014
+Jin Jiang,Trip.com Group,1,0.009
+Expedia Group,Jin Jiang,1,0.004
+Boeing,TUI,1,0.006
+Boeing,British Airways,1,0.006
+ForwardKeys,Shangri-La,1,0.01
+Boeing,Trip.com Group,1,0.005
+Intrepid Travel,Thai Airways,1,0.012
+ForwardKeys,Turkish Airlines,1,0.01
+Dusit,Turkish Airlines,1,0.007
+Abercrombie & Kent,Turkish Airlines,1,0.015
+Abercrombie & Kent,ForwardKeys,1,0.008
+Abercrombie & Kent,Dusit,1,0.007
+Kempinski,Meliá,1,0.019
+Sabre,Tripadvisor,1,0.003
+Norwegian Cruise Line,Tripadvisor,1,0.005
+Expedia Group,Norwegian Cruise Line,1,0.004
+Hotelbeds,Southwest Airlines,1,0.021
+Booking Holdings,Norwegian Cruise Line,1,0.005
+Carnival,Lufthansa,1,0.01
+British Airways,Trip.com Group,1,0.007
+British Airways,MSC Cruises,1,0.015
+Abercrombie & Kent,Lufthansa,1,0.012
+Amadeus,easyJet,1,0.007
+Radisson,Viking,1,0.011
+MSC Cruises,Viking,1,0.038
+Iberostar,Viking,1,0.026
+Iberostar,Royal Caribbean,1,0.012
+IHG Hotels & Resorts,Viking,1,0.003
+Amadeus,Viking,1,0.007
+Accor,Viking,1,0.004
+Abercrombie & Kent,Viking,1,0.023
+CoStar,Qatar Airways,1,0.012
+Club Med,Thomas Cook,1,0.032
+Booking Holdings,Thomas Cook,1,0.005
+Expedia Group,Southwest Airlines,1,0.004
+Lufthansa,Radisson,1,0.008
+Lufthansa,Meliá,1,0.014
+IHG Hotels & Resorts,Lufthansa,1,0.003
+Hyatt,MSC Cruises,1,0.004
+Hyatt,Lufthansa,1,0.004
+Emirates,MSC Cruises,1,0.011
+Emirates,Qantas,1,0.011
+Singapore Airlines,Travelport,1,0.013
+Amadeus,Singapore Airlines,1,0.005
+Disney,STR,1,0.006
+American Airlines,STR,1,0.004
+Kempinski,Norwegian Cruise Line,1,0.026
+Kempinski,MSC Cruises,1,0.021
+Ascott,Tripadvisor,1,0.005
+Ascott,Hyatt,1,0.004
+Intrepid Travel,Royal Caribbean,1,0.009
+American Airlines,Royal Caribbean,1,0.005
+Banyan Tree,Singapore Airlines,1,0.014
+ForwardKeys,easyJet,1,0.011
+Amadeus,Norwegian Cruise Line,1,0.007
+American Airlines,Travelport,1,0.005
+Expedia Group,STR,1,0.003
+JetBlue,Tripadvisor,1,0.003
+Cathay Pacific,Qantas,1,0.022
+British Airways,Cathay Pacific,1,0.016
+Singapore Airlines,Trip.com Group,1,0.007
+Qantas,Trip.com Group,1,0.008
+Booking Holdings,Qantas,1,0.005
+Club Med,Tripadvisor,1,0.005
+Barceló,Minor Hotels,1,0.03
+Barceló,Jin Jiang,1,0.059
+Rosewood,Trip.com Group,1,0.008
+Mandarin Oriental,Thomas Cook,1,0.02
+Hyatt,Thomas Cook,1,0.004
+Amadeus,Mandarin Oriental,1,0.006
+Kempinski,Radisson,1,0.009
+Dusit,Wyndham,1,0.004
+Anantara,Wyndham,1,0.008
+Anantara,Radisson,1,0.01
+Anantara,Hilton,1,0.002
+Qantas,United Airlines,1,0.01
+Avis,Tripadvisor,1,0.005
+Airbnb,Mandarin Oriental,1,0.006
+SiteMinder,Trip.com Group,1,0.009
+Mews,Oracle Hospitality,1,0.018
+Lufthansa,Turkish Airlines,1,0.014
+British Airways,Turkish Airlines,1,0.014
+Air France-KLM,Turkish Airlines,1,0.015
+Etihad,JetBlue,1,0.007
+Air Canada,Lufthansa,1,0.012
+Qatar Airways,Sabre,1,0.005
+Air France-KLM,Airbnb,1,0.005
+Shangri-La,Singapore Airlines,1,0.014
+MSC Cruises,Uber,1,0.015
+Airbnb,Radisson,1,0.004
+Barceló,Kempinski,1,0.032
+Choice Hotels,Trip.com Group,1,0.007
+Google,IDeaS,1,0.003
+Airbnb,Duetto,1,0.006
+Radisson,Sandals,1,0.008
+Barceló,Radisson,1,0.011
+Air France-KLM,Radisson,1,0.008
+Air France-KLM,MSC Cruises,1,0.016
+Air France-KLM,Hotelbeds,1,0.017
+ForwardKeys,STR,1,0.006
+Dusit,STR,1,0.005
+Google,citizenM,1,0.003
+Boeing,citizenM,1,0.008
+Boeing,Marriott International,1,0.002
+Booking Holdings,Iberostar,1,0.004
+Hyatt,Singapore Airlines,1,0.004
+Air Canada,Qantas,1,0.015
+Southwest Airlines,Uber,1,0.014
+Delta Air Lines,Uber,1,0.01
+American Airlines,Uber,1,0.005
+Airbnb,OYO,1,0.007
+Singapore Airlines,United Airlines,1,0.008
+Meliá,Soneva,1,0.029
+Minor Hotels,Thai Airways,1,0.021
+Anantara,Sabre,1,0.005
+Intrepid Travel,Soneva,1,0.014
+Intrepid Travel,Shangri-La,1,0.012
+Boeing,Cathay Pacific,1,0.008
+Airbus,Cathay Pacific,1,0.011
+Airbus,Four Seasons,1,0.007
+Air France-KLM,Royal Caribbean,1,0.011
+Air Canada,Etihad,1,0.014
+JetBlue,TUI,1,0.007
+Delta Air Lines,TUI,1,0.01
+Marriott International,Southwest Airlines,1,0.002
+Air Canada,Southwest Airlines,1,0.014
+Marriott International,Qantas,1,0.002
+Etihad,United Airlines,1,0.01
+IHG Hotels & Resorts,Jin Jiang,1,0.003
+Hyatt,Jin Jiang,1,0.004
+Hilton,Jin Jiang,1,0.002
+Accor,citizenM,1,0.004
+Choice Hotels,TUI,1,0.011
+Choice Hotels,Club Med,1,0.015
+AirAsia,Thai Airways,1,0.026
+Delta Air Lines,Four Seasons,1,0.008
+Centara,Shangri-La,1,0.018
+Centara,Kempinski,1,0.015
+Anantara,Shangri-La,1,0.03
+Accor,Shangri-La,1,0.004
+Radisson,STR,1,0.006
+Four Seasons,Shangri-La,1,0.011
+Etihad,Shangri-La,1,0.02
+Etihad,Four Seasons,1,0.009
+IHG Hotels & Resorts,Mews,1,0.003
+Kempinski,Tripadvisor,1,0.005
+Kempinski,Trip.com Group,1,0.008
+CoStar,ForwardKeys,1,0.008
+Choice Hotels,Uber,1,0.011
+Airbnb,United Airlines,1,0.005
+Airbnb,JetBlue,1,0.004
+Choice Hotels,CoStar,1,0.01
+Airbnb,Choice Hotels,1,0.005
+Duetto,STR,1,0.009
+Club Med,MSC Cruises,1,0.025
+G Adventures,TUI,1,0.016
+Booking Holdings,G Adventures,1,0.005
+Hotelbeds,OYO,1,0.045
+Jin Jiang,citizenM,1,0.04
+Jin Jiang,Marriott International,1,0.002
+Abercrombie & Kent,Mews,1,0.013
+Abercrombie & Kent,Disney,1,0.009
+TUI,United Airlines,1,0.009
+Airbnb,Wyndham,1,0.004
+JetBlue,Singapore Airlines,1,0.006
+JetBlue,Qatar Airways,1,0.007
+Emirates,JetBlue,1,0.006
+Cathay Pacific,JetBlue,1,0.008
+Cloudbeds,Duetto,1,0.031
+Barceló,Sabre,1,0.006
+Barceló,IDeaS,1,0.059
+Barceló,Duetto,1,0.053
+Barceló,Cloudbeds,1,0.038
+Amadeus,IDeaS,1,0.007
+Amadeus,Duetto,1,0.007
+AirAsia,Hotelbeds,1,0.029
+Booking Holdings,Princess Cruises,1,0.005
+Best Western,Ryanair,1,0.012
+Best Western,Royal Caribbean,1,0.008
+Best Western,Princess Cruises,1,0.013
+Best Western,Mews,1,0.009
+Best Western,Carnival,1,0.008
+Amadeus,Uber,1,0.006
+Amadeus,Ryanair,1,0.007
+Amadeus,Princess Cruises,1,0.007
+Amadeus,Mews,1,0.006
+Accor,Ryanair,1,0.004
+Accor,Princess Cruises,1,0.004
+Abercrombie & Kent,Wyndham,1,0.006
+Abercrombie & Kent,Sabre,1,0.005
+Abercrombie & Kent,Ryanair,1,0.021
+Abercrombie & Kent,Princess Cruises,1,0.023
+Google,Princess Cruises,1,0.003
+Google,Mews,1,0.003
+Expedia Group,Ryanair,1,0.004
+Expedia Group,Princess Cruises,1,0.004
+Emirates,Wyndham,1,0.006
+Emirates,Royal Caribbean,1,0.009
+Emirates,Princess Cruises,1,0.015
+Emirates,Mews,1,0.01
+Disney,TUI,1,0.008
+Disney,Ryanair,1,0.012
+Disney,Princess Cruises,1,0.013
+Disney,Mews,1,0.009
+Disney,Emirates,1,0.007
+Carnival,Ryanair,1,0.016
+Carnival,Mews,1,0.011
+Booking Holdings,Ryanair,1,0.005
+Ryanair,TUI,1,0.019
+Ryanair,Sabre,1,0.006
+Royal Caribbean,Ryanair,1,0.019
+Princess Cruises,Wyndham,1,0.008
+Princess Cruises,Uber,1,0.022
+Princess Cruises,TUI,1,0.02
+Princess Cruises,Sabre,1,0.006
+Princess Cruises,Ryanair,1,0.1
+Mews,Wyndham,1,0.006
+Mews,Uber,1,0.013
+Mews,TUI,1,0.012
+Mews,Sabre,1,0.005
+Mews,Ryanair,1,0.023
+Mews,Royal Caribbean,1,0.012
+Mews,Princess Cruises,1,0.024
+Google,Ryanair,1,0.003
+Royal Caribbean,Thomas Cook,1,0.016
+Meliá,Tripadvisor,1,0.005
+Meliá,Thomas Cook,1,0.023
+MSC Cruises,Tripadvisor,1,0.005
+MSC Cruises,Thomas Cook,1,0.026
+IHG Hotels & Resorts,Thomas Cook,1,0.003
+Hotelbeds,Thomas Cook,1,0.03
+Carnival,Thomas Cook,1,0.014
+Abercrombie & Kent,Hotelbeds,1,0.017
+Rosewood,United Airlines,1,0.011
+Four Seasons,United Airlines,1,0.007
+ForwardKeys,Vietnam Airlines,1,0.012
+American Airlines,Radisson,1,0.004
+Uber,Wyndham,1,0.006
+Ryanair,Wyndham,1,0.008
+Ryanair,Uber,1,0.021
+Belmond,Oracle Hospitality,1,0.024
+IDeaS,Sabre,1,0.006
+Cloudbeds,Sabre,1,0.005
+Cloudbeds,IDeaS,1,0.033
+Cloudbeds,Dusit,1,0.008
+Rosewood,Wyndham,1,0.007
+Carnival,Rosewood,1,0.013
+Norwegian Cruise Line,Rosewood,1,0.026
+Langham,SiteMinder,1,0.036
+IHG Hotels & Resorts,SiteMinder,1,0.003
+Hilton,SiteMinder,1,0.002
+Expedia Group,Langham,1,0.004
+CoStar,SiteMinder,1,0.015
+CoStar,Langham,1,0.018
+Amadeus,Langham,1,0.007
+Amadeus,CoStar,1,0.005
+Emirates,Kempinski,1,0.011
+Emirates,Four Seasons,1,0.007
+Best Western,Four Seasons,1,0.007
+IDeaS,IHG Hotels & Resorts,1,0.003
+Hilton,IDeaS,1,0.002
+Choice Hotels,IDeaS,1,0.017
+Qatar Airways,Thai Airways,1,0.019
+Duetto,citizenM,1,0.037
+Dusit,Hotelbeds,1,0.008
+British Airways,Sandals,1,0.011
+Duetto,Mews,1,0.02
+Cathay Pacific,Minor Hotels,1,0.023
+Cathay Pacific,Jin Jiang,1,0.037
+Cathay Pacific,Four Seasons,1,0.011
+Anantara,Jin Jiang,1,0.037
+Anantara,Cathay Pacific,1,0.03
+Hertz,Intrepid Travel,1,0.013
+Air Canada,Thomas Cook,1,0.019
+Air Canada,Wyndham,1,0.006
+Minor Hotels,Soneva,1,0.031
+Anantara,Soneva,1,0.045
+Radisson,easyJet,1,0.01
+Minor Hotels,easyJet,1,0.024
+Minor Hotels,TUI,1,0.014
+Meliá,easyJet,1,0.022
+Iberostar,easyJet,1,0.02
+IHG Hotels & Resorts,easyJet,1,0.003
+Club Med,easyJet,1,0.031
+Hertz,Hilton,1,0.002
+Emirates,Hertz,1,0.013
+Airbnb,Cloudbeds,1,0.006
+Rosewood,Vietnam Airlines,1,0.033
+CoStar,Hyatt,1,0.004
+Club Med,Minor Hotels,1,0.023
+Club Med,Meliá,1,0.022
+Accor,easyJet,1,0.004
+Delta Air Lines,Qatar Airways,1,0.011
+Delta Air Lines,Emirates,1,0.008
+Cathay Pacific,United Airlines,1,0.011
+Cathay Pacific,Delta Air Lines,1,0.014
+IHG Hotels & Resorts,Soneva,1,0.003
+Best Western,Club Med,1,0.011
+IDeaS,Tripadvisor,1,0.005
+Expedia Group,IDeaS,1,0.004
+Booking Holdings,IDeaS,1,0.005
+Accor,IDeaS,1,0.004
+Air France-KLM,Hertz,1,0.019
+Hertz,Trip.com Group,1,0.009

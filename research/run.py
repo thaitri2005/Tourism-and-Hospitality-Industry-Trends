@@ -69,8 +69,9 @@ def analysis_fingerprint(db):
             digest.update(json.dumps(tuple(row),ensure_ascii=False,separators=(',',':')).encode('utf-8'))
             digest.update(b'\n')
     digest.update(json.dumps(environment()['packages'],sort_keys=True).encode())
-    return fingerprint(ROOT/'research/analyze.py',ROOT/'research/codebook.py',ROOT/'research/config.py',
-                       extra=digest.hexdigest())
+    inputs=[ROOT/'research'/name for name in ('analyze.py','codebook.py','config.py','sentiment.py','validation.py')]
+    inputs+=[path for path in (ROOT/'research/resources/validation_themes.csv',ROOT/'research/resources/validation_sentiment.csv') if path.is_file()]
+    return fingerprint(*inputs,extra=digest.hexdigest())
 
 def analyze_snapshot():
     db = connect()
@@ -91,7 +92,7 @@ def analyze_snapshot():
                 break
     if valid and previous.get('artifacts') and completed(db,'analysis',version):
         db.close()
-        event('analysis_checkpoint_reused',report=str(OUTPUT/'PRELIMINARY_REPORT.md'))
+        event('analysis_checkpoint_reused',results=str(OUTPUT/'RESULTS.xlsx'))
         return dict(status='checkpoint_reused',input_fingerprint=version)
     phase('analysis')
     stage = OUTPUT/'.staging'/os.environ.get('TOURISM_RUN_ID','manual')
@@ -103,7 +104,7 @@ def analyze_snapshot():
     try:
         analyze.OUTPUT,analyze.TABLES,analyze.FIGURES = stage,stage/'tables',stage/'figures'
         analyze.main()
-        required = ['PRELIMINARY_REPORT.md','run_summary.json','tables/document_metadata.csv','tables/source_coverage.csv']
+        required = ['run_summary.json','RESULTS.xlsx','tables/sources.csv','tables/q1_current_theme_ranking.csv']
         if any(not (stage/name).is_file() for name in required):
             raise RuntimeError('Analysis did not produce the required artifacts')
         artifacts = {path.relative_to(stage).as_posix():hashlib.sha256(path.read_bytes()).hexdigest()
@@ -115,12 +116,12 @@ def analyze_snapshot():
             atomic_bytes(OUTPUT/relative,(stage/relative).read_bytes())
         manifest = dict(status='complete',created_at=now(),input_fingerprint=version,
                         run_id=os.environ.get('TOURISM_RUN_ID'),artifacts=artifacts,
-                        validation_status='exploratory; automated audit follows publication; accuracy not independently calibrated')
+                        checks=json.loads((stage/'QUALITY_CHECKS.json').read_text('utf-8'))['checks'])
         atomic_json(marker,manifest)
         db = connect()
         checkpoint(db,'analysis',version,'complete',manifest)
         db.close()
-        event('analysis_published',files=len(artifacts),report=str(OUTPUT/'PRELIMINARY_REPORT.md'))
+        event('analysis_published',files=len(artifacts),results=str(OUTPUT/'RESULTS.xlsx'))
         return dict(status='complete',input_fingerprint=version,files=len(artifacts))
     finally:
         analyze.OUTPUT,analyze.TABLES,analyze.FIGURES = old
@@ -201,13 +202,10 @@ def authorize_blocked_rechecks(sources):
 
 def execute(args):
     from .crawl import run_source
-    from . import backfill, reextract, content_audit, curate, audit_findings, history
-    if getattr(args,'audit_only',False):
-        phase('automated_audit')
-        audit=content_audit.run_audit(root=OUTPUT.parent)
-        if audit['process_complete']:audit_findings.write_findings(OUTPUT.parent)
-        return dict(status=audit['status'],exit_code=0 if audit['process_complete'] else 2,
-                    results={'audit':audit},analysis_current=audit['process_complete'],study_complete=False,offline=True)
+    from . import archive, backfill, reextract, curate, history, report
+    if getattr(args,'report_only',False):
+        phase('report')
+        return dict(status='report_rebuilt',exit_code=0,results={'report':report.main()},analysis_current=True,offline=True)
     results = {}
     errors = []
     phase('recovery')
@@ -250,6 +248,18 @@ def execute(args):
                 except Exception as exc:
                     exception('historical_discovery_failed',source=source)
                     errors.append(dict(phase='history',source=source,error=str(exc)))
+            if source in archive.PLANS or source=='hospitalitynet':
+                phase('web_archive:'+source)
+                try:
+                    results['web_archive:'+source] = archive.run_source(source)
+                except StopRequested:
+                    if (DATA/'STOP').exists():
+                        raise
+                    results['web_archive:'+source] = dict(status='stopped_by_marker')
+                    continue
+                except Exception as exc:
+                    exception('web_archive_failed',source=source)
+                    errors.append(dict(phase='web_archive',source=source,error=str(exc)))
             if source=='untourism':
                 phase('archive:'+source)
                 try:
@@ -271,6 +281,10 @@ def execute(args):
             except Exception as exc:
                 exception('source_phase_failed',source=source)
                 errors.append(dict(phase='crawl',source=source,error=str(exc)))
+    if getattr(args,'collect_only',False):
+        progress = snapshot()
+        return dict(status='collection_finished',exit_code=2 if errors else 0,results=results,errors=errors,
+                    progress=progress,analysis_current=False,study_complete=False,offline=False)
     phase('reextract')
     reprocessed = reextract.main()
     results['reextract'] = reprocessed
@@ -285,15 +299,12 @@ def execute(args):
             exception('analysis_failed')
             errors.append(dict(phase='analysis',error=str(exc)))
     if results.get('analysis',{}).get('status') in ('complete','checkpoint_reused'):
-        phase('automated_audit')
+        phase('report')
         try:
-            audit=content_audit.run_audit(root=OUTPUT.parent)
-            if audit['process_complete']:audit_findings.write_findings(OUTPUT.parent)
-            results['audit']=dict(status=audit['status'],counts=audit['counts'],report=str(OUTPUT/'audit/AUDIT_REPORT.md'))
-            if not audit['process_complete']:errors.append(dict(phase='automated_audit',error='Automated audit failed; see output/audit/summary.json'))
+            results['report']=report.main()
         except StopRequested:raise
         except Exception as exc:
-            exception('automated_audit_failed');errors.append(dict(phase='automated_audit',error=str(exc)))
+            exception('report_failed');errors.append(dict(phase='report',error=str(exc)))
     progress = snapshot()
     pending = progress.get('pending_urls',0)
     bad_extractions = sum(s['url_states'].get('extraction_error',0) for s in progress['sources'].values())
@@ -306,7 +317,7 @@ def execute(args):
                 exit_code=2 if unresolved else 0,results=results,errors=errors,progress=progress,
                 held_sources=held,blocked_sources=blocked,cooldown_sources=cooldowns,
                 study_complete=False,offline=args.offline,
-                note='Finished work applies only to discovered, accessible material. Automated audit completion does not establish historical completeness or ground-truth accuracy.',
+                note='Finished work applies only to discovered, accessible material; see the report for coverage limits.',
                 analysis_current='analysis' in results and results['analysis']['status'] in ('complete','checkpoint_reused'))
 
 def main():
@@ -314,8 +325,9 @@ def main():
     parser.add_argument('--limit-per-source',type=int,default=100000)
     parser.add_argument('--verbose',action='store_true')
     parser.add_argument('--offline',action='store_true')
-    parser.add_argument('--audit-only',action='store_true')
-    parser.add_argument('--sources',nargs='+',choices=list(SOURCES),help='Collect only these sources; analysis and audit still cover the entire corpus')
+    parser.add_argument('--report-only',action='store_true')
+    parser.add_argument('--collect-only',action='store_true')
+    parser.add_argument('--sources',nargs='+',choices=list(SOURCES),help='Collect only these sources; analysis still covers the entire corpus')
     parser.add_argument('--retry-blocked',nargs='+',default=[],metavar='SOURCE',
                         help='Explicitly recheck named blocked sources once (still honors robots.txt and HTTP denials)')
     args = parser.parse_args()

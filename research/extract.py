@@ -11,6 +11,7 @@ from pypdf import PdfReader
 from .config import START,END,SOURCES
 
 MONTHS=r'(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)'
+TITLE_SELECTORS={'cto':['.entry-title'],'wttc':['h1.main-header-alt']}
 DATE_RE=re.compile(r'\b(?:\d{1,2}(?:st|nd|rd|th)?\s+'+MONTHS+r'\s*,?\s*20\d{2}|'+MONTHS+r'\s+\d{1,2}(?:st|nd|rd|th)?\s*,?\s*20\d{2}|\d{1,2}\.\d{1,2}\.20\d{2})\b',re.I)
 
 def normalize_date(value):
@@ -77,20 +78,22 @@ def extract_html(source,url,data,meta,hints=None):
     candidates=[v for v in ld if 'datePublished' in v]
     candidates.sort(key=lambda v:0 if v.get('@type') in ('Article','NewsArticle','BlogPosting') else 1)
     candidate=candidates[0] if candidates else {}
-    h1=soup.find('h1')
-    title=h1.get_text(' ',strip=True) if h1 else candidate.get('headline','')
+    # Some archived templates use h1 for the section name ("CTO News") and put
+    # the headline in the post's entry title.
+    title_node=next((n for sel in TITLE_SELECTORS.get(source,[])+['h1'] for n in soup.select(sel)[:1]),None)
+    title=title_node.get_text(' ',strip=True) if title_node else candidate.get('headline','')
     if not title and soup.title:title=soup.title.get_text(' ',strip=True)
     metadata={m.get('property') or m.get('name'):m.get('content','') for m in soup.find_all('meta')}
     published=normalize_date(metadata.get('article:published_time') or candidate.get('datePublished'))
     modified=normalize_date(metadata.get('article:modified_time') or candidate.get('dateModified'))
     evidence='structured_datePublished' if published else '';confidence='high' if published else 'unresolved'
     if not published:
-        published_time=soup.select_one('.field--field-published time[datetime]')
+        published_time=soup.select_one('.field--field-published time[datetime], .post-head time[datetime]')
         if published_time:
             published=normalize_date(published_time.get('datetime'))
             if published:evidence='publisher_datetime_field';confidence='high'
     selectors={
-        'wttc':['.details-block__lead-paragraph','.details-block','article','main'],
+        'wttc':['.details-block__lead-paragraph','.details-block','section.article.press','article','main'],
         'etc':['.page-res .p18.text-justify','.p18.text-justify','section.regular.page-res','section.regular'],
         'untourism':['.field--name-body','.field-name-body','article','main'],
         'cto':['.entry-content','.wp-block-post-content','article','main'],
@@ -98,7 +101,7 @@ def extract_html(source,url,data,meta,hints=None):
         'pata':['.blog-item-content.e-content','.entry-content','.post-content','article','main'],
         'ahla':['.field--name-body','.node__content','article','main'],
         'hospitalitynet':['.hn-article__content','.article-content','.article__content','article','main'],
-        'travelweekly':['.article-body','.article__body','.article-content','article','main']}
+        'travelweekly':['.post-body','.article-body','.article__body','.article-content','article','main']}
     root=None;selector=''
     for sel in selectors.get(source,['article','main']):
         nodes=soup.select(sel)
@@ -114,7 +117,8 @@ def extract_html(source,url,data,meta,hints=None):
         if '.pdf' in urlparse(href).path.lower():links.append(dict(url=href,gated=False,label=a.get_text(' ',strip=True)))
     for a in soup.select('[data-document-url]'):
         links.append(dict(url=urljoin(url,a['data-document-url']),gated=True,label=a.get('data-document-title','')))
-    for n in root.select('script,style,nav,footer,form,aside,.related-items,.social-share,.breadcrumbs,.cookie-notice'):
+    for n in root.select('script,style,nav,footer,form,aside,.related-items,.social-share,.breadcrumbs,.cookie-notice,'
+                         '.post-details,.tt-share,.share-wrap,.post-head,.entry-title'):
         n.decompose()
     body=root.get_text('\n',strip=True)
     # Remove recurring publisher/contact sections without removing the article's
@@ -125,12 +129,18 @@ def extract_html(source,url,data,meta,hints=None):
     if source in ('pata','ahla','hospitalitynet'):
         body=re.split(r'\n(?:About PATA|About (?:the )?Pacific Asia Travel Association|About AHLA|About (?:the )?American Hotel\s*(?:&|and)\s*Lodging Association)\s*:?\s*\n',body,flags=re.I)[0]
     if not published:
-        visible=root.get_text(' ',strip=True)
+        # A headline date ("service begins June 2, 2021") is not the dateline.
+        visible=root.get_text(' ',strip=True).replace(title,' ') if title else root.get_text(' ',strip=True)
         date_match=DATE_RE.search(visible[:6000])
         if date_match:
             published=normalize_date(date_match.group());evidence='visible_date:'+date_match.group();confidence='medium';flags.append('visible_date_needs_review')
         elif hints.get('hint_date'):
             published=normalize_date(hints['hint_date']);evidence='archive_or_parent:'+hints.get('discovered_via','');confidence='medium';flags.append('inherited_date')
+            # A first web-archive capture is only an upper bound on publication.
+            if hints.get('archive_snapshot'):
+                confidence='low'
+                flags.append('date_year_from_url' if 'url_year' in hints.get('discovered_via','') else 'date_from_first_archive_capture')
+    if hints.get('archive_snapshot'):flags.append('archived_copy:wayback:'+hints['archive_snapshot'].split(' ')[0])
     html=soup.find('html');lang,lang_evidence=language(body,html.get('lang','') if html else '')
     flags.extend(['extractor:'+selector,'language:'+lang_evidence])
     kind='report_summary' if '/reports/' in url or '/reports-insights/' in url else ('blog' if '/blog/' in url else 'news')

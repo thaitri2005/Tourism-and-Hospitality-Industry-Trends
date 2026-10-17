@@ -14,7 +14,7 @@ import urllib.request
 import zipfile
 from datetime import datetime, timezone
 import pytest
-from research import store, http, crawl, runtime, discover, backfill, reextract, run, diagnostics, curate, history
+from research import store, http, crawl, runtime, discover, backfill, reextract, run, diagnostics, curate, history, archive, report
 
 BASE = 'https://wttc.org'
 URL = BASE+'/news/test-article'
@@ -53,11 +53,16 @@ class FakeNetwork:
 def workspace(tmp_path,monkeypatch):
     data,output = tmp_path/'data',tmp_path/'output'
     data.mkdir();output.mkdir()
-    for module in [store,http,crawl,discover,backfill,reextract,run,diagnostics,curate,history]:
+    for module in [store,http,crawl,discover,backfill,reextract,run,diagnostics,curate,history,archive,report]:
         if hasattr(module,'DATA'):
             monkeypatch.setattr(module,'DATA',data)
         if hasattr(module,'OUTPUT'):
             monkeypatch.setattr(module,'OUTPUT',output)
+    # Web-archive collection has its own tests; never reach web.archive.org here.
+    monkeypatch.setattr(archive,'PLANS',{})
+    # The sentiment model is never downloaded in offline tests.
+    from research import analyze
+    monkeypatch.setattr(analyze,'SCORER',lambda texts:{t:(0.1,0.6,0.3) for t in texts})
     monkeypatch.setattr(reextract,'ROOT',tmp_path)
     monkeypatch.setattr(diagnostics,'ROOT',tmp_path)
     monkeypatch.setenv('TOURISM_RUN_ID','test-run-1')
@@ -443,16 +448,15 @@ def test_diagnostics_excludes_corpus_raw_cache_and_body(workspace):
     db.execute('INSERT INTO documents(doc_id,source,url,body,eligible) VALUES(?,?,?,?,?)',('x','wttc',URL,secret,0))
     db.commit();db.close()
     (data/'raw').mkdir();(data/'raw'/'secret.txt').write_text(secret)
-    (output/'audit').mkdir()
-    (output/'audit/theme_evidence.csv').write_text(secret)
-    (output/'audit/entity_contexts.csv').write_text(secret)
-    (output/'audit/FINDINGS.md').write_text('Aggregated findings without article excerpts.')
+    (output/'tables').mkdir()
+    (output/'tables/articles_analysed.csv').write_text(secret)
+    (output/'run_summary.json').write_text('{"articles_analysed": 1}')
     bundle = diagnostics.make_bundle()
-    with zipfile.ZipFile(bundle) as archive:
-        assert 'status.json' in archive.namelist()
-        assert 'output/audit/FINDINGS.md' in archive.namelist()
-        assert all('corpus.sqlite' not in name and '/raw/' not in name for name in archive.namelist())
-        assert all(secret.encode() not in archive.read(name) for name in archive.namelist())
+    with zipfile.ZipFile(bundle) as bundled:
+        assert 'status.json' in bundled.namelist()
+        assert 'output/run_summary.json' in bundled.namelist()
+        assert all('corpus.sqlite' not in name and '/raw/' not in name for name in bundled.namelist())
+        assert all(secret.encode() not in bundled.read(name) for name in bundled.namelist())
 
 def test_full_pipeline_second_run_avoids_network_and_analysis(workspace,monkeypatch):
     _,output,network = workspace
@@ -472,14 +476,16 @@ def test_full_pipeline_second_run_avoids_network_and_analysis(workspace,monkeypa
              '<input x-ref="searchParams" value=\'{"page":1}\'></main>').encode()]
     for i in range(1,4):
         network.script[URL+f'-{i}'] = [article(i)]
+    built=[]
+    monkeypatch.setattr(report,'main',lambda:built.append(1) or {'status':'complete'})
     args = argparse.Namespace(offline=False,limit_per_source=100000)
     first = run.execute(args)
     assert first['exit_code']==0
     assert first['progress']['total_documents']==3
     assert first['analysis_current']
-    assert first['results']['audit']['counts']['documents_reviewed']==3
-    assert (output/'audit/FINDINGS.md').is_file()
-    assert (output/'PRELIMINARY_REPORT.md').is_file()
+    assert (output/'RESULTS.xlsx').is_file() and (output/'run_summary.json').is_file()
+    assert json.loads((output/'QUALITY_CHECKS.json').read_text())['checks']
+    assert built==[1]
     count = len(network.calls)
     from research import analyze
     def unexpected():
@@ -489,29 +495,11 @@ def test_full_pipeline_second_run_avoids_network_and_analysis(workspace,monkeypa
     second = run.execute(args)
     assert second['exit_code']==0
     assert second['results']['analysis']['status']=='checkpoint_reused'
-    assert second['results']['audit']['counts']['cached_records']==3
     assert len(network.calls)==count
-    # Interrupt a fresh audit after one committed record, then use the same
-    # audit-only operation to resume without any publisher requests.
-    from research import content_audit
-    cache=sqlite3.connect(output.parent/'data/content_audit_cache.sqlite')
-    cache.execute('DELETE FROM reviews');cache.commit();cache.close()
-    calls=[]
-    def stop_after_first(*args):
-        calls.append(1)
-        if len(calls)==2:raise runtime.StopRequested('injected audit interruption')
-    audit_args=argparse.Namespace(audit_only=True)
-    with monkeypatch.context() as patch:
-        patch.setattr(content_audit,'check_stop',stop_after_first)
-        with pytest.raises(runtime.StopRequested):run.execute(audit_args)
-    resumed=run.execute(audit_args)
-    assert resumed['exit_code']==0
-    assert resumed['results']['audit']['counts']['cached_records']==1
-    assert resumed['results']['audit']['process_complete']
+    # The report can be rebuilt on its own without touching the network or the analysis.
+    rebuilt = run.execute(argparse.Namespace(report_only=True))
+    assert rebuilt['exit_code']==0 and built==[1,1,1]
     assert len(network.calls)==count
-    manifest=json.loads((output/'audit/audit_state.json').read_text())
-    assert manifest['status']=='complete'
-    assert manifest['artifacts']['FINDINGS.md']==hashlib.sha256((output/'audit/FINDINGS.md').read_bytes()).hexdigest()
 
 def test_setup_retries_after_partial_install(tmp_path,monkeypatch):
     import run_research as launcher
@@ -618,16 +606,16 @@ def test_new_public_archive_walk_resumes_from_the_last_saved_page(workspace):
 def test_failed_analysis_never_overwrites_last_published_report(workspace,monkeypatch):
     _,output,_=workspace
     from research import analyze
-    report=output/'PRELIMINARY_REPORT.md'
-    report.write_text('previous completed report')
+    summary=output/'run_summary.json'
+    summary.write_text('previous completed analysis')
     def fail():
         analyze.OUTPUT.mkdir(parents=True,exist_ok=True)
-        (analyze.OUTPUT/'PRELIMINARY_REPORT.md').write_text('incomplete new report')
+        (analyze.OUTPUT/'run_summary.json').write_text('incomplete new analysis')
         raise RuntimeError('simulated model failure')
     monkeypatch.setattr(analyze,'main',fail)
     with pytest.raises(RuntimeError,match='simulated model failure'):
         run.analyze_snapshot()
-    assert report.read_text()=='previous completed report'
+    assert summary.read_text()=='previous completed analysis'
 
 def test_structured_logs_capture_request_fields_and_tracebacks(tmp_path):
     log=runtime.RunLog(tmp_path/'run')

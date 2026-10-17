@@ -1,26 +1,27 @@
 {
-  "created_at": "2026-10-12T10:51:21.946960+00:00",
+  "created_at": "2026-10-17T16:26:29.300762+00:00",
   "window_start": "2016-10-10",
   "window_end": "2026-10-10",
   "current_window_start": "2025-10-11",
-  "extracted_documents": 5659,
-  "eligible_documents": 5105,
-  "core_articles": 4829,
-  "unique_story_clusters": 4807,
-  "report_records": 257,
-  "current_articles": 1124,
-  "active_sources": [
-    "ahla",
-    "etc",
-    "hospitalitynet",
-    "pata",
-    "untourism",
-    "wttc"
+  "documents_collected": 11528,
+  "eligible_documents": 9389,
+  "articles_analysed": 9060,
+  "unique_stories": 8938,
+  "current_articles": 1380,
+  "websites_with_articles": [
+    "AHLA",
+    "CTO",
+    "ETC",
+    "Hospitality Net",
+    "PATA",
+    "Travel Weekly",
+    "UN Tourism",
+    "WTTC"
   ],
-  "complete_sources": 0,
-  "unprocessed_candidates": 0,
-  "python": "3.12.2",
-  "numpy": "2.2.6",
-  "pandas": "3.0.6",
-  "validation_status": "analysis published; automated validation status is in audit/summary.json"
+  "codebook_version": "1.1",
+  "theme_mentions": 42189,
+  "theme_discussions": 16025,
+  "brand_mentions": 6736,
+  "checks_passed": true,
+  "python": "3.12.2"
 }
